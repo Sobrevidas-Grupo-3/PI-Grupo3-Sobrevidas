@@ -151,11 +151,12 @@ var esqueceuInvalido = false
 var confirmCadastro = false
 var erroCadastro bool
 var qtdBaixo, qtdMedio, qtdAlto, qtdTotal int
-var templates = template.Must(template.ParseFiles("./index.html", "./templates/telalogin/login.html", "./templates/telaesqueceusenha/esqueceusenha.html", "./templates/dashboard/dashboard.html", "./templates/formulario/formulario.html", "./templates/central-usuario/centralusuario.html", "./templates/pacientesgerais/indexPacGerais.html", "./templates/pg-baixo/pg-baixo.html", "./templates/dashboard/dashboardv2.html", "./templates/pg-medio/pg-medio.html", "./templates/pg-alto/pg-alto.html", "./templates/pg-absenteista/pg-absenteista.html", "./templates/pag-Faq/indexFaq.html", "./templates/formulario-preenchido/formpreenchido.html"))
+var templates = template.Must(template.ParseFiles("./index.html", "./templates/cadastro/cadastro.html","./templates/telalogin/login.html", "./templates/telaesqueceusenha/esqueceusenha.html", "./templates/dashboard/dashboard.html", "./templates/formulario/formulario.html", "./templates/central-usuario/centralusuario.html", "./templates/pacientesgerais/indexPacGerais.html", "./templates/pg-baixo/pg-baixo.html", "./templates/dashboard/dashboardv2.html", "./templates/pg-medio/pg-medio.html", "./templates/pg-alto/pg-alto.html", "./templates/pg-absenteista/pg-absenteista.html", "./templates/pag-Faq/indexFaq.html", "./templates/formulario-preenchido/formpreenchido.html"))
 
 func main() {
 	fs := http.FileServer(http.Dir("./"))
 	http.Handle("/", fs)
+	http.HandleFunc("/cadastro", executarCadastro)
 	http.HandleFunc("/login", autenticaCadastroELevaAoLogin)
 	http.HandleFunc("/dashboard", autenticaLoginELevaAoDashboard)
 	http.HandleFunc("/dashboard/voltar", dashboard)
@@ -212,6 +213,13 @@ func fazConexaoComBanco() *sql.DB {
 	return database
 }
 
+func executarCadastro(w http.ResponseWriter, _ *http.Request){
+	err := templates.ExecuteTemplate(w, "cadastro.html", "a")
+	if err != nil{
+		return
+	}
+}
+
 func autenticaCadastroELevaAoLogin(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
@@ -241,7 +249,6 @@ func autenticaCadastroELevaAoLogin(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 		return
 	}
-
 	err = templates.ExecuteTemplate(w, "login.html", loginInvalido)
 	if err != nil {
 		return
