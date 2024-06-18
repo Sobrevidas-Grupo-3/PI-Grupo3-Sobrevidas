@@ -151,7 +151,7 @@ var esqueceuInvalido = false
 var confirmCadastro = false
 var erroCadastro bool
 var qtdBaixo, qtdMedio, qtdAlto, qtdTotal int
-var templates = template.Must(template.ParseFiles("./index.html", "./templates/cadastro/cadastro.html","./templates/telalogin/login.html", "./templates/telaesqueceusenha/esqueceusenha.html", "./templates/dashboard/dashboard.html", "./templates/formulario/formulario.html", "./templates/central-usuario/centralusuario.html", "./templates/pacientesgerais/indexPacGerais.html", "./templates/pg-baixo/pg-baixo.html", "./templates/dashboard/dashboardv2.html", "./templates/pg-medio/pg-medio.html", "./templates/pg-alto/pg-alto.html", "./templates/pg-absenteista/pg-absenteista.html", "./templates/pag-Faq/indexFaq.html", "./templates/formulario-preenchido/formpreenchido.html"))
+var templates = template.Must(template.ParseFiles("./index.html", "./templates/cadastro/cadastro.html", "./templates/telalogin/login.html", "./templates/telaesqueceusenha/esqueceusenha.html", "./templates/dashboard/dashboard.html", "./templates/formulario/formulario.html", "./templates/central-usuario/centralusuario.html", "./templates/pacientesgerais/indexPacGerais.html", "./templates/pg-baixo/pg-baixo.html", "./templates/dashboard/dashboardv2.html", "./templates/pg-medio/pg-medio.html", "./templates/pg-alto/pg-alto.html", "./templates/pg-absenteista/pg-absenteista.html", "./templates/pag-Faq/indexFaq.html", "./templates/formulario-preenchido/formpreenchido.html"))
 
 func main() {
 	fs := http.FileServer(http.Dir("./"))
@@ -213,9 +213,9 @@ func fazConexaoComBanco() *sql.DB {
 	return database
 }
 
-func executarCadastro(w http.ResponseWriter, _ *http.Request){
+func executarCadastro(w http.ResponseWriter, _ *http.Request) {
 	err := templates.ExecuteTemplate(w, "cadastro.html", "a")
-	if err != nil{
+	if err != nil {
 		return
 	}
 }
@@ -377,13 +377,26 @@ func autenticaLoginELevaAoDashboard(w http.ResponseWriter, r *http.Request) {
 }
 
 func dashboard(w http.ResponseWriter, r *http.Request) {
-	porcbaixo := (float64(qtdBaixo) / float64(qtdTotal)) * 100
-	porcmedio := (float64(qtdMedio) / float64(qtdTotal)) * 100
-	porcalto := (float64(qtdAlto) / float64(qtdTotal)) * 100
-	porcbaixo = float64(int(porcbaixo*100)) / 100
-	porcmedio = float64(int(porcmedio*100)) / 100
-	porcalto = float64(int(porcalto*100)) / 100
-	u := UsuarioNoDashboard{Usuario: usuarioLogin, Primeira: primeiraletraLogin, QtdBaixo: qtdBaixo, QtdMedio: qtdMedio, QtdAlto: qtdAlto, PorcBaixo: porcbaixo, PorcMedio: porcmedio, PorcAlto: porcalto}
+	u := UsuarioNoDashboard{}
+	if qtdBaixo == 0 && qtdMedio == 0 && qtdAlto == 0 {
+		var porcbaixo float64 = 0
+		var porcmedio float64 = 0
+		var porcalto float64 = 0
+		u.PorcBaixo = porcbaixo
+		u.PorcMedio = porcmedio
+		u.PorcAlto = porcalto
+	} else {
+		porcbaixo := (float64(qtdBaixo) / float64(qtdTotal)) * 100
+		porcmedio := (float64(qtdMedio) / float64(qtdTotal)) * 100
+		porcalto := (float64(qtdAlto) / float64(qtdTotal)) * 100
+		porcbaixo = float64(int(porcbaixo*100)) / 100
+		porcmedio = float64(int(porcmedio*100)) / 100
+		porcalto = float64(int(porcalto*100)) / 100
+		u.PorcBaixo = porcbaixo
+		u.PorcMedio = porcmedio
+		u.PorcAlto = porcalto
+	}
+	u = UsuarioNoDashboard{Usuario: usuarioLogin, Primeira: primeiraletraLogin, QtdBaixo: qtdBaixo, QtdMedio: qtdMedio, QtdAlto: qtdAlto}
 	ponteiroConfirmCadastro := &confirmCadastro
 	*ponteiroConfirmCadastro = false
 	ponteiroErroCampos := &erroCadastro
