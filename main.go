@@ -377,34 +377,35 @@ func autenticaLoginELevaAoDashboard(w http.ResponseWriter, r *http.Request) {
 }
 
 func dashboard(w http.ResponseWriter, r *http.Request) {
-	u := UsuarioNoDashboard{}
-	if qtdBaixo == 0 && qtdMedio == 0 && qtdAlto == 0 {
-		var porcbaixo float64 = 0
-		var porcmedio float64 = 0
-		var porcalto float64 = 0
-		u.PorcBaixo = porcbaixo
-		u.PorcMedio = porcmedio
-		u.PorcAlto = porcalto
-	} else {
-		porcbaixo := (float64(qtdBaixo) / float64(qtdTotal)) * 100
-		porcmedio := (float64(qtdMedio) / float64(qtdTotal)) * 100
-		porcalto := (float64(qtdAlto) / float64(qtdTotal)) * 100
-		porcbaixo = float64(int(porcbaixo*100)) / 100
-		porcmedio = float64(int(porcmedio*100)) / 100
-		porcalto = float64(int(porcalto*100)) / 100
-		u.PorcBaixo = porcbaixo
-		u.PorcMedio = porcmedio
-		u.PorcAlto = porcalto
-	}
-	u = UsuarioNoDashboard{Usuario: usuarioLogin, Primeira: primeiraletraLogin, QtdBaixo: qtdBaixo, QtdMedio: qtdMedio, QtdAlto: qtdAlto}
-	ponteiroConfirmCadastro := &confirmCadastro
-	*ponteiroConfirmCadastro = false
-	ponteiroErroCampos := &erroCadastro
-	*ponteiroErroCampos = false
-	err := templates.ExecuteTemplate(w, "dashboardv2.html", u)
-	if err != nil {
-		return
-	}
+    u := UsuarioNoDashboard{}
+    var porcbaixo, porcmedio, porcalto float64
+    if qtdBaixo == 0 && qtdMedio == 0 && qtdAlto == 0 {
+        porcbaixo = 0
+        porcmedio = 0
+        porcalto = 0
+        u.PorcBaixo = porcbaixo
+        u.PorcMedio = porcmedio
+        u.PorcAlto = porcalto
+    } else{
+        porcbaixo = (float64(qtdBaixo) / float64(qtdTotal)) * 100
+        porcmedio = (float64(qtdMedio) / float64(qtdTotal)) * 100
+        porcalto = (float64(qtdAlto) / float64(qtdTotal)) * 100
+        porcbaixo = float64(int(porcbaixo*100)) / 100
+        porcmedio = float64(int(porcmedio*100)) / 100
+        porcalto = float64(int(porcalto*100)) / 100
+        u.PorcBaixo = porcbaixo
+        u.PorcMedio = porcmedio
+        u.PorcAlto = porcalto
+    }
+    u = UsuarioNoDashboard{Usuario: usuarioLogin, Primeira: primeiraletraLogin, QtdBaixo: qtdBaixo, QtdMedio: qtdMedio, QtdAlto: qtdAlto, PorcBaixo: porcbaixo, PorcMedio: porcmedio, PorcAlto: porcalto}
+    ponteiroConfirmCadastro := &confirmCadastro
+    *ponteiroConfirmCadastro = false
+    ponteiroErroCampos := &erroCadastro
+    *ponteiroErroCampos = false
+    err := templates.ExecuteTemplate(w, "dashboardv2.html", u)
+    if err != nil {
+        return
+    }
 }
 
 func executarEsqueceuSenha(w http.ResponseWriter, _ *http.Request) {
