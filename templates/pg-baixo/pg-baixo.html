@@ -295,7 +295,7 @@
             border:solid 3px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
             height: 15px;
-            width: 22%;
+            width: 100%;
             align-items: center;
             display: flex;
             justify-content:center;
@@ -305,7 +305,7 @@
             white-space: nowrap;
         }
         .busca img{
-            width:10%;
+            width:70%;
             margin-left:5%;
         }
         /*MECANISMO DE FILTRAGEM POR ATRIBUTOS*/
@@ -322,7 +322,7 @@
             justify-content: center !important;
             font-weight: normal;
             position:relative;
-            margin-left:4%;
+            margin-left:6.5%;
             font-size:150%;
             font-weight: bold;
             cursor:pointer;
@@ -896,6 +896,15 @@
             color:#171717;
             font-size: 145%;
         }
+        .submit{
+            padding: 0;
+            margin: 0;
+            width: 2vw;
+            height: 4vh;
+            border: none;
+            background-color: white;
+            cursor: pointer;
+        }
     </style>
 </head>
 <!--CORPO DA PÁGINA-->
@@ -924,7 +933,9 @@
     </div>
     <!--FILTRO DE BUSCA-->
     <div class="org">
-        <div class="busca color-light-pink"><input type="text" id="campo-texto" placeholder="Digite o nome do(a) paciente"><img src="/imagenspg/🦆 icon _search_.png"></div>
+        <form action="/pagina-baixo-risco/filtrar-nome" method="get">
+            <div class="busca color-light-pink"><input type="text" id="campo-texto" placeholder="Digite o nome do(a) paciente" name="nome"><button type="submit" class="submit"><img src="/imagenspg/🦆 icon _search_.png"></button></div>
+        </form>
         <!--POP-UP-->
         <a href="#popup-1" class="filtro color-light-pink no-link">Filtrar<img src="/imagenspg/🦆 icon _filter_.png"></a>
         <form action="/pagina-baixo-risco/filtrar">

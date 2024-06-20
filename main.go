@@ -170,10 +170,13 @@ func main() {
 	http.HandleFunc("/pacientesgerais", executarPacGerais)
 	http.HandleFunc("/pagina-baixo-risco", executarPgBaixo)
 	http.HandleFunc("/pagina-baixo-risco/filtrar", executarPgBaixoFiltro)
+	http.HandleFunc("/pagina-baixo-risco/filtrar-nome", executarPgBaixoFiltroPorNome)
 	http.HandleFunc("/pagina-medio-risco", executarPgMedio)
 	http.HandleFunc("/pagina-medio-risco/filtrar", executarPgMedioFiltro)
+	http.HandleFunc("/pagina-medio-risco/filtrar-nome", executarPgMedioFiltroPorNome)
 	http.HandleFunc("/pagina-alto-risco", executarPgAlto)
 	http.HandleFunc("/pagina-alto-risco/filtrar", executarPgAltoFiltro)
+	http.HandleFunc("/pagina-alto-risco/filtrar-nome", executarPgAltoFiltroPorNome)
 	http.HandleFunc("/pagina-absenteista", executarPgAbsenteista)
 	http.HandleFunc("/formulario/preenchido", executarFormPreenchido)
 
@@ -797,6 +800,54 @@ func executarPgBaixoFiltro(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func executarPgBaixoFiltroPorNome(w http.ResponseWriter, r *http.Request){
+	busca := strings.TrimSpace(r.FormValue("nome"))
+	buscar, err := db.Query("SELECT nome_completo, data_nasc, sexo, telefone, bairro, rua, numero, complemento, homem, etilista, tabagista, lesao_bucal FROM pacientes WHERE nome_completo LIKE concat('%', text($1), '%')", busca)	
+	if err != nil{
+		fmt.Println(err)
+	}
+	defer buscar.Close()
+	var armazenamento []Pacientes
+	for buscar.Next(){
+		armazenar := Pacientes{}
+		err = buscar.Scan(&armazenar.Nome, &armazenar.DataNasc, &armazenar.Sexo, &armazenar.Telefone, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal)
+		if err != nil{
+			panic(err.Error())
+		}
+		quebrar := strings.Split(armazenar.DataNasc, "-")
+		if armazenar.Complemento != "" {
+			armazenar.Endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Bairro + "," + armazenar.Complemento
+		} else {
+			armazenar.Endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Bairro
+		}
+		if armazenar.Tabagista == "Não" && armazenar.LesaoBucal == "Não" {
+			if armazenar.Homem == "Sim" && armazenar.Etilista == "Sim" {
+				armazenar.Fatores = "Homem/Etilista"
+			} else if armazenar.Homem == "Sim" && armazenar.Etilista == "Não" {
+				armazenar.Fatores = "Homem"
+			} else if armazenar.Homem == "Não" && armazenar.Etilista == "Sim" {
+				armazenar.Fatores = "Mulher/Etilista"
+			}
+			now := time.Now()
+			ano, _ := strconv.Atoi(quebrar[0])
+			mes, _ := strconv.Atoi(quebrar[1])
+			dia, _ := strconv.Atoi(quebrar[2])
+			armazenar.Idade = now.Year() - ano
+			if int(now.Month()) < mes || (int(now.Month()) == mes && now.Day() < dia) {
+				armazenar.Idade--
+			}
+			armazenar.TemDados = true
+			armazenar.Usuario = usuarioLogin
+			armazenar.Primeira = primeiraletraLogin
+			armazenamento = append(armazenamento, armazenar)
+		}
+	}
+	err = templates.ExecuteTemplate(w, "pg-baixo.html", armazenamento)
+	if err != nil{
+		return
+	}
+}
+
 func executarPgMedio(w http.ResponseWriter, _ *http.Request) {
 	pesquisa, err := db.Query("SELECT nome_completo, data_nasc, telefone, bairro, rua, numero, complemento, homem, etilista, tabagista, lesao_bucal FROM pacientes ORDER BY nome_completo")
 	if err != nil {
@@ -976,6 +1027,56 @@ func executarPgMedioFiltro(w http.ResponseWriter, r *http.Request) {
 	}
 	err = templates.ExecuteTemplate(w, "pg-medio.html", armazenadoPgMedio)
 	if err != nil {
+		return
+	}
+}
+
+func executarPgMedioFiltroPorNome(w http.ResponseWriter, r *http.Request){
+	busca := strings.TrimSpace(r.FormValue("nome"))
+	buscar, err := db.Query("SELECT nome_completo, data_nasc, sexo, telefone, bairro, rua, numero, complemento, homem, etilista, tabagista, lesao_bucal FROM pacientes WHERE nome_completo LIKE concat('%', text($1), '%')", busca)	
+	if err != nil{
+		fmt.Println(err)
+	}
+	defer buscar.Close()
+	var armazenamento []Pacientes
+	for buscar.Next(){
+		armazenar := Pacientes{}
+		err = buscar.Scan(&armazenar.Nome, &armazenar.DataNasc, &armazenar.Sexo, &armazenar.Telefone, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal)
+		if err != nil{
+			panic(err.Error())
+		}
+		quebrar := strings.Split(armazenar.DataNasc, "-")
+		if armazenar.Complemento != "" {
+			armazenar.Endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Bairro + "," + armazenar.Complemento
+		} else {
+			armazenar.Endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Bairro
+		}
+		if armazenar.Tabagista == "Sim" && armazenar.LesaoBucal == "Não" {
+			if armazenar.Homem == "Sim" && armazenar.Etilista == "Sim" && armazenar.Tabagista == "Sim" {
+				armazenar.Fatores = "Homem/Etilista/Tabagista"
+			} else if armazenar.Homem == "Sim" && armazenar.Etilista == "Não" && armazenar.Tabagista == "Sim" {
+				armazenar.Fatores = "Homem/Tabagista"
+			} else if armazenar.Homem == "Não" && armazenar.Tabagista == "Sim" && armazenar.Etilista == "Não" {
+				armazenar.Fatores = "Mulher/Tabagista"
+			} else if armazenar.Homem == "Não" && armazenar.Tabagista == "Sim" && armazenar.Etilista == "Sim" {
+				armazenar.Fatores = "Mulher/Etilista/Tabagista"
+			}
+			now := time.Now()
+			ano, _ := strconv.Atoi(quebrar[0])
+			mes, _ := strconv.Atoi(quebrar[1])
+			dia, _ := strconv.Atoi(quebrar[2])
+			armazenar.Idade = now.Year() - ano
+			if int(now.Month()) < mes || (int(now.Month()) == mes && now.Day() < dia) {
+				armazenar.Idade--
+			}
+			armazenar.TemDados = true
+			armazenar.Usuario = usuarioLogin
+			armazenar.Primeira = primeiraletraLogin
+			armazenamento = append(armazenamento, armazenar)
+		}
+	}
+	err = templates.ExecuteTemplate(w, "pg-medio.html", armazenamento)
+	if err != nil{
 		return
 	}
 }
@@ -1235,6 +1336,65 @@ func executarPgAltoFiltro(w http.ResponseWriter, r *http.Request) {
 
 	err = templates.ExecuteTemplate(w, "pg-alto.html", armazenadoPgAlto)
 	if err != nil {
+		return
+	}
+}
+
+func executarPgAltoFiltroPorNome(w http.ResponseWriter, r *http.Request){
+	busca := strings.TrimSpace(r.FormValue("nome"))
+	buscar, err := db.Query("SELECT nome_completo, data_nasc, sexo, telefone, bairro, rua, numero, complemento, homem, etilista, tabagista, lesao_bucal FROM pacientes WHERE nome_completo LIKE concat('%', text($1), '%')", busca)	
+	if err != nil{
+		fmt.Println(err)
+	}
+	defer buscar.Close()
+	var armazenamento []Pacientes
+	for buscar.Next(){
+		armazenar := Pacientes{}
+		err = buscar.Scan(&armazenar.Nome, &armazenar.DataNasc, &armazenar.Sexo, &armazenar.Telefone, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal)
+		if err != nil{
+			panic(err.Error())
+		}
+		quebrar := strings.Split(armazenar.DataNasc, "-")
+		if armazenar.Complemento != "" {
+			armazenar.Endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Bairro + "," + armazenar.Complemento
+		} else {
+			armazenar.Endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Bairro
+		}
+		if armazenar.LesaoBucal == "Sim" {
+			if armazenar.Homem == "Sim" {
+				if armazenar.Etilista == "Sim" && armazenar.Tabagista == "Sim" {
+					armazenar.Fatores = "Homem/Etilista/Tabagista/Feridas Bucais"
+				} else if armazenar.Etilista == "Não" && armazenar.Tabagista == "Sim" {
+					armazenar.Fatores = "Homem/Tabagista/Feridas Bucais"
+				} else if armazenar.Etilista == "Sim" && armazenar.Tabagista == "Não" {
+					armazenar.Fatores = "Homem/Etilista/Feridas Bucais"
+				}
+			}
+			if armazenar.Homem == "Não" {
+				if armazenar.Etilista == "Sim" && armazenar.Tabagista == "Sim" {
+					armazenar.Fatores = "Mulher/Etilista/Tabagista/Feridas Bucais"
+				} else if armazenar.Etilista == "Não" && armazenar.Tabagista == "Sim" {
+					armazenar.Fatores = "Mulher/Tabagista/Feridas Bucais"
+				} else if armazenar.Etilista == "Sim" && armazenar.Tabagista == "Não" {
+					armazenar.Fatores = "Mulher/Etilista/Feridas Bucais"
+				}
+			}
+			now := time.Now()
+			ano, _ := strconv.Atoi(quebrar[0])
+			mes, _ := strconv.Atoi(quebrar[1])
+			dia, _ := strconv.Atoi(quebrar[2])
+			armazenar.Idade = now.Year() - ano
+			if int(now.Month()) < mes || (int(now.Month()) == mes && now.Day() < dia) {
+				armazenar.Idade--
+			}
+			armazenar.TemDados = true
+			armazenar.Usuario = usuarioLogin
+			armazenar.Primeira = primeiraletraLogin
+			armazenamento = append(armazenamento, armazenar)
+		}
+	}
+	err = templates.ExecuteTemplate(w, "pg-alto.html", armazenamento)
+	if err != nil{
 		return
 	}
 }
