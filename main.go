@@ -678,9 +678,13 @@ func executarPgBaixo(w http.ResponseWriter, _ *http.Request) {
 }
 
 func executarPgBaixoFiltro(w http.ResponseWriter, r *http.Request) {
-	sexo := r.FormValue("tipo1")
-	idade := r.FormValue("tipo2")
-	etilista := r.Form.Has("etilista")
+	masculino := r.FormValue("radio1")
+	feminino := r.FormValue("radio2")
+	idade1 := r.FormValue("radio3")
+	idade2 := r.FormValue("radio4")
+	idade3 := r.FormValue("radio5")
+	idade4 := r.FormValue("radio6")
+	etilista := r.FormValue("radio7")
 	pesquisa, err := db.Query("SELECT nome_completo, data_nasc, sexo, telefone, bairro, rua, numero, complemento, homem, etilista, tabagista, lesao_bucal FROM pacientes ORDER BY nome_completo")
 	if err != nil {
 		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
@@ -724,46 +728,64 @@ func executarPgBaixoFiltro(w http.ResponseWriter, r *http.Request) {
 	}
 	var armazenadoPgBaixo []Pacientes
 	for _, armazenado := range armazenamento {
-		if idade == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50 {
-			if etilista {
-				if armazenado.Sexo == sexo && armazenado.Etilista == "Sim" {
+		if masculino == "Masculino" && armazenado.Sexo == "Masculino"{
+			armazenado.TemDados = true
+			if etilista == "Etilista" && armazenado.Etilista == "Sim"{
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
-			} else if !etilista {
-				if armazenado.Sexo == sexo && armazenado.Etilista == "Não" {
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
+				}
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
+				}
+				if idade4 == "70+" && armazenado.Idade > 70{
+					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
+				}
+			}
+			if etilista == "" && armazenado.Etilista == "Não"{
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
+				}
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
+				}
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
+				}
+				if idade4 == "70+" && armazenado.Idade > 70{
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
 			}
 		}
-		if idade == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60 {
-			if etilista {
-				if armazenado.Sexo == sexo && armazenado.Etilista == "Sim" {
+		if feminino == "Feminino" && armazenado.Sexo == "Feminino"{
+			armazenado.TemDados = true
+			if etilista == "Etilista" && armazenado.Etilista == "Sim"{
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
-			} else if !etilista {
-				if armazenado.Sexo == sexo && armazenado.Etilista == "Não" {
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
-			}
-		}
-		if idade == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70 {
-			if etilista {
-				if armazenado.Sexo == sexo && armazenado.Etilista == "Sim" {
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
-			} else if !etilista {
-				if armazenado.Sexo == sexo && armazenado.Etilista == "Não" {
+				if idade4 == "70+" && armazenado.Idade > 70{
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
 			}
-		}
-		if idade == "70+" && armazenado.Idade > 70 {
-			if etilista {
-				if armazenado.Sexo == sexo && armazenado.Etilista == "Sim" {
+			if etilista == "" && armazenado.Etilista == "Não"{
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
-			} else if !etilista {
-				if armazenado.Sexo == sexo && armazenado.Etilista == "Não" {
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
+				}
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
+				}
+				if idade4 == "70+" && armazenado.Idade > 70{
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
 			}
@@ -836,10 +858,14 @@ func executarPgMedio(w http.ResponseWriter, _ *http.Request) {
 }
 
 func executarPgMedioFiltro(w http.ResponseWriter, r *http.Request) {
-	sexo := r.FormValue("tipo1")
-	idade := r.FormValue("tipo2")
-	etilista := r.Form.Has("etilista")
-	tabagista := r.Form.Has("tabagista")
+	masculino := r.FormValue("radio1")
+	feminino := r.FormValue("radio2")
+	idade1 := r.FormValue("radio3")
+	idade2 := r.FormValue("radio4")
+	idade3 := r.FormValue("radio5")
+	idade4 := r.FormValue("radio6")
+	etilista := r.FormValue("radio7")
+	tabagista := r.FormValue("radio8")
 	pesquisa, err := db.Query("SELECT nome_completo, data_nasc, sexo, telefone, bairro, rua, numero, complemento, homem, etilista, tabagista, lesao_bucal FROM pacientes ORDER BY nome_completo")
 	if err != nil {
 		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
@@ -885,62 +911,64 @@ func executarPgMedioFiltro(w http.ResponseWriter, r *http.Request) {
 	}
 	var armazenadoPgMedio []Pacientes
 	for _, armazenado := range armazenamento {
-		if idade == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50 {
-			if !etilista && tabagista {
-				if armazenado.Etilista == "Não" && armazenado.Sexo == sexo {
+		if masculino == "Masculino" && armazenado.Sexo == "Masculino"{
+			armazenado.TemDados = true
+			if tabagista == "Tabagista" && etilista == "Etilista" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Sim"{
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
-			} else if etilista {
-				if armazenado.Etilista == "Sim" && armazenado.Sexo == sexo {
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
-			} else if !etilista && !tabagista {
-				if armazenado.Sexo == sexo {
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
+				}
+				if idade4 == "70+" && armazenado.Idade > 70{
+					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
+				}
+			}
+			if tabagista == "Tabagista" && etilista == "" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Não"{
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
+				}
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
+				}
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
+				}
+				if idade4 == "70+" && armazenado.Idade > 70{
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
 			}
 		}
-		if idade == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60 {
-			if !etilista && tabagista {
-				if armazenado.Etilista == "Não" && armazenado.Sexo == sexo {
+		if feminino == "Feminino" && armazenado.Sexo == "Feminino"{
+			armazenado.TemDados = true
+			if tabagista == "Tabagista" && etilista == "Etilista" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Sim"{
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
-			} else if etilista {
-				if armazenado.Etilista == "Sim" && armazenado.Sexo == sexo {
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
-			} else if !etilista && !tabagista {
-				if armazenado.Sexo == sexo {
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
-			}
-		}
-		if idade == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70 {
-			if !etilista && tabagista {
-				if armazenado.Etilista == "Não" && armazenado.Sexo == sexo {
-					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
-				}
-			} else if etilista {
-				if armazenado.Etilista == "Sim" && armazenado.Sexo == sexo {
-					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
-				}
-			} else if !etilista && !tabagista {
-				if armazenado.Sexo == sexo {
+				if idade4 == "70+" && armazenado.Idade > 70{
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
 			}
-		}
-		if idade == "70+" && armazenado.Idade > 70 {
-			if !etilista && tabagista {
-				if armazenado.Etilista == "Não" && armazenado.Sexo == sexo {
+			if tabagista == "Tabagista" && etilista == "" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Não"{
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
-			} else if etilista {
-				if armazenado.Etilista == "Sim" && armazenado.Sexo == sexo {
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
-			} else if !etilista && !tabagista {
-				if armazenado.Sexo == sexo {
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
+				}
+				if idade4 == "70+" && armazenado.Idade > 70{
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
 			}
@@ -1022,11 +1050,15 @@ func executarPgAlto(w http.ResponseWriter, _ *http.Request) {
 }
 
 func executarPgAltoFiltro(w http.ResponseWriter, r *http.Request) {
-	sexo := r.FormValue("tipo1")
-	idade := r.FormValue("tipo2")
-	etilista := r.Form.Has("etilista")
-	tabagista := r.Form.Has("tabagista")
-	feridasbucais := r.Form.Has("feridasbucais")
+	masculino := r.FormValue("radio1")
+	feminino := r.FormValue("radio2")
+	idade1 := r.FormValue("radio3")
+	idade2 := r.FormValue("radio4")
+	idade3 := r.FormValue("radio5")
+	idade4 := r.FormValue("radio6")
+	etilista := r.FormValue("radio7")
+	tabagista := r.FormValue("radio8")
+	feridasbucais := r.FormValue("radio9")
 	pesquisa, err := db.Query("SELECT nome_completo, data_nasc, sexo, telefone, bairro, rua, numero, complemento, homem, etilista, tabagista, lesao_bucal FROM pacientes ORDER BY nome_completo")
 	if err != nil {
 		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
@@ -1081,78 +1113,120 @@ func executarPgAltoFiltro(w http.ResponseWriter, r *http.Request) {
 	}
 	var armazenadoPgAlto []Pacientes
 	for _, armazenado := range armazenamento {
-		if idade == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50 {
-			if !etilista && tabagista {
-				if armazenado.Etilista == "Não" && armazenado.Tabagista == "Sim" && armazenado.Sexo == sexo {
+		if masculino == "Masculino" && armazenado.Sexo == "Masculino"{
+			armazenado.TemDados = true
+			if feridasbucais == "FeridasBucais" && tabagista == "Tabagista" && etilista == "Etilista" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Sim"{
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-			} else if etilista && !tabagista {
-				if armazenado.Etilista == "Sim" && armazenado.Tabagista == "Não" && armazenado.Sexo == sexo {
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-			} else if !etilista && !tabagista && feridasbucais {
-				if armazenado.Etilista == "Não" && armazenado.Tabagista == "Não" && armazenado.Sexo == sexo {
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-			} else if !etilista && !tabagista && !feridasbucais {
-				if armazenado.Sexo == sexo {
+				if idade4 == "70+" && armazenado.Idade > 70{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+			}
+			if feridasbucais == "FeridasBucais" && tabagista == "Tabagista" && etilista == "" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Não"{
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade4 == "70+" && armazenado.Idade > 70{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+			}
+			if feridasbucais == "FeridasBucais" && tabagista == "" && etilista == "Etilista" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Não" && armazenado.Etilista == "Sim"{
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade4 == "70+" && armazenado.Idade > 70{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+			}
+			if feridasbucais == "FeridasBucais" && tabagista == "" && etilista == "" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Não" && armazenado.Etilista == "Não"{
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade4 == "70+" && armazenado.Idade > 70{
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
 			}
 		}
-		if idade == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60 {
-			if !etilista && tabagista {
-				if armazenado.Etilista == "Não" && armazenado.Tabagista == "Sim" && armazenado.Sexo == sexo {
+		if feminino == "Feminino" && armazenado.Sexo == "Feminino"{
+			armazenado.TemDados = true
+			if feridasbucais == "FeridasBucais" && tabagista == "Tabagista" && etilista == "Etilista" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Sim"{
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-			} else if etilista && !tabagista {
-				if armazenado.Etilista == "Sim" && armazenado.Tabagista == "Não" && armazenado.Sexo == sexo {
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-			} else if !etilista && !tabagista && feridasbucais {
-				if armazenado.Etilista == "Não" && armazenado.Tabagista == "Não" && armazenado.Sexo == sexo {
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-			} else if !etilista && !tabagista && !feridasbucais {
-				if armazenado.Sexo == sexo {
-					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
-				}
-			}
-		}
-		if idade == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70 {
-			if !etilista && tabagista {
-				if armazenado.Etilista == "Não" && armazenado.Tabagista == "Sim" && armazenado.Sexo == sexo {
-					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
-				}
-			} else if etilista && !tabagista {
-				if armazenado.Etilista == "Sim" && armazenado.Tabagista == "Não" && armazenado.Sexo == sexo {
-					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
-				}
-			} else if !etilista && !tabagista && feridasbucais {
-				if armazenado.Etilista == "Não" && armazenado.Tabagista == "Não" && armazenado.Sexo == sexo {
-					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
-				}
-			} else if !etilista && !tabagista && !feridasbucais {
-				if armazenado.Sexo == sexo {
+				if idade4 == "70+" && armazenado.Idade > 70{
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
 			}
-		}
-		if idade == "70+" && armazenado.Idade > 70 {
-			if !etilista && tabagista {
-				if armazenado.Etilista == "Não" && armazenado.Tabagista == "Sim" && armazenado.Sexo == sexo {
+			if feridasbucais == "FeridasBucais" && tabagista == "Tabagista" && etilista == "" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Não"{
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-			} else if etilista && !tabagista {
-				if armazenado.Etilista == "Sim" && armazenado.Tabagista == "Não" && armazenado.Sexo == sexo {
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-			} else if !etilista && !tabagista && feridasbucais {
-				if armazenado.Etilista == "Não" && armazenado.Tabagista == "Não" && armazenado.Sexo == sexo {
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-			} else if !etilista && !tabagista && !feridasbucais {
-				if armazenado.Sexo == sexo {
+				if idade4 == "70+" && armazenado.Idade > 70{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+			}
+			if feridasbucais == "FeridasBucais" && tabagista == "" && etilista == "Etilista" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Não" && armazenado.Etilista == "Sim"{
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade4 == "70+" && armazenado.Idade > 70{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+			}
+			if feridasbucais == "FeridasBucais" && tabagista == "" && etilista == "" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Não" && armazenado.Etilista == "Não"{
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade4 == "70+" && armazenado.Idade > 70{
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
 			}

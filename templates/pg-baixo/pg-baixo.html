@@ -10,6 +10,216 @@
 
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+        #quadroPopUpAtencao {
+            display: flex;
+            background: #6c7a8929;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #filtrarPopup{
+            cursor: pointer;
+        }
+
+        #modal2{
+            display: none;
+        }
+
+        .box {
+            background: #fff;
+            border: 3px solid #000000;
+            border-radius: 10px;
+        }
+
+        .filtrando {
+            font-family: "Poppins";
+            text-align: center;
+            font-size: 1.838vw;
+            color: #000000;
+            background-color: #ff71e5aa;
+            border-top-left-radius: 0.588vw;
+            border-top-right-radius: 0.588vw;
+            padding: 0.735vw;
+            border-bottom: 2px solid #000000;
+            margin: 0px;
+        }
+
+        #paragrafo {
+            font-family: "Poppins";
+            text-align: left;
+            font-size: 1.471vw;
+            color: #737B8B;
+            position: relative;
+            left: 1.103vw;
+
+        }
+
+        .container1 {
+            position: relative;
+            top: -3.824vw;
+            left: 8.824vw;
+            padding-left: 2.574vw;
+            margin-bottom: 0.882vw;
+            cursor: pointer;
+            font-family: "Poppins";
+            font-size: 1.324vw;
+            color: #737B8B;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .container2 {
+            position: relative;
+            top: -3.824vw;
+            left: 16.176vw;
+            padding-left: 2.574vw;
+            margin-bottom: 0.882vw;
+            cursor: pointer;
+            font-family: "Poppins";
+            font-size: 1.324vw;
+            color: #737B8B;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Hide the browser's default radio button */
+        .container1 input, .container2 input, .container3 input, .container4 input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+
+        /* Create a custom radio button */
+        .checkmark1, .checkmark2, .checkmark3 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 1.838vw;
+            width: 1.838vw;
+            background-color: #eee;
+            border-radius: 50%;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .container1:hover input ~ .checkmark1, .container2:hover input ~ .checkmark1 {
+            background-color: #ccc;
+        }
+
+        .container3:hover input ~ .checkmark2, .container4:hover input ~ .checkmark3 {
+            background-color: #ccc;
+        }
+
+        /* When the radio button is checked, add a color background */
+        .container1 input:checked ~ .checkmark1, .container2 input:checked ~ .checkmark1 {
+            background-color: #ff71e5aa;
+        }
+
+        .container3 input:checked ~ .checkmark2, .container4 input:checked ~ .checkmark3 {
+            background-color: #ff71e5aa;
+        }
+
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        .checkmark1:after, .checkmark2:after,  .checkmark3:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+
+        /* Show the indicator (dot/circle) when checked */
+        .container1 input:checked ~ .checkmark1:after, .container2 input:checked ~ .checkmark1:after {
+            display: block;
+        }
+        .container3 input:checked ~ .checkmark2:after, .container4 input:checked ~ .checkmark3:after {
+            display: block;
+        }
+
+        .line1 {
+            width: 43.971vw;
+            height: 0px;
+            border: 1px solid #ccc;
+            position: relative;
+            top: -2.353vw;
+        }
+
+        p.FaixaEtaria {
+            position: relative;
+            top: -2.206vw;
+        }
+
+        .container3 {
+            position: relative;
+            top: -6.029vw;
+            left: 12.5vw;
+            padding-left: 2.574vw;
+            padding-right: 0.735vw;
+            margin-bottom: 1.103vw;
+            cursor: pointer;
+            font-family: "Poppins";
+            font-size: 1.324vw;
+            color: #737B8B;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .line2 {
+            width: 43.971vw;
+            height: 0px;
+            border: 1px solid #ccc;
+            position: relative;
+            top: -3.824vw;
+        }
+
+
+        p.FatoresRisco {
+            position: relative;
+            top: -3.676vw;
+        }
+
+        .container4 {
+            position: relative;
+            top: -7.132vw;
+            left: 14.706vw;
+            padding-left: 2.574vw;
+            margin-bottom: 0.882vw;
+            padding-right: 0.735vw;
+            cursor: pointer;
+            font-family: "Poppins";
+            font-size: 1.176vw;
+            color: #737B8B;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .barraInferior {
+            width: 44.118vw;
+            height: 2.206vw;
+            background-color: #ff71e5aa;
+            border-bottom-left-radius: 0.588vw;
+            border-bottom-right-radius: 0.588vw;
+            position: relative;
+            border-top: 2px solid #000000;
+        }
+
+        .Filtrar {
+            font-family: "Poppins";
+            font-size: 1.691vw;
+            font-weight: bold;
+            color: #5e646e;
+            border-radius: 0.735vw;
+            position: relative;
+            top: -3.309vw;
+            left: 19.118vw;
+        }
 
         body {
             margin: 0;
@@ -56,6 +266,7 @@
             max-width: 1100px;
             min-width: 920px;
             left:0 2%;
+            position: absolute;
             align-items: center;
             display: flex;
             font-weight: bold;
@@ -179,26 +390,31 @@
             width:17%;
             height: auto;
             text-align: center;
+            border-bottom: 0;
         }
         .space21{
             width:23%;
             height: auto;
             text-align: center;
+            border-bottom: 0;
         }
         .space31{
             width:15%;
             height: auto;
             text-align: center;
+            border-bottom: 0;
         }
         .space41{
             width:8%;
             height: auto;
             text-align: center;
+            border-bottom: 0;
         }
         .space51{
             width:25%;
             height: auto;
             text-align: center;
+            border-bottom: 0;
         }
         .titulo1{
         margin-left:0%;
@@ -711,39 +927,49 @@
         <div class="busca color-light-pink"><input type="text" id="campo-texto" placeholder="Digite o nome do(a) paciente"><img src="/imagenspg/🦆 icon _search_.png"></div>
         <!--POP-UP-->
         <a href="#popup-1" class="filtro color-light-pink no-link">Filtrar<img src="/imagenspg/🦆 icon _filter_.png"></a>
-            <form action="/pagina-baixo-risco/filtrar">
-                <div id="popup-1" class="popup">
-                
-                    <div class=" popup-conteudo">
-                        <div class="barra color-light-pink">FILTRAR</div>
-                        <div class="space-between">
-                            <h2>Sexo:</h2>
-                            <input type="radio" value="Masculino" name="tipo1" required>
-                            <p class="sexo"><label for="">Masculino</label></p>
-                            <input type="radio" value="Feminino" name="tipo1">
-                            <p class="sexo"><label for="">Feminino</label></p>
-                        </div>
-                        <div class="space-between">
-                            <h2>Faixa etária:</h2>
-                            <p class="quarenta"><label for="">40-50</label></p>
-                            <input type="radio" name="tipo2" value="40-50" class="idade" required>
-                            <p class="cinquenta"><label for="">51-60</label></p>
-                            <input type="radio" name="tipo2" value="51-60" class="idade2">
-                            <p class="sessenta"><label for="">61-70</label></p>
-                            <input type="radio" name="tipo2" value="61-70" class="idade3">
-                            <p class="setenta"><label for="">70+</label></p>
-                            <input type="radio" name="tipo2" value="70+" class="idade4">
-                        </div>
-                        <div class="space-between">
-                            <h2>Fatores de risco:</h2>
-                            <p class="etilista"><label for="">Etilista</label></p>
-                            <input type="checkbox" name="etilista" value="Etilista" class="input1">
-                            <br>
-                        <input type="submit" value="Filtrar" class="popup-link no-link color-light-pink">
-                        </div>
+        <form action="/pagina-baixo-risco/filtrar">
+            <div id="popup-1" class="popup">
+                <div id="quadroPopUpAtencao">
+                    <div class="box">
+                        <h1 class="filtrando">Filtrar Pacientes de Baixo Risco</h1>
+                        <p id="paragrafo"><b>Sexo:</b></p>
+                        <label class="container1"><b>Masculino</b>
+                            <input type="checkbox" name="radio1" value="Masculino">
+                            <span class="checkmark1"></span>
+                        </label>
+                        <label class="container2"><b>Feminino</b>
+                            <input type="checkbox" name="radio2" value="Feminino">
+                            <span class="checkmark1"></span>
+                        </label>
+                        <div class="line1"></div>
+                        <p class="FaixaEtaria" id="paragrafo"><b>Faixa Etária:</b></p>
+                        <label class="container3"><b>40-50</b>
+                            <input type="checkbox" name="radio3" value="40-50">
+                            <span class="checkmark2"></span>
+                        </label>
+                        <label class="container3"><b>51-60</b>
+                            <input type="checkbox" name="radio4" value="51-60">
+                            <span class="checkmark2"></span>
+                        </label>
+                        <label class="container3"><b>61-70</b>
+                            <input type="checkbox" name="radio5" value="61-70">
+                            <span class="checkmark2"></span>
+                        </label>
+                        <label class="container3"><b>70+</b>
+                            <input type="checkbox" name="radio6" value="70+">
+                            <span class="checkmark2"></span>
+                        </label>
+                        <div class="line2"></div>
+                        <p class="FatoresRisco" id="paragrafo"><b>Fatores de Risco:</b></p>
+                        <label class="container4"><b>Etilista</b>
+                            <input type="checkbox" name="radio7" value="Etilista">
+                            <span class="checkmark3"></span>
+                        </label>
+                        <div class="barraInferior"><input class="Filtrar" type="submit" value="Filtrar"></div>
                     </div>
                 </div>
-            </form>
+            </div>
+        </form>
     </div>
     <!--EXEMPLOS DE PACIENTES-->
     <!--1-->
