@@ -730,6 +730,10 @@ func executarPgBaixoFiltro(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	var armazenadoPgBaixo []Pacientes
+	armazenar2 := Pacientes{}
+	armazenar2.Usuario = usuarioLogin
+	armazenar2.Primeira = primeiraletraLogin
+	armazenadoPgBaixo = append(armazenadoPgBaixo, armazenar2)
 	for _, armazenado := range armazenamento {
 		if masculino == "Masculino" && armazenado.Sexo == "Masculino"{
 			armazenado.TemDados = true
@@ -808,6 +812,10 @@ func executarPgBaixoFiltroPorNome(w http.ResponseWriter, r *http.Request){
 	}
 	defer buscar.Close()
 	var armazenamento []Pacientes
+	armazenar2 := Pacientes{}
+	armazenar2.Usuario = usuarioLogin
+	armazenar2.Primeira = primeiraletraLogin
+	armazenamento = append(armazenamento, armazenar2)
 	for buscar.Next(){
 		armazenar := Pacientes{}
 		err = buscar.Scan(&armazenar.Nome, &armazenar.DataNasc, &armazenar.Sexo, &armazenar.Telefone, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal)
@@ -961,6 +969,10 @@ func executarPgMedioFiltro(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	var armazenadoPgMedio []Pacientes
+	armazenar2 := Pacientes{}
+	armazenar2.Usuario = usuarioLogin
+	armazenar2.Primeira = primeiraletraLogin
+	armazenadoPgMedio = append(armazenadoPgMedio, armazenar2)
 	for _, armazenado := range armazenamento {
 		if masculino == "Masculino" && armazenado.Sexo == "Masculino"{
 			armazenado.TemDados = true
@@ -1039,6 +1051,10 @@ func executarPgMedioFiltroPorNome(w http.ResponseWriter, r *http.Request){
 	}
 	defer buscar.Close()
 	var armazenamento []Pacientes
+	armazenar2 := Pacientes{}
+	armazenar2.Usuario = usuarioLogin
+	armazenar2.Primeira = primeiraletraLogin
+	armazenamento = append(armazenamento, armazenar2)
 	for buscar.Next(){
 		armazenar := Pacientes{}
 		err = buscar.Scan(&armazenar.Nome, &armazenar.DataNasc, &armazenar.Sexo, &armazenar.Telefone, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal)
@@ -1213,6 +1229,10 @@ func executarPgAltoFiltro(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	var armazenadoPgAlto []Pacientes
+	armazenar2 := Pacientes{}
+	armazenar2.Usuario = usuarioLogin
+	armazenar2.Primeira = primeiraletraLogin
+	armazenadoPgAlto = append(armazenadoPgAlto, armazenar2)
 	for _, armazenado := range armazenamento {
 		if masculino == "Masculino" && armazenado.Sexo == "Masculino"{
 			armazenado.TemDados = true
@@ -1348,6 +1368,10 @@ func executarPgAltoFiltroPorNome(w http.ResponseWriter, r *http.Request){
 	}
 	defer buscar.Close()
 	var armazenamento []Pacientes
+	armazenar2 := Pacientes{}
+	armazenar2.Usuario = usuarioLogin
+	armazenar2.Primeira = primeiraletraLogin
+	armazenamento = append(armazenamento, armazenar2)
 	for buscar.Next(){
 		armazenar := Pacientes{}
 		err = buscar.Scan(&armazenar.Nome, &armazenar.DataNasc, &armazenar.Sexo, &armazenar.Telefone, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal)
