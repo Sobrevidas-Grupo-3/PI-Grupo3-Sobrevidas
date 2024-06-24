@@ -1,39 +1,49 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="estilo.css">
+    <title>SOBREVIDAS - ACS</title>
+    <link rel="shortcut icon" href="imagens2/imagens/favicon.ico" type="image/x-icon">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Passion+One:wght@400;700;900&family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&display=swap');
 
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kaushan+Script&family=Passion+One:wght@400;700;900&family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Passion+One:wght@400;700;900&family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&display=swap');
 
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-    
-*{
-    margin: 0px;
-    padding: 0px;
-}
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kaushan+Script&family=Passion+One:wght@400;700;900&family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&display=swap');
 
-p{
-    font-family: "Inter";
-}
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
-.asc {
-    color: red;
-    display: inline-block;
-}
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: white;
-    height: 100vh;
-    width: 100vw;
-}
+    .asc {
+        color: red;
+        display: inline-block;
+    }
 
-header{
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .container {
+        background-color: white;
+        width: 100vw;
+        padding: 1px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+    }
+
+    header{
     background-color: #007FDA;
     width: 100%;
     height: 8vh;
@@ -119,164 +129,183 @@ header{
     right: 2%;
 }
 
-/* Corpo */
-
-.form-acs {
-    max-width: 100vw;
-    margin-top: 0.5%;
-    padding: 0.5%;
-    display: inline-block;
-    position: static;
-    font-size: 1.1vh;
-    margin-left: 10vw;
-}
-
-.form-acs > .infoacs {
-    display: inline-block;
-    border: 1px solid black;
-    border-radius: 10px 0px 0px 10px;
-    padding: 3px 10px 2px 10px;
-    margin-left: -0.4vw;
-    font-family: "Noto Sans", sans-serif;
-}
-
-table {
-    border-collapse: collapse;
-}
-
-td {
-    border: 1px solid black;
-    padding: 2px 5px 2px 5px;
-}
-
-caption {
-    font-weight: bolder;
-    text-align: left;
-    display: inline-block;
-}
-
-.form-acs > #cbo {
-    padding-right: 2vw;
-}
-
-.form-acs > #cbo {
-    border-radius: 0;
-
-}
-
-.form-acs > #cnes {
-    border-radius: 0;
-}
-
-.form-acs > #ine {
-    border-radius: 0;
-}
-
-.form-acs > #microarea {
-    border-radius: 0;
-}
-
-.form-acs> #datacadastro {
-    border-radius: 0px 10px 10px 0px;
-    width: 10vw;
-}
-
-/* Forms do Paciente */
-
-.form-1 {
-    width: 30vw;
-    height: 70vh;
-    display: inline-block;
-    float: left;
-    font-family: "Noto Sans", sans-serif;
-    margin-right: 4%;
-    margin-left: 1vw;
+    .form-section-01 {
+        max-width: 100vw;
+        margin-top: 0.5%;
+        padding: 0.5%;
+        display: inline-block;
+        position: static;
+        font-size: 1.5vh;
+        margin-left: 10vw;
     }
 
-.form-1 label{
-    font-weight: bold;
-    margin-bottom: 1px;
-    display: block;
-    padding-bottom: 0px;
-    padding-top: 10px;
-    color: gray;
-}
+    .form-section-01 > .infoacs {
+        font-family: "Noto Sans", sans-serif;
+        display: inline-block;
+        border: 1px solid black;
+        border-radius: 10px 0px 0px 10px;
+        padding: 3px 5px 2px 5px;
+        margin-left: -0.4vw;
+    }
 
+    table {
+        border-collapse: collapse;
+    }
 
-.form-1 input,
-.form-1 input {
-    border: 3px solid black;
-    border-radius: 10px;
-    padding: 12px;
-    width: calc(100% - 20px);
-    font-weight: bold;
-}
+    td {
+        border: 1px solid black;
+        padding: 2px 3px 2px 3px;
+    }
 
-.form-1 > select{
-    margin-top: 20px;
-    border: 3px solid black;
-    border-radius: 10px;
-    padding: 12px;
-    width: 30.5vw;
-    max-width: 30.5vw;
-    cursor: pointer;
-}
+    caption {
+        font-weight: bolder;
+        text-align: left;
+        display: inline-block;
+    }
 
-.form-1 option{
-    font-size: 1.5em; 
-    color: black;
-    background-color: white;
-    padding: 5px;
-    border-bottom: 1px solid black;
-    transition: background-color 0.3s ease;
-}
+    #hifen {
+        border: 0;
+    }
 
-.form-1 option:hover {
-    background-color: blue;
-}
+    .form-section-01 > #cbo {
+        padding-right: 10px;
+    }
 
-.form-1 option:checked {
-    background-color: white;
-}
+    .form-section-01 > #cbo {
+        border-radius: 0;
 
-.form-2 {
+    }
+
+    .form-section-01 > #cnes {
+        border-radius: 0;
+    }
+
+    .form-section-01 > #ine {
+        border-radius: 0;
+    }
+
+    .form-section-01 > #microarea {
+        border-radius: 0;
+    }
+
+    .form-section-01 > #datacadastro {
+        border-radius: 0px 10px 10px 0px;
+        width: 170px;
+    }
+
+    .form-section-one{
+        width: 30vw;
+        height: 70vh;
+        display: inline-block;
+        float: left;
+        font-family: "Noto Sans", sans-serif;
+        margin-right: 4%;
+        margin-left: 1vw;
+    }
+
+    .form-section-two{
         width: 30vw;
         float: center;
         height: 70vh;
         display: inline-block;
         font-family: "Noto Sans", sans-serif;
-}
+    }
 
-.form-2 label{
-    font-weight: bold;
-    max-width: 30vw;
-    margin-bottom: 0px;
-    display: inline-block;
-    padding-bottom: 0px;
-    padding-top: 10px;
-    color: gray;
-}
+    .form-section label {
+        display: block;
+        font-weight: bold;
+    }
 
-.form-2 input,
-.form-2 input {
-    border: 3px solid black;
-    border-radius: 10px;
-    padding: 12px;
-    display: inline-block;
-    width: calc(100% - 20px);
-    font-weight: bold;
-}
+    .form-section-one label{
+        font-weight: bold;
+        margin-bottom: 1px;
+        display: block;
+        padding-bottom: 0px;
+        padding-top: 10px;
+        color: gray;
+    }
 
-/* Endereço */
+    .form-section-one > p {
+        padding-bottom: 5px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
 
-.form-2 > h2 {
-    font-size: 3vh;
-    font-weight: 400;
-    margin-bottom: 0.5vh;
-    margin-top: 1.2vh;
-}
+    .form-section-two label{
+        font-weight: bold;
+        max-width: 30vw;
+        margin-bottom: 0px;
+        display: inline-block;
+        padding-bottom: 0px;
+        padding-top: 10px;
+        color: gray;
 
-.end1 {
+    }
+
+    .form-section-two > p {
+        padding-bottom: 5px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+
+    .form-section-one input,
+    .form-section-one input {
+        border: 3px solid black;
+        border-radius: 10px;
+        padding: 12px;
+        width: calc(100% - 20px);
+        font-weight: bold;
+    }
+
+    .form-section-one > select{
+        margin-top: 3.1vh;
+        border: 3px solid black;
+        border-radius: 10px;
+        padding: 12px;
+        width: calc(100% - 20px);
+        cursor: pointer;
+    }
+
+    .form-section-one option{
+        font-size: 1.5em; 
+        color: black;
+        background-color: white;
+        padding: 5px;
+        border-bottom: 1px solid black;
+        transition: background-color 0.3s ease;
+    }
+
+    .form-section-one option:hover {
+        background-color: blue;
+    }
+
+    .form-section-one option:checked {
+        background-color: white;
+    }
+
+    .form-section-two input,
+    .form-section-two input {
+        border: 3px solid black;
+        border-radius: 10px;
+        padding: 12px;
+        display: inline-block;
+        width: calc(100% - 20px);
+        font-weight: bold;
+    }
+
+    .form-section input[type="text"]:disabled,
+    .form-section input[type="email"]:disabled {
+        background-color: #e9ecef;
+    }
+
+    /* Endereço */
+
+    #campo-endereco {
+        font-size: 1.7em; margin-bottom: 0px; margin-top: 5px;margin-bottom: -7px;
+    }
+
+    .end1 {
     display: block;
     padding: 2%;
     margin: 0px;
@@ -294,37 +323,35 @@ caption {
 
 
 #cep {
-    width: 4.3vw;
+    width: 5vw;
     font-size: 1.2vh;
 }
 
 #ibairro {
-    width: 8vw;
+    width: 10vw;
     font-size: 1.2vh;
 }
 
 #inum {
-    width: 3vw;
+    width: 6vw;
     font-size: 1.2vh;
 }
 
 #irua {
-    width: 8vw;
+    width: 12vw;
     font-size: 1.2vh;
 }
 
 #icomplemento {
-    width: 11vw;
+    width: 15vw;
     font-size: 1.2vh;
 }
 
-/* Fatores de Risco */
 
-.form-3 {
+.risk-factors {
     float: right;
-    width: 25vw;
-    max-width: 30vw;
-    height: 62vh;
+    width: 22vw;
+    height: 60vh;
     display: inline-block;
     margin-right: 5%;
     margin-top: 1%;
@@ -334,26 +361,26 @@ caption {
     text-align: center;
 }
 
-.form-3 label {
+.risk-factors label {
     max-width: 25vw;
     background-color: white;
     border: 1px solid black;
     padding: 1%;
     margin-left: 0px;
-    margin-bottom: 4.5vh;
+    margin-bottom: 0.6vh;
     border-radius: 20px;
-    font-size: 1.5vh;
+    font-size: 0.7em;
     font-family: "Noto Sans", sans-serif;
 }
 
-.form-3 h3 {
+.risk-factors h3 {
     padding: 1%;
-    margin-bottom: 2%;
-    font-size: 2vh;
+    margin-bottom: -6%;
+    font-size: 1.8vh;
     color: 	rgba(87, 4, 4, 0.685);
 }
 
-.selecionar {
+.radio-group {
     display: block;
     align-items: center;
     margin-bottom: 10px;
@@ -361,16 +388,16 @@ caption {
     font-family: "Noto Sans", sans-serif;
 }
 
-.selecionar > p{
-    width: 9vw;
+.radio-group > p{
+    width: 5vw;
     color: rgb(0, 0, 0);
     position: absolute;
     float: left;
-    margin-top: 20px;
-    font-size: 1.5vh;
+    margin-top: 10px;
+    font-size: 0.7em;
 }
 
-.selecionar button[type="submit"] {
+.radio-group button[type="submit"] {
     background-color: white;
     color: black;
     border: 3px solid black;
@@ -387,48 +414,50 @@ caption {
 }
 
 
-.selecionar button[type="submit"]:hover{
+.radio-group button[type="submit"]:hover{
     background-color: rgba(255, 0, 0, 0.342);
 }
 
-.selecionar button[type="submit"]:checked{
+.radio-group button[type="submit"]:checked{
     background-color: red;
 }
 
-.selecionar label {
+.radio-group label {
     margin-right: 0px;
 }
 
-.level-risco {
+.risk-level {
     margin-top: 2%;
     text-align: center;
     display: inline-block;
 }
 
-.level-risco >  label {
+.risk-level >  label {
     max-width: 31vw;
     margin-bottom: 15px;
     margin-top: 20px;
 }
 
-.status-risco {
+.risk-status {
     display: inline-block;
     background-color: white;
     color: black;
+    font-size: 1.4vh;
     padding: 0.8vw 0.7vw;
-    margin-top: 1.2vh;
+    margin-top: 1vh;
     border-radius: 10px;
     font-weight: 600;
     border: 1px solid black;
 }
 
 .borda {
-    margin: 2vw;
+    margin: 1vw;
 }
 
 
 .label1{
     display: inline-block;
+    width: 4vh;
     padding: 5vh;
     position: relative;
     left: 10vw;
@@ -447,14 +476,13 @@ caption {
 .label1 span{
     border: 1px solid black;
     font-family: "Noto Sans", sans-serif;
-    width: 4vw;
+    width: 3vw;
     height: 2.2vh;
     position: absolute;
     overflow: hidden;
     line-height: 1;
     text-align: center;
     border-radius: 15px; 
-    font-size: 10pt; 
     left: 0; 
     top: 0;
     background-color: white;
@@ -466,15 +494,16 @@ caption {
 
 .label2{
     display: inline-block;
+    width: 4vh;
     padding: 5vh;
     position: relative;
     left: 10vw;
-    top: 1.5vh;
+    top: -0.5vh;
 }
 
 .label2 input{
     display: block;
-    width: 1vw;
+    width: 0vw;
     height: 1vh;
     background-color: #49bbc691;
     text-align: center;
@@ -483,7 +512,7 @@ caption {
 .label2 span{
     border: 1px solid black;
     font-family: "Noto Sans", sans-serif;
-    width: 4vw;
+    width: 3vw;
     height: 2.2vh;
     position: absolute;
     overflow: hidden;
@@ -510,300 +539,561 @@ input:checked + span {
 #btnlogout {
         cursor: pointer;
 }
-
-
-/* Rodapé */
-
-footer {
-    position: fixed;
-    bottom: 1%;
-    left: 1%;
-    display: flex;
-}
-
-.voltar input[type=submit]{
-    background-color: #0C91F0;
-    color: #F5F5F7;
-    font-family: "Poppins";
-    border-radius: 3px;
-    border: none;
-    width: 10vw;
-    height: 5vh;
-    font-weight: bold;
-    background-image: url(/img/img/flecha\ esquerda.png);
-    background-size: 2vw;
-    background-position: left 3% center;
-    background-repeat: no-repeat;
-    font-size: 2.8vh;
-    text-align: center;
-    padding-left: 15px;
-}
-
-.obrigatorio {
-    display: inline-block;
-    padding: 2px;
-    border: 2px solid red;
-    border-radius: 10px;
-    margin: 0px 1vw 0px 1vw;
-}
-
-.download input[type=submit]{
-    background-color: #0C91F0;
-    color: #F5F5F7;
-    font-family: "Poppins";
-    border-radius: 3px;
-    border: none;
-    width: 7vw;
-    height: 5vh;
-    font-weight: bold;
-    background-image: url(imagens/download.png);
-    background-size: 2vw;
-    background-position: left 3% center;
-    background-repeat: no-repeat;
-    font-size: 2.8vh;
-    text-align: center;
-    padding-left: 15px;
-    margin-left: 2.5vw;
-    margin-right: 7vw;
-}
-
-.validar input[type=submit]{
-    background-color: #0C91F0;
-    color: #F5F5F7;
-    font-family: "Poppins";
-    border-radius: 3px;
-    border: none;
-    width: 15vw;
-    height: 5vh;
-    font-weight: bold;
-    background-size: 2vw;
-    background-position: left 3% center;
-    background-repeat: no-repeat;
-    font-size: 2.8vh;
-    text-align: center;
-    margin-right: 5.5vw;
-}
-
-.confirmar input[type=submit]{
-    background-color: #0C91F0;
-    color: #F5F5F7;
-    font-family: "Poppins";
-    border-radius: 3px;
-    border: none;
-    width: 11.5vw;
-    height: 5vh;
-    font-weight: bold;
-    background-image: url(/img/img/flechadireita.png);
-    background-size: 2vw;
-    background-position: right 3% center;
-    background-repeat: no-repeat;
-    font-size: 2.8vh;
-    text-align: center;
-    padding-right: 15px;
-    float: right;
-}
-
-input[type=submit]:hover{
-    background-color: #1675b9;
-    cursor: pointer;
-}
-
-@media screen and (min-width: 1300px) {
-
-    .form-1 input {
-        margin-bottom: 6vh;
+    footer{
+        position: fixed;
+        bottom: 10%;
+        left: 6%;
+        display: flex;
+        background-color: white;
     }
 
-    .form-2 input {
-        margin-bottom: 3.5vh;
+    .form-section-voltar  input[type=submit]{
+        background-color: #0C91F0;
+        color: #F5F5F7;
+        font-family: "Poppins";
+        border-radius: 3px;
+        border: none;
+        width: 12vw;
+        height: 5vh;
+        font-weight: bold;
+        background-size: 2vw;
+        background-position: left 3% center;
+        background-repeat: no-repeat;
+        font-size: 2.8vh;
+        text-align: center;
+        margin-right: 5.5vw;
     }
-}
 
-</style>
+    .form-section-voltar input[type=submit]:hover {
+        cursor: pointer;
+        background-color: #0056b3;
+    }
+
+    .obrigatorio {
+        display: inline-block;
+        font-size: small;
+        padding: 2px;
+        border: 2px solid red;
+        border-radius: 10px;
+        margin: 0px 1vw 0px 1vw;
+    }
+
+    .download input[type=submit]{
+        background-color: #0C91F0;
+        color: #F5F5F7;
+        font-family: "Poppins";
+        border-radius: 3px;
+        border: none;
+        width: 7vw;
+        height: 5vh;
+        font-weight: bold;
+        background-image: url(imagens/download.png);
+        background-size: 2vw;
+        background-position: left 3% center;
+        background-repeat: no-repeat;
+        font-size: 2.8vh;
+        text-align: center;
+        padding-left: 15px;
+        margin-left: 2.5vw;
+        margin-right: 7vw;
+    }
+
+
+    .validar input[type=submit]{
+        background-color: #0C91F0;
+        color: #F5F5F7;
+        font-family: "Poppins";
+        border-radius: 3px;
+        border: none;
+        width: 15vw;
+        height: 5vh;
+        font-weight: bold;
+        background-size: 2vw;
+        background-position: left 3% center;
+        background-repeat: no-repeat;
+        font-size: 2.8vh;
+        text-align: center;
+        margin-right: 5.5vw;
+    }
+
+    .form-section-validar-tel > [type="submit"]:hover {
+        background-color: #0056b3;
+        cursor: pointer;
+    }
+
+    .form-section-confirmar > [type="submit"] {
+        text-align: center;
+        padding: 5px 10px 5px 10px;
+        background-color: #0C91F0;
+        font-family: "Poppins";
+        color: white;
+        border: none;
+        font-weight: bold;
+        border-radius: 4px;
+        font-size: 2.8vh;
+        margin-left: 50px;
+        margin-right: 10px;
+    }
+
+    .form-section-confirmar > [type="submit"]:hover {
+        background-color: #0056b3;
+        cursor: pointer;
+    }
+
+    /* Pop-Ups */
+
+    #modal{
+      display: none;  
+    }
+
+    .alerta{
+        background-color: #ff000040;
+        margin-top: 0px;
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+        text-align: center;
+        font-family: "Poppins";
+        font-weight: bold;
+        color: #491D1D;
+        font-size: 1.4vw;
+    }
+
+    #logout{
+        position: absolute;
+        top: 25vh;
+        left: 35vw; 
+    }
+
+    .fixar{
+        position: fixed;
+    }
+
+    div.relativa{
+        background-color: white;
+        position: relative;
+        border-radius: 10px;
+        width: 30vw;
+        height: 38vh;
+        font-family: "Inter";
+        border: 3px solid #737B8B;
+    }
+
+    img.atencao{
+        position: absolute;
+        width: 7vw;
+        left: 11vw;
+        top: 5.5vh;
+    }
+
+    .ctz{
+        position: absolute;
+        top: 22vh;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.1vw;
+        left: 3vw;
+        color: #4B505A;
+        font-family: "Poppins";
+    }
+
+    .sim{
+        font-family: "Inter";
+        border-radius: 5px;
+        position: absolute;
+        background-color: #007FDA;
+        color: white;
+        border: none;
+        top: 30vh;
+        width: 11.5vw;
+        height: 5.5vh;
+        cursor: pointer;
+        left: 17vw;
+        font-weight: bold;
+        font-size: 1.1vw;
+        background-image: url(/img/imagens/setadireita.png);
+        background-repeat: no-repeat;
+        background-size: 0.6vw;
+        background-position: right 0.5vw center;
+    }
+
+    .sim:hover{
+        background-color: #0662a3;
+    }
+
+    #btnlogout{
+        cursor: pointer;
+    }
+
+    .voltar{
+        border-radius: 5px;
+        position: absolute;
+        background-color: #007FDA;
+        color: white;
+        border: none;
+        top: 30vh;
+        width: 11.5vw;
+        height: 5.5vh;
+        cursor: pointer;
+        left: 1.5vw;
+        font-weight: bold;
+        font-family: "Inter";
+        font-size: 1.1vw;
+        background-image: url(/img/imagens/setaesquerda.png);
+        background-repeat: no-repeat;
+        background-size: 0.6vw;
+        background-position: left 0.5vw center;
+    }
+
+    .voltar:hover{
+        background-color: #0662a3;
+    }
+
+    #btnlogout{
+        cursor: pointer;
+    }
+
+    .voltando{
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        margin-top: 20px;
+        margin-right: 15px;
+        margin-left: 30px;
+        width: 150px;
+        font-size: 0.9em;
+    }
+
+    .voltando:hover {
+        background-color: #0056b3;
+        cursor: pointer;
+    }
+
+    .voltando {
+        padding: 10px 20px 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 0.9em;
+        margin-left: 0px;
+        margin-right: 10px;
+        background-image: url(/img/imagens/voltar.png);
+        background-repeat: no-repeat;
+        background-size: 2.5vw;
+        background-position: left center;
+    }
+
+    .voltando:hover {
+        background-color: #0056b3;
+        cursor: pointer;
+    }
+
+    #error{
+        position: absolute;
+        background-color: rgba(255, 0, 0, 0.493);
+        width: 35vw;
+        height: 3vh;
+        text-align: center;
+        top: 12vh;
+        left: 60vw;
+        font-family: "Inter";
+        font-weight: bold;
+        color: red;
+    }
+    #modal2{
+        display: block;
+    }
+
+    .confirmado{
+        background-color: #00fa645b;
+        margin-top: 0px;
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+        text-align: center;
+        font-family: "Poppins";
+        font-weight: bold;
+        color: #26491D;
+        font-size: 1.4vw;
+    }
+
+    #confirmacao{
+        position: absolute;
+        top: 25vh;
+        left: 35vw; 
+    }
+
+    .fixar2{
+        position: fixed;
+    }
+
+    div.relativa2{
+        background-color: white;
+        position: relative;
+        border-radius: 10px;
+        width: 30vw;
+        height: 38vh;
+        font-family: "Inter";
+        border: 3px solid #737B8B;
+    }
+
+    img.confirmed{
+        position: absolute;
+        width: 7vw;
+        left: 11.5vw;
+        top: 5.5vh;
+    }
+
+    .cadastradook{
+        position: absolute;
+        top: 22vh;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.1vw;
+        left: 5vw;
+        color: #4B505A;
+        font-family: "Poppins";
+    }
+
+    .ok{
+        font-family: "Inter";
+        border-radius: 5px;
+        position: absolute;
+        background-color: #00AB30;
+        color: white;
+        border: none;
+        top: 30vh;
+        width: 11.5vw;
+        height: 5.5vh;
+        cursor: pointer;
+        left: 9vw;
+        font-weight: bold;
+        font-size: 1.1vw;
+    }
+
+    .ok:hover{
+        background-color: #007421;
+    }
+    </style>
 </head>
 <body>
-    <header>
-        {{if .ErroCampos}}
-    <p id="error">Erro! Algum dos campos não foi preenchido corretamente!</p>
+    <div class="container">
+        <header>
+            {{if .ErroCampos}}
+            <p id="error">Erro! Algum dos campos não foi preenchido corretamente!</p>
             {{end}}
-        <img src="/img/img/LogoSobrevidas.png" alt="Logo Sobrevidas" class="posicionar">
+            <img src="/img/img/LogoSobrevidas.png" alt="Logo Sobrevidas" class="posicionar">
         <h1 class="titulo">SOBREVIDAS - ACS</h1>
         <h2 class="subtitulo">NOVO CADASTRO</h2>
         <div id="caixausuario">
             <p class="usuario">U</p>
-            <p class="caixa">Usuário</p>
+            <p class="caixa">Usuario</p>
             <a href="#"><img src="imagens/iconeSino.png" alt="Icone de Notificação" class="sinoimg"></a>
         </div>
         <a id="btnlogout"><img src="/img/img/logout.png" alt="Icone de sair" class="sair"></a>
-    </header>
-    <form method="post" action="/paciente-cadastrado">
-    <div class="form-acs">
-        <table class="infoacs" id="cns">
-            <tr>
-                <caption>CNS DO PROFISSIONAL</caption>
-                <tr>
-                    {{range .Cns}}
-                    <td>{{.}}</td>
-                    {{end}}
-                </tr>
-            </tr>
-        </table>
+        </header>
+        <form method="post" action="/paciente-cadastrado">
+            <div class="form-section-01">
+                <table class="infoacs" id="cns">
+                    <tr>
+                        <caption>CNS DO PROFISSIONAL</caption>
+                        <tr>
+                            {{range .Cns}}
+                            <td>{{.}}</td>
+                            {{end}}
+                        </tr>
+                    </tr>
+                </table>
 
-        <table class="infoacs" id="cbo">
-            <tr>
-                <caption>CBO</caption>
-                <td>{{.Cbo1}}</td>
-                <td>{{.Cbo2}}</td>
-                <td>{{.Cbo3}}</td>
-                <td>{{.Cbo4}}</td>
-                <td id="hifen">-</td>
-                <td>{{.Cbo5}}</td>
-                <td>{{.Cbo6}}</td>
-            </tr>
-        </table>
+                <table class="infoacs" id="cbo">
+                    <tr>
+                        <caption>CBO</caption>
+                        <td>{{.Cbo1}}</td>
+                        <td>{{.Cbo2}}</td>
+                        <td>{{.Cbo3}}</td>
+                        <td>{{.Cbo4}}</td>
+                        <td id="hifen">-</td>
+                        <td>{{.Cbo5}}</td>
+                        <td>{{.Cbo6}}</td>
+                    </tr>
+                </table>
 
-        <table class="infoacs" id="cnes">
-                <tr>
-                    <caption>CNES</caption>
-                        {{range .Cnes}}
-                        <td>{{.}}</td>
-                        {{end}}
-                </tr>
-        </table>
-                
-        <table class="infoacs" id="ine">
-                <tr>
-                    <caption>INE</caption>
-                    {{range .Ine}}
-                    <td>{{.}}</td>
-                    {{end}}
-                </tr>
-        </table>
-                
-        <table class="infoacs" id="microarea">
-                <tr>
-                    <caption>MICROÁREA</caption>
-                    <td>0</td>
-                    <td>2</td>
-                </tr>
-        </table>
+                <table class="infoacs" id="cnes">
+                        <tr>
+                            <caption>CNES</caption>
+                            {{range .Cnes}}
+                            <td>{{.}}</td>
+                            {{end}}
+                        </tr>
+                </table>
+                        
+                <table class="infoacs" id="ine">
+                        <tr>
+                            <caption>INE</caption>
+                            {{range .Ine}}
+                            <td>{{.}}</td>
+                            {{end}}
+                        </tr>
+                </table>
+                        
+                <table class="infoacs" id="microarea">
+                        <tr>
+                            <caption>MICROÁREA</caption>
+                            <td>0</td>
+                            <td>2</td>
+                        </tr>
+                </table>
 
-        <table class="infoacs" id="datacadastro">
-            <tr>
-                <caption>DATA DO CADASTRO <div class="asc">*</div></caption>
-                <td>__/__/____</td>
-            </tr>
-        </table>
-    </div>
+                <table class="infoacs" id="datacadastro">
+                    <tr>
+                        <caption>DATA DO CADASTRO <div class="asc">*</div></caption>
+                        <td style="border: none; font-size: 1.21em;"><input type="date" name="DataCadastro" id="" style="height: 2vh;" required></td>
+                    </tr>
+                </table>
+            </div>
 
-    <hr>
+            <hr>
 
-    <div class="form-1">
+            <div class="form-section-one">
                 <label for="nome">NOME <div class="asc">*</div></label>
-                <input type="text" id="nome" required placeholder="Ex.: João da Silva">
-                
+                <input type="text" id="nome" name="nome" placeholder="Ex.: João da Silva" required>
+                <p>Digite o nome completo</p>
 
                 <label for="data-nascimento">DATA DE NASCIMENTO <div class="asc">*</div></label>
-                <input type="date" id="data-nascimento" required placeholder="Ex.:DD/MM/AAAA">
+                <input type="text" id="data" name="datanascimento" maxlength="10" placeholder="Ex.:DD/MM/AAAA" required>
+                <p>Digite a data de nascimento</p>
 
                 <label for="cpf">CPF <div class="asc">*</div></label>
-                <input type="text" id="cpf" required placeholder="Ex.:123.456.789-09">
+                <input type="text" id="cpf" name="cpfpaciente" maxlength="14" placeholder="Ex.:123.456.789-09" required>
+                <p>Digite o CPF &#40Cadastro de Pessoa Física&#41</p>
 
                 <label for="mae">NOME DA MÃE <div class="asc">*</div></label>
-                <input type="text" id="mae" placeholder="Ex.: Maria da Silva">
+                <input type="text" id="mae" name="nomemae" placeholder="Ex.: Maria da Silva" required>
+                <p>Digite o nome completo da mãe</p>
 
-                <label for="isexo" style="margin-bottom: -15px;">SEXO</label>
+                <label for="isexo" style="margin-bottom: -30px;margin-top: 10px;">SEXO</label>
                 <select name="sexo" id="isexo">
                     <option value="">Selecione</option>
-                    <option value="MASC">Masculino</option>
-                    <option value="FEM">Feminino</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
                 </select>
-    </div>
-    <div class="form-2">
-        <label for="isus">CARTÃO DO SUS</label>
-                <input type="text" id="isus" placeholder="Ex.: 999 9999 9999 9999">
+
+            </div>
+            <div class="form-section-two">
+                <label for="isus">CARTÃO DO SUS</label>
+                <input type="text" id="cartaoSus" name="cartaosus" maxlength="18" placeholder="Ex.: 999 9999 9999 9999">
+                <p>Digite o número do cartão do SUS</p>
 
 
                 <label for="itel">TELEFONE <div class="asc">*</div></label>
-                <input type="tel" id="itel" pattern="^\(\d{2}\)\d{4,5}-\d{4}$" placeholder="Ex.: (99)99999-9999">
+                <input type="tel" id="telefone" name="telefone" maxlength="15" placeholder="Ex.: (99)99999-9999" required>
+                <p>Digite o número de telefone</p>
 
                 <label for="imail">E-MAIL</label>
-                <input type="text" id="imail" placeholder="Ex.: joaodasilva@gmail.com">
+                <input type="text" id="imail" name="email" placeholder="Ex.: joaodasilva@gmail.com">
+                <p>Digite o email</p>
 
-                 <h2>Endereço</h2>
-   
-                <div class="end1">
-                    <label for="irua">RUA:</label>
-                    <input type="text" id="irua" placeholder="Ex.: Av. Brasil">
-                    <label for="icep">CEP:</label>
-                    <input type="text" id="cep" pattern="^\d{5}-\d{3}$" placeholder="Ex.: 12345-678">
-                </div> 
-                <div class="end2">
-                    <label for="ibairro">BAIRRO:</label>
-                    <input type="text" id="ibairro" placeholder="Ex.: Bela Vista">
-                    <label for="inum">Nº:</label>
-                    <input type="number" id="inum" placeholder="Ex.: 99">
-                </div>
-                <div class="end3">
-                    <label for="icomplemento">COMPLEMENTO:</label>
-                    <input type="text" id="icomplemento" placeholder="Ex.: Apto,casa...">
-                </div>
-    </div>
-    <div class="form-3">
-        <div class="risk-factors">
-            <h3>Fatores de Risco para Câncer de Boca</h3>
-            <div>
-                <label class="borda">Homem <div class="asc">*</div> &#40consome cigarro regurlamente&#41</label>
-                <div class="selecionar">
-                    <p>Marque sim ou não: </p>
-                    <label class="label1"><input type="radio" name="tipo1" id="sim1"><span>Sim</span></label>
-                    <label class="label2"><input type="radio" name="tipo1" id="nao1"><span>Não</span></label>
-                </div>
-            </div>
-            <div>
-                <label class="borda">Etilista <div class="asc">*</div> &#40consome álcool regurlamente&#41</label>
-                <div class="selecionar">
-                    <p>Marque sim ou não: </p>
-                    <label class="label1"><input type="radio" name="tipo2" id="sim2"><span>Sim</span></label>
-                    <label class="label2"><input type="radio" name="tipo2" id="nao2"><span>Não</span></label>
-                </div>
-            </div>
-            <div>
-                <label class="borda">Tabagista <div class="asc">*</div> &#40consome cigarro regurlamente&#41</label>
-                <div class="selecionar">
-                    <p>Marque sim ou não: </p>
-                    <label class="label1"><input type="radio" name="tipo3" id="sim3"><span>Sim</span></label>
-                    <label class="label2"><input type="radio" name="tipo3" id="nao3"><span>Não</span></label>
-                </div>
-            </div>
-            <div>
-                <label class="borda">Com lesão bucal suspeita <div class="asc">*</div></label>
-                <div class="selecionar">
-                    <p>Marque sim ou não: </p>
-                    <label class="label1"><input type="radio" name="tipo4" id="sim4"><span>Sim</span></label>
-                    <label class="label2"><input type="radio" name="tipo4" id="nao4"><span>Não</span></label>
-                </div>
-            </div>
-            <div class="level-risco">
-                <label>Grau de Risco para Câncer de Boca</label>
-                <div class="status-risco">____ Risco</div>
-            </div>
-    </div>
-    </form>
-    <footer>
-        <a href="/dashboard/voltar" class="voltar"><input type="submit" value="Voltar"></a>
+                <p id="campo-endereco">Endereço</p>
 
-        <div class="obrigatorio">
-            <p>Os itens assinalados com <span class="asc">*</span> são de preenchimento obrigatório</p>
+                
+                    <div class="end1">
+                        <label for="irua">RUA:</label>
+                        <input type="text" id="irua" placeholder="Ex.: Av. Brasil">
+                        <label for="icep">CEP:</label>
+                        <input type="text" id="cep" pattern="^\d{5}-\d{3}$" maxlength="9" placeholder="Ex.: 12345-678">
+                    </div>
+                    <div class="end2">
+                        <label for="ibairro">BAIRRO:</label>
+                        <input type="text" id="ibairro" placeholder="Ex.: Bela Vista">
+                        <label for="inum">Nº:</label>
+                        <input type="number" id="inum" placeholder="Ex.: 99">
+                    </div>
+                    <div class="end3">
+                        <label for="icomplemento">COMPLEMENTO:</label>
+                        <input type="text" id="icomplemento" placeholder="Ex.: Apto,casa...">
+                    </div>
+                
+            </div>
+            <div class="form-section risk-factors">
+                <h3>Fatores de Risco para Câncer de Boca</h3>
+                <div>
+                    <label class="borda">Homem <div class="asc">*</div> &#40consome cigarro regurlamente&#41</label>
+                    <div class="radio-group">
+                        <p>Marque sim ou não: </p>
+                        <label class="label1"><input type="radio" name="tipo1" id="sim1" value="Sim" ><span>Sim</span></label>
+                        <label class="label2"><input type="radio" name="tipo1" id="nao1" value="Não"><span>Não</span></label>
+                    </div>
+                </div>
+                <div>
+                    <label class="borda">Etilista <div class="asc">*</div> &#40consome álcool regurlamente&#41</label>
+                    <div class="radio-group">
+                        <p>Marque sim ou não: </p>
+                        <label class="label1"><input type="radio" name="tipo2" id="sim2" value="Sim" ><span>Sim</span></label>
+                        <label class="label2"><input type="radio" name="tipo2" id="nao2" value="Não"><span>Não</span></label>
+                    </div>
+                </div>
+                <div>
+                    <label class="borda">Tabagista <div class="asc">*</div> &#40consome cigarro regurlamente&#41</label>
+                    <div class="radio-group">
+                        <p>Marque sim ou não: </p>
+                        <label class="label1"><input type="radio" name="tipo3" id="sim3" value="Sim" ><span>Sim</span></label>
+                        <label class="label2"><input type="radio" name="tipo3" id="nao3" value="Não"><span>Não</span></label>
+                    </div>
+                </div>
+                <div>
+                    <label class="borda">Com lesão bucal suspeita <div class="asc">*</div></label>
+                    <div class="radio-group">
+                        <p>Marque sim ou não: </p>
+                        <label class="label1"><input type="radio" name="tipo4" id="sim4" value="Sim" ><span>Sim</span></label>
+                        <label class="label2"><input type="radio" name="tipo4" id="nao4" value="Não"><span>Não</span></label>
+                    </div>
+                </div>
+                <div class="risk-level">
+                    <label class="borda">Grau de Risco para Câncer de Boca</label>
+                    <div class="risk-status">____ Risco</div>
+                </div>
+            </div>
+            <div id="modal">
+                <div id="logout">
+                    <div class="fixar">
+                        <div class="relativa">
+                            <p class="alerta">ATENÇÃO</p>
+                            <img src="/img/imagens/atencao.png" alt="Icone de Atenção" class="atencao">
+                            <p class="ctz">Todos dados cadastrados estão corretos?</p>
+                            <button class="sim" type="submit">Sim</button>
+                            <button class="voltar">Voltar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <footer>
+            <a href="/dashboard/voltar" class="form-section-voltar"><input type="submit" value="Voltar"></a>
+            <div class="obrigatorio">
+                <p>Os itens assinalados com <span class="asc">*</span> são de preenchimento obrigatório</p>
+            </div>
+            <a href="#" class="download"><input type="submit" value="PDF"></a>
+            <a href="#" class="validar"><input type="submit" value="Validar o Telefone"></a>
+            <div class="form-section-confirmar">
+                <button type="submit" id="confirmador">Confirmar</button>
+            </div>
+        </footer>
+    </div>
+    {{if .Confirmacao}}
+    <div id="modal2">
+        <div id="confirmacao">
+            <div class="fixar2">
+                <div class="relativa2">
+                    <p class="confirmado">CONFIRMADO</p>
+                    <img src="/imagens2/confirmado.png" alt="Icone de Atenção" class="confirmed">
+                    <p class="cadastradook">Paciente cadastrado com sucesso!</p>
+                    <a href="/dashboard/voltar"><button type="submit" class="ok">Ok</button></a>
+                </div>
+            </div>
         </div>
-
-        <a href="#" class="download"><input type="submit" value="PDF"></a>
-
-        <a href="#" class="validar"><input type="submit" value="Validar o Telefone"></a>
-
-        <a href="/dashboard/voltar" class="confirmar"><input type="submit" value="Confirmar"></a>
-    </footer>
-
+    </div>
+    {{end}}
     <script>
         let btn = document.getElementById('confirmador');
         let modal = document.getElementById('modal');
@@ -823,6 +1113,73 @@ input[type=submit]:hover{
             modal.style.display = 'none';
             modal2.style.display = 'block';
         }
+
+
+        function formatarCPF(cpf) {
+            cpf = cpf.replace(/\D/g, '');
+            cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+            cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+            cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            return cpf;
+        }
+
+        document.getElementById('cpf').addEventListener('input', function(event) {
+            var cpf = event.target.value;
+            event.target.value = formatarCPF(cpf);
+        });
+
+        function formatarTelefone(telefone) {
+            telefone = telefone.replace(/\D/g, '');
+            telefone = telefone.replace(/^(\d{2})(\d)/g, '($1) $2');
+            telefone = telefone.replace(/(\d)(\d{4})$/, '$1-$2');
+            return telefone;
+        }
+
+        
+        document.getElementById('telefone').addEventListener('input', function(event) {
+            var telefone = event.target.value;
+            event.target.value = formatarTelefone(telefone);
+        });
+
+
+        function formatarCEP(cep) {
+            cep = cep.replace(/\D/g, ''); 
+            cep = cep.replace(/^(\d{5})(\d)/, '$1-$2');
+            return cep;
+        }
+
+        document.getElementById('cep').addEventListener('input', function(event) {
+            var cep = event.target.value;
+            event.target.value = formatarCEP(cep);
+        });
+
+
+        function formatarCartaoSus(cartaoSus) {
+            cartaoSus = cartaoSus.replace(/\D/g, '');
+            cartaoSus = cartaoSus.replace(/^(\d{3})(\d)/g, '$1 $2');
+            cartaoSus = cartaoSus.replace(/^(\d{3}\s\d{4})(\d)/g, '$1 $2');
+            cartaoSus = cartaoSus.replace(/^(\d{3}\s\d{4}\s\d{4})(\d)/g, '$1 $2');
+            return cartaoSus;
+        }
+
+        document.getElementById('cartaoSus').addEventListener('input', function(event) {
+            var cartaoSus = event.target.value;
+            event.target.value = formatarCartaoSus(cartaoSus);
+        });
+
+
+        function formatarData(data) {
+        data = data.replace(/\D/g, '');
+        data = data.replace(/^(\d{2})(\d)/g, '$1/$2');
+        data = data.replace(/^(\d{2})\/(\d{2})(\d)/g, '$1/$2/$3');
+        return data;
+}
+
+        document.getElementById('data').addEventListener('input', function(event) {
+            var data = event.target.value;
+            event.target.value = formatarData(data);
+        });
+
     </script>
 </body>
 </html>
