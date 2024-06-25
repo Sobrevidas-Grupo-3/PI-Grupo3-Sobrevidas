@@ -148,7 +148,7 @@ type DadosForm struct {
 }
 
 var db = fazConexaoComBanco()
-var Cns, Cbo, Cnes, Ine, cpfLogin, senhaLogin, usuarioLogin, primeiraletraLogin string
+var Cns, Cbo, Cnes, Ine, cpfLogin, senhaLogin, usuarioLogin, primeiraletraLogin, nomePaciente string
 var loginInvalido = false
 var esqueceuInvalido = false
 var confirmCadastro = false
@@ -1488,7 +1488,9 @@ func executarPgAbsenteista(w http.ResponseWriter, _ *http.Request) {
 }
 
 func executarFormPreenchido(w http.ResponseWriter, r *http.Request) {
+	passarNome := &nomePaciente
 	nome := r.FormValue("Nome")
+	*passarNome = nome
 	risco := r.FormValue("Risco")
 	pesquisa, err := db.Query("SELECT * FROM pacientes")
 	if err != nil {
@@ -1565,7 +1567,7 @@ func executarFormPreenchido(w http.ResponseWriter, r *http.Request) {
 func generatePDF(w http.ResponseWriter, r *http.Request) {
 	
 
-	pesquisa, err := db.Query("SELECT * FROM pacientes")
+	pesquisa, err := db.Query("SELECT * FROM pacientes WHERE nome_completo=$1", nomePaciente)
 	if err != nil {
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		log.Println(err)
