@@ -874,6 +874,89 @@ input:checked + span {
     .ok:hover{
         background-color: #007421;
     }
+    #modalLogout{
+        display: none;
+    }
+
+    #logoutLogin{
+        position: absolute;
+        top: 25vh;
+        left: 40vw; 
+    }
+
+    .fixarLogout{
+        position: fixed;
+    }
+
+    div.relativaLogout{
+        background-color: white;
+        position: relative;
+        border-radius: 10px;
+        width: 20vw;
+        height: 53vh;
+        font-family: "Inter";
+        border: 3px solid #00538E;
+    }
+
+    img.deslogarLogout{
+        position: absolute;
+        width: 7vw;
+        left: 7vw;
+        top: 3vh;
+    }
+
+    .ctzLogout{
+        position: absolute;
+        top: 23vh;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.1vw;
+        left: 1.5vw;
+    }
+
+    .simLogout{
+        font-family: "Inter";
+        border-radius: 5px;
+        position: absolute;
+        background-color: #007FDA;
+        color: white;
+        border: none;
+        top: 32vh;
+        width: 16.5vw;
+        height: 5.5vh;
+        cursor: pointer;
+        left: 1.5vw;
+        font-weight: bold;
+        font-size: 0.95vw;
+    }
+
+    .simLogout:hover{
+        background-color: #0662a3;
+    }
+
+    .naoLogout{
+        border-radius: 5px;
+        position: absolute;
+        background-color: #007FDA;
+        color: white;
+        border: none;
+        top: 41vh;
+        width: 16.5vw;
+        height: 5.5vh;
+        cursor: pointer;
+        left: 1.5vw;
+        font-weight: bold;
+        font-family: "Inter";
+        font-size: 0.95vw;
+    }
+
+    .naoLogout:hover{
+        background-color: #0662a3;
+    }
+
+    #btnlogout{
+        cursor: pointer;
+    }
     </style>
 </head>
 <body>
@@ -1086,6 +1169,31 @@ input:checked + span {
         </div>
     </div>
     {{end}}
+    <div id="modalLogout">
+        <div id="logoutLogin">
+            <div class="fixarLogout">
+                <div class="relativaLogout">
+                    <img src="/imgdashboard/logout icon.png" alt="Icone de Logout" class="deslogarLogout">
+                    <p class="ctzLogout">Tem certeza que deseja sair da <br> sua conta?</p>
+                    <a href="/"><button class="simLogout">Sim, deslogar.</button></a>
+                    <button class="naoLogout">Não, continuar logado.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let btn = document.getElementById('btnlogout');
+        let modalLogout = document.getElementById('modalLogout');
+        let cancelbtn = document.querySelector('.naoLogout');
+
+        btn.onclick = function(){
+            modalLogout.style.display = 'block';
+        }
+
+        cancelbtn.onclick = function(){
+            modalLogout.style.display = 'none';
+        }
+    </script>
     <script>
         let btn = document.getElementById('confirmador');
         let modal = document.getElementById('modal');
