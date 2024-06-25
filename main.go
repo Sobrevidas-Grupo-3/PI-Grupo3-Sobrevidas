@@ -705,7 +705,7 @@ func executarPgBaixoFiltro(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, http.StatusText(500), 500)
 			return
 		}
-		quebrar := strings.Split(armazenar.DataNasc, "-")
+		quebrar := strings.Split(armazenar.DataNasc, "/")
 		if armazenar.Complemento != "" {
 			armazenar.Endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Bairro + "," + armazenar.Complemento
 		} else {
@@ -720,9 +720,9 @@ func executarPgBaixoFiltro(w http.ResponseWriter, r *http.Request) {
 				armazenar.Fatores = "Mulher/Etilista"
 			}
 			now := time.Now()
-			ano, _ := strconv.Atoi(quebrar[0])
+			dia, _ := strconv.Atoi(quebrar[0])
 			mes, _ := strconv.Atoi(quebrar[1])
-			dia, _ := strconv.Atoi(quebrar[2])
+			ano, _ := strconv.Atoi(quebrar[2])
 			armazenar.Idade = now.Year() - ano
 			if int(now.Month()) < mes || (int(now.Month()) == mes && now.Day() < dia) {
 				armazenar.Idade--
@@ -825,7 +825,7 @@ func executarPgBaixoFiltroPorNome(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			panic(err.Error())
 		}
-		quebrar := strings.Split(armazenar.DataNasc, "-")
+		quebrar := strings.Split(armazenar.DataNasc, "/")
 		if armazenar.Complemento != "" {
 			armazenar.Endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Bairro + "," + armazenar.Complemento
 		} else {
@@ -840,9 +840,9 @@ func executarPgBaixoFiltroPorNome(w http.ResponseWriter, r *http.Request) {
 				armazenar.Fatores = "Mulher/Etilista"
 			}
 			now := time.Now()
-			ano, _ := strconv.Atoi(quebrar[0])
+			dia, _ := strconv.Atoi(quebrar[0])
 			mes, _ := strconv.Atoi(quebrar[1])
-			dia, _ := strconv.Atoi(quebrar[2])
+			ano, _ := strconv.Atoi(quebrar[2])
 			armazenar.Idade = now.Year() - ano
 			if int(now.Month()) < mes || (int(now.Month()) == mes && now.Day() < dia) {
 				armazenar.Idade--
@@ -875,7 +875,7 @@ func executarPgMedio(w http.ResponseWriter, _ *http.Request) {
 			http.Error(w, http.StatusText(500), 500)
 			return
 		}
-		quebrar := strings.Split(armazenar.DataNasc, "-")
+		quebrar := strings.Split(armazenar.DataNasc, "/")
 		if armazenar.Complemento != "" {
 			armazenar.Endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Bairro + "," + armazenar.Complemento
 		} else {
@@ -892,9 +892,9 @@ func executarPgMedio(w http.ResponseWriter, _ *http.Request) {
 				armazenar.Fatores = "Mulher/Etilista/Tabagista"
 			}
 			now := time.Now()
-			ano, _ := strconv.Atoi(quebrar[0])
+			dia, _ := strconv.Atoi(quebrar[0])
 			mes, _ := strconv.Atoi(quebrar[1])
-			dia, _ := strconv.Atoi(quebrar[2])
+			ano, _ := strconv.Atoi(quebrar[2])
 			armazenar.Idade = now.Year() - ano
 			if int(now.Month()) < mes || (int(now.Month()) == mes && now.Day() < dia) {
 				armazenar.Idade--
@@ -1064,7 +1064,7 @@ func executarPgMedioFiltroPorNome(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			panic(err.Error())
 		}
-		quebrar := strings.Split(armazenar.DataNasc, "-")
+		quebrar := strings.Split(armazenar.DataNasc, "/")
 		if armazenar.Complemento != "" {
 			armazenar.Endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Bairro + "," + armazenar.Complemento
 		} else {
@@ -1081,9 +1081,9 @@ func executarPgMedioFiltroPorNome(w http.ResponseWriter, r *http.Request) {
 				armazenar.Fatores = "Mulher/Etilista/Tabagista"
 			}
 			now := time.Now()
-			ano, _ := strconv.Atoi(quebrar[0])
+			dia, _ := strconv.Atoi(quebrar[0])
 			mes, _ := strconv.Atoi(quebrar[1])
-			dia, _ := strconv.Atoi(quebrar[2])
+			ano, _ := strconv.Atoi(quebrar[2])
 			armazenar.Idade = now.Year() - ano
 			if int(now.Month()) < mes || (int(now.Month()) == mes && now.Day() < dia) {
 				armazenar.Idade--
@@ -1116,7 +1116,7 @@ func executarPgAlto(w http.ResponseWriter, _ *http.Request) {
 			http.Error(w, http.StatusText(500), 500)
 			return
 		}
-		quebrar := strings.Split(armazenar.DataNasc, "-")
+		quebrar := strings.Split(armazenar.DataNasc, "/")
 		if armazenar.Complemento != "" {
 			armazenar.Endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Bairro + "," + armazenar.Complemento
 		} else {
@@ -1142,9 +1142,9 @@ func executarPgAlto(w http.ResponseWriter, _ *http.Request) {
 				}
 			}
 			now := time.Now()
-			ano, _ := strconv.Atoi(quebrar[0])
+			dia, _ := strconv.Atoi(quebrar[0])
 			mes, _ := strconv.Atoi(quebrar[1])
-			dia, _ := strconv.Atoi(quebrar[2])
+			ano, _ := strconv.Atoi(quebrar[2])
 			armazenar.Idade = now.Year() - ano
 			if int(now.Month()) < mes || (int(now.Month()) == mes && now.Day() < dia) {
 				armazenar.Idade--
@@ -1193,7 +1193,7 @@ func executarPgAltoFiltro(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, http.StatusText(500), 500)
 			return
 		}
-		quebrar := strings.Split(armazenar.DataNasc, "-")
+		quebrar := strings.Split(armazenar.DataNasc, "/")
 		if armazenar.Complemento != "" {
 			armazenar.Endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Bairro + "," + armazenar.Complemento
 		} else {
@@ -1219,9 +1219,9 @@ func executarPgAltoFiltro(w http.ResponseWriter, r *http.Request) {
 				}
 			}
 			now := time.Now()
-			ano, _ := strconv.Atoi(quebrar[0])
+			dia, _ := strconv.Atoi(quebrar[0])
 			mes, _ := strconv.Atoi(quebrar[1])
-			dia, _ := strconv.Atoi(quebrar[2])
+			ano, _ := strconv.Atoi(quebrar[2])
 			armazenar.Idade = now.Year() - ano
 			if int(now.Month()) < mes || (int(now.Month()) == mes && now.Day() < dia) {
 				armazenar.Idade--
@@ -1381,7 +1381,7 @@ func executarPgAltoFiltroPorNome(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			panic(err.Error())
 		}
-		quebrar := strings.Split(armazenar.DataNasc, "-")
+		quebrar := strings.Split(armazenar.DataNasc, "/")
 		if armazenar.Complemento != "" {
 			armazenar.Endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Bairro + "," + armazenar.Complemento
 		} else {
@@ -1407,9 +1407,9 @@ func executarPgAltoFiltroPorNome(w http.ResponseWriter, r *http.Request) {
 				}
 			}
 			now := time.Now()
-			ano, _ := strconv.Atoi(quebrar[0])
+			dia, _ := strconv.Atoi(quebrar[0])
 			mes, _ := strconv.Atoi(quebrar[1])
-			dia, _ := strconv.Atoi(quebrar[2])
+			ano, _ := strconv.Atoi(quebrar[2])
 			armazenar.Idade = now.Year() - ano
 			if int(now.Month()) < mes || (int(now.Month()) == mes && now.Day() < dia) {
 				armazenar.Idade--
@@ -1476,8 +1476,8 @@ func executarFormPreenchido(w http.ResponseWriter, r *http.Request) {
 			}
 			datacadastro := strings.Split(armazenado.DataCadastro, "-")
 			armazenado.DataCadastro = datacadastro[2] + "/" + datacadastro[1] + "/" + datacadastro[0]
-			datanascimento := strings.Split(armazenado.DataNasc, "-")
-			armazenado.DataNasc = datanascimento[2] + "/" + datanascimento[1] + "/" + datanascimento[0]
+			datanascimento := strings.Split(armazenado.DataNasc, "/")
+			armazenado.DataNasc = datanascimento[0] + "/" + datanascimento[1] + "/" + datanascimento[2]
 			cnsq := strings.Split(Cns, "")
 			cboq := strings.Split(Cbo, "")
 			cnesq := strings.Split(Cnes, "")
