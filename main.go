@@ -131,17 +131,19 @@ type ACS struct {
 }
 
 type DadosForm struct {
-	Cns         []string
-	Cbo1        string
-	Cbo2        string
-	Cbo3        string
-	Cbo4        string
-	Cbo5        string
-	Cbo6        string
-	Cnes        []string
-	Ine         []string
-	ErroCampos  bool
-	Confirmacao bool
+	Usuario       string
+	PrimeiraLetra string
+	Cns           []string
+	Cbo1          string
+	Cbo2          string
+	Cbo3          string
+	Cbo4          string
+	Cbo5          string
+	Cbo6          string
+	Cnes          []string
+	Ine           []string
+	ErroCampos    bool
+	Confirmacao   bool
 }
 
 var db = fazConexaoComBanco()
@@ -380,35 +382,35 @@ func autenticaLoginELevaAoDashboard(w http.ResponseWriter, r *http.Request) {
 }
 
 func dashboard(w http.ResponseWriter, r *http.Request) {
-    u := UsuarioNoDashboard{}
-    var porcbaixo, porcmedio, porcalto float64
-    if qtdBaixo == 0 && qtdMedio == 0 && qtdAlto == 0 {
-        porcbaixo = 0
-        porcmedio = 0
-        porcalto = 0
-        u.PorcBaixo = porcbaixo
-        u.PorcMedio = porcmedio
-        u.PorcAlto = porcalto
-    } else{
-        porcbaixo = (float64(qtdBaixo) / float64(qtdTotal)) * 100
-        porcmedio = (float64(qtdMedio) / float64(qtdTotal)) * 100
-        porcalto = (float64(qtdAlto) / float64(qtdTotal)) * 100
-        porcbaixo = float64(int(porcbaixo*100)) / 100
-        porcmedio = float64(int(porcmedio*100)) / 100
-        porcalto = float64(int(porcalto*100)) / 100
-        u.PorcBaixo = porcbaixo
-        u.PorcMedio = porcmedio
-        u.PorcAlto = porcalto
-    }
-    u = UsuarioNoDashboard{Usuario: usuarioLogin, Primeira: primeiraletraLogin, QtdBaixo: qtdBaixo, QtdMedio: qtdMedio, QtdAlto: qtdAlto, PorcBaixo: porcbaixo, PorcMedio: porcmedio, PorcAlto: porcalto}
-    ponteiroConfirmCadastro := &confirmCadastro
-    *ponteiroConfirmCadastro = false
-    ponteiroErroCampos := &erroCadastro
-    *ponteiroErroCampos = false
-    err := templates.ExecuteTemplate(w, "dashboardv2.html", u)
-    if err != nil {
-        return
-    }
+	u := UsuarioNoDashboard{}
+	var porcbaixo, porcmedio, porcalto float64
+	if qtdBaixo == 0 && qtdMedio == 0 && qtdAlto == 0 {
+		porcbaixo = 0
+		porcmedio = 0
+		porcalto = 0
+		u.PorcBaixo = porcbaixo
+		u.PorcMedio = porcmedio
+		u.PorcAlto = porcalto
+	} else {
+		porcbaixo = (float64(qtdBaixo) / float64(qtdTotal)) * 100
+		porcmedio = (float64(qtdMedio) / float64(qtdTotal)) * 100
+		porcalto = (float64(qtdAlto) / float64(qtdTotal)) * 100
+		porcbaixo = float64(int(porcbaixo*100)) / 100
+		porcmedio = float64(int(porcmedio*100)) / 100
+		porcalto = float64(int(porcalto*100)) / 100
+		u.PorcBaixo = porcbaixo
+		u.PorcMedio = porcmedio
+		u.PorcAlto = porcalto
+	}
+	u = UsuarioNoDashboard{Usuario: usuarioLogin, Primeira: primeiraletraLogin, QtdBaixo: qtdBaixo, QtdMedio: qtdMedio, QtdAlto: qtdAlto, PorcBaixo: porcbaixo, PorcMedio: porcmedio, PorcAlto: porcalto}
+	ponteiroConfirmCadastro := &confirmCadastro
+	*ponteiroConfirmCadastro = false
+	ponteiroErroCampos := &erroCadastro
+	*ponteiroErroCampos = false
+	err := templates.ExecuteTemplate(w, "dashboardv2.html", u)
+	if err != nil {
+		return
+	}
 }
 
 func executarEsqueceuSenha(w http.ResponseWriter, _ *http.Request) {
@@ -527,7 +529,7 @@ func executarFormulario(w http.ResponseWriter, _ *http.Request) {
 	cbo4 := cboq[3]
 	cbo5 := cboq[4]
 	cbo6 := cboq[5]
-	d := DadosForm{Cns: cnsq, Cbo1: cbo1, Cbo2: cbo2, Cbo3: cbo3, Cbo4: cbo4, Cbo5: cbo5, Cbo6: cbo6, Cnes: cnesq, Ine: ineq, Confirmacao: confirmCadastro, ErroCampos: erroCadastro}
+	d := DadosForm{Usuario: usuarioLogin, PrimeiraLetra: primeiraletraLogin, Cns: cnsq, Cbo1: cbo1, Cbo2: cbo2, Cbo3: cbo3, Cbo4: cbo4, Cbo5: cbo5, Cbo6: cbo6, Cnes: cnesq, Ine: ineq, Confirmacao: confirmCadastro, ErroCampos: erroCadastro}
 	err := templates.ExecuteTemplate(w, "formulario.html", d)
 	if err != nil {
 		return
@@ -567,7 +569,7 @@ func cadastrarPaciente(w http.ResponseWriter, r *http.Request) {
 	cbo4 := cboq[3]
 	cbo5 := cboq[4]
 	cbo6 := cboq[5]
-	d := DadosForm{Cns: cnsq, Cbo1: cbo1, Cbo2: cbo2, Cbo3: cbo3, Cbo4: cbo4, Cbo5: cbo5, Cbo6: cbo6, Cnes: cnesq, Ine: ineq}
+	d := DadosForm{Usuario: usuarioLogin, PrimeiraLetra: primeiraletraLogin, Cns: cnsq, Cbo1: cbo1, Cbo2: cbo2, Cbo3: cbo3, Cbo4: cbo4, Cbo5: cbo5, Cbo6: cbo6, Cnes: cnesq, Ine: ineq}
 
 	if homem != "" && etilista != "" && tabagista != "" && lesao_bucal != "" && sexo != "" && (homem != "Não" || etilista != "Não" || tabagista != "Não" || lesao_bucal != "Não") {
 		_, err := db.Exec("INSERT INTO pacientes(nome_completo, data_nasc, cpf, nome_mae, sexo, cartao_sus, telefone, email, cep, bairro, rua, numero, complemento, homem, etilista, tabagista, lesao_bucal, data_cadastro) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)", nome, datanascimento, cpf, nomemae, sexo, cartaosus, telefone, email, cep, bairro, rua, numero, complemento, homem, etilista, tabagista, lesao_bucal, data_cadastro)
@@ -575,6 +577,7 @@ func cadastrarPaciente(w http.ResponseWriter, r *http.Request) {
 			log.Println(err.Error())
 			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		}
+
 		ponteiroConfirmando := &confirmCadastro
 		*ponteiroConfirmando = true
 		ponteiroErro := &erroCadastro
@@ -735,64 +738,64 @@ func executarPgBaixoFiltro(w http.ResponseWriter, r *http.Request) {
 	armazenar2.Primeira = primeiraletraLogin
 	armazenadoPgBaixo = append(armazenadoPgBaixo, armazenar2)
 	for _, armazenado := range armazenamento {
-		if masculino == "Masculino" && armazenado.Sexo == "Masculino"{
+		if masculino == "Masculino" && armazenado.Sexo == "Masculino" {
 			armazenado.TemDados = true
-			if etilista == "Etilista" && armazenado.Etilista == "Sim"{
-				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+			if etilista == "Etilista" && armazenado.Etilista == "Sim" {
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50 {
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
-				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60 {
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
-				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70 {
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
-				if idade4 == "70+" && armazenado.Idade > 70{
+				if idade4 == "70+" && armazenado.Idade > 70 {
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
 			}
-			if etilista == "" && armazenado.Etilista == "Não"{
-				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+			if etilista == "" && armazenado.Etilista == "Não" {
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50 {
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
-				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60 {
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
-				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70 {
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
-				if idade4 == "70+" && armazenado.Idade > 70{
+				if idade4 == "70+" && armazenado.Idade > 70 {
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
 			}
 		}
-		if feminino == "Feminino" && armazenado.Sexo == "Feminino"{
+		if feminino == "Feminino" && armazenado.Sexo == "Feminino" {
 			armazenado.TemDados = true
-			if etilista == "Etilista" && armazenado.Etilista == "Sim"{
-				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+			if etilista == "Etilista" && armazenado.Etilista == "Sim" {
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50 {
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
-				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60 {
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
-				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70 {
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
-				if idade4 == "70+" && armazenado.Idade > 70{
+				if idade4 == "70+" && armazenado.Idade > 70 {
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
 			}
-			if etilista == "" && armazenado.Etilista == "Não"{
-				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+			if etilista == "" && armazenado.Etilista == "Não" {
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50 {
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
-				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60 {
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
-				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70 {
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
-				if idade4 == "70+" && armazenado.Idade > 70{
+				if idade4 == "70+" && armazenado.Idade > 70 {
 					armazenadoPgBaixo = append(armazenadoPgBaixo, armazenado)
 				}
 			}
@@ -804,10 +807,10 @@ func executarPgBaixoFiltro(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func executarPgBaixoFiltroPorNome(w http.ResponseWriter, r *http.Request){
+func executarPgBaixoFiltroPorNome(w http.ResponseWriter, r *http.Request) {
 	busca := strings.TrimSpace(r.FormValue("nome"))
-	buscar, err := db.Query("SELECT nome_completo, data_nasc, sexo, telefone, bairro, rua, numero, complemento, homem, etilista, tabagista, lesao_bucal FROM pacientes WHERE nome_completo LIKE concat('%', text($1), '%')", busca)	
-	if err != nil{
+	buscar, err := db.Query("SELECT nome_completo, data_nasc, sexo, telefone, bairro, rua, numero, complemento, homem, etilista, tabagista, lesao_bucal FROM pacientes WHERE nome_completo LIKE concat('%', text($1), '%')", busca)
+	if err != nil {
 		fmt.Println(err)
 	}
 	defer buscar.Close()
@@ -816,10 +819,10 @@ func executarPgBaixoFiltroPorNome(w http.ResponseWriter, r *http.Request){
 	armazenar2.Usuario = usuarioLogin
 	armazenar2.Primeira = primeiraletraLogin
 	armazenamento = append(armazenamento, armazenar2)
-	for buscar.Next(){
+	for buscar.Next() {
 		armazenar := Pacientes{}
 		err = buscar.Scan(&armazenar.Nome, &armazenar.DataNasc, &armazenar.Sexo, &armazenar.Telefone, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal)
-		if err != nil{
+		if err != nil {
 			panic(err.Error())
 		}
 		quebrar := strings.Split(armazenar.DataNasc, "-")
@@ -851,7 +854,7 @@ func executarPgBaixoFiltroPorNome(w http.ResponseWriter, r *http.Request){
 		}
 	}
 	err = templates.ExecuteTemplate(w, "pg-baixo.html", armazenamento)
-	if err != nil{
+	if err != nil {
 		return
 	}
 }
@@ -974,64 +977,64 @@ func executarPgMedioFiltro(w http.ResponseWriter, r *http.Request) {
 	armazenar2.Primeira = primeiraletraLogin
 	armazenadoPgMedio = append(armazenadoPgMedio, armazenar2)
 	for _, armazenado := range armazenamento {
-		if masculino == "Masculino" && armazenado.Sexo == "Masculino"{
+		if masculino == "Masculino" && armazenado.Sexo == "Masculino" {
 			armazenado.TemDados = true
-			if tabagista == "Tabagista" && etilista == "Etilista" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Sim"{
-				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+			if tabagista == "Tabagista" && etilista == "Etilista" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Sim" {
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50 {
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
-				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60 {
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
-				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70 {
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
-				if idade4 == "70+" && armazenado.Idade > 70{
+				if idade4 == "70+" && armazenado.Idade > 70 {
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
 			}
-			if tabagista == "Tabagista" && etilista == "" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Não"{
-				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+			if tabagista == "Tabagista" && etilista == "" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Não" {
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50 {
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
-				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60 {
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
-				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70 {
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
-				if idade4 == "70+" && armazenado.Idade > 70{
+				if idade4 == "70+" && armazenado.Idade > 70 {
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
 			}
 		}
-		if feminino == "Feminino" && armazenado.Sexo == "Feminino"{
+		if feminino == "Feminino" && armazenado.Sexo == "Feminino" {
 			armazenado.TemDados = true
-			if tabagista == "Tabagista" && etilista == "Etilista" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Sim"{
-				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+			if tabagista == "Tabagista" && etilista == "Etilista" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Sim" {
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50 {
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
-				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60 {
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
-				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70 {
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
-				if idade4 == "70+" && armazenado.Idade > 70{
+				if idade4 == "70+" && armazenado.Idade > 70 {
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
 			}
-			if tabagista == "Tabagista" && etilista == "" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Não"{
-				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+			if tabagista == "Tabagista" && etilista == "" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Não" {
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50 {
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
-				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60 {
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
-				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70 {
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
-				if idade4 == "70+" && armazenado.Idade > 70{
+				if idade4 == "70+" && armazenado.Idade > 70 {
 					armazenadoPgMedio = append(armazenadoPgMedio, armazenado)
 				}
 			}
@@ -1043,10 +1046,10 @@ func executarPgMedioFiltro(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func executarPgMedioFiltroPorNome(w http.ResponseWriter, r *http.Request){
+func executarPgMedioFiltroPorNome(w http.ResponseWriter, r *http.Request) {
 	busca := strings.TrimSpace(r.FormValue("nome"))
-	buscar, err := db.Query("SELECT nome_completo, data_nasc, sexo, telefone, bairro, rua, numero, complemento, homem, etilista, tabagista, lesao_bucal FROM pacientes WHERE nome_completo LIKE concat('%', text($1), '%')", busca)	
-	if err != nil{
+	buscar, err := db.Query("SELECT nome_completo, data_nasc, sexo, telefone, bairro, rua, numero, complemento, homem, etilista, tabagista, lesao_bucal FROM pacientes WHERE nome_completo LIKE concat('%', text($1), '%')", busca)
+	if err != nil {
 		fmt.Println(err)
 	}
 	defer buscar.Close()
@@ -1055,10 +1058,10 @@ func executarPgMedioFiltroPorNome(w http.ResponseWriter, r *http.Request){
 	armazenar2.Usuario = usuarioLogin
 	armazenar2.Primeira = primeiraletraLogin
 	armazenamento = append(armazenamento, armazenar2)
-	for buscar.Next(){
+	for buscar.Next() {
 		armazenar := Pacientes{}
 		err = buscar.Scan(&armazenar.Nome, &armazenar.DataNasc, &armazenar.Sexo, &armazenar.Telefone, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal)
-		if err != nil{
+		if err != nil {
 			panic(err.Error())
 		}
 		quebrar := strings.Split(armazenar.DataNasc, "-")
@@ -1092,7 +1095,7 @@ func executarPgMedioFiltroPorNome(w http.ResponseWriter, r *http.Request){
 		}
 	}
 	err = templates.ExecuteTemplate(w, "pg-medio.html", armazenamento)
-	if err != nil{
+	if err != nil {
 		return
 	}
 }
@@ -1234,120 +1237,120 @@ func executarPgAltoFiltro(w http.ResponseWriter, r *http.Request) {
 	armazenar2.Primeira = primeiraletraLogin
 	armazenadoPgAlto = append(armazenadoPgAlto, armazenar2)
 	for _, armazenado := range armazenamento {
-		if masculino == "Masculino" && armazenado.Sexo == "Masculino"{
+		if masculino == "Masculino" && armazenado.Sexo == "Masculino" {
 			armazenado.TemDados = true
-			if feridasbucais == "FeridasBucais" && tabagista == "Tabagista" && etilista == "Etilista" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Sim"{
-				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+			if feridasbucais == "FeridasBucais" && tabagista == "Tabagista" && etilista == "Etilista" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Sim" {
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-				if idade4 == "70+" && armazenado.Idade > 70{
-					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
-				}
-			}
-			if feridasbucais == "FeridasBucais" && tabagista == "Tabagista" && etilista == "" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Não"{
-				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
-					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
-				}
-				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
-					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
-				}
-				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
-					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
-				}
-				if idade4 == "70+" && armazenado.Idade > 70{
+				if idade4 == "70+" && armazenado.Idade > 70 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
 			}
-			if feridasbucais == "FeridasBucais" && tabagista == "" && etilista == "Etilista" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Não" && armazenado.Etilista == "Sim"{
-				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+			if feridasbucais == "FeridasBucais" && tabagista == "Tabagista" && etilista == "" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Não" {
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-				if idade4 == "70+" && armazenado.Idade > 70{
+				if idade4 == "70+" && armazenado.Idade > 70 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
 			}
-			if feridasbucais == "FeridasBucais" && tabagista == "" && etilista == "" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Não" && armazenado.Etilista == "Não"{
-				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+			if feridasbucais == "FeridasBucais" && tabagista == "" && etilista == "Etilista" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Não" && armazenado.Etilista == "Sim" {
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-				if idade4 == "70+" && armazenado.Idade > 70{
+				if idade4 == "70+" && armazenado.Idade > 70 {
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+			}
+			if feridasbucais == "FeridasBucais" && tabagista == "" && etilista == "" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Não" && armazenado.Etilista == "Não" {
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50 {
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60 {
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70 {
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade4 == "70+" && armazenado.Idade > 70 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
 			}
 		}
-		if feminino == "Feminino" && armazenado.Sexo == "Feminino"{
+		if feminino == "Feminino" && armazenado.Sexo == "Feminino" {
 			armazenado.TemDados = true
-			if feridasbucais == "FeridasBucais" && tabagista == "Tabagista" && etilista == "Etilista" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Sim"{
-				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+			if feridasbucais == "FeridasBucais" && tabagista == "Tabagista" && etilista == "Etilista" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Sim" {
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-				if idade4 == "70+" && armazenado.Idade > 70{
-					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
-				}
-			}
-			if feridasbucais == "FeridasBucais" && tabagista == "Tabagista" && etilista == "" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Não"{
-				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
-					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
-				}
-				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
-					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
-				}
-				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
-					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
-				}
-				if idade4 == "70+" && armazenado.Idade > 70{
+				if idade4 == "70+" && armazenado.Idade > 70 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
 			}
-			if feridasbucais == "FeridasBucais" && tabagista == "" && etilista == "Etilista" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Não" && armazenado.Etilista == "Sim"{
-				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+			if feridasbucais == "FeridasBucais" && tabagista == "Tabagista" && etilista == "" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Sim" && armazenado.Etilista == "Não" {
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-				if idade4 == "70+" && armazenado.Idade > 70{
+				if idade4 == "70+" && armazenado.Idade > 70 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
 			}
-			if feridasbucais == "FeridasBucais" && tabagista == "" && etilista == "" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Não" && armazenado.Etilista == "Não"{
-				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50{
+			if feridasbucais == "FeridasBucais" && tabagista == "" && etilista == "Etilista" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Não" && armazenado.Etilista == "Sim" {
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60{
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70{
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
-				if idade4 == "70+" && armazenado.Idade > 70{
+				if idade4 == "70+" && armazenado.Idade > 70 {
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+			}
+			if feridasbucais == "FeridasBucais" && tabagista == "" && etilista == "" && armazenado.LesaoBucal == "Sim" && armazenado.Tabagista == "Não" && armazenado.Etilista == "Não" {
+				if idade1 == "40-50" && armazenado.Idade >= 40 && armazenado.Idade <= 50 {
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade2 == "51-60" && armazenado.Idade > 50 && armazenado.Idade <= 60 {
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade3 == "61-70" && armazenado.Idade > 60 && armazenado.Idade <= 70 {
+					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
+				}
+				if idade4 == "70+" && armazenado.Idade > 70 {
 					armazenadoPgAlto = append(armazenadoPgAlto, armazenado)
 				}
 			}
@@ -1360,10 +1363,10 @@ func executarPgAltoFiltro(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func executarPgAltoFiltroPorNome(w http.ResponseWriter, r *http.Request){
+func executarPgAltoFiltroPorNome(w http.ResponseWriter, r *http.Request) {
 	busca := strings.TrimSpace(r.FormValue("nome"))
-	buscar, err := db.Query("SELECT nome_completo, data_nasc, sexo, telefone, bairro, rua, numero, complemento, homem, etilista, tabagista, lesao_bucal FROM pacientes WHERE nome_completo LIKE concat('%', text($1), '%')", busca)	
-	if err != nil{
+	buscar, err := db.Query("SELECT nome_completo, data_nasc, sexo, telefone, bairro, rua, numero, complemento, homem, etilista, tabagista, lesao_bucal FROM pacientes WHERE nome_completo LIKE concat('%', text($1), '%')", busca)
+	if err != nil {
 		fmt.Println(err)
 	}
 	defer buscar.Close()
@@ -1372,10 +1375,10 @@ func executarPgAltoFiltroPorNome(w http.ResponseWriter, r *http.Request){
 	armazenar2.Usuario = usuarioLogin
 	armazenar2.Primeira = primeiraletraLogin
 	armazenamento = append(armazenamento, armazenar2)
-	for buscar.Next(){
+	for buscar.Next() {
 		armazenar := Pacientes{}
 		err = buscar.Scan(&armazenar.Nome, &armazenar.DataNasc, &armazenar.Sexo, &armazenar.Telefone, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal)
-		if err != nil{
+		if err != nil {
 			panic(err.Error())
 		}
 		quebrar := strings.Split(armazenar.DataNasc, "-")
@@ -1418,7 +1421,7 @@ func executarPgAltoFiltroPorNome(w http.ResponseWriter, r *http.Request){
 		}
 	}
 	err = templates.ExecuteTemplate(w, "pg-alto.html", armazenamento)
-	if err != nil{
+	if err != nil {
 		return
 	}
 }

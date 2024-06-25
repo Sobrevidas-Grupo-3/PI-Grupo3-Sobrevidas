@@ -541,7 +541,7 @@ input:checked + span {
 }
     footer{
         position: fixed;
-        bottom: 10%;
+        bottom: 5%;
         left: 6%;
         display: flex;
         background-color: white;
@@ -887,8 +887,8 @@ input:checked + span {
         <h1 class="titulo">SOBREVIDAS - ACS</h1>
         <h2 class="subtitulo">NOVO CADASTRO</h2>
         <div id="caixausuario">
-            <p class="usuario">U</p>
-            <p class="caixa">Usuario</p>
+            <p class="usuario">{{.PrimeiraLetra}}</p>
+            <p class="caixa">{{.Usuario}}</p>
             <a href="#"><img src="imagens/iconeSino.png" alt="Icone de Notificação" class="sinoimg"></a>
         </div>
         <a id="btnlogout"><img src="/img/img/logout.png" alt="Icone de sair" class="sair"></a>
