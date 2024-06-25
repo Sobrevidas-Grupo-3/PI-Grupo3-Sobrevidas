@@ -1182,19 +1182,17 @@ input:checked + span {
         </div>
     </div>
     <script>
-        let btn = document.getElementById('btnlogout');
+        let btn3 = document.getElementById('btnlogout');
         let modalLogout = document.getElementById('modalLogout');
-        let cancelbtn = document.querySelector('.naoLogout');
+        let cancelbtn3 = document.querySelector('.naoLogout');
 
-        btn.onclick = function(){
+        btn3.onclick = function(){
             modalLogout.style.display = 'block';
         }
 
-        cancelbtn.onclick = function(){
+        cancelbtn3.onclick = function(){
             modalLogout.style.display = 'none';
         }
-    </script>
-    <script>
         let btn = document.getElementById('confirmador');
         let modal = document.getElementById('modal');
         let cancelbtn = document.querySelector('.voltar');
@@ -1269,11 +1267,11 @@ input:checked + span {
 
 
         function formatarData(data) {
-        data = data.replace(/\D/g, '');
-        data = data.replace(/^(\d{2})(\d)/g, '$1/$2');
-        data = data.replace(/^(\d{2})\/(\d{2})(\d)/g, '$1/$2/$3');
-        return data;
-}
+            data = data.replace(/\D/g, '');
+            data = data.replace(/^(\d{2})(\d)/g, '$1/$2');
+            data = data.replace(/^(\d{2})\/(\d{2})(\d)/g, '$1/$2/$3');
+            return data;
+        }
 
         document.getElementById('data').addEventListener('input', function(event) {
             var data = event.target.value;
