@@ -641,7 +641,7 @@ func executarPgBaixo(w http.ResponseWriter, _ *http.Request) {
 			http.Error(w, http.StatusText(500), 500)
 			return
 		}
-		quebrar := strings.Split(armazenar.DataNasc, "-")
+		quebrar := strings.Split(armazenar.DataNasc, "/")
 		if armazenar.Complemento != "" {
 			armazenar.Endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Bairro + "," + armazenar.Complemento
 		} else {
@@ -656,9 +656,9 @@ func executarPgBaixo(w http.ResponseWriter, _ *http.Request) {
 				armazenar.Fatores = "Mulher/Etilista"
 			}
 			now := time.Now()
-			ano, _ := strconv.Atoi(quebrar[0])
+			dia, _ := strconv.Atoi(quebrar[0])
 			mes, _ := strconv.Atoi(quebrar[1])
-			dia, _ := strconv.Atoi(quebrar[2])
+			ano, _ := strconv.Atoi(quebrar[2])
 			armazenar.Idade = now.Year() - ano
 			if int(now.Month()) < mes || (int(now.Month()) == mes && now.Day() < dia) {
 				armazenar.Idade--

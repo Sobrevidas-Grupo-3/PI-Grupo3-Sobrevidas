@@ -302,7 +302,7 @@
     /* Endereço */
 
     #campo-endereco {
-        font-size: 1.7em; margin-bottom: 0px; margin-top: 5px;margin-bottom: -7px;
+        font-size: 1.2em; margin-bottom: 0px; margin-top: 5px;margin-bottom: -7px;
     }
 
     .end1 {
@@ -350,8 +350,8 @@
 
 .risk-factors {
     float: right;
-    width: 22vw;
-    height: 60vh;
+    width: 25vw;
+    height: 65vh;
     display: inline-block;
     margin-right: 5%;
     margin-top: 1%;
@@ -376,7 +376,7 @@
 .risk-factors h3 {
     padding: 1%;
     margin-bottom: -6%;
-    font-size: 1.8vh;
+    font-size: 2.8vh;
     color: 	rgba(87, 4, 4, 0.685);
 }
 
@@ -958,21 +958,17 @@ input:checked + span {
             <div class="form-section-one">
                 <label for="nome">NOME <div class="asc">*</div></label>
                 <input type="text" id="nome" name="nome" placeholder="Ex.: João da Silva" required>
-                <p>Digite o nome completo</p>
 
                 <label for="data-nascimento">DATA DE NASCIMENTO <div class="asc">*</div></label>
                 <input type="text" id="data" name="datanascimento" maxlength="10" placeholder="Ex.:DD/MM/AAAA" required>
-                <p>Digite a data de nascimento</p>
 
                 <label for="cpf">CPF <div class="asc">*</div></label>
                 <input type="text" id="cpf" name="cpfpaciente" maxlength="14" placeholder="Ex.:123.456.789-09" required>
-                <p>Digite o CPF &#40Cadastro de Pessoa Física&#41</p>
 
                 <label for="mae">NOME DA MÃE <div class="asc">*</div></label>
                 <input type="text" id="mae" name="nomemae" placeholder="Ex.: Maria da Silva" required>
-                <p>Digite o nome completo da mãe</p>
 
-                <label for="isexo" style="margin-bottom: -30px;margin-top: 10px;">SEXO</label>
+                <label for="isexo" style="margin-bottom: -15px;margin-top: 10px;">SEXO</label>
                 <select name="sexo" id="isexo">
                     <option value="">Selecione</option>
                     <option value="Masculino">Masculino</option>
@@ -983,16 +979,13 @@ input:checked + span {
             <div class="form-section-two">
                 <label for="isus">CARTÃO DO SUS</label>
                 <input type="text" id="cartaoSus" name="cartaosus" maxlength="18" placeholder="Ex.: 999 9999 9999 9999">
-                <p>Digite o número do cartão do SUS</p>
 
 
                 <label for="itel">TELEFONE <div class="asc">*</div></label>
                 <input type="tel" id="telefone" name="telefone" maxlength="15" placeholder="Ex.: (99)99999-9999" required>
-                <p>Digite o número de telefone</p>
 
                 <label for="imail">E-MAIL</label>
                 <input type="text" id="imail" name="email" placeholder="Ex.: joaodasilva@gmail.com">
-                <p>Digite o email</p>
 
                 <p id="campo-endereco">Endereço</p>
 
