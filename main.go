@@ -168,6 +168,7 @@ func main() {
 	http.HandleFunc("/paciente-cadastrado", cadastrarPaciente)
 	colocarDados()
 	http.HandleFunc("/central-usuario", executarCentralUsuario)
+	http.HandleFunc("/central-usuario/atualizarsenha", atualizarSenhaCentralUsuario)
 	http.HandleFunc("/pagina-faq", executarPagFaq)
 	http.HandleFunc("/pacientesgerais", executarPacGerais)
 	http.HandleFunc("/pagina-baixo-risco", executarPgBaixo)
@@ -516,6 +517,55 @@ func executarCentralUsuario(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
+}
+
+func atualizarSenhaCentralUsuario(w http.ResponseWriter, r *http.Request){
+	novasenha := r.FormValue("senha")
+	_, err := db.Exec(`UPDATE cadastro SET senha=$1 WHERE cpf=$2`, novasenha, cpfLogin)
+	if err != nil {
+		return
+	}
+	senhaLogin = novasenha
+	cpfsenha, err := db.Query("SELECT nome_completo, cpf, cns, cbo, cnes, ine, senha FROM cadastro")
+	if err != nil {
+		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
+	}
+	defer cpfsenha.Close()
+	armazenamento := make([]ACS, 0)
+
+	for cpfsenha.Next() {
+		armazenar := ACS{}
+		err := cpfsenha.Scan(&armazenar.NomeCompleto, &armazenar.CPF, &armazenar.CNS, &armazenar.CBO, &armazenar.CNES, &armazenar.INE, &armazenar.SenhaACS)
+		if err != nil {
+			log.Println(err)
+			http.Error(w, http.StatusText(500), 500)
+			return
+		}
+		armazenamento = append(armazenamento, armazenar)
+	}
+	if err = cpfsenha.Err(); err != nil {
+		http.Error(w, http.StatusText(500), 500)
+		return
+	}
+	for _, armazenado := range armazenamento {
+		if armazenado.CPF == cpfLogin && armazenado.SenhaACS == senhaLogin {
+			armazenado.PrimeiraLetra = string(armazenado.NomeCompleto[0])
+			armazenado.CPF = strings.ReplaceAll(armazenado.CPF, armazenado.CPF[:5], "*****")
+			armazenado.CNS = strings.ReplaceAll(armazenado.CNS, armazenado.CNS[:5], "*****")
+			armazenado.CNES = strings.ReplaceAll(armazenado.CNES, armazenado.CNES[:3], "***")
+			quebrado2 := strings.Split(armazenado.NomeCompleto, " ")
+			armazenado.User = quebrado2[0]
+			quebrado := strings.Split(armazenado.SenhaACS, "")
+			for i := 0; i < len(quebrado); i++ {
+				armazenado.SenhaACS = strings.Replace(armazenado.SenhaACS, quebrado[i], "*", -1)
+			}
+			err = templates.ExecuteTemplate(w, "centralusuario.html", armazenado)
+			if err != nil {
+				return
+			}
+			return
+		}
+	}
 }
 
 func executarFormulario(w http.ResponseWriter, _ *http.Request) {
