@@ -959,9 +959,13 @@
                     <a href="/pagina-alto-risco" class="form-section-voltar"><button type="submit">Voltar</button></a>
                     {{end}}
                 </div>
+                <!--PDF-->
                 <div class="form-section-download">
-                    <img src="/imagens2/imagens/download.png" alt="Icone de Download">
+                    <form action="/generate-pdf" method="post" target="_blank">
+                        <button type="submit"><img src="/imagens2/imagens/download.png" alt="Icone de Download"></button>
+                    </form>
                 </div>
+                <!--PDF-->
             </div>
     </div>
     <div id="modal">

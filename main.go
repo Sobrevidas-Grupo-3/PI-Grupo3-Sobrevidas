@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"github.com/joho/godotenv"
+	"github.com/jung-kurt/gofpdf"
 	_ "github.com/lib/pq"
 )
 
@@ -182,6 +183,8 @@ func main() {
 	http.HandleFunc("/pagina-alto-risco/filtrar-nome", executarPgAltoFiltroPorNome)
 	http.HandleFunc("/pagina-absenteista", executarPgAbsenteista)
 	http.HandleFunc("/formulario/preenchido", executarFormPreenchido)
+	http.HandleFunc("/generate-pdf", generatePDF)
+    
 
 	log.Println("Server rodando na porta 8080")
 
@@ -1556,5 +1559,74 @@ func executarFormPreenchido(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 		}
+	}
+}
+
+func generatePDF(w http.ResponseWriter, r *http.Request) {
+	
+
+	pesquisa, err := db.Query("SELECT * FROM pacientes")
+	if err != nil {
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+		log.Println(err)
+		return
+	}
+	defer pesquisa.Close()
+
+	pdf := gofpdf.New("P", "mm", "A4", "")
+	pdf.AddPage()
+	pdf.SetFont("Arial", "B", 16)
+	for pesquisa.Next() {
+
+		var armazenar PacienteFormularioPreenchido
+		err := pesquisa.Scan(&armazenar.ID, &armazenar.Nome, &armazenar.DataNasc, &armazenar.CPF, &armazenar.NomeMae, &armazenar.Sexo, &armazenar.CartaoSus, &armazenar.Telefone, &armazenar.Email, &armazenar.CEP, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal, &armazenar.DataCadastro)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			log.Println(err)
+			return
+		}
+		pdf.Cell(40, 10, fmt.Sprintf("Nome: %s", armazenar.Nome))
+		pdf.Ln(8)
+		pdf.Cell(40, 10, fmt.Sprintf("Data de Nascimento: %v", armazenar.DataNasc))
+		pdf.Ln(8)
+		pdf.Cell(40, 10, fmt.Sprintf("CPF: %v", armazenar.CPF))
+		pdf.Ln(8)
+		pdf.Cell(40, 10, fmt.Sprintf("Nome da Mãe: %s", armazenar.NomeMae))
+		pdf.Ln(8)
+		pdf.Cell(40, 10, fmt.Sprintf("Sexo: %s", armazenar.Sexo))
+		pdf.Ln(8)
+		pdf.Cell(40, 10, fmt.Sprintf("Cartão SUS: %v", armazenar.CartaoSus))
+		pdf.Ln(8)
+		pdf.Cell(40, 10, fmt.Sprintf("Telefone: %v", armazenar.Telefone))
+		pdf.Ln(8)
+		pdf.Cell(40, 10, fmt.Sprintf("Email: %s", armazenar.Email))
+		pdf.Ln(8)
+		pdf.Cell(40, 10, fmt.Sprintf("CEP: %v", armazenar.CEP))
+		pdf.Ln(8)
+		pdf.Cell(40, 10, fmt.Sprintf("Bairro: %s", armazenar.Bairro))
+		pdf.Ln(8)
+		pdf.Cell(40, 10, fmt.Sprintf("Rua: %s", armazenar.Rua))
+		pdf.Ln(8)
+		pdf.Cell(40, 10, fmt.Sprintf("Número: %v", armazenar.Numero))
+		pdf.Ln(8)
+		pdf.Cell(40, 10, fmt.Sprintf("Complemento: %s", armazenar.Complemento))
+		pdf.Ln(8)
+	}
+
+	err = pesquisa.Err()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		log.Println(err)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/pdf")
+	w.Header().Set("Content-Disposition", "inline; filename=output.pdf")
+
+	err = pdf.Output(w)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		log.Println(err)
+		return
 	}
 }
