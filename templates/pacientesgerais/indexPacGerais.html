@@ -7,6 +7,8 @@
     <link rel="shortcut icon" href="imagens2/imagens/favicon.ico" type="image/x-icon">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kaushan+Script&family=Passion+One:wght@400;700;900&family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&display=swap');
+
 
         body {
             font-family: Arial, sans-serif;
@@ -14,403 +16,492 @@
             margin: 0px;
         }
 
-        .barraSuperior {
+        header{
             width: 100%;
             height: 8vh;
             background-color: #007FDA;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
             display: flex;
-
         }
 
         h1 {
-            color: #ffffff;
+            font-size: 5vh;
             position: absolute;
-            top: 0px;
-            margin-left: 220px;
+            font-family: "Inter";
+            margin-top: 0.5%;
+            left: 14%;
+            color: white;
         }
 
         h2 {
-            color: #ffffff;
-            font-size: 28px;
+            font-size: 4vh;
             position: absolute;
-            top: 0px;
-            margin-left: 670px;
+            font-family: "Inter";
+            color: white;
+            margin-top: 0.8%;
+            left: 50%;
+            top: 0vh;
+            font-weight: bold;
         }
 
-        .usuario {
-            font-family: "Poppins";
-            text-decoration: none;
+        #caixausuario{
+            position: absolute;
+            display: flex;
             background-color: #0C91F0;
-            padding: 10px 40px 10px 50px;
-            border-radius: 20px;
-            color: #f0f0f0;
-            font-size: 20px;
-            position: relative;
-            left: 76.5vw;
+            border-radius: 8px;
+            height: 6.5%;
+            width: 13%;
+            top: 1%;
+            left: 80%;
+            box-shadow: 1px 1px rgba(0, 0, 0, 0.226);
         }
 
-
-        .posicaoImgU {
-            position: absolute;
-            top: 20px;
-            right: 262px;
+        .caixa{
+            position: fixed;
+            color: white;
+            font-family: "Poppins";
+            font-weight: bold;
+            top: 0vh;
+            left: 83%;
+            font-size: 2.5vh;
         }
 
-        .posicaoImgSino {
-            position: absolute;
-            top: 2.5vh;
-            left: 91vw;
+        p.usuario{
+            position: fixed;
+            background-color: #5A67BA;
+            border-radius: 50%;
+            color: white;
+            font-family: "Poppins";
+            font-weight: bold;
+            margin-top: 1.3vh;
+            margin-left: 0.5vw;
+            width: 2%;
+            height: 3.9%;
+            text-align: center;
+            font-size: 2.5vh;
         }
-
+    
+        .sinoimg{
+            position: fixed;
+            top: 2.3vh;
+            left: 90%;
+            width: 2%;
+            height: 4%;
+        }
 
         .posicaoImgSaida {
-            position: absolute;
-            top: 14px;
-            right: 32px;
+            position: fixed;
+            display: block;
+            height: 4%;
+            width: 2%;
+            top: 2%;
+            right: 2%;
         }
 
-        h3 {
-            color: #ffffff;
-            font-size: 50px;
-            position: absolute;
-            top: -28px;
-            margin-left: 120px;
-        }
-
-        h4 {
-            color: #2F3367;
-            font-size: 32px;
-            font-family: verdana;
-            position: absolute;
-            top: -20px;
-            margin-right: 10px;
-        }
-
-        h4.barrasPacientes2 {
-            color: #2F3367;
-            font-size: 32px;
-            font-family: verdana;
-            position: absolute;
-            top: 0px;
-            margin-right: 10px;
-        }
-
-        h4.barrasPacientes3 {
-            color: #2F3367;
-            font-size: 32px;
-            font-family: verdana;
-            position: absolute;
-            top: 20px;
-            margin-right: 10px;
-        }
-
-        h4.barrasPacientes4 {
-            color: #2F3367;
-            font-size: 32px;
-            font-family: verdana;
-            position: absolute;
-            top: 40px;
-            margin-right: 10px;
-        }
-
-        .barraMonitoramento {
-            width: 920px;
-            height: 60px;
-            padding: 20px;
-            background-color: #2CA2AD;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
-            position: absolute;
-            top: 135px;
-            margin-left: 350px;
-
-        }
-
-        .barrasPacientes1 {
-            width: 900px;
-            height: 30px;
-            padding: 30px;
-            border: 3px #007FDA solid;
-            border-radius: 10px;
-            position: absolute;
-            top: 290px;
-            margin-left: 350px;
-            text-align: left;
-        }
-        .posicaoIconePessoa1 {
-            position: absolute;
-            top: 47.5vh;
-            left: 62vw;
-        }
-        p {
+        nav{
+            background-color: #F1F2F7;
+            width: 16vw;
             font-family: "Poppins";
-            font-size: 22px;
-            position: absolute;
-            top: 6px;
-            right: 360px;
-        }
-        .acessarBaixo {
-            font-family: "Poppins";
-            text-decoration: none;
-            background-color: #ff71e5aa;
-            padding: 10px 40px 10px 40px;
-            border-radius: 20px;
-            color: #2F3367;
-            font-size: 22px;
-            position: absolute;
-            top: 21px;
-            right: 25px;
-        }
-
-        .barrasPacientes2 {
-            width: 900px;
-            height: 30px;
-            padding: 30px;
-            border: 3px #007FDA solid;
-            border-radius: 10px;
-            position: absolute;
-            margin-left: 350px;
-            top: 410px;
-            text-align: left;
-        }
-        .posicaoIconePessoa2 {
-            position: absolute;
-            top: vh;
-            left: 62vw;
-        }
-        .acessarMedio {
-            font-family: "Poppins";
-            text-decoration: none;
-            background-color: #ffa20096;
-            padding: 10px 40px 10px 40px;
-            border-radius: 20px;
-            color: #2F3367;
-            font-size: 22px;
-            position: absolute;
-            top: 21px;
-            right: 25px;
-        }
-
-        .barrasPacientes3 {
-            width: 900px;
-            height: 30px;
-            padding: 30px;
-            border: 3px #007FDA solid;
-            border-radius: 10px;
-            position: absolute;
-            margin-left: 350px;
-            top: 530px;
-            text-align: left;
-        }
-        .posicaoIconePessoa3 {
-            position: absolute;
-            top: 90.5vh;
-            left: 62vw;
-        }
-        .acessarAlto {
-            font-family: "Poppins";
-            text-decoration: none;
-            background-color: #ff110077;
-            padding: 10px 40px 10px 40px;
-            border-radius: 20px;
-            color: #2F3367;
-            font-size: 22px;
-            position: absolute;
-            top: 21px;
-            right: 25px;
-        }
-
-        .barrasPacientes4 {
-            width: 900px;
-            height: 30px;
-            padding: 30px;
-            border: 3px #007FDA solid;
-            border-radius: 10px;
-            position: absolute;
-            margin-left: 350px;
-            top: 650px;
-            text-align: left;
-        }
-        .posicaoIconePessoa4 {
-            position: absolute;
-            top: 110.5vh;
-            left: 62vw;
-        }
-
-        .acessarAbs {
-            font-family: "Poppins";
-            text-decoration: none;
-            background-color: #a612e570;
-            padding: 10px 40px 10px 40px;
-            border-radius: 20px;
-            color: #2F3367;
-            font-size: 22px;
-            position: absolute;
-            top: 21px;
-            right: 25px;
-        }
-
-
-        .abaLateral {
-            width: 200px;
-            height: 850px;
-            padding: 20px;
-            background-color: #e1e4f3;
-            border-bottom-left-radius: 10px;
-            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
-
+            height: 92vh;
         }
 
         .posicaoLogo {
+            width: 6vw;
+            margin-left: 4vw;
             position: absolute;
-            top: 90px;
-            margin-left: 40px;
-
-        }
-
-        .abaLateral a {
-            font-family: "Poppins";
-            text-decoration: none;
-
+            top: 8vh;
         }
 
         .Dashboard {
-            background-color: #707fdd3c;
-            padding: 10px 44px 10px 55px;
-            border-radius: 20px;
+            position: absolute;
+            background-color: #e0e3f1;
+            box-shadow: 1px 1px rgba(0, 0, 0, 0.226);
+            text-decoration: none;
             color: #558FC0;
-            font-size: 18px;
-            position: absolute;
-            top: 205px;
-            margin-left: 0px;
-        }
-
-        .posicaoImgDash {
-            position: absolute;
-            top: 207px;
-            margin-left: 9px;
-
+            border-radius: 15px;
+            margin-left: 0.3vw;
+            background-image: url(/imgdashboard/iconeDashboard1.png);
+            background-repeat: no-repeat;
+            background-position: 0.5vw;
+            background-size: 2vw;
+            padding-top: 0.1vw;
+            padding-bottom: 0.3vw;
+            padding-left: 1vw;
+            padding-right: 4vw;
+            font-size: 1.2vw;
+            top: 22vh;
+            left: 1vw;
         }
 
         .novoCadastro {
-            background-color: #a4a8c33c;
-            padding: 10px 10px 10px 55px;
-            border-radius: 20px;
-            color: #0C6B74;
-            font-size: 18px;
             position: absolute;
-            top: 265px;
-            margin-left: 0px;
+            background-color: #e0e3f1;
+            box-shadow: 1px 1px hsla(0, 0%, 0%, 0.226);
+            text-decoration: none;
+            color: #2CA2AD;
+            border-radius: 15px;
+            margin-left: 0.3vw;
+            background-image: url(/imgdashboard/iconeNovoCadastro1.png);
+            background-repeat: no-repeat;
+            background-position: 0.5vw;
+            background-size: 2vw;
+            padding-top: 0.3vw;
+            padding-bottom: 0.3vw;
+            padding-left: 1vw;
+            padding-right: 1.8vw;
+            font-size: 1.2vw;
+            top: 30vh;
+            left: 1vw;
         }
 
-        .posicaoImgNCad {
-            position: absolute;
-            top: 271px;
-            margin-left: 9px;
+        .posicionarNomes{
+            margin-left: 2vw;
+        }  
 
+        .monitoramento{
+            position: absolute;
+            color: #558FC0;
+            left: 3vw;
+            font-size: 1.5vw;
+            top: 33.8vh;
         }
 
-        h5 {
-            color: #0C6B74;
-            font-size: 27px;
-            position: absolute;
-            top: 290px;
+        .space1{
+            margin-left: 1vw;
         }
 
         .PacientesGerais {
-            background-color: #1892b140;
-            padding: 10px 8px 10px 8px;
-            border-radius: 20px;
-            color: #558FC0;
-            font-size: 20px;
             position: absolute;
-            top: 380px;
-            margin-left: 10px;
+            background-color: #1892b140;
+            text-decoration: none;
+            color: #558FC0;
+            border-radius: 15px;
+            padding-top: 0.5vw;
+            padding-bottom: 0.5vw;
+            padding-right: 2.5vw;
+            border-color: #000000;
+            padding-left: 1vw;
+            font-size: 1.2vw;
+            top: 43vh;
+            left: 1vw;
+            border-style: groove;
+            border-width: 1px;
+            border-color: rgba(0, 0, 0, 0.267);
         }
 
         .TiposPacientes1 {
-            background-color: #ff71e576;
-            padding: 10px 13px 10px 13px;
-            border-radius: 20px;
             position: absolute;
-            top: 460px;
-            margin-left: 23px;
+            text-decoration: none;
+            background-color: #ff71e5aa;
+            color: hsla(210, 100%, 1%, 0.68);
+            border-radius: 15px;
+            font-size: 1vw;
+            padding-right: 0.86vw;
+            padding-left: 0vw;
+            top: 52vh;
+            left: 3vw;
+            border-style: groove;
+            border-width: 1px;
+            border-color: rgba(0, 0, 0, 0.267);
         }
 
         .TiposPacientes2 {
             background-color: #ffa2007a;
-            padding: 10px 10px 10px 10px;
-            border-radius: 20px;
             position: absolute;
-            top: 520px;
-            margin-left: 23px;
+            text-decoration: none;
+            color: hsla(207, 64%, 9%, 0.87);
+            border-radius: 15px;
+            font-size: 1vw;
+            padding-right: 0.55vw;
+            padding-left: 0vw;
+            top: 57vh;
+            left: 3vw;
+            border-style: groove;
+            border-width: 1px;
+            border-color: rgba(0, 0, 0, 0.267);
         }
 
         .TiposPacientes3 {
             background-color: #ff11006d;
-            padding: 10px 18px 10px 19px;
-            border-radius: 20px;
             position: absolute;
-            top: 580px;
-            margin-left: 23px;
+            text-decoration: none;
+            color: #020D16;
+            border-radius: 15px;
+            font-size: 1vw;
+            padding-right: 1.7vw;
+            padding-left: 0vw;
+            top: 62vh;
+            left: 3vw;
+            border-style: groove;
+            border-width: 1px;
+            border-color: rgba(0, 0, 0, 0.267);
+            text-align: center;
         }
 
         .TiposPacientes4 {
             background-color: #a612e569;
-            padding: 10px 7px 10px 7px;
-            border-radius: 20px;
             position: absolute;
-            top: 640px;
-            margin-left: 43px;
+            text-decoration: none;
+            color: #020D16;
+            border-radius: 15px;
+            font-size: 1vw;
+            padding-right: 2.6vw;
+            padding-left: 0vw;
+            top: 67vh;
+            left: 3vw;
+            border-style: groove;
+            border-width: 1px;
+            border-color: rgba(0, 0, 0, 0.267);
         }
 
-        h5.Ajuda {
-            color: #0C6B74;
-            font-size: 27px;
+        .Ajuda {
             position: absolute;
-            top: 660px;
-            margin-left: 60px;
+            color: #558FC0;
+            font-size: 1.5vw;
+            top: 69.9vh;
+            left: 5.5vw;
         }
 
         .PerguntasFreq {
-            background-color: #a4a8c373;
-            padding: 10px 10px 10px 10px;
-            border-radius: 20px;
-            color: #0C6B74;
-            font-size: 16px;
             position: absolute;
-            top: 760px;
-            left: 16px;
+            text-decoration: none;
+            background-color: #0f153328;
+            color: #000000b7;
+            font-size: 1.1vw;
+            border-radius: 7px;
+            padding-top: 0.3vw;
+            padding-bottom: 0.3vw;
+            padding-right: 0.5vw;
+            margin-left: 0.2vw;
+            top: 80vh;
+            left: 0.5vw;
+            border-style: groove;
+            border-width: 1px;
+            border-color: rgba(0, 0, 0, 0.267);
+        }
+
+        .space2{
+            margin-left: 0.2vw;
         }
 
         .CentralUsuario {
-            background-color: #667ff174;
-            padding: 10px 10px 10px 10px;
-            border-radius: 20px;
-            color: #0C6B74;
-            font-size: 16px;
             position: absolute;
-            top: 820px;
-            left: 40px;
+            background-color: #667ff146;
+            text-decoration: none;
+            color: #54565C;
+            border-radius: 7px;
+            padding-top: 0.3vw;
+            padding-bottom: 0.3vw;
+            padding-right: 2vw;
+            margin-left: 0.2vw;
+            font-size: 1.1vw;
+            top: 87vh;
+            left: 0.5vw;
+            border-style: groove;
+            border-width: 1px;
+            border-color: rgba(0, 0, 0, 0.267);
+        }
+
+        .space3{
+            margin-left: 2vw;
         }
 
         .Voltar {
             background-color: #0C91F0;
-            padding: 8px 30px 8px 50px;
             border-radius: 10px;
             color: #ffffff;
-            font-size: 16px;
+            border-radius: 7px;
+            padding-top: 0.3vw;
+            padding-bottom: 0.3vw;
+            padding-right: 2.5vw;
+            padding-left: 4.5vw;
+            font-family: "Poppins";
+            text-decoration: none;
+            font-size: 1.1vw;
             position: absolute;
-            top: 915px;
-            left: 12px;
+            top: 94vh;
+            left: 2.5vw;
         }
 
         .posicaoImgSetaVoltar {
-            margin-left: 2vw;
+            position: absolute;
+            bottom: 1.3vh;
+            left: 4vw;
         }
+
+
+        h3 {
+            color: #ffffff;
+            font-family: "Poppins";
+            font-size: 6vh;
+            position: absolute;
+            top: 5vh;
+            left: 35.8vw;
+            padding: 1.5vw;
+            background-color: #2CA2AD;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        h4 {
+            color: #2F3367;
+            font-size: 4vh;
+            font-family: "Poppins";
+            position: absolute;
+            top: -3.4vh;
+        }
+
+        .barrasPacientes1 {
+            width: 65vw;
+            height: 2.7vh;
+            padding: 4vh;
+            border: 3px #007FDA solid;
+            border-radius: 10px;
+            position: absolute;
+            top: 30vh;
+            left: 23vw;
+            text-align: left;
+        }
+
+        .posicaoIconePessoa1 {
+            position: absolute;
+            top: 33vh;
+            left: 57vw;
+        }
+
+        p.barrasPacientesQtd {
+            font-family: "Poppins";
+            font-size: 2vh;
+            position: absolute;
+            top: 2vh;
+            left: 40vw;
+        }
+
+        .acessarBaixo {
+            background-color: #ff71e5aa;
+            font-family: "Poppins";
+            text-decoration: none;
+            padding: 10px 40px 10px 40px;
+            border-radius: 20px;
+            color: #2F3367;
+            font-size: 3vh;
+            position: absolute;
+            top: 1.7vh;
+            right: 0.7vw;
+        }
+
+
+        h4.barrasPacientes2 {
+            color: #2F3367;
+            font-size: 4vh;
+            font-family: "Poppins";
+            position: absolute;
+            top: 0vh;
+        }
+
+        .barrasPacientes2 {
+            width: 65vw;
+            height: 2.7vh;
+            padding: 4vh;
+            border: 3px #007FDA solid;
+            border-radius: 10px;
+            position: absolute;
+            top: 47vh;
+            left: 23vw;
+            text-align: left;
+        }
+        .posicaoIconePessoa2 {
+            position: absolute;
+            top: 50vh;
+            left: 57vw;
+        }
+        .acessarMedio {
+            background-color: #ffa20096;
+            font-family: "Poppins";
+            text-decoration: none;
+            padding: 10px 40px 10px 40px;
+            border-radius: 20px;
+            color: #2F3367;
+            font-size: 3vh;
+            position: absolute;
+            top: 1.7vh;
+            right: 0.7vw;
+        }
+
+
+        h4.barrasPacientes3 {
+            color: #2F3367;
+            font-size: 4vh;
+            font-family: "Poppins";
+            position: absolute;
+            top: 0vh;
+        }
+        .barrasPacientes3 {
+            width: 65vw;
+            height: 2.7vh;
+            padding: 4vh;
+            border: 3px #007FDA solid;
+            border-radius: 10px;
+            position: absolute;
+            top: 64vh;
+            left: 23vw;
+            text-align: left;
+        }
+        .posicaoIconePessoa3 {
+            position: absolute;
+            top: 67vh;
+            left: 57vw;
+        }
+        .acessarAlto {
+            background-color: #ff110077;
+            font-family: "Poppins";
+            text-decoration: none;
+            padding: 10px 40px 10px 40px;
+            border-radius: 20px;
+            color: #2F3367;
+            font-size: 3vh;
+            position: absolute;
+            top: 1.7vh;
+            right: 0.7vw;
+        }
+
+
+        h4.barrasPacientes4 {
+            color: #2F3367;
+            font-size: 4vh;
+            font-family: "Poppins";
+            position: absolute;
+            top: 0vh;
+        }
+        .barrasPacientes4 {
+            width: 65vw;
+            height: 2.7vh;
+            padding: 4vh;
+            border: 3px #007FDA solid;
+            border-radius: 10px;
+            position: absolute;
+            top: 81vh;
+            left: 23vw;
+            text-align: left;
+        }
+        .posicaoIconePessoa4 {
+            position: absolute;
+            top: 84vh;
+            left: 57vw;
+        }
+        .acessarAbs {
+            background-color: #a612e570;
+            font-family: "Poppins";
+            text-decoration: none;
+            padding: 10px 40px 10px 40px;
+            border-radius: 20px;
+            color: #2F3367;
+            font-size: 3vh;
+            position: absolute;
+            top: 1.7vh;
+            right: 0.7vw;
+        }
+
         #modal{
             display: none;
         }
@@ -495,111 +586,74 @@
         #btnlogout{
             cursor: pointer;
         }
-        #caixausuario{
-            position: absolute;
-            display: flex;
-            background-color: #0C91F0;
-            border-radius: 15px;
-            height: 7.8%;
-            width: 13.5%;
-            top: 2%;
-            left: 80%;
-            box-shadow: 1px 1px rgba(0, 0, 0, 0.226);
-        }
-        .user{
-            position: absolute;
-            background-color: #5A67BA;
-            border-radius: 50%;
-            color: white;
-            font-family: "Poppins";
-            font-weight: bold;
-            margin-top: 0.5vh;
-            left: 1vw;
-            width: 17%;
-            height: 60%;
-            text-align: center;
-            font-size: 3vh;
-        }
+      
 
-        .caixa{
-            position: absolute;
-            color: white;
-            font-family: "Poppins";
-            font-weight: bold;
-            top: -1.5vh;
-            left: 4vw;
-            font-size: 3vh;
-        }
-
-        .sinoimg{
-            position: absolute;
-            left: 11vw;
-            top: 0.5vh;
-            width: 2vw;
-            height: 3vw;
-        }
     </style>
 </head>
 <body>
-    <div class="barraSuperior">
+    <header>
         <h1>SOBREVIDAS - ACS</h1>
         <h2>Pacientes Gerais</h2>
-        <a class="posicaoImgSaida" id="btnlogout"> <img src="/imagens/iconeSaida.png" width="40" height="40"></a>
         <div id="caixausuario">
-            <p class="user">{{.Primeira}}</p>
+            <p class="usuario">{{.Primeira}}</p>
             <p class="caixa">{{.Usuario}}</p>
-            <a href="/pagina-absenteista"><img src="/imagenspg/Component 24.png" class="sinoimg"></a>
+            <a href="/pagina-absenteista"><img src="/imgdashboard/sino.png" alt="Icone de Notificação" class="sinoimg"></a>
         </div>
+        <a id="btnlogout"><img src="/imgdashboard/logout.png" alt="Icone de sair" class="posicaoImgSaida"></a>
+    </header>
+    <nav>
+        <a href="/dashboard/voltar" class="Dashboard"><span class="posicionarNomes">Dashboard</span></a>
+        <a href="/cadastrar-paciente" class="novoCadastro"><span class="posicionarNomes">Novo Cadastro</span></a>
+        <br>
+        <p class="monitoramento">Monitoramento</p>
+        <a href="/pacientesgerais" class="PacientesGerais"><span class="space1">Pacientes Gerais</span></a>
+        <br>
+        <a href="/pagina-baixo-risco" class="TiposPacientes1"><span class="space1">Baixa Prioridade</span></a>
+        <br>
+        <a href="/pagina-medio-risco" class="TiposPacientes2"><span class="space1">Média Prioridade</span></a>
+        <br>
+        <a href="/pagina-alto-risco" class="TiposPacientes3"><span class="space1">Alta Prioridade</span></a>
+        <br>
+        <a href="/pagina-absenteista" class="TiposPacientes4"><span class="space1">Absenteístas</span></a>
+        <br>
+        <p class="Ajuda">Ajuda</p>
+        <br>
+        <a href="/pagina-faq" class="PerguntasFreq"><span class="space2">[?] Perguntas Frequentes</span></a>
+        <a href="/central-usuario" class="CentralUsuario"><span class="space3">Central do Usuário</span></a>
+        <a href="/dashboard/voltar" class="Voltar">Voltar</a>
+        <img src="/imagens/LogoSOBREVIDAS-ACS-semtext.png" alt="LogoSobrevidas" width="100" height="100" class="posicaoLogo">
+        <a href="" class="posicaoImgSetaVoltar"><img src="/imagens/iconeSetaVoltar1.png" alt="iconeSetaVoltar" width="35" height="35"></a>
+    </nav>
 
-    </div>
-    <div class="barraMonitoramento">
-        <h3>Monitoramento dos Pacientes</h3>
-    </div>
+    <h3>Monitoramento dos Pacientes</h3>
     <div class="barrasPacientes1">
         <h4>Pacientes de Baixa Prioridade</h4>
-        <p><b>{{.QtdBaixo}}</b></p>
+        <p class="barrasPacientesQtd"><b>{{.QtdBaixo}}</b></p>
         <a href="/pagina-baixo-risco" class="acessarBaixo"><b>Acessar</b></a>
     </div>
     <div class="barrasPacientes2">
         <h4>Pacientes de Média Prioridade</h4>
-        <p><b>{{.QtdMedio}}</b></p>
+        <p class="barrasPacientesQtd"><b>{{.QtdMedio}}</b></p>
         <a href="/pagina-medio-risco" class="acessarMedio"><b>Acessar</b></a>
     </div>
     <div class="barrasPacientes3">
         <h4>Pacientes de Alta Prioridade</h4>
-        <p><b>{{.QtdAlto}}</b></p>
+        <p class="barrasPacientesQtd"><b>{{.QtdAlto}}</b></p>
         <a href="/pagina-alto-risco" class="acessarAlto"><b>Acessar</b></a>
     </div>
     <div class="barrasPacientes4">
         <h4>Pacientes Absenteístas</h4>
-        <p><b>7</b></p>
+        <p class="barrasPacientesQtd"><b>7</b></p>
         <a href="/pagina-absenteista" class="acessarAbs"><b>Acessar</b></a>
     </div>
 
     <div>
-        <img src="/imagens/iconePessoa1.png" width="50" height="50" class="posicaoIconePessoa1">
-        <img src="/imagens/iconePessoa1.png" width="50" height="50" class="posicaoIconePessoa2">
-        <img src="/imagens/iconePessoa1.png" width="50" height="50" class="posicaoIconePessoa3">
-        <img src="/imagens/iconePessoa1.png" width="50" height="50" class="posicaoIconePessoa4">
+        <img src="/imagens/iconePessoa1.png" width="50" height="50" alt="iconePessoa1" class="posicaoIconePessoa1">
+        <img src="/imagens/iconePessoa1.png" width="50" height="50" alt="iconePessoa2" class="posicaoIconePessoa2">
+        <img src="/imagens/iconePessoa1.png" width="50" height="50" alt="iconePessoa3" class="posicaoIconePessoa3">
+        <img src="/imagens/iconePessoa1.png" width="50" height="50" alt="iconePessoa4" class="posicaoIconePessoa4">
     </div>
-    <div class="abaLateral">
-        <a href="/dashboard/voltar" class="Dashboard">Dashboard</a>
-        <a href="/cadastrar-paciente" class="novoCadastro">Novo Cadastro</a>
-        <h5>Monitoramento</h5>
-        <a href="/pacientesgerais" class="PacientesGerais">Pacientes Gerais</a>
-        <a href="/pagina-baixo-risco" class="TiposPacientes1"><b>Baixa Prioridade</b></a>
-        <a href="/pagina-medio-risco" class="TiposPacientes2"><b>Média Prioridade</b></a>
-        <a href="/pagina-alto-risco" class="TiposPacientes3"><b>Alta Prioridade</b></a>
-        <a href="/pagina-absenteista" class="TiposPacientes4"><b>Absenteístas</b></a>
-        <h5 class="Ajuda">Ajuda</h5>
-        <a href="/pagina-faq" class="PerguntasFreq">[?] Perguntas Frequentes</a>
-        <a href="/central-usuario" class="CentralUsuario">Central do Usuário</a>
-        <a href="/dashboard/voltar" class="Voltar">Voltar</a>
-        <img src="/imagens/LogoSOBREVIDAS-ACS-semtext.png" width="100" height="100" class="posicaoLogo">
-        <img src="/imagens/iconeDashboard1.png" width="35" height="35" class="posicaoImgDash">
-        <img src="/imagens/iconeNovoCadastro1.png" width="35" height="35" class="posicaoImgNCad">
-        <a href="" class="posicaoImgSetaVoltar"><img src="/imagens/iconeSetaVoltar1.png" width="35" height="35" ></a>
-    </div>
+    
     <div id="modal">
         <div id="logout">
             <div class="fixar">
