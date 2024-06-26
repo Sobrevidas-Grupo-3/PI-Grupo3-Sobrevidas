@@ -344,7 +344,7 @@
 
         h4 {
             color: #2F3367;
-            font-size: 4vh;
+            font-size: 1.8vw;
             font-family: "Poppins";
             position: absolute;
             top: -3.4vh;
@@ -363,18 +363,45 @@
         }
 
         .posicaoIconePessoa1 {
+            width: 3vw;
             position: absolute;
-            top: 33vh;
+            top: 32vh;
             left: 57vw;
         }
 
-        p.barrasPacientesQtd {
+        p.barrasPacientesQtd1 {
             font-family: "Poppins";
-            font-size: 4vh;
-            position: absolute;
-            top: -1.5vh;
-            left: 40vw;
+            font-size: 2.2vw;
+            position: fixed;
+            top: 27.5vh;
+            left: 63vw;
         }
+
+        p.barrasPacientesQtd2 {
+            font-family: "Poppins";
+            font-size: 2.2vw;
+            position: fixed;
+            top: 44.5vh;
+            left: 63vw;
+        }
+
+        p.barrasPacientesQtd3 {
+            font-family: "Poppins";
+            font-size: 2.2vw;
+            position: fixed;
+            top: 61.5vh;
+            left: 63vw;
+        }
+
+        p.barrasPacientesQtd4 {
+            font-family: "Poppins";
+            font-size: 2.2vw;
+            position: fixed;
+            top: 78.5vh;
+            left: 63vw;
+        }
+
+        
 
         .acessarBaixo {
             background-color: #ff71e5aa;
@@ -410,8 +437,9 @@
             text-align: left;
         }
         .posicaoIconePessoa2 {
+            width: 3vw;
             position: absolute;
-            top: 50vh;
+            top: 49vh;
             left: 57vw;
         }
         .acessarMedio {
@@ -447,8 +475,9 @@
             text-align: left;
         }
         .posicaoIconePessoa3 {
+            width: 3vw;
             position: absolute;
-            top: 67vh;
+            top: 66vh;
             left: 57vw;
         }
         .acessarAlto {
@@ -484,8 +513,9 @@
             text-align: left;
         }
         .posicaoIconePessoa4 {
+            width: 3vw;
             position: absolute;
-            top: 84vh;
+            top: 83vh;
             left: 57vw;
         }
         .acessarAbs {
@@ -585,7 +615,11 @@
         #btnlogout{
             cursor: pointer;
         }
-      
+        .setaVoltarTamanho{
+            position: fixed;
+            top: 92vh;
+            width: 2vw;
+        }
 
     </style>
 </head>
@@ -620,28 +654,28 @@
         <a href="/central-usuario" class="CentralUsuario"><span class="space3">Central do Usuário</span></a>
         <a href="/dashboard/voltar" class="Voltar">Voltar</a>
         <a href="/dashboard/voltar"><img src="/imgdashboard/LogoSOBREVIDAS-ACS-semtext.png" alt="Logo Sobrevidas" class="posicaoLogo"></a>
-        <a href="/dashboard/voltar" class="posicaoImgSetaVoltar"><img src="/imagens/iconeSetaVoltar1.1.png" alt="iconeSetaVoltar"></a>
+        <a href="/dashboard/voltar" class="posicaoImgSetaVoltar"><img src="/imagens/iconeSetaVoltar1.1.png" alt="iconeSetaVoltar" class="setaVoltarTamanho"></a>
     </nav>
 
     <h3>Monitoramento dos Pacientes</h3>
     <div class="barrasPacientes1">
         <h4>Pacientes de Baixa Prioridade</h4>
-        <p class="barrasPacientesQtd"><b>{{.QtdBaixo}}</b></p>
+        <p class="barrasPacientesQtd1"><b>{{.QtdBaixo}}</b></p>
         <a href="/pagina-baixo-risco" class="acessarBaixo"><b>Acessar</b></a>
     </div>
     <div class="barrasPacientes2">
         <h4>Pacientes de Média Prioridade</h4>
-        <p class="barrasPacientesQtd"><b>{{.QtdMedio}}</b></p>
+        <p class="barrasPacientesQtd2"><b>{{.QtdMedio}}</b></p>
         <a href="/pagina-medio-risco" class="acessarMedio"><b>Acessar</b></a>
     </div>
     <div class="barrasPacientes3">
         <h4>Pacientes de Alta Prioridade</h4>
-        <p class="barrasPacientesQtd"><b>{{.QtdAlto}}</b></p>
+        <p class="barrasPacientesQtd3"><b>{{.QtdAlto}}</b></p>
         <a href="/pagina-alto-risco" class="acessarAlto"><b>Acessar</b></a>
     </div>
     <div class="barrasPacientes4">
         <h4>Pacientes Absenteístas</h4>
-        <p class="barrasPacientesQtd"><b>7</b></p>
+        <p class="barrasPacientesQtd4"><b>7</b></p>
         <a href="/pagina-absenteista" class="acessarAbs"><b>Acessar</b></a>
     </div>
 
