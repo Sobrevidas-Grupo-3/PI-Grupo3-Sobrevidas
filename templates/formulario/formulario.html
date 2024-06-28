@@ -1,26 +1,35 @@
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOBREVIDAS - ACS</title>
+    <title>Novo Cadastro</title>
     <link rel="shortcut icon" href="imagens2/imagens/favicon.ico" type="image/x-icon">
+   
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Passion+One:wght@400;700;900&family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&display=swap');
 
-    @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Passion+One:wght@400;700;900&family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kaushan+Script&family=Passion+One:wght@400;700;900&family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&display=swap');
 
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kaushan+Script&family=Passion+One:wght@400;700;900&family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+        p{
+            font-family: "Inter";
+        }
 
-    .asc {
+        header{
+            background-color: #007FDA;
+            width: 100%;
+            height: 8vh;
+            display: flex;
+        }
+
+        .asc {
         color: red;
         display: inline-block;
     }
@@ -572,8 +581,22 @@ input:checked + span {
     }
 
     .form-section-voltar input[type=submit]:hover {
+        background-color: #0C91F0;
+        color: #F5F5F7;
+        font-family: "Poppins";
+        border-radius: 3px;
+        border: none;
+        width: 10vw;
+        height: 5vh;
+        font-weight: bold;
+        background-image: url(/img/img/flecha\ esquerda.png);
+        background-size: 2vw;
+        background-position: left 3% center;
+        background-repeat: no-repeat;
+        font-size: 2.8vh;
+        text-align: center;
+        padding-left: 15px;
         cursor: pointer;
-        background-color: #0056b3;
     }
 
     .obrigatorio {
@@ -968,202 +991,230 @@ input:checked + span {
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            {{if .ErroCampos}}
-            <p id="error">Erro! Algum dos campos não foi preenchido corretamente!</p>
+    <header>
+
+        {{if .ErroCampos}}
+        <p id="error">Erro! Algum dos campos não foi preenchido corretamente!</p>
             {{end}}
-            <img src="/img/img/LogoSobrevidas.png" alt="Logo Sobrevidas" class="posicionar">
-        <h1 class="titulo">SOBREVIDAS - ACS</h1>
-        <h2 class="subtitulo">NOVO CADASTRO</h2>
-        <div id="caixausuario">
-            <p class="usuario">{{.PrimeiraLetra}}</p>
-            <p class="caixa">{{.Usuario}}</p>
-            <a href="#"><img src="imagens/iconeSino.png" alt="Icone de Notificação" class="sinoimg"></a>
-        </div>
-        <a id="btnlogout"><img src="/img/img/logout.png" alt="Icone de sair" class="sair"></a>
-        </header>
-        <form method="post" action="/paciente-cadastrado">
-            <div class="form-section-01">
-                <table class="infoacs" id="cns">
-                    <tr>
-                        <caption>CNS DO PROFISSIONAL</caption>
-                        <tr>
-                            {{range .Cns}}
-                            <td>{{.}}</td>
-                            {{end}}
-                        </tr>
-                    </tr>
-                </table>
 
-                <table class="infoacs" id="cbo">
-                    <tr>
-                        <caption>CBO</caption>
-                        <td>{{.Cbo1}}</td>
-                        <td>{{.Cbo2}}</td>
-                        <td>{{.Cbo3}}</td>
-                        <td>{{.Cbo4}}</td>
-                        <td id="hifen">-</td>
-                        <td>{{.Cbo5}}</td>
-                        <td>{{.Cbo6}}</td>
-                    </tr>
-                </table>
-
-                <table class="infoacs" id="cnes">
-                        <tr>
-                            <caption>CNES</caption>
-                            {{range .Cnes}}
-                            <td>{{.}}</td>
-                            {{end}}
-                        </tr>
-                </table>
-                        
-                <table class="infoacs" id="ine">
-                        <tr>
-                            <caption>INE</caption>
-                            {{range .Ine}}
-                            <td>{{.}}</td>
-                            {{end}}
-                        </tr>
-                </table>
-                        
-                <table class="infoacs" id="microarea">
-                        <tr>
-                            <caption>MICROÁREA</caption>
-                            <td>0</td>
-                            <td>2</td>
-                        </tr>
-                </table>
-
-                <table class="infoacs" id="datacadastro">
-                    <tr>
-                        <caption>DATA DO CADASTRO <div class="asc">*</div></caption>
-                        <td style="border: none; font-size: 0.9vw;"><input type="date" name="DataCadastro" id="" style="height: 3vh;" required></td>
-                    </tr>
-                </table>
-            </div>
-
-            <hr>
-
-            <div class="form-section-one">
-                <label for="nome">NOME <div class="asc">*</div></label>
-                <input type="text" id="nome" name="nome" placeholder="Ex.: João da Silva" required>
-
-                <label for="data-nascimento">DATA DE NASCIMENTO <div class="asc">*</div></label>
-                <input type="text" id="data" name="datanascimento" maxlength="10" placeholder="Ex.:DD/MM/AAAA" required>
-
-                <label for="cpf">CPF <div class="asc">*</div></label>
-                <input type="text" id="cpf" name="cpfpaciente" maxlength="14" placeholder="Ex.:123.456.789-09" required>
-
-                <label for="mae">NOME DA MÃE <div class="asc">*</div></label>
-                <input type="text" id="mae" name="nomemae" placeholder="Ex.: Maria da Silva" required>
-
-                <label for="isexo">SEXO</label>
-                <select name="sexo" id="isexo">
-                    <option value="">Selecione</option>
-                    <option value="Masculino">Masculino</option>
-                    <option value="Feminino">Feminino</option>
-                </select>
-
-            </div>
-            <div class="form-section-two">
-                <label for="isus">CARTÃO DO SUS</label>
-                <input type="text" id="cartaoSus" name="cartaosus" maxlength="18" placeholder="Ex.: 999 9999 9999 9999">
-
-
-                <label for="itel">TELEFONE <div class="asc">*</div></label>
-                <input type="tel" id="telefone" name="telefone" maxlength="15" placeholder="Ex.: (99)99999-9999" required>
-
-                <label for="imail">E-MAIL</label>
-                <input type="text" id="imail" name="email" placeholder="Ex.: joaodasilva@gmail.com">
-
-                <p id="campo-endereco">Endereço</p>
-
-                
-                    <div class="end1">
-                        <label for="irua">RUA:</label>
-                        <input type="text" id="irua" placeholder="Ex.: Av. Brasil" name="rua">
-                        <label for="icep">CEP:</label>
-                        <input type="text" id="cep" pattern="^\d{5}-\d{3}$" maxlength="9" placeholder="Ex.: 12345-678" name="cep">
-                    </div>
-                    <div class="end2">
-                        <label for="ibairro">BAIRRO:</label>
-                        <input type="text" id="ibairro" placeholder="Ex.: Bela Vista" name="bairro">
-                        <label for="inum">Nº:</label>
-                        <input type="number" id="inum" placeholder="Ex.: 99" name="numero">
-                    </div>
-                    <div class="end3">
-                        <label for="icomplemento">COMPLEMENTO:</label>
-                        <input type="text" id="icomplemento" placeholder="Ex.: Apto,casa..." name="complemento">
-                    </div>
-                
-            </div>
-            <div class="form-section risk-factors">
-                <h3>Fatores de Risco para Câncer de Boca</h3>
-                <div>
-                    <label class="borda">Homem <div class="asc">*</div> &#40idade igual ou superior a 40 anos&#41</label>
-                    <div class="radio-group">
-                        <p>Marque sim ou não: </p>
-                        <label class="label1"><input type="radio" name="tipo1" id="sim1" value="Sim" ><span>Sim</span></label>
-                        <label class="label2"><input type="radio" name="tipo1" id="nao1" value="Não"><span>Não</span></label>
-                    </div>
-                </div>
-                <div>
-                    <label class="borda">Etilista <div class="asc">*</div> &#40consome álcool regurlamente&#41</label>
-                    <div class="radio-group">
-                        <p>Marque sim ou não: </p>
-                        <label class="label1"><input type="radio" name="tipo2" id="sim2" value="Sim" ><span>Sim</span></label>
-                        <label class="label2"><input type="radio" name="tipo2" id="nao2" value="Não"><span>Não</span></label>
-                    </div>
-                </div>
-                <div>
-                    <label class="borda">Tabagista <div class="asc">*</div> &#40consome cigarro regurlamente&#41</label>
-                    <div class="radio-group">
-                        <p>Marque sim ou não: </p>
-                        <label class="label1"><input type="radio" name="tipo3" id="sim3" value="Sim" ><span>Sim</span></label>
-                        <label class="label2"><input type="radio" name="tipo3" id="nao3" value="Não"><span>Não</span></label>
-                    </div>
-                </div>
-                <div>
-                    <label class="borda">Com lesão bucal suspeita <div class="asc">*</div></label>
-                    <div class="radio-group">
-                        <p>Marque sim ou não: </p>
-                        <label class="label1"><input type="radio" name="tipo4" id="sim4" value="Sim" ><span>Sim</span></label>
-                        <label class="label2"><input type="radio" name="tipo4" id="nao4" value="Não"><span>Não</span></label>
-                    </div>
-                </div>
-                <div class="risk-level">
-                    <label class="borda">Grau de Prioridade para Câncer de Boca</label>
-                    <div class="risk-status">____ Prioridade</div>
-                </div>
-            </div>
-            <div id="modal">
-                <div id="logout">
-                    <div class="fixar">
-                        <div class="relativa">
-                            <p class="alerta">ATENÇÃO</p>
-                            <img src="/img/imagens/atencao.png" alt="Icone de Atenção" class="atencao">
-                            <p class="ctz">Todos dados cadastrados estão corretos?</p>
-                            <button class="sim" type="submit">Sim</button>
-                            <button class="voltar">Voltar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <footer>
-            <a href="/dashboard/voltar" class="form-section-voltar"><input type="submit" value="Voltar"></a>
-            <div class="obrigatorio">
-                <p>Os itens assinalados com <span class="asc">*</span> são de preenchimento obrigatório</p>
-            </div>
-            <a href="#" class="download"><input type="submit" value="PDF"></a>
-            <a href="#" class="validar"><input type="submit" value="Validar o Telefone"></a>
-            <div class="form-section-confirmar">
-                <button type="submit" id="confirmador">Confirmar</button>
-            </div>
-        </footer>
+    <img src="/img/img/LogoSobrevidas.png" alt="Logo Sobrevidas" class="posicionar">
+    <h1 class="titulo">SOBREVIDAS - ACS</h1>
+    <h2 class="subtitulo">NOVO CADASTRO</h2>
+    <div id="caixausuario">
+        <p class="usuario">{{.PrimeiraLetra}}</p>
+        <p class="caixa">{{.Usuario}}</p>
+        <a href="#"><img src="imagens/iconeSino.png" alt="Icone de Notificação" class="sinoimg"></a>
     </div>
+    <a id="btnlogout"><img src="/img/img/logout.png" alt="Icone de sair" class="sair"></a>
+    </header>
+
+    <form method="post" action="/paciente-cadastrado">
+
+    <div class="camposcima">
+        <table class="infoacs" id="cns">
+            <tr>
+                <tr>
+                    <caption>CNS DO PROFISSIONAL</caption>
+                    <tr>
+                        {{range .Cns}}
+                        <td>{{.}}</td>
+                        {{end}}
+                    </tr>
+                </tr>
+        </table>
+
+        <table class="infoacs" id="cbo">
+            <tr>
+                <caption>CBO</caption>
+                <td>{{.Cbo1}}</td>
+                <td>{{.Cbo2}}</td>
+                <td>{{.Cbo3}}</td>
+                <td>{{.Cbo4}}</td>
+                <td id="hifen">-</td>
+                <td>{{.Cbo5}}</td>
+                <td>{{.Cbo6}}</td>
+            </tr>
+        </table>
+
+        <table class="infoacs" id="cnes">
+                <tr>
+                    <caption>CNES</caption>
+                    {{range .Cnes}}
+                    <td>{{.}}</td>
+                    {{end}}
+                </tr>
+        </table>
+                
+        <table class="infoacs" id="ine">
+                <tr>
+                    <caption>INE</caption>
+                    {{range .Ine}}
+                    <td>{{.}}</td>
+                    {{end}}
+                </tr>
+        </table>
+                
+        <table class="infoacs" id="microarea">
+                <tr>
+                    <caption>MICROÁREA</caption>
+                    <td>0</td>
+                    <td>2</td>
+                </tr>
+        </table>
+
+        <table class="infoacs" id="datacadastro">
+            <tr>
+                <caption>DATA DO CADASTRO <div class="asc">*</div></caption>
+                <td style="border: none; font-size: 1.08em;"><input type="text" name="DataCadastro" id="inputdatacadastro" placeholder="DD/MM/YYYY" onfocus="this.type='date'" 
+                    onblur="if (!this.value) this.type='text'" style="height: 2vh;" required></td>
+            </tr>
+        </table>
+    </div>
+
+    <hr style="margin-top: 14vh;">
+
+    <div class="camposesquerda">
+
+        <p class="cima">NOME COMPLETO <mark style="color: red; background-color: white;">*</mark></p>
+        <input type="text" class="nome" id="nome" placeholder="Ex.: João da Silva" required></input>
+
+        <p class="cima">CPF <mark style="color: red; background-color: white;">*</mark></p>
+        <input type="text" id="cpf" name="datanascimento" class="cpf" maxlength="14" placeholder="Ex.:123.456.789-09" required></input>
+
+        <p class="cima">DATA DE NASCIMENTO <mark style="color: red; background-color: white;">*</mark></p>
+        <input type="text" id="data" name="datanascimento" class="nascimento" maxlength="10" placeholder="Ex.:DD/MM/AAAA" required></input>
+        
+        <p class="cima">NOME DA MÃE <mark style="color: red; background-color: white;">*</mark></p>
+        <input type="text" id="mae" name="nomemae" class="mae" placeholder="Ex.: Maria da Silva" required></input>
+
+        <p class="cima">CARTÃO DO SUS</p>
+        <input type="text" id="cartaoSus" name="cartaosus" class="CartaoSus" maxlength="18" placeholder="Ex.: 999 9999 9999 9999"></input>
+
+        <p class="cima">TELEFONE <mark style="color: red; background-color: white;">*</mark></p>
+        <input type="tel" id="telefone" class="telefone" maxlength="15" placeholder="Ex.: (99)99999-9999" required></input>
+
+        <p class="cima">SEXO <mark style="color: red; background-color: white;">*</mark></p>
+        <select name="sexo" id="isexo" class="sexo">
+            <option value="">Selecione</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Feminino">Feminino</option>
+        </select>
+    </div>
+
+    <div class="camposdireita">
+
+        <p class="cima">EMAIL</p>
+        <input type="text" id="imail" name="email" class="email" placeholder="Ex.: joaodasilva@gmail.com"></input>
+
+        <h2 class="cima" style="margin-bottom: 2vh;margin-top: 3vh;font-size: 3vh;">ENDEREÇO</h2>
+
+        <p class="cima">RUA</p>
+        <input type="text" id="irua"  class="rua" placeholder="Ex.: Av. Brasil"></input>
+
+        <p class="cima">BAIRRO</p>
+        <input type="text" id="ibairro" name="bairro" class="bairro" placeholder="Ex.: Bela Vista"></input>
+
+        <p class="cima">CEP</p>
+        <input type="text" id="cep" name="cep" class="cep" pattern="^\d{5}-\d{3}$" maxlength="9" placeholder="Ex.: 12345-678"></input>
+
+        <p class="cima">NÚMERO</p>
+        <input type="number" id="inum" class="numero" placeholder="Ex.: 99" name="numero">
+
+
+        <p class="cima">COMPLEMENTO</p>
+        <input type="text" id="icomplemento" name="complemento" class="complemento" placeholder="Ex.: Apto,casa..."></input>
+
+        </div>
+        <p class="bola"></p>
+
+        <h2  class="tituloriscos">Fatores de Risco para o Câncer de Boca</h2>
+
+        <p class="homem">Homem <mark style="color: red; background-color: white;">*</mark> &#40idade igual ou superior a 40 anos&#41</p>
+        <p class="sn1">Marque sim ou não:</p>
+        <input type="radio" id="sim1" name="tipo1" value="Sim">
+        <label class="homem_sim" for="sim1"></label>
+
+        <input type="radio" id="nao1" name="tipo1" value="Não">
+        <label class="homem_nao" for="nao1"></label>
+
+
+
+        <p class="etilista">Etilista <mark style="color: red; background-color: white;">*</mark> &#40consome álcool regurlamente&#41</p>
+        <p class="sn2">Marque sim ou não:</p>
+        <input type="radio" id="sim2" name="tipo2" value="Sim">
+        <label class="etilista_sim" for="sim2"></label>
+
+        <input type="radio" id="nao2" name="tipo2" value="Não">
+        <label class="etilista_nao" for="nao2"></label>
+
+
+
+        <p class="tabagista">Tabagista <mark style="color: red; background-color: white;">*</mark> &#40consome cigarro regurlamente&#41</p>
+        <p class="sn3">Marque sim ou não:</p>
+        <input type="radio" class="" id="sim3" name="tipo3" value="Sim">
+        <label class="tabagista_sim" for="sim3"></label>
+
+        <input type="radio" class="" id="nao3" name="tipo3" value="Não">
+        <label class="tabagista_nao" for="nao3"></label>
+
+
+
+
+        <p class="lesao">Com lesão bucal suspeita <mark style="color: red; background-color: white;">*</mark></p>
+        <p class="sn4">Marque sim ou não:</p>
+        <input type="radio" class="" id="sim4" name="tipo4" value="Sim">
+        <label class="lesao_sim" for="sim4"></label>
+
+        <input type="radio" class="" id="nao4" name="tipo4" value="Não">
+        <label class="lesao_nao" for="nao4"></label>
+
+
+
+
+        <p class="level">Grau de Prioridade para Câncer de Boca</p>
+        <p class="status">___ Prioridade</p>
+    </div>
+
+
+    <div id="modal">
+        <div id="logout">
+            <div class="fixar">
+                <div class="relativa">
+                    <p class="alerta">ATENÇÃO</p>
+                    <img src="/img/imagens/atencao.png" alt="Icone de Atenção" class="atencao">
+                    <p class="ctz">Todos dados cadastrados estão corretos?</p>
+                    <button class="sim" type="submit">Sim</button>
+                    <button class="voltar">Voltar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </form>
+
+    <div id="modal">
+        <div id="logout">
+            <div class="fixar">
+                <div class="relativa">
+                    <img src="/img/img/logout icon.png" alt="Icone de Logout" class="deslogar">
+                    <p class="ctz">Tem certeza que deseja sair da <br> sua conta?</p>
+                    <a href="/"><button class="sim">Sim, deslogar.</button></a>
+                    <button class="nao">Não, continuar logado.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <a href="/dashboard/voltar" class="form-section-voltar"><input type="submit" value="Voltar"></a>
+        <p class="obrigatorio">Os itens assinalados com <mark style="color: red; background-color: white;">*</mark> são de preenchimento obrigatório</p>
+        <a href="/dashboard/voltar" class="download"><input type="submit" value="PDF"></a>
+        <a href="/dashboard/voltar" class="validar"><input type="submit" value="Validar"></a>
+        <a href="/dashboard/voltar" class="confirmar"><input type="submit" value="Confirmar"></a>
+    </footer>
+
     {{if .Confirmacao}}
+
     <div id="modal2">
         <div id="confirmacao">
             <div class="fixar2">
@@ -1176,7 +1227,9 @@ input:checked + span {
             </div>
         </div>
     </div>
+
     {{end}}
+
     <div id="modalLogout">
         <div id="logoutLogin">
             <div class="fixarLogout">
@@ -1189,37 +1242,8 @@ input:checked + span {
             </div>
         </div>
     </div>
+
     <script>
-        let btn3 = document.getElementById('btnlogout');
-        let modalLogout = document.getElementById('modalLogout');
-        let cancelbtn3 = document.querySelector('.naoLogout');
-
-        btn3.onclick = function(){
-            modalLogout.style.display = 'block';
-        }
-
-        cancelbtn3.onclick = function(){
-            modalLogout.style.display = 'none';
-        }
-        let btn = document.getElementById('confirmador');
-        let modal = document.getElementById('modal');
-        let cancelbtn = document.querySelector('.voltar');
-        let simbtn = document.querySelector('.sim');
-        let modal2 = document.getElementById('modal2');
-
-        btn.onclick = function(){
-            modal.style.display = 'block';
-        }
-
-        cancelbtn.onclick = function(){
-            modal.style.display = 'none';
-        }
-
-        simbtn.onclick = function(){
-            modal.style.display = 'none';
-            modal2.style.display = 'block';
-        }
-
 
         function formatarCPF(cpf) {
             cpf = cpf.replace(/\D/g, '');
@@ -1286,6 +1310,36 @@ input:checked + span {
             event.target.value = formatarData(data);
         });
 
+
+        let btn3 = document.getElementById('btnlogout');
+        let modalLogout = document.getElementById('modalLogout');
+        let cancelbtn3 = document.querySelector('.naoLogout');
+
+        btn3.onclick = function(){
+            modalLogout.style.display = 'block';
+        }
+
+        cancelbtn3.onclick = function(){
+            modalLogout.style.display = 'none';
+        }
+        let btn = document.getElementById('confirmador');
+        let modal = document.getElementById('modal');
+        let cancelbtn = document.querySelector('.voltar');
+        let simbtn = document.querySelector('.sim');
+        let modal2 = document.getElementById('modal2');
+
+        btn.onclick = function(){
+            modal.style.display = 'block';
+        }
+
+        cancelbtn.onclick = function(){
+            modal.style.display = 'none';
+        }
+
+        simbtn.onclick = function(){
+            modal.style.display = 'none';
+            modal2.style.display = 'block';
+        }
     </script>
 </body>
 </html>
