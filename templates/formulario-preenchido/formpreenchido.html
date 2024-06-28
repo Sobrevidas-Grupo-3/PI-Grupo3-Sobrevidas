@@ -224,8 +224,8 @@
 
         .form-section-voltar {
             position: fixed;
-            bottom: 11vh;
-            left: 0.5vw;
+            bottom: 7vh;
+            left: 0.8vw;
             width: 10vw;
         }
 
@@ -501,27 +501,24 @@
 
         .form-section-voltar > [type="submit"] {
             position: absolute;
-            height: 7vh;
+            height: 5vh;
             width: 10vw;
-            background-color: #007bff;
+            background-color: #0C91F0;
             color: white;
             border: none;
-            border-radius: 4px;
-            font-size: 1.176vw;
-            margin-top: 1.471vw;
+            border-radius: 7px;
+            font-size: 1.1vw;
             float: left;
             font-family: "Poppins", sans-serif;
-            font-weight: 500;
-            align-content: center;
+            background-image: url(/imagens/iconeSetaVoltar1.1.png);
+            background-size: 2vw;
+            background-position: left 0.8vw center;
+            background-repeat: no-repeat;
         }
 
         .form-section-voltar > [type="submit"]:hover {
             background-color: #0056b3;
             cursor: pointer;
-        }
-
-        .form-section-voltar > [type="submit"]::before {
-            content: '<ㅤㅤㅤ';
         }
 
         .form-section-download {
@@ -971,13 +968,13 @@
                 <div class="botoes">
                     <div class="form-section-voltar">
                         {{if .BaixoRisco}}
-                        <a href="/pagina-baixo-risco" class="form-section-voltar"><input type="submit" value="<      Voltar"></a>
+                        <a href="/pagina-baixo-risco" class="form-section-voltar"><input type="submit" value="     Voltar"></a>
                         {{end}}
                         {{if .MedioRisco}}
-                        <a href="/pagina-medio-risco" class="form-section-voltar"><input type="submit" value="<      Voltar"></a>
+                        <a href="/pagina-medio-risco" class="form-section-voltar"><input type="submit" value="     Voltar"></a>
                         {{end}}
                         {{if .AltoRisco}}
-                        <a href="/pagina-alto-risco" class="form-section-voltar"><input type="submit" value="<      Voltar"></a>
+                        <a href="/pagina-alto-risco" class="form-section-voltar"><input type="submit" value="     Voltar"></a>
                         {{end}}
                     </div>
                     <!--PDF-->
