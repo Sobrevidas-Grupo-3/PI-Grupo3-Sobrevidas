@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -32,962 +33,1068 @@
         .asc {
         color: red;
         display: inline-block;
-    }
-
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #ffffff;
-        display: flex;
-        height: 100vh;
-        width: 100vw;
-    }
-
-    .container {
-        background-color: white;
-        width: 100vw;
-        padding: 0.052vw;
-        border-radius: 0.417vw;
-        box-shadow: 0 0 0.521vw rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-    }
-
-    header{
-    background-color: #007FDA;
-    width: 100%;
-    height: 8vh;
-    display: flex;
-}
-
-.posicionar{
-    display: block;
-    margin-left: 1%;
-    height: 8vh;
-    width: 5%;
-}
-
-.titulo{
-    font-size: 5vh;
-    position: fixed;
-    font-family: "Inter";
-    margin-top: 0.5%;
-    left: 15%;
-    color: white;
-}
-
-.subtitulo{
-    font-size: 4vh;
-    position: fixed;
-    font-family: "Inter";
-    color: white;
-    margin-top: 0.8%;
-    left: 55%;
-}
-
-#caixausuario{
-    position: fixed;
-    display: flex;
-    background-color: #0C91F0;
-    border-radius: 0.417vw;
-    height: 6.5%;
-    width: 13%;
-    top: 1%;
-    left: 80%;
-    box-shadow: 0.052vw 0.052vw rgba(0, 0, 0, 0.226);
-}
-
-.usuario{
-    position: fixed;
-    background-color: #5A67BA;
-    border-radius: 50%;
-    color: white;
-    font-family: "Poppins";
-    font-weight: bold;
-    margin-top: 1.3vh;
-    margin-left: 0.5vw;
-    width: 2%;
-    height: 3.9%;
-    text-align: center;
-    font-size: 2.5vh;
-}
-
-.caixa{
-    position: fixed;
-    color: white;
-    font-family: "Poppins";
-    font-weight: bold;
-    top: 2.3%;
-    left: 83%;
-    font-size: 2.5vh;
-}
-
-.sinoimg{
-    position: fixed;
-    top: 2.3vh;
-    left: 90%;
-    width: 2%;
-    height: 4%;
-}
-
-.sair{
-    position: fixed;
-    display: block;
-    height: 4%;
-    width: 2%;
-    top: 2%;
-    right: 2%;
-}
-
-    .form-section-01 {
-        max-width: 100vw;
-        margin-top: 0.5%;
-        padding: 0.5%;
-        display: inline-block;
-        position: static;
-        font-size: 2vh;
-        margin-left: 10vw;
-    }
-
-    .form-section-01 > .infoacs {
-        font-family: "Noto Sans", sans-serif;
-        display: inline-block;
-        border: 0.052vw solid black;
-        border-radius: 0.521vw 0vw 0vw 0.521vw;
-        padding: 0.156vw 0.26vw 0.104vw 0.26vw;
-        margin-left: -0.4vw;
-    }
-
-    table {
-        border-collapse: collapse;
-    }
-
-    td {
-        border: 0.052vw solid black;
-        padding: 0.104vw 0.156vw 0.104vw 0.156vw;
-    }
-
-    caption {
-        font-weight: bolder;
-        text-align: left;
-        display: inline-block;
-    }
-
-    #hifen {
-        border: 0;
-    }
-
-    .form-section-01 > #cbo {
-        padding-right: 0.521vw;
-    }
-
-    .form-section-01 > #cbo {
-        border-radius: 0;
-
-    }
-
-    .form-section-01 > #cnes {
-        border-radius: 0;
-    }
-
-    .form-section-01 > #ine {
-        border-radius: 0;
-    }
-
-    .form-section-01 > #microarea {
-        border-radius: 0;
-    }
-
-    .form-section-01 > #datacadastro {
-        border-radius: 0vw 0.521vw 0.521vw 0vw;
-        width: 20vw;
-    }
-
-    .form-section-one{
-        font-size: 1.2vw;
-        width: 30vw;
-        height: 70vh;
-        display: inline-block;
-        float: left;
-        font-family: "Noto Sans", sans-serif;
-        margin-right: 4%;
-        margin-left: 1vw;
-    }
-
-    .form-section-two{
-        font-size: 1.2vw;
-        width: 30vw;
-        float: center;
-        height: 70vh;
-        display: inline-block;
-        font-family: "Noto Sans", sans-serif;
-    }
-
-    .form-section label {
-        display: block;
-        font-weight: bold;
-    }
-
-    .form-section-one label{
-        font-weight: bold;
-        margin-bottom: 0.052vw;
-        display: block;
-        padding-bottom: 0vw;
-        padding-top: 2.9vh;
-        color: gray;
-    }
-
-    .form-section-one > p {
-        padding-bottom: 0.26vw;
-        margin-top: 0.521vw;
-        margin-bottom: 0vw;
-    }
-
-    .form-section-two label{
-        font-weight: bold;
-        max-width: 30vw;
-        margin-bottom: 0vw;
-        display: inline-block;
-        padding-bottom: 0vw;
-        padding-top: 1.9vh;
-        color: gray;
-
-    }
-
-    .form-section-two > p {
-        padding-bottom: 0.26vw;
-        margin-top: 0.521vw;
-        margin-bottom: 0vw;
-    }
-
-
-    .form-section-one input,
-    .form-section-one input {
-        font-size: 1vw;
-        border: 0.156vw solid black;
-        border-radius: 0.521vw;
-        padding: 0.625vw;
-        width: calc(100% - 1.042vw);
-        font-weight: bold;
-    }
-
-    .form-section-one > select{
-        font-size: 1vw;
-        border: 0.156vw solid black;
-        border-radius: 0.521vw;
-        padding: 0.625vw;
-        width: calc(100% - 1.042vw);
-        cursor: pointer;
-    }
-
-    .form-section-one option{
-        font-size: 1.25vw; 
-        color: black;
-        background-color: white;
-        padding: 0.26vw;
-        border-bottom: 0.052vw solid black;
-        transition: background-color 0.3s ease;
-    }
-
-    .form-section-one option:hover {
-        background-color: blue;
-    }
-
-    .form-section-one option:checked {
-        background-color: white;
-    }
-
-    .form-section-two input,
-    .form-section-two input {
-        font-size: 1.2vw;
-        border: 0.156vw solid black;
-        border-radius: 0.521vw;
-        padding: 0.625vw;
-        display: inline-block;
-        width: calc(100% - 1.042vw);
-        font-weight: bold;
-    }
-
-    .form-section input[type="text"]:disabled,
-    .form-section input[type="email"]:disabled {
-        background-color: #e9ecef;
-    }
-
-    /* Endereço */
-
-    #campo-endereco {
-        font-size: 1vw; margin-bottom: 0px; margin-top: 0.26vw;margin-bottom: -0.365vw;
-    }
-
-    .end1 {
-    display: block;
-    padding: 2%;
-    margin: 0px;
-}
-
-.end2 {
-    display: block;
-    padding: 2%;
-}
-
-.end3 {
-    display: block;
-    padding: 2%;
-}
-
-
-#cep {
-    width: 5vw;
-    font-size: 1.2vh;
-}
-
-#ibairro {
-    width: 10vw;
-    font-size: 1.2vh;
-}
-
-#inum {
-    width: 6vw;
-    font-size: 1.2vh;
-}
-
-#irua {
-    width: 12vw;
-    font-size: 1.2vh;
-}
-
-#icomplemento {
-    width: 15vw;
-    font-size: 1.2vh;
-}
-
-
-.risk-factors {
-    float: right;
-    width: 25vw;
-    height: 63vh;
-    display: inline-block;
-    margin-right: 5%;
-    margin-top: 1%;
-    background-color: #49bbc691;
-    border-radius: 1.042vw;
-    padding: 1%;
-    text-align: center;
-}
-
-.risk-factors label {
-    max-width: 25vw;
-    background-color: white;
-    border: 0.052vw solid black;
-    padding: 1%;
-    margin-left: 0px;
-    margin-bottom: 0.6vh;
-    border-radius: 1.042vw;
-    font-size: 0.85vw;
-    font-family: "Noto Sans", sans-serif;
-    border: none;
-}
-
-.risk-factors h3 {
-    padding: 1%;
-    margin-bottom: -4%;
-    font-size: 2.5vh;
-    color: 	rgba(87, 4, 4, 0.685);
-}
-
-.radio-group {
-    display: block;
-    align-items: center;
-    margin-bottom: 0.521vw;
-    width: 10vw;
-    font-family: "Noto Sans", sans-serif;
-}
-
-.radio-group > p {
-    width: 5vw;
-    color: rgb(0, 0, 0);
-    position: absolute;
-    float: left;
-    margin-top: 0.021vw;
-    font-size: 0.76vw;
-}
-
-.radio-group button[type="submit"] {
-    background-color: white;
-    color: black;
-    border: 0.156vw solid black;
-    border-radius: 0.781vw;
-    padding: 0.156vw 0.781vw 0.156vw 0.781vw;
-    display: inline-block;
-    box-shadow: 0vw 0.156vw 0.208vw rgba(0, 0, 0, 0.301);
-    position: relative;
-    margin-left: 100%;
-    margin-right: -85%;
-    margin-top: 2%;
-    width: 5vw;
-    font-size: 0.583vw;
-}
-
-
-.radio-group button[type="submit"]:hover{
-    background-color: rgba(255, 0, 0, 0.342);
-}
-
-.radio-group button[type="submit"]:checked{
-    background-color: red;
-}
-
-.radio-group label {
-    margin-right: 0px;
-}
-
-.risk-level {
-    margin-top: 1%;
-    text-align: center;
-    display: inline-block;
-}
-
-.risk-level >  label {
-    max-width: 31vw;
-    margin-bottom: 0.781vw;
-    margin-top: 0.521vw;
-}
-
-.risk-status {
-    display: inline-block;
-    background-color: white;
-    color: black;
-    font-size: 1.4vh;
-    padding: 0.8vw 0.7vw;
-    margin-top: 0.7vh;
-    border-radius: 0.521vw;
-    font-weight: 600;
-    border: 0.052vw solid black;
-}
-
-.borda {
-    margin: 1vw;
-}
-
-
-.label1{
-    display: inline-block;
-    width: 4vh;
-    padding: 5vh;
-    position: relative;
-    left: 10vw;
-    top: 1.5vh;
-    transform: translateX(-4vw);
-}
-
-.label1 input{
-    display: block;
-    width: 1vw;
-    height: 1vh;
-    background-color: #49bbc691;
-    text-align: center;
-}
-
-.label1 span{
-    border: 0.052vw solid black;
-    font-family: "Noto Sans", sans-serif;
-    width: 3vw;
-    height: 2.5vh;
-    position: absolute;
-    overflow: hidden;
-    line-height: 1;
-    text-align: center;
-    border-radius: 0.781vw; 
-    left: 0; 
-    top: 0;
-    background-color: white;
-    cursor: pointer;
-    box-shadow: 0vw 0.156vw 0.208vw rgba(0, 0, 0, 0.301);
-    font-size: 0.833vw;
-    font-weight: normal;
-}
-
-.label2{
-    display: inline-block;
-    width: 4vh;
-    padding: 5vh;
-    position: relative;
-    left: 10vw;
-    top: -0.5vh;
-}
-
-.label2 input{
-    display: block;
-    width: 0vw;
-    height: 1vh;
-    background-color: #49bbc691;
-    text-align: center;
-}
-
-.label2 span{
-    border: 0.052vw solid black;
-    font-family: "Noto Sans", sans-serif;
-    width: 3vw;
-    height: 2.5vh;
-    position: absolute;
-    overflow: hidden;
-    line-height: 1;
-    text-align: center;
-    border-radius: 0.781vw; 
-    font-size: 10pt; 
-    left: 0; 
-    top: 0;
-    background-color: white;
-    cursor: pointer;
-    box-shadow: 0vw 0.156vw 0.208vw rgba(0, 0, 0, 0.301);
-    font-size: 0.833vw;
-    font-weight: normal;
-}
-
-input:checked + span {
-    border: 0.052vw solid black;
-    background: #DE4242;
-    box-shadow: 0.052vw 0.052vw rgba(0, 0, 0, 0.452);
-
-}
-
-#btnlogout {
-        cursor: pointer;
-}
-    footer{
-        position: fixed;
-        bottom: 2%;
-        left: 4%;
-        display: flex;
-        background-color: white;
-    }
-
-    .form-section-voltar  input[type=submit]{
-        background-color: #0C91F0;
-        border-radius: 10px;
-        color: #ffffff;
-        border-radius: 7px;
-        padding-top: 0.3vw;
-        padding-bottom: 0.3vw;
-        padding-right: 2.5vw;
-        padding-left: 4.5vw;
-        font-family: "Poppins";
-        text-decoration: none;
-        font-size: 1.1vw;
-        border: none;
-        background-image: url(/imagens/iconeSetaVoltar1.1.png);
-        background-repeat: no-repeat;
-        background-size: 2vw;
-        background-position: left 0.5vw center;
-    }
-
-    .form-section-voltar input[type=submit]:hover {
-        background-color: #0C91F0;
-        color: #F5F5F7;
-        font-family: "Poppins";
-        border-radius: 3px;
-        border: none;
-        width: 10vw;
-        height: 5vh;
-        font-weight: bold;
-        background-image: url(/img/img/flecha\ esquerda.png);
-        background-size: 2vw;
-        background-position: left 3% center;
-        background-repeat: no-repeat;
-        font-size: 2.8vh;
-        text-align: center;
-        padding-left: 15px;
-        cursor: pointer;
-    }
-
-    .obrigatorio {
-        display: inline-block;
-        font-size: 0.95vw;
-        padding: 0.104vw;
-        border: 0.104vw solid red;
-        border-radius: 0.521vw;
-        margin: 0vw 1vw 0vw 1vw;
-    }
-
-    .download input[type=submit]{
-        background-color: #0C91F0;
-        color: #F5F5F7;
-        font-family: "Poppins";
-        border-radius: 0.156vw;
-        border: none;
-        width: 7vw;
-        height: 5vh;
-        font-weight: bold;
-        background-image: url(imagens/download.png);
-        background-size: 2vw;
-        background-position: left 3% center;
-        background-repeat: no-repeat;
-        font-size: 2.8vh;
-        text-align: center;
-        padding-left: 0.781vw;
-        margin-left: 2.5vw;
-        margin-right: 7vw;
-    }
-
-
-    .validar input[type=submit]{
-        background-color: #0C91F0;
-        color: #F5F5F7;
-        font-family: "Poppins";
-        border-radius: 0.156vw;
-        border: none;
-        width: 15vw;
-        height: 5vh;
-        font-weight: bold;
-        background-size: 2vw;
-        background-position: left 3% center;
-        background-repeat: no-repeat;
-        font-size: 2.8vh;
-        text-align: center;
-        margin-right: 5.5vw;
-    }
-
-    .form-section-validar-tel > [type="submit"]:hover {
-        background-color: #0056b3;
-        cursor: pointer;
-    }
-
-    .form-section-confirmar > [type="submit"] {
-        text-align: center;
-        padding: 0.26vw 0.521vw 0.26vw 0.521vw;
-        background-color: #0C91F0;
-        font-family: "Poppins";
-        color: white;
-        border: none;
-        font-weight: bold;
-        border-radius: 0.208vw;
-        font-size: 2.8vh;
-        margin-left: 2.604vw;
-        margin-right: 0.521vw;
-    }
-
-    .form-section-confirmar > [type="submit"]:hover {
-        background-color: #0056b3;
-        cursor: pointer;
-    }
-
-    /* Pop-Ups */
-
-    #modal{
-      display: none;  
-    }
-
-    .alerta{
-        background-color: #ff000040;
-        margin-top: 0px;
-        border-top-right-radius: 0.417vw;
-        border-top-left-radius: 0.417vw;
-        text-align: center;
-        font-family: "Poppins";
-        font-weight: bold;
-        color: #491D1D;
-        font-size: 1.4vw;
-    }
-
-    #logout{
-        position: absolute;
-        top: 25vh;
-        left: 35vw; 
-    }
-
-    .fixar{
-        position: fixed;
-    }
-
-    div.relativa{
-        background-color: white;
-        position: relative;
-        border-radius: 0.521vw;
-        width: 30vw;
-        height: 38vh;
-        font-family: "Inter";
-        border: 0.156vw solid #737B8B;
-    }
-
-    img.atencao{
-        position: absolute;
-        width: 7vw;
-        left: 11vw;
-        top: 5.5vh;
-    }
-
-    .ctz{
-        position: absolute;
-        top: 22vh;
-        text-align: center;
-        font-weight: bold;
-        font-size: 1.1vw;
-        left: 3vw;
-        color: #4B505A;
-        font-family: "Poppins";
-    }
-
-    .sim{
-        font-family: "Inter";
-        border-radius: 0.26vw;
-        position: absolute;
-        background-color: #007FDA;
-        color: white;
-        border: none;
-        top: 30vh;
-        width: 11.5vw;
-        height: 5.5vh;
-        cursor: pointer;
-        left: 17vw;
-        font-weight: bold;
-        font-size: 1.1vw;
-        background-image: url(/img/imagens/setadireita.png);
-        background-repeat: no-repeat;
-        background-size: 0.6vw;
-        background-position: right 0.5vw center;
-    }
-
-    .sim:hover{
-        background-color: #0662a3;
-    }
-
-    #btnlogout{
-        cursor: pointer;
-    }
-
-    .voltar{
-        border-radius: 0.26vw;
-        position: absolute;
-        background-color: #007FDA;
-        color: white;
-        border: none;
-        top: 30vh;
-        width: 11.5vw;
-        height: 5.5vh;
-        cursor: pointer;
-        left: 1.5vw;
-        font-weight: bold;
-        font-family: "Inter";
-        font-size: 1.1vw;
-        background-image: url(/img/imagens/setaesquerda.png);
-        background-repeat: no-repeat;
-        background-size: 0.6vw;
-        background-position: left 0.5vw center;
-    }
-
-    .voltar:hover{
-        background-color: #0662a3;
-    }
-
-    #btnlogout{
-        cursor: pointer;
-    }
-
-    .voltando{
-        padding: 0.521vw;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 0.208vw;
-        margin-top: 1.042vw;
-        margin-right: 0.781vw;
-        margin-left: 1.563vw;
-        width: 7.813vw;
-        font-size: 0.75vw;
-    }
-
-    .voltando:hover {
-        background-color: #0056b3;
-        cursor: pointer;
-    }
-
-    .voltando {
-        padding: 0.521vw 1.042vw 0.521vw 1.042vw;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 0.208vw;
-        font-size: 0.75vw;
-        margin-left: 0px;
-        margin-right: 0.521vw;
-        background-image: url(/img/imagens/voltar.png);
-        background-repeat: no-repeat;
-        background-size: 2.5vw;
-        background-position: left center;
-    }
-
-    .voltando:hover {
-        background-color: #0056b3;
-        cursor: pointer;
-    }
-
-    #error{
-        position: absolute;
-        background-color: rgba(255, 0, 0, 0.493);
-        width: 35vw;
-        height: 3vh;
-        text-align: center;
-        top: 12vh;
-        left: 60vw;
-        font-family: "Inter";
-        font-weight: bold;
-        color: red;
-    }
-    #modal2{
-        display: block;
-    }
-
-    .confirmado{
-        background-color: #00fa645b;
-        margin-top: 0px;
-        border-top-right-radius: 0.417vw;
-        border-top-left-radius: 0.417vw;
-        text-align: center;
-        font-family: "Poppins";
-        font-weight: bold;
-        color: #26491D;
-        font-size: 1.4vw;
-    }
-
-    #confirmacao{
-        position: absolute;
-        top: 25vh;
-        left: 35vw; 
-    }
-
-    .fixar2{
-        position: fixed;
-    }
-
-    div.relativa2{
-        background-color: white;
-        position: relative;
-        border-radius: 0.521vw;
-        width: 30vw;
-        height: 38vh;
-        font-family: "Inter";
-        border: 0.156vw solid #737B8B;
-    }
-
-    img.confirmed{
-        position: absolute;
-        width: 7vw;
-        left: 11.5vw;
-        top: 5.5vh;
-    }
-
-    .cadastradook{
-        position: absolute;
-        top: 22vh;
-        text-align: center;
-        font-weight: bold;
-        font-size: 1.1vw;
-        left: 5vw;
-        color: #4B505A;
-        font-family: "Poppins";
-    }
-
-    .ok{
-        font-family: "Inter";
-        border-radius: 0.26vw;
-        position: absolute;
-        background-color: #00AB30;
-        color: white;
-        border: none;
-        top: 30vh;
-        width: 11.5vw;
-        height: 5.5vh;
-        cursor: pointer;
-        left: 9vw;
-        font-weight: bold;
-        font-size: 1.1vw;
-    }
-
-    .ok:hover{
-        background-color: #007421;
-    }
-    #modalLogout{
-        display: none;
-    }
-
-    #logoutLogin{
-        position: absolute;
-        top: 25vh;
-        left: 40vw; 
-    }
-
-    .fixarLogout{
-        position: fixed;
-    }
-
-    div.relativaLogout{
-        background-color: white;
-        position: relative;
-        border-radius: 0.521vw;
-        width: 20vw;
-        height: 53vh;
-        font-family: "Inter";
-        border: 0.156vw solid #00538E;
-    }
-
-    img.deslogarLogout{
-        position: absolute;
-        width: 7vw;
-        left: 7vw;
-        top: 3vh;
-    }
-
-    .ctzLogout{
-        position: absolute;
-        top: 23vh;
-        text-align: center;
-        font-weight: bold;
-        font-size: 1.1vw;
-        left: 1.5vw;
-    }
-
-    .simLogout{
-        font-family: "Inter";
-        border-radius: 0.26vw;
-        position: absolute;
-        background-color: #007FDA;
-        color: white;
-        border: none;
-        top: 32vh;
-        width: 16.5vw;
-        height: 5.5vh;
-        cursor: pointer;
-        left: 1.5vw;
-        font-weight: bold;
-        font-size: 0.95vw;
-    }
-
-    .simLogout:hover{
-        background-color: #0662a3;
-    }
-
-    .naoLogout{
-        border-radius: 0.26vw;
-        position: absolute;
-        background-color: #007FDA;
-        color: white;
-        border: none;
-        top: 41vh;
-        width: 16.5vw;
-        height: 5.5vh;
-        cursor: pointer;
-        left: 1.5vw;
-        font-weight: bold;
-        font-family: "Inter";
-        font-size: 0.95vw;
-    }
-
-    .naoLogout:hover{
-        background-color: #0662a3;
-    }
-
-    #btnlogout{
-        cursor: pointer;
-    }
+        }
+
+        .posicionar{
+            display: block;
+            margin-left: 1%;
+            height: 8vh;
+            width: 5%;
+        }
+
+        .titulo{
+            font-size: 5vh;
+            position: fixed;
+            font-family: "Inter";
+            margin-top: 0.5%;
+            left: 15%;
+            color: white;
+        }
+
+        .subtitulo{
+            font-size: 4vh;
+            position: fixed;
+            font-family: "Inter";
+            color: white;
+            margin-top: 0.8%;
+            left: 55%;
+        }
+
+        #caixausuario{
+            position: fixed;
+            display: flex;
+            background-color: #0C91F0;
+            border-radius: 8px;
+            height: 6.5%;
+            width: 13%;
+            top: 1%;
+            left: 80%;
+            box-shadow: 1px 1px rgba(0, 0, 0, 0.226);
+        }
+
+        .usuario{
+            position: fixed;
+            background-color: #5A67BA;
+            border-radius: 50%;
+            color: white;
+            font-family: "Poppins";
+            font-weight: bold;
+            margin-top: 1.3vh;
+            margin-left: 0.5vw;
+            width: 2%;
+            height: 3.9%;
+            text-align: center;
+            font-size: 2.5vh;
+        }
+
+        .caixa{
+            position: fixed;
+            color: white;
+            font-family: "Poppins";
+            font-weight: bold;
+            top: 2.3%;
+            left: 83%;
+            font-size: 2.5vh;
+        }
+
+        .sinoimg{
+            position: fixed;
+            top: 2.3vh;
+            left: 90%;
+            width: 2%;
+            height: 4%;
+        }
+
+        .sair{
+            position: fixed;
+            display: block;
+            height: 4%;
+            width: 2%;
+            top: 2%;
+            right: 2%;
+        }
+
+        .view{
+            background-color: #0C91F0;
+            position: fixed;
+            top: 20;
+            width: 100%;
+            height: 150px;
+        }
+
+        .imagem{
+            position: relative;
+            margin: auto;
+            left: 38.5vw;
+            height: 25vh;
+            width: 23%;
+            margin-top: 2vh;
+        }
+
+        .camera{
+            position: absolute;
+            margin-left: 25.5vw;
+            height: 6vh;
+            width: 18%;
+            top: 9vh;
+            left: 0px;
+        }
+
+        .cima{
+            font-size: 1vw;
+            font-weight: bold;
+            font-family: "Noto Sans", sans-serif;
+        }
+
+        .camposcima{
+            left: 15%;
+            position: fixed;
+            top: 10%;
+            width: 80vw;
+            margin: auto;
+        }
+
+        .infoacs {
+            font-size: 1vw;
+            padding: 0.1vw 0.5vw 0.1vw 0.5vw;
+            font-family: "Noto Sans", sans-serif;
+            font-weight: bold;
+            display: inline-block;
+            border: 1px solid black;
+            border-radius: 10px 0px 0px 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 2px 3px 2px 3px;
+        }
+
+        caption {
+            font-weight: bolder;
+            text-align: left;
+            display: inline-block;
+        }
+
+        #hifen {
+            border: 0;
+        }
+
+        #cns {
+            margin-right: -0.3vw;
+        }
+
+        #cbo {
+            padding-right: 10px;
+            margin-right: -0.3vw;
+        }
+
+        #cbo {
+            border-radius: 0;
+        }
+
+        #cnes {
+            border-radius: 0;
+            margin-right: -0.3vw;
+        }
+
+        #ine {
+            border-radius: 0;
+            margin-right: -0.3vw;
+        }
+
+        #microarea {
+            border-radius: 0;
+            margin-right: -0.3vw;
+        }
+
+        #datacadastro {
+            height: 6.8vh;
+            border-radius: 0px 10px 10px 0px;
+            width: 20vw;
+        }
+
+        #inputdatacadastro {
+            border: none;
+            font-weight: bolder;
+            font-family: "Noto Sans", sans-serif
+        }
+
+        .camposesquerda{
+            margin-left: 2%;
+            position: fixed;
+            top: 25%;
+        }
+
+        .nome {
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+            width: 32vw;
+            height: 5.5vh;
+            font-weight: bold;
+            margin-bottom: 0.4vw;
+            text-indent: 1vh;
+        }
+
+        .cpf {
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+            width: 32vw;
+            height: 5.5vh;
+            font-weight: bold;
+            margin-bottom: 0.4vw;
+            text-indent: 1vh;
+        }
+
+        .nascimento {
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+            width: 32vw;
+            height: 5.5vh;
+            font-weight: bold;
+            margin-bottom: 0.4vw;
+            text-indent: 1vh;
+        }
+
+        .mae {
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+            width: 32vw;
+            height: 5.5vh;
+            font-weight: bold;
+            margin-bottom: 0.4vw;
+            text-indent: 1vh;
+        }
+
+        .CartaoSus {
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+            width: 32vw;
+            height: 5.5vh;
+            font-weight: bold;
+            margin-bottom: 0.4vw;
+            text-indent: 1vh;
+        }
+
+        .telefone {
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+            width: 32vw;
+            height: 5.5vh;
+            font-weight: bold;
+            margin-bottom: 0.4vw;
+            text-indent: 1vh;
+        }
+
+        .sexo {
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+            width: 32vw;
+            height: 5.5vh;
+            font-weight: bold;
+            margin-bottom: 0.4vw;
+        }
+
+        select {
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        option {
+            font-size: 1.5em; 
+            color: black;
+            background-color: white;
+            padding: 5px;
+            border-bottom: 1px solid black;
+            transition: background-color 0.3s ease;
+        }
+
+        .email {
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+            width: 32vw;
+            height: 5.5vh;
+            font-weight: bold;
+            margin-bottom: 0.4vw;
+            text-indent: 1vh;
+        }
+
+        .rua {
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+            width: 32vw;
+            height: 5.5vh;
+            font-weight: bold;
+            margin-bottom: 0.4vw;
+            text-indent: 1vh;
+        }
+
+        .bairro {
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+            width: 32vw;
+            height: 5.5vh;
+            font-weight: bold;
+            margin-bottom: 0.4vw;
+            text-indent: 1vh;
+        }
+
+        .cep {
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+            width: 32vw;
+            height: 5.5vh;
+            font-weight: bold;
+            margin-bottom: 0.4vw;
+            text-indent: 1vh;
+        }
+
+        .numero {
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+            width: 32vw;
+            height: 5.5vh;
+            font-weight: bold;
+            margin-bottom: 0.4vw;
+            text-indent: 1vh;
+        }
+
+        .complemento {
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+            width: 32vw;
+            height: 5.5vh;
+            font-weight: bold;
+            margin-bottom: 0.7vw;
+            text-indent: 1vh;
+        }
+
+        span {
+            position: fixed;
+            margin-top: 2vh;
+            margin-left: 2vw;
+            font-size: 1.2vw;
+        }
+
+        .camposdireita{
+            position: fixed;
+            top: 25%;
+            margin-left: 36%;
+        }
+
+        .bola{
+            position: fixed;
+            background-color: #49bbc691;
+            width: 27vw;
+            height: 66.7vh;
+            border-radius: 10px;
+            top: 25vh;
+            left: 70vw;
+        }
+
+        .tituloriscos {
+            position: fixed;
+            font-family: "Noto Sans", sans-serif;
+            color: 	rgba(87, 4, 4, 0.685);
+            top: 26vh;
+            left: 71vw;
+            font-weight: bold;
+            font-size: 1.3vw;
+        }
+
+        .sn1 {
+            position: fixed;
+            font-family: "Noto Sans", sans-serif;
+            top: 35.6vh;
+            left: 72vw;
+            font-weight: bold;
+            font-size: 0.8vw;
+        }
+
+        .sn2 {
+            position: fixed;
+            font-family: "Noto Sans", sans-serif;
+            top: 45.6vh;
+            left: 72vw;
+            font-weight: bold;
+            font-size: 0.8vw;
+        }
+
+        .sn3 {
+            position: fixed;
+            font-family: "Noto Sans", sans-serif;
+            top: 55.6vh;
+            left: 72vw;
+            font-weight: bold;
+            font-size: 0.8vw;
+        }
+
+        .sn4 {
+            position: fixed;
+            font-family: "Noto Sans", sans-serif;
+            top: 65.6vh;
+            left: 72vw;
+            font-weight: bold;
+            font-size: 0.8vw;
+        }
+
+        .homem {
+            position: fixed;
+            font-family: "Noto Sans", sans-serif;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 5px;
+            width: 24vw;
+            top: 30vh;
+            left: 72vw;
+            font-weight: bold;
+            font-size: 1vw;
+        }
+
+        input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .homem_sim::before {
+            content: "Sim";
+            position: absolute;
+            left: 81vw;
+            top: 35.5vh;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 1vw;
+            padding: 0.1vw 0.5vw 0.1vw 0.5vw;
+            background-color: #fff;
+        }
+
+        input[type="radio"]:checked + .homem_sim::before {
+         background-color: red;
+         content: "Sim";
+        }
+
+        .homem_nao::before {
+            content: "Não";
+            position: absolute;
+            left: 85vw;
+            top: 35.5vh;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 1vw;
+            padding: 0.1vw 0.5vw 0.1vw 0.5vw;
+            background-color: #fff;
+        }
+
+        input[type="radio"]:checked + .homem_nao::before {
+            background-color: red;
+            content: "Não";
+        }
+
+        .etilista {
+            position: fixed;
+            font-family: "Noto Sans", sans-serif;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 5px;
+            width: 24vw;
+            top: 40vh;
+            left: 72vw;
+            font-weight: bold;
+            font-size: 1vw;
+        }
+
+        .etilista_sim::before {
+            content: "Sim";
+            position: absolute;
+            left: 81vw;
+            top: 45.5vh;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 1vw;
+            padding: 0.1vw 0.5vw 0.1vw 0.5vw;
+            background-color: #fff;
+        }
+
+        input[type="radio"]:checked + .etilista_sim::before {
+         background-color: red;
+         content: "Sim";
+        }
+
+        .etilista_nao::before {
+            content: "Não";
+            position: absolute;
+            left: 85vw;
+            top: 45.5vh;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 1vw;
+            padding: 0.1vw 0.5vw 0.1vw 0.5vw;
+            background-color: #fff;
+        }
+
+        input[type="radio"]:checked + .etilista_nao::before {
+            background-color: red;
+            content: "Não";
+        }
+
+
+        .tabagista {
+            position: fixed;
+            font-family: "Noto Sans", sans-serif;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 5px;
+            width: 24vw;
+            top:50vh;
+            left: 72vw;
+            font-weight: bold;
+            font-size: 1vw;
+        }
+
+        .tabagista_sim::before {
+            content: "Sim";
+            position: absolute;
+            left: 81vw;
+            top: 55.5vh;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 1vw;
+            padding: 0.1vw 0.5vw 0.1vw 0.5vw;
+            background-color: #fff;
+        }
+
+        input[type="radio"]:checked + .tabagista_sim::before {
+         background-color: red;
+         content: "Sim";
+        }
+
+        .tabagista_nao::before {
+            content: "Não";
+            position: absolute;
+            left: 85vw;
+            top: 55.5vh;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 1vw;
+            padding: 0.1vw 0.5vw 0.1vw 0.5vw;
+            background-color: #fff;
+        }
+
+        input[type="radio"]:checked + .tabagista_nao::before {
+            background-color: red;
+            content: "Não";
+        }
+        
+
+        .lesao {
+            position: fixed;
+            font-family: "Noto Sans", sans-serif;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 5px;
+            width: 24vw;
+            top:60vh;
+            left: 72vw;
+            font-weight: bold;
+            font-size: 1vw;
+        }
+
+        .lesao_sim::before {
+            content: "Sim";
+            position: absolute;
+            left: 81vw;
+            top: 65.5vh;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 1vw;
+            padding: 0.1vw 0.5vw 0.1vw 0.5vw;
+            background-color: #fff;
+        }
+
+        input[type="radio"]:checked + .lesao_sim::before {
+         background-color: red;
+         content: "Sim";
+        }
+
+        .lesao_nao::before {
+            content: "Não";
+            position: absolute;
+            left: 85vw;
+            top: 65.5vh;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 1vw;
+            padding: 0.1vw 0.5vw 0.1vw 0.5vw;
+            background-color: #fff;
+        }
+
+        input[type="radio"]:checked + .lesao_nao::before {
+            background-color: red;
+            content: "Não";
+        }
+
+        .level {
+            position: fixed;
+            font-family: "Noto Sans", sans-serif;
+            top: 72vh;
+            left: 72.5vw;
+            font-weight: bold;
+            font-size: 1.1vw;
+        }
+
+        .status {
+            position: fixed;
+            font-family: "Noto Sans", sans-serif;
+            top: 76vh;
+            left: 80.5vw;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 1vh;
+            padding: 1vh;
+            font-weight: bold;
+            font-size: 1.1vw;
+        }
+
+        footer{
+            position: fixed;
+            bottom: 1%;
+            left: 1%; 
+        }
+
+        .form-section-voltar input[type=submit]{
+            background-color: #0C91F0;
+            color: #F5F5F7;
+            font-family: "Poppins";
+            border-radius: 3px;
+            border: none;
+            width: 10vw;
+            height: 5vh;
+            font-weight: bold;
+            background-image: url(/img/img/flecha\ esquerda.png);
+            background-size: 2vw;
+            background-position: left 3% center;
+            background-repeat: no-repeat;
+            font-size: 2.8vh;
+            text-align: center;
+            padding-left: 15px;
+        }
+
+        .obrigatorio {
+            display: inline-block;
+            border: 3px solid red;
+            border-radius: 1vh;
+            text-align: center;
+            position: fixed;
+            bottom:2.5vh;
+            left: 15vw;
+            font-weight: bold;
+            font-size: 0.7vw;
+            padding: 3px;
+        }
+
+        .download input[type=submit]{
+            background-color: #0C91F0;
+            color: #F5F5F7;
+            font-family: "Poppins";
+            border-radius: 3px;
+            border: none;
+            width: 10vw;
+            height: 5vh;
+            font-weight: bold;
+            background-image: url(/img/imagens/download.png);
+            background-size: 2vw;
+            background-position: left 3% center;
+            background-repeat: no-repeat;
+            font-size: 2.8vh;
+            text-align: center;
+            padding-left: 15px;
+            margin-left: 30vw;
+        }
+
+        .validar input[type=submit]{
+            background-color: #0C91F0;
+            color: #F5F5F7;
+            font-family: "Poppins";
+            border-radius: 3px;
+            border: none;
+            width: 10vw;
+            height: 5vh;
+            font-weight: bold;
+            background-size: 2vw;
+            background-position: left 3% center;
+            background-repeat: no-repeat;
+            font-size: 2.8vh;
+            text-align: center;
+            padding-left: 15px;
+            margin-left: 15vw;
+        }
+
+        .confirmar input[type=submit]{
+            background-color: #0C91F0;
+            color: #F5F5F7;
+            font-family: "Poppins";
+            border-radius: 3px;
+            border: none;
+            width: 10vw;
+            height: 5vh;
+            font-weight: bold;
+            background-image: url(/img/img/flechadireita.png);
+            background-size: 2vw;
+            background-position: right 1% center;
+            background-repeat: no-repeat;
+            text-align: center;
+            font-size: 2.8vh;
+            padding-right: 30px;
+            margin-left: 10vw;
+        }
+
+        input[type=submit]:hover{
+            background-color: #1675b9;
+        }
+
+        /* POP_UPS */
+
+        #modal{
+            display: none;  
+        }
+
+        .alerta{
+            background-color: #ff000040;
+            margin-top: 0px;
+            border-top-right-radius: 8px;
+            border-top-left-radius: 8px;
+            text-align: center;
+            font-family: "Poppins";
+            font-weight: bold;
+            color: #491D1D;
+            font-size: 1.4vw;
+        }
+
+        #logout{
+            position: absolute;
+            top: 25vh;
+            left: 35vw; 
+        }
+
+        .fixar{
+            position: fixed;
+        }
+
+        div.relativa{
+            background-color: white;
+            position: relative;
+            border-radius: 10px;
+            width: 30vw;
+            height: 38vh;
+            font-family: "Inter";
+            border: 3px solid #737B8B;
+        }
+
+        img.atencao{
+            position: absolute;
+            width: 7vw;
+            left: 11vw;
+            top: 5.5vh;
+        }
+
+        .ctz{
+            position: absolute;
+            top: 22vh;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1vw;
+            left: 3vw;
+            color: #4B505A;
+            font-family: "Poppins";
+        }
+
+        .sim{
+            font-family: "Inter";
+            border-radius: 5px;
+            position: absolute;
+            background-color: #007FDA;
+            color: white;
+            border: none;
+            top: 30vh;
+            width: 11.5vw;
+            height: 5.5vh;
+            cursor: pointer;
+            left: 17vw;
+            font-weight: bold;
+            font-size: 1.1vw;
+            background-image: url(/img/imagens/setadireita.png);
+            background-repeat: no-repeat;
+            background-size: 0.6vw;
+            background-position: right 0.5vw center;
+        }
+
+        .sim:hover{
+            background-color: #0662a3;
+        }
+
+        #btnlogout{
+            cursor: pointer;
+        }
+
+        .voltar{
+            border-radius: 5px;
+            position: absolute;
+            background-color: #007FDA;
+            color: white;
+            border: none;
+            top: 30vh;
+            width: 11.5vw;
+            height: 5.5vh;
+            cursor: pointer;
+            left: 1.5vw;
+            font-weight: bold;
+            font-family: "Inter";
+            font-size: 1.1vw;
+            background-image: url(/img/imagens/setaesquerda.png);
+            background-repeat: no-repeat;
+            background-size: 0.6vw;
+            background-position: left 0.5vw center;
+        }
+
+        .voltar:hover{
+            background-color: #0662a3;
+        }
+
+        #btnlogout{
+            cursor: pointer;
+        }
+
+        .voltando{
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin-top: 20px;
+            margin-right: 15px;
+            margin-left: 30px;
+            width: 150px;
+            font-size: 0.9em;
+        }
+
+        .voltando:hover {
+            background-color: #0056b3;
+            cursor: pointer;
+        }
+
+        .voltando {
+            padding: 10px 20px 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin-left: 0px;
+            margin-right: 10px;
+            background-image: url(/img/imagens/voltar.png);
+            background-repeat: no-repeat;
+            background-size: 2.5vw;
+            background-position: left center;
+        }
+
+        .voltando:hover {
+            background-color: #0056b3;
+            cursor: pointer;
+        }
+
+        #error{
+            position: absolute;
+            background-color: rgba(255, 0, 0, 0.493);
+            width: 35vw;
+            height: 3vh;
+            text-align: center;
+            top: 12vh;
+            left: 60vw;
+            font-family: "Inter";
+            font-weight: bold;
+            color: red;
+        }
+        #modal2{
+            display: block;
+        }
+
+        .confirmado{
+            background-color: #00fa645b;
+            margin-top: 0px;
+            border-top-right-radius: 8px;
+            border-top-left-radius: 8px;
+            text-align: center;
+            font-family: "Poppins";
+            font-weight: bold;
+            color: #26491D;
+            font-size: 1.4vw;
+        }
+
+        #confirmacao{
+            position: absolute;
+            top: 25vh;
+            left: 35vw; 
+        }
+
+        .fixar2{
+            position: fixed;
+        }
+
+        div.relativa2{
+            background-color: white;
+            position: relative;
+            border-radius: 10px;
+            width: 30vw;
+            height: 38vh;
+            font-family: "Inter";
+            border: 3px solid #737B8B;
+        }
+
+        img.confirmed{
+            position: absolute;
+            width: 7vw;
+            left: 11.5vw;
+            top: 5.5vh;
+        }
+
+        .cadastradook{
+            position: absolute;
+            top: 22vh;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1vw;
+            left: 5vw;
+            color: #4B505A;
+            font-family: "Poppins";
+        }
+
+        .ok{
+            font-family: "Inter";
+            border-radius: 5px;
+            position: absolute;
+            background-color: #00AB30;
+            color: white;
+            border: none;
+            top: 30vh;
+            width: 11.5vw;
+            height: 5.5vh;
+            cursor: pointer;
+            left: 9vw;
+            font-weight: bold;
+            font-size: 1.1vw;
+        }
+
+        .ok:hover{
+            background-color: #007421;
+        }
+        #modalLogout{
+            display: none;
+        }
+
+        #logoutLogin{
+            position: absolute;
+            top: 25vh;
+            left: 40vw; 
+        }
+
+        .fixarLogout{
+            position: fixed;
+        }
+
+        div.relativaLogout{
+            background-color: white;
+            position: relative;
+            border-radius: 10px;
+            width: 20vw;
+            height: 53vh;
+            font-family: "Inter";
+            border: 3px solid #00538E;
+        }
+
+        img.deslogarLogout{
+            position: absolute;
+            width: 7vw;
+            left: 7vw;
+            top: 3vh;
+        }
+
+        .ctzLogout{
+            position: absolute;
+            top: 23vh;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1vw;
+            left: 1.5vw;
+        }
+
+        .simLogout{
+            font-family: "Inter";
+            border-radius: 5px;
+            position: absolute;
+            background-color: #007FDA;
+            color: white;
+            border: none;
+            top: 32vh;
+            width: 16.5vw;
+            height: 5.5vh;
+            cursor: pointer;
+            left: 1.5vw;
+            font-weight: bold;
+            font-size: 0.95vw;
+        }
+
+        .simLogout:hover{
+            background-color: #0662a3;
+        }
+
+        .naoLogout{
+            border-radius: 5px;
+            position: absolute;
+            background-color: #007FDA;
+            color: white;
+            border: none;
+            top: 41vh;
+            width: 16.5vw;
+            height: 5.5vh;
+            cursor: pointer;
+            left: 1.5vw;
+            font-weight: bold;
+            font-family: "Inter";
+            font-size: 0.95vw;
+        }
+
+        .naoLogout:hover{
+            background-color: #0662a3;
+        }
+
+        #btnlogout{
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body>
