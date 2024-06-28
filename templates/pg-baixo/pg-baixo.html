@@ -334,6 +334,7 @@
             background: #fff;
             border: 3px solid #000000;
             border-radius: 10px;
+
         }
 
         .tituloFiltro {
@@ -515,6 +516,7 @@
             border-bottom-left-radius: 0.588vw;
             border-bottom-right-radius: 0.588vw;
             position: relative;
+            
             border-top: 2px solid #000000;
         }
 
@@ -526,7 +528,22 @@
             border-radius: 0.735vw;
             position: relative;
             top: -3.309vw;
-            left: 19.118vw;
+            left: 35vw;
+        }
+
+        .VoltarFiltro {
+            font-family: "Poppins";
+            font-size: 1.6vw;
+            font-weight: bold;
+            text-decoration: none;
+            color: #5e646e;
+            padding: 0.5vh;
+            background-color: #e5eaf2;
+            border-radius: 0.735vw;
+            position: relative;
+            top: -11vh;
+            left: 3vw;
+            border: solid 2px #171717;
         }
 
         body {
@@ -971,7 +988,7 @@
             <div id="popup-1" class="popup">
                 <div id="quadroPopUpAtencao">
                     <div class="box">
-                        <h1 class="tituloFiltro">Filtrar Pacientes de Baixo Risco</h1>
+                        <h1 class="tituloFiltro">Filtrar Pacientes de Baixa Prioridade</h1>
                         <p id="paragrafo"><b>Sexo:</b></p>
                         <label class="container1"><b>Masculino</b>
                             <input type="checkbox" name="radio1" value="Masculino">
@@ -1000,12 +1017,13 @@
                             <span class="checkmark2"></span>
                         </label>
                         <div class="line2"></div>
-                        <p class="FatoresRisco" id="paragrafo"><b>Fatores de Risco:</b></p>
+                        <p class="FatoresRisco" id="paragrafo"><b>Fatores de Prioridade:</b></p>
                         <label class="container4"><b>Etilista</b>
                             <input type="checkbox" name="radio7" value="Etilista">
                             <span class="checkmark3"></span>
                         </label>
                         <div class="barraInferior"><input class="Filtrar" type="submit" value="Filtrar"></div>
+                        <a href="/pagina-baixo-risco" class="VoltarFiltro">Voltar</a>
                     </div>
                 </div>
             </div>

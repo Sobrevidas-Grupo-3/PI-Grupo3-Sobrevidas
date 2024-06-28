@@ -1,14 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> <!--CABEÇALHO-->
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Médio-Risco</title>
     <link rel="shortcut icon" href="imagens2/imagens/favicon.ico" type="image/x-icon">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kaushan+Script&family=Passion+One:wght@400;700;900&family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&display=swap');
 
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+         /* COMEÇO DO CÓDIGO DA BARRA CABEÇALHO*/
+
+         header{
+            width: 100%;
+            height: 8vh;
+            background-color: #007FDA;
+            display: flex;
+        }
+
+        h1 {
+            font-size: 5vh;
+            position: absolute;
+            font-family: "Inter";
+            margin-top: 0.5%;
+            left: 14%;
+            color: white;
+        }
+
+        h2 {
+            position: absolute;
+            font-family: "Inter";
+            font-size: 4vh;
+            color: white;
+            margin-top: 0.8%;
+            left: 50%;
+            top: 0vh;
+        }
+
+        #caixausuario{
+            position: absolute;
+            display: flex;
+            background-color: #0C91F0;
+            border-radius: 8px;
+            height: 6.5%;
+            width: 13%;
+            top: 1%;
+            left: 80%;
+            box-shadow: 1px 1px rgba(0, 0, 0, 0.226);
+        }
+
+        .caixa{
+            position: absolute;
+            color: white;
+            font-family: "Poppins";
+            font-weight: bold;
+            top: -1.2vh;
+            left: 23%;
+            font-size: 2.5vh;
+        }
+
+        p.usuario{
+            position: absolute;
+            background-color: #5A67BA;
+            border-radius: 50%;
+            color: white;
+            font-family: "Poppins";
+            font-weight: bold;
+            margin-top: 1.3vh;
+            margin-left: 0.5vw;
+            width: 2vw;
+            height: 3.9vh;
+            text-align: center;
+            font-size: 2.5vh;
+        }
+    
+        .posicaoImgSino{
+            position: absolute;
+            top: 1.2vh;
+            left: 77%;
+            width: 2vw;
+            height: 4vh;
+        }
+
+        .posicaoImgSaida {
+            position: absolute;
+            display: block;
+            height: 4%;
+            width: 2%;
+            top: 2%;
+            right: 2%;
+        }
+
+        .posicaoImgLogo {
+            width: 3.5vw;
+            margin-left: 4vw;
+            position: absolute;
+            top: 0vh;
+            left: -8vh;
+        }
+
+       
+
+        /* FIM DO CÓDIGO DA BARRA CABEÇALHO*/
+
+        
+        /* COMEÇO DO CÓDIGO DA BARRA SUPERIOR ROSA COM INFOS PARA BAIXO */
+        .barraComInfos{
+            color:black;
+            background-color: #ffa100;
+            padding: 2vh;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+            height: 8vh;
+            width: 80vw;
+            position: absolute;
+            top: 11.5vh;
+            left: 9vw;
+            align-items: center;
+            font-weight: bold;
+            font-size: 2.6vh;
+    
+        }
+
+        h3.posicaoNome {
+            position: absolute;
+            top: 1vh;
+            left: 5vw;
+        }
+
+        h3.posicaoEndereco {
+            position: absolute;
+            top: 1vh;
+            left: 25vw;
+        }
+
+        h3.posicaoContato {
+            position: absolute;
+            top: 1vh;
+            left: 45vw;
+        }
+
+        h3.posicaoIdade {
+            position: absolute;
+            top: 1vh;
+            right: 22vw;
+        }
+
+        h3.posicaoFatores {
+            position: absolute;
+            top: 1vh;
+            right: 4vw;
+        }
+
+        .enviarInfo {
+            font-family: "Poppins";
+            background-color: #ffa20096;
+            border: none;
+            width: 81.5vw;
+            cursor: pointer;
+            font-size: 1.1vw;
+            font-weight: normal;
+            color: #3a3b3c;
+            margin-top: 7px;
+            padding: 10px;
+            border-radius: 10px;
+            height: 4.412vw;
+            /* max-width: 1100px; */
+            /* min-width: 920px; */
+            left: 9%;
+            align-items: center;
+            display: flex;
+            font-weight: normal;
+            justify-content: space-between;
+            position: relative;
+            border-radius: 10px;
+            border: solid 3px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-color: #ffa100;
+            top: 27vh;
+        }
+
+        .enviarInfo:hover{
+            color:#171717;
+            font-size: 1.2vw;
+        }
+        .submit{
+            padding: 0;
+            margin: 0;
+            width: 2vw;
+            height: 4vh;
+            border: none;
+            background-color: white;
+            cursor: pointer;
+        }
+        
+        
+        .fichasPacientes {
+            font-weight: normal;
+            color:#3a3b3c;
+            background-color: #ffa20096;
+            height: 2.941vw;
+            width: 85vw;
+            left:0 2%;
+            align-items: center;
+            display: flex;
+            font-weight: bold;
+            justify-content:space-between;
+            position: relative;
+        }
+
+        .space1{
+            width:17%;
+            height: auto;
+            text-align: center;
+            border-bottom: 0;
+        }
+
+        .space2{
+            width:23%;
+            height: auto;
+            text-align: center;
+            border-bottom: 0;
+        }
+
+        .space3{
+            width:23%;
+            height: auto;
+            text-align: center;
+            border-bottom: 0;
+        }
+
+        .space4{
+            width:8%;
+            height: auto;
+            text-align: center;
+            border-bottom: 0;
+        }
+
+        .space5{
+            width:25%;
+            height: auto;
+            text-align: center;
+            border-bottom: 0;
+        }
+
+       
+        /*MECANISMO DE BUSCA COM DIGITAÇÃO*/
+        .espacoBusca{
+            color:gray;
+            padding: 1.6vh;
+            background-color: #ffffff !important;
+            border-radius: 25px;
+            border: solid 3px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+            height: 1.6vh;
+            width: 25vw;
+            align-items: center;
+            display: flex;
+            justify-content:center;
+            font-weight: normal;
+            position: absolute;
+            left: 0vw;
+            top: 2vh;
+            white-space: nowrap;
+        }
+        .espacoBusca img {
+            position: absolute;
+            width: 1.5vw;
+            left: 23vw;
+            top: 0.8vh;
+        }
+
+        .posicaoPesquisaFiltro{
+            max-width: 57vw;
+            min-width: 48vw;
+            align-items: center;
+            display: flex;
+            font-weight: bold;
+            justify-content:center;
+            position: absolute;
+            top: 25vh;
+            left: 25vw;
+        }
+
+        /*FILTRO*/
+        .botaoFiltro{
+            color:rgb(0, 0, 0);
+            padding: 2vh;
+            border-radius: 25px;
+            height: 1.6vh;
+            width: 5vw;
+            text-align: center;
+            align-items: center !important;
+            display: flex;
+            justify-content: center !important;
+            font-weight: normal;
+            margin-left: 6.5%;
+            font-size: 2.5vh;
+            font-weight: bold;
+            cursor:pointer;
+            position: absolute;
+            top: 2vh;
+            left: 27vw;
+            }
+        .botaoFiltro img{
+            margin-left:10%;
+            width:20%;
+        }
+        .botaoFiltro:hover{
+            width: 10.9%;
+            height:20px
+        }
+
+        /* COMEÇO DO CÓDIGO QUADRO POP-UP FILTRO */
+
         #quadroPopUpAtencao {
             display: flex;
             background: #6c7a8929;
@@ -28,19 +335,23 @@
             background: #fff;
             border: 3px solid #000000;
             border-radius: 10px;
+
         }
 
-        .filtrando {
+        .tituloFiltro {
             font-family: "Poppins";
             text-align: center;
             font-size: 1.838vw;
             color: #000000;
-            background-color: #ffa20096;
+            background-color:#ffa20096;
             border-top-left-radius: 0.588vw;
             border-top-right-radius: 0.588vw;
             padding: 0.735vw;
             border-bottom: 2px solid #000000;
             margin: 0px;
+            position: relative;
+            top: 0vh;
+            left: 0vh;
         }
 
         #paragrafo {
@@ -206,6 +517,7 @@
             border-bottom-left-radius: 0.588vw;
             border-bottom-right-radius: 0.588vw;
             position: relative;
+            
             border-top: 2px solid #000000;
         }
 
@@ -217,202 +529,41 @@
             border-radius: 0.735vw;
             position: relative;
             top: -3.309vw;
-            left: 19.118vw;
+            left: 35vw;
+        }
+
+        .VoltarFiltro {
+            font-family: "Poppins";
+            font-size: 1.6vw;
+            font-weight: bold;
+            text-decoration: none;
+            color: #5e646e;
+            padding: 0.5vh;
+            background-color: #e5eaf2;
+            border-radius: 0.735vw;
+            position: relative;
+            top: -11vh;
+            left: 3vw;
+            border: solid 2px #171717;
         }
 
         body {
-            margin: 0;
-            padding: 0;
             font-family:"Poppins",sans-serif;
-            font-size:72%;
             background-color:white;
             margin: auto;
-            padding:10px;
-            min-width: 920px;
-            max-width: 1100px;
         }
-        Header{
-            font-family:"Inter",sans-serif !important;
-            font-weight: 500;
-        }
-        /* BARRA DO TOPO */
-        .top-bar {
-            font-size: 200%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            min-width: 920px;
-            height: 50px;
-            background-color:#007fda;
-            color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            z-index: 1000;
-            white-space: nowrap;
-        }
-        /* TABELA DE INFORMAÇÕES */
-        .cabeca{
-            color:black;
-            margin-top: 8%;
-            margin-bottom: 1%;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-            height: 50px;
-            max-width: 1100px;
-            min-width: 920px;
-            left:0 2%;
-            align-items: center;
-            display: flex;
-            font-weight: bold;
-            justify-content:space-between;
-            position: relative;
-        }
-        /*EXEMPLOS DE PACIENTES*/
-        .exemplos{
-            font-weight: normal;
-            color:#3a3b3c;
-            height: 40px;
-            width: 85vw;
-            left:0 2%;
-            align-items: center;
-            display: flex;
-            font-weight: bold;
-            justify-content:space-between;
-            position: relative;
-        }
-        /*MECANISMO DE BUSCA COM INTERAÇÃO*/
-        .busca{
-            color:gray;
-            padding: 10px;
-            background-color: #ffffff !important;
-            border-radius: 25px;
-            border:solid 3px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-            height: 15px;
-            width: 100%;
-            align-items: center;
-            display: flex;
-            justify-content:center;
-            font-weight: normal;
-            position:relative;
-            left: 0%;
-            white-space: nowrap;
-        }
-        .busca img{
-            width:70%;
-            margin-left:5%;
-        }
-        /*MECANISMO DE FILTRAGEM POR ATRIBUTOS*/
-        .filtro{
-            color:rgb(0, 0, 0);
-            padding: 10px;
-            border-radius: 25px;
-            border:none;
-            height: 15px;
-            width: 10%;
-            text-align: center;
-            align-items: center !important;
-            display: flex;
-            justify-content: center !important;
-            font-weight: normal;
-            position:relative;
-            margin-left:6.5%;
-            font-size:150%;
-            font-weight: bold;
-            cursor:pointer;
-            }
-        .filtro img{
-            margin-left:10%;
-            width:20%;
-        }
-        .filtro:hover{
-            width: 10.9%;
-            height:20px
-        }
-        /*ORGANIZADOR DA BARRA DE BUSCA E FILTRAGEM*/
-        .org{
-            max-width: 1100px;
-            min-width: 920px;
-            left:0 2%;
-            align-items: center;
-            display: flex;
-            font-weight: bold;
-            justify-content:center;
-            position: relative;
-        }
+
+        /* FIM DO CÓDIGO QUADRO POP-UP FILTRO */
+        
+        
         /*SEQUÊNCIA DE REDIMENSIONAMENTO DE IMAGENS*/
         .imagem1 img{
             display: flex;
-            position: relative;
+            position: absolute;
             width:55%;
         }
-        .imagem2 img{
-            display: flex;
-            position: relative;
-            width:50%;
-            left:62%;
-        }
-        .imagem3 img{
-            display: flex;
-            position: relative;
-            width:55%;
-        }
-        .imagem4 img{
-            display: flex;
-            position: relative;
-            width:55%;
-            left: 0vw;
-        }
-        .imagem2 img:hover{
-            width:52%;
-            left: 60%;
-        }
-        .imagem3 img:hover{
-            width: 65%;
-        }
-        .imagem4 img:hover{
-            width:60%;
-        }
-        .groupimage{
-            align-items: center;
-            display: flex;
-            justify-content:center;
-            position: relative;
-        }
-        /*ESPAÇAMENTO DOS CORPOS DE TEXTO*/
-        .space11{
-            width:17%;
-            height: auto;
-            text-align: center;
-        }
-        .space21{
-            width:23%;
-            height: auto;
-            text-align: center;
-        }
-        .space31{
-            width:15%;
-            height: auto;
-            text-align: center;
-        }
-        .space41{
-            width:8%;
-            height: auto;
-            text-align: center;
-        }
-        .space51{
-            width:25%;
-            height: auto;
-            text-align: center;
-        }
-        .titulo1{
-        margin-left:0%;
-        font-weight: 700;
-        }
+        
+        
         /*RETIRADA DA ESTILIZAÇÃO DOS LINKS*/
         .no-link{
             text-decoration: none !important;
@@ -425,11 +576,13 @@
             background-color: #ff6363;
             border-color: #ff0000;
         }
+
         .color-yellow{
             background-color: #ffa100;
         }
+        
         .color-light-yellow{
-            background-color: #ffbe4d;
+            background-color: #ffa20096;
             border-color: #ffa100;
         }
         .color-pink{
@@ -447,30 +600,38 @@
             border-color: #A712E5;
         }
         /*BOTÃO DE VOLTA À PAGINA ANTERIOR*/
-        .return{
-            display:flex;
-            background-color: #007fda;
-            width: 17%;
-            height: 45px;
-            border-radius: 15px;
-            margin-top: 10px;
-            color: #fff;
-            font-size: 20px;
-            font-weight: bold;
-            justify-content:space-around;
-            align-items: center;
+       
+        .Voltar {
+            background-color: #0C91F0;
+            border-radius: 10px;
+            color: #ffffff;
+            border-radius: 7px;
+            padding-top: 0.3vw;
+            padding-bottom: 0.3vw;
+            padding-right: 2.5vw;
+            padding-left: 4.5vw;
+            font-family: "Poppins";
+            text-decoration: none;
+            font-size: 1.1vw;
+            position: absolute;
+            top: 93vh;
+            left: 2.5vw;
         }
-        .return img{
-            width:15%;
-            margin-left:5%;
+        .posicaoImgSetaVoltar {
+            position: absolute;
+           top: 0vh;
+            left: 3vw;
         }
-        .return:hover{
-            width:17.7%;
-            height: 50px;
-            margin-top: 5px;
+
+        .setaVoltarTamanho{
+            position: absolute;
+            top: 92.05vh;
+            width: 2vw;
         }
+
         /*INPUT DE TEXTO*/
         input[type="text"]{
+            font-size: 0.95vw;
             border: none !important;
             width: 80%;
         }
@@ -533,14 +694,7 @@
             opacity: 1;
             visibility: visible;
         }
-        .barra{
-            width:500px;
-            height: 35px;
-            border: solid 3px;
-            border-top-left-radius:10px;
-            border-top-right-radius:10px;
-            font-size: 20px;
-        }
+       
         .space-between{
             position: relative;
             display: flex;
@@ -548,12 +702,7 @@
             border-bottom:solid 2px;
             color:#3a3b3c
         }
-        h2{
-            font-family: "Poppins";
-            font-size: 1.2vw;
-            margin-left: 8px;
-
-        }
+        
         .popup-box{
             width:15px;
             height: 15px;
@@ -648,59 +797,8 @@
         #btnlogout{
             cursor: pointer;
         }
-        #caixausuario{
-            position: absolute;
-            display: flex;
-            background-color: #0C91F0;
-            border-radius: 15px;
-            height: 78%;
-            width: 12.5%;
-            top: 10%;
-            left: 80%;
-            box-shadow: 1px 1px rgba(0, 0, 0, 0.226);
-        }
+       
 
-        .usuario{
-            position: absolute;
-            background-color: #5A67BA;
-            border-radius: 50%;
-            color: white;
-            font-family: "Poppins";
-            font-weight: bold;
-            margin-top: 2.0vh;
-            margin-left: 0.5vw;
-            width: 20%;
-            height: 55%;
-            text-align: center;
-            font-size: 3vh;
-        }
-
-        .caixa{
-            position: fixed;
-            color: white;
-            font-family: "Poppins";
-            font-weight: bold;
-            top: 1.2vh;
-            left: 86%;
-            font-size: 2.5vh;
-        }
-
-        .sinoimg{
-            position: absolute;
-            left: 10vw;
-            top: 1.2vh;
-            width: 2vw;
-            height: 3vw;
-        }
-
-        .sobrevidas{
-            position: absolute;
-            left: 16.5vw;
-        }
-        .sexo{
-            font-size: 1.1vw;
-            margin-left: 10px;
-        }
         input[type=radio]{
             margin-top: 3vh;
             box-sizing: border-box;
@@ -857,86 +955,43 @@
             color: white;
             background: none;
         }
-        .enviarInfo{
-            font-family: "Poppins";
-            border: none;
-            width: 85vw;
-            height: 10vh;
-            cursor: pointer;
-            font-size: 130%;
-            font-weight: normal;
-            color:#3a3b3c;
-            margin-top: 7px;
-            padding: 10px;
-            border-radius: 10px;
-            height: 60px;
-            max-width: 1100px;
-            min-width: 920px;
-            left:0 2%;
-            align-items: center;
-            display: flex;
-            font-weight: normal;
-            justify-content:space-between;
-            position: relative;
-            border-radius: 10px;
-            border:solid 3px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-            background-color: #ffbe4d;
-            border-color: #ffa100;
-        }
-
-        .enviarInfo:hover{
-            color:#171717;
-            font-size: 145%;
-        }
-
-        .submit{
-            padding: 0;
-            margin: 0;
-            width: 2vw;
-            height: 4vh;
-            border: none;
-            background-color: white;
-            cursor: pointer;
-        }
+       
     </style>
 </head>
-<!--CORPO DA PÁGINA-->
 <body>
-    <!--BARRA NO TOPO-->
-    <header class="top-bar">
-        <div class="imagem1"><img src="/imagenspg/logo projeto 2.png"></div>
-        <div class="sobrevidas">SOBREVIDAS-ACS</div>
-        <div class="titulo1">PACIENTES-Média prioridade</div>
+    <!--BARRA CABEÇALHO-->
+    <header>
+        <h1>SOBREVIDAS - ACS</h1>
+        <h2>Pacientes de Média Prioridade</h2>
         <div id="caixausuario">
             {{range .}}
             <p class="usuario">{{.Primeira}}</p>
             <p class="caixa">{{.Usuario}}</p>
             {{end}}
-            <a href="/pagina-absenteista"><img src="/imagenspg/Component 24.png" class="sinoimg"></a>
+            <a href="/pagina-absenteista"><img src="/imgdashboard/sino.png" alt="IconeNotificação" class="posicaoImgSino"></a>
         </div>
-        <div class="imagem4"><a id="btnlogout"><img src="/imagenspg/logout 1.png"></a></div>
+        <a href="/dashboard/voltar"><img src="/imgdashboard/LogoSOBREVIDAS-ACS-semtext.png" alt="Logo Sobrevidas" class="posicaoImgLogo"></a>        <a id="btnlogout"><img src="/imgdashboard/logout.png" alt="IconeSaida" class="posicaoImgSaida"></a>
     </header>
-    <!--TABELA DE INFORMAÇÕES-->
-    <div class="cabeca color-yellow">
-        <h1 class="space11">Nome</h1>
-        <h1 class="space21">Endereço</h1>
-        <h1 class="space31">Contato</h1>
-        <h1 class="space41">Idade</h1>
-        <h1 class="space51">Fatores de risco</h1>
+    <!--BARRA SUPERIOR COM INFOS-->
+    <div class="barraComInfos">
+        <h3 class="posicaoNome">Nome</h3>
+        <h3 class="posicaoEndereco">Endereço</h3>
+        <h3 class="posicaoContato">Contato</h3>
+        <h3 class="posicaoIdade">Idade</h3>
+        <h3 class="posicaoFatores">Fatores de Prioridade</h3>
     </div>
-    <!--FILTRO DE BUSCA-->
-    <div class="org">
+    <!--MECANISMO DE BUSCA COM DIGITAÇÃO-->
+    <div class="posicaoPesquisaFiltro">
         <form action="/pagina-medio-risco/filtrar-nome" method="get">
-            <div class="busca color-light-yellow"><input type="text" id="campo-texto" placeholder="Digite o nome do(a) paciente" name="nome"><button type="submit" class="submit"><img src="/imagenspg/🦆 icon _search_.png"></button></div>
+            <div class="espacoBusca color-light-yellow"><input type="text" id="campo-texto" placeholder="Digite o nome do(a) paciente" name="nome"><button type="submit" class="submit"><img src="/imagenspg/🦆 icon _search_.png"></button></div>
         </form>
         <!--POP-UP-->
-        <a href="#popup-1" class="filtro color-light-yellow no-link">Filtrar<img src="/imagenspg/🦆 icon _filter_.png"></a>
-        <form action="/pagina-medio-risco/filtrar">
+        <a href="#popup-1" class="botaoFiltro color-yellow no-link">Filtrar<img src="/imagenspg/🦆 icon _filter_.png"></a>
+        <form action="/pagina-medio-risco/filtrar-nome">
             <div id="popup-1" class="popup">
                 <div id="quadroPopUpAtencao">
                     <div class="box">
-                        <h1 class="filtrando">Filtrar Pacientes de Baixo Risco</h1>
+                        <h1 class="tituloFiltro">Filtrar Pacientes de Média Prioridade</h1>
                         <p id="paragrafo"><b>Sexo:</b></p>
                         <label class="container1"><b>Masculino</b>
                             <input type="checkbox" name="radio1" value="Masculino">
@@ -965,7 +1020,7 @@
                             <span class="checkmark2"></span>
                         </label>
                         <div class="line2"></div>
-                        <p class="FatoresRisco" id="paragrafo"><b>Fatores de Risco:</b></p>
+                        <p class="FatoresRisco" id="paragrafo"><b>Fatores de Prioridade:</b></p>
                         <label class="container4"><b>Etilista</b>
                             <input type="checkbox" name="radio7" value="Etilista">
                             <span class="checkmark3"></span>
@@ -975,31 +1030,32 @@
                             <span class="checkmark3"></span>
                         </label>
                         <div class="barraInferior"><input class="Filtrar" type="submit" value="Filtrar"></div>
+                        <a href="/pagina-medio-risco" class="VoltarFiltro">Voltar</a>
                     </div>
                 </div>
             </div>
         </form>
     </div>
-    <!--EXEMPLOS DE PACIENTES-->
-    <!--1-->
+    <!--EXEMPLOS DE FICHAS DE PACIENTES-->
     {{range .}}
         {{if .TemDados}}
         <form action="/formulario/preenchido">
             <input type="text" name="Nome" value="{{.Nome}}" class="nomeExtracao">
-            <input type="text" name="Risco" value="Medio" class="nomeExtracao">
+            <input type="text" name="Risco" value="Baixo" class="nomeExtracao">
             <button type="submit" class="enviarInfo">
-                <div class="exemplos color-light-yellow ">
-                    <div class="space11">{{.Nome}}</div>
-                    <div class="space21">{{.Endereco}}</div>
-                    <div class="space31">{{.Telefone}}</div>
-                    <div class="space41">{{.Idade}}</div>
-                    <div class="space51">{{.Fatores}}</div>
+                <div class="fichasPacientes color-light-yellow">
+                    <p class="space1">{{.Nome}}</p>
+                    <p class="space2">{{.Endereco}}</p>
+                    <p class="space3">{{.Telefone}}</p>
+                    <p class="space4">{{.Idade}}</p>
+                    <p class="space5">{{.Fatores}}</p>
                 </div>
             </button>
         </form>
         {{end}}
     {{end}}
-    <div><a href="/pacientesgerais" class="return no-link"><img src="/imagenspg/Seta.png">Voltar</a></div>
+    <a href="/dashboard/voltar" class="Voltar">Voltar</a>
+    <a href="/dashboard/voltar" class="posicaoImgSetaVoltar"><img src="/imagens/iconeSetaVoltar1.1.png" alt="iconeSetaVoltar" class="setaVoltarTamanho"></a>
     <div id="modal">
         <div id="logout">
             <div class="fixar">
