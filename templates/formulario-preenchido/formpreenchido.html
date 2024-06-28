@@ -767,13 +767,13 @@
             <img src="/imagens2/imagens/logo.png" alt="Logo Sobrevidas" class="posicionar">
             <h1 class="titulo">SOBREVIDAS - ACS</h1>
             {{if .BaixoRisco}}
-            <h2 class="subtitulo">PACIENTE {{.PrimeiroNome}} - Baixo Risco</h2>
+            <h2 class="subtitulo">PACIENTE {{.PrimeiroNome}} - Baixa Prioridade</h2>
             {{end}}
             {{if .MedioRisco}}
-            <h2 class="subtitulo">PACIENTE {{.PrimeiroNome}} - Médio Risco</h2>
+            <h2 class="subtitulo">PACIENTE {{.PrimeiroNome}} - Média Prioridade</h2>
             {{end}}
             {{if .AltoRisco}}
-            <h2 class="subtitulo">PACIENTE {{.PrimeiroNome}} - Alto Risco</h2>
+            <h2 class="subtitulo">PACIENTE {{.PrimeiroNome}} - Alta Prioridade</h2>
             {{end}}
             <div id="caixausuario">
                 <p class="usuario">{{.PrimeiraLetra}}</p>
@@ -901,7 +901,7 @@
                 <h3 class="fatoresPrioridade">Fatores de Prioridade para Câncer de Boca</h3>
                 <div class="form-section risk-factors">
                     <div>
-                        <label class="borda">Homem <div class="asc">*</div> &#40consome cigarro regurlamente&#41</label>
+                        <label class="borda">Homem <div class="asc">*</div> &#40idade igual ou superior a 40 anos&#41</label>
                         <div class="radio-group">
                             <p>Marque sim ou não: </p>
                             {{if .IsHomem}}
@@ -953,15 +953,15 @@
                     </div>
                 </div>
                 <div class="risk-level">
-                    <label>Grau de Risco para Câncer de Boca</label>
+                    <label>Grau de Prioridade para Câncer de Boca</label>
                     {{if .BaixoRisco}}
-                    <div class="risk-status" style="background-color:#FFB7F1">Baixo Risco</div>
+                    <div class="risk-status" style="background-color:#FFB7F1">Baixa Prioridade</div>
                     {{end}}
                     {{if .MedioRisco}}
-                    <div class="risk-status" style="background-color:#FFCF7F">Médio Risco</div>
+                    <div class="risk-status" style="background-color:#FFCF7F">Média Prioridade</div>
                     {{end}}
                     {{if .AltoRisco}}
-                    <div class="risk-status" style="background-color:#FF877F">Alto Risco</div>
+                    <div class="risk-status" style="background-color:#FF877F">Alta Prioridade</div>
                     {{end}}
                 </div>
             </div>
