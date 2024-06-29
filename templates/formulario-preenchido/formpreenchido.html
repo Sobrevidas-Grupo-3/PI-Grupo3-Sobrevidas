@@ -38,15 +38,17 @@
 
         header{
             background-color: #007FDA;
-            border-radius: 0.735vw 0.735vw 0vw 0vw;
-            height: 9vh;
+            height: 8vh;
             display: flex;
+            width: 100%;
         }
 
         .posicionar{
-            width: 7vw;
-            display: block;
-            margin-left: 1%;
+            width: 3.5vw;
+            margin-left: 4vw;
+            position: absolute;
+            top: 0vh;
+            left: -8vh;
         }
 
         .titulo{
@@ -54,9 +56,9 @@
             position: absolute;
             font-family: "Inter";
             margin-top: 0.5%;
-            left: 12%;
+            left: 14%;
             color: white;
-            font-weight: 600;
+    
         }
 
         .subtitulo{
@@ -65,8 +67,8 @@
             font-family: "Inter";
             color: white;
             margin-top: 1%;
-            left: 42%;
-            font-weight: 600;
+            left: 38%;
+            
         }
 
         #caixausuario{
@@ -74,9 +76,9 @@
             display: flex;
             background-color: #0C91F0;
             border-radius: 0.588vw;
-            height: 5.9vh;
+            height: 6.5%;
             width: 13%;
-            top: 1.8%;
+            top: 1%;
             left: 80%;
             box-shadow: 1px 1px rgba(0, 0, 0, 0.226);
         }
@@ -102,7 +104,7 @@
             font-family: "Poppins";
             font-weight: bold;
             top: 1.2vh;
-            left: 23.5%;
+            left: 23%;
             font-size: 2.5vh;
         }
 
@@ -120,12 +122,23 @@
             display: block;
             height: 4%;
             width: 2%;
+            top: 2%;
+            right: 2%;
+        }
+        
+        /*
+
+        .sair {
+            position: absolute;
+            display: block;
+            height: 4%;
+            width: 2%;
             top: 3%;
             left: 21.5%;
             transform: translateX(3680%);
             cursor: pointer;
         }
-        /*
+
         header > img{
             display: inline-block;
             width: 100px;
@@ -342,7 +355,7 @@
         }
 
         #campo-endereco {
-            font-family: "Poppins"; font-size: 1.3vw; margin-bottom: -0.588vw; margin-top: 0.809vw;
+            font-family: "Noto Sans", sans-serif; font-size: 1.2vw; margin-bottom: -0.588vw; margin-top: 0.809vw; color: gray; font-weight: bold;
         }
 
         .form-section-three{
@@ -445,14 +458,14 @@
             transform: translateX(-4%);
             margin-top: -63vh;
             left: 70vw;
-            top: 90vh;
+            top: 87vh;
         }
 
         .fatoresPrioridade {
             position: fixed;
             color: rgba(87, 4, 4, 0.685);
             font-size: 1.3vw;
-            top: 23vh;
+            top: 20vh;
             left: 70vw;
         }
 
@@ -759,14 +772,15 @@
         .novaVisita {
             position: absolute;
             left: 83.5vw;
-            top: 15vh;
+            top: 12.2vh;
             height: 4vh;
         }
         .novaVisitaTexto {
             position: absolute;
+            font-family: "Poppins";
             left: 83.4vw;
-            top: 11vh;
-            font-size: 0.9vw;
+            top: 8.4vh;
+            font-size: 1.1vw;
             color: red;
         }
         .botaoNovaVisita {
@@ -774,8 +788,8 @@
             color: white;
             font-family: "Poppins";
             position: absolute;
-            left: 94.5vw;
-            top: 15.5vh;
+            left: 93.2vw;
+            top: 12.6vh;
             height: 3vh;
             width: 4vw;
             cursor: pointer;
@@ -793,7 +807,7 @@
 <body>
     <div class="container">
         <header>
-            <img src="/imagens2/imagens/logo.png" alt="Logo Sobrevidas" class="posicionar">
+            <a href="/dashboard/voltar"><img src="/imgdashboard/LogoSOBREVIDAS-ACS-semtext.png" alt="Logo Sobrevidas" class="posicionar"></a>
             <h1 class="titulo">SOBREVIDAS - ACS</h1>
             {{if .BaixoRisco}}
             <h2 class="subtitulo">PACIENTE {{.PrimeiroNome}} - Baixa Prioridade</h2>
@@ -901,7 +915,7 @@
                 <label for="imail">E-MAIL</label>
                 <input type="text" id="imail" placeholder="Ex.: joaodasilva@gmail.com" value="{{.Email}}" disabled>
 
-                <p id="campo-endereco">Endereço</p>
+                <p id="campo-endereco">ENDEREÇO</p>
 
                 <div class="form-section-three">
                         <div id="cep">
@@ -943,7 +957,7 @@
                         </div>
                     </div>
                     <div>
-                        <label class="borda">Etilista <div class="asc">*</div> &#40consome álcool regurlamente&#41</label>
+                        <label class="borda">Etilista <div class="asc">*</div> &#40consome álcool regularmente&#41</label>
                         <div class="radio-group">
                             <p>Marque sim ou não: </p>
                             {{if .IsEtilista}}
@@ -956,7 +970,7 @@
                         </div>
                     </div>
                     <div>
-                        <label class="borda">Tabagista <div class="asc">*</div> &#40consome cigarro regurlamente&#41</label>
+                        <label class="borda">Tabagista <div class="asc">*</div> &#40consome cigarro regularmente&#41</label>
                         <div class="radio-group">
                             <p>Marque sim ou não: </p>
                             {{if .IsTabagista}}
@@ -1033,7 +1047,7 @@
     </div>
     {{if .MaisDeUmMes}}
         <form action="/formulario/preenchido/data-alterada">
-            <label class="novaVisitaTexto">Data de Cadastro após a última visita:</label>
+            <label class="novaVisitaTexto">Data da última visita:</label>
             <input type="date" name="novaVisita" class="novaVisita">
             <input type="text" name="nome" class="nomeExtracao" value="{{.Nome}}">
             <input type="text" name="cpf" value="{{.CPF}}" class="nomeExtracao">
