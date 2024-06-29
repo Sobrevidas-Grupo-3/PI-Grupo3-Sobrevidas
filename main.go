@@ -154,7 +154,7 @@ var esqueceuInvalido = false
 var confirmCadastro = false
 var erroCadastro bool
 var qtdBaixo, qtdMedio, qtdAlto, qtdTotal int
-var templates = template.Must(template.ParseFiles("./index.html", "./templates/cadastro/cadastro.html", "./templates/telalogin/login.html", "./templates/telaesqueceusenha/esqueceusenha.html", "./templates/dashboard/dashboard.html", "./templates/formulario/formulario.html", "./templates/central-usuario/centralusuario.html", "./templates/pacientesgerais/indexPacGerais.html", "./templates/pg-baixo/pg-baixo.html", "./templates/dashboard/dashboardv2.html", "./templates/pg-medio/pg-medio.html", "./templates/pg-alto/pg-alto.html", "./templates/pg-absenteista/pg-absenteista.html", "./templates/pag-Faq/indexFaq.html", "./templates/formulario-preenchido/formpreenchido.html"))
+var templates = template.Must(template.ParseFiles("./index.html", "./templates/cadastro/cadastro.html", "./templates/telalogin/login.html", "./templates/telaesqueceusenha/esqueceusenha.html", "./templates/dashboard/dashboard.html", "./templates/formulario/formulario.html", "./templates/central-usuario/centralusuario.html", "./templates/pacientesgerais/indexPacGerais.html", "./templates/pg-baixo/pg-baixo.html", "./templates/pg-medio/pg-medio.html", "./templates/pg-alto/pg-alto.html", "./templates/pg-absenteista/pg-absenteista.html", "./templates/pag-Faq/indexFaq.html", "./templates/formulario-preenchido/formpreenchido.html"))
 
 func main() {
 	fs := http.FileServer(http.Dir("./"))
@@ -386,7 +386,7 @@ func autenticaLoginELevaAoDashboard(w http.ResponseWriter, r *http.Request) {
 }
 
 func dashboard(w http.ResponseWriter, r *http.Request) {
-	u := UsuarioNoDashboard{}
+	u := validarlogin{}
 	var porcbaixo, porcmedio, porcalto float64
 	if qtdBaixo == 0 && qtdMedio == 0 && qtdAlto == 0 {
 		porcbaixo = 0
@@ -406,12 +406,12 @@ func dashboard(w http.ResponseWriter, r *http.Request) {
 		u.PorcMedio = porcmedio
 		u.PorcAlto = porcalto
 	}
-	u = UsuarioNoDashboard{Usuario: usuarioLogin, Primeira: primeiraletraLogin, QtdBaixo: qtdBaixo, QtdMedio: qtdMedio, QtdAlto: qtdAlto, PorcBaixo: porcbaixo, PorcMedio: porcmedio, PorcAlto: porcalto}
+	u = validarlogin{Usuario: usuarioLogin, PrimeiraLetra: primeiraletraLogin, QtdBaixo: qtdBaixo, QtdMedio: qtdMedio, QtdAlto: qtdAlto, PorcBaixo: porcbaixo, PorcMedio: porcmedio, PorcAlto: porcalto}
 	ponteiroConfirmCadastro := &confirmCadastro
 	*ponteiroConfirmCadastro = false
 	ponteiroErroCampos := &erroCadastro
 	*ponteiroErroCampos = false
-	err := templates.ExecuteTemplate(w, "dashboardv2.html", u)
+	err := templates.ExecuteTemplate(w, "dashboard.html", u)
 	if err != nil {
 		return
 	}
