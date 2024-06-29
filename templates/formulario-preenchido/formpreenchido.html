@@ -756,6 +756,38 @@
             width: 3vw;
             cursor: pointer;
         }
+        .novaVisita {
+            position: absolute;
+            left: 83.5vw;
+            top: 15vh;
+            height: 4vh;
+        }
+        .novaVisitaTexto {
+            position: absolute;
+            left: 83.4vw;
+            top: 11vh;
+            font-size: 0.9vw;
+            color: red;
+        }
+        .botaoNovaVisita {
+            background-color: #0C91F0;
+            color: white;
+            font-family: "Poppins";
+            position: absolute;
+            left: 94.5vw;
+            top: 15.5vh;
+            height: 3vh;
+            width: 4vw;
+            cursor: pointer;
+            font-size: 0.9vw;
+            border: none;
+            border-radius: 4px;
+        }
+        .nomeExtracao{
+            display: none;
+            color: white;
+            background: none;
+        }
     </style>
 </head>
 <body>
@@ -999,6 +1031,24 @@
             </div>
         </div>
     </div>
+    {{if .MaisDeUmMes}}
+        <form action="/formulario/preenchido/data-alterada">
+            <label class="novaVisitaTexto">Data de Cadastro após a última visita:</label>
+            <input type="date" name="novaVisita" class="novaVisita">
+            <input type="text" name="nome" class="nomeExtracao" value="{{.Nome}}">
+            <input type="text" name="cpf" value="{{.CPF}}" class="nomeExtracao">
+            {{if .BaixoRisco}}
+            <input type="text" name="risco" value="baixo" class="nomeExtracao">
+            {{end}}
+            {{if .MedioRisco}}
+            <input type="text" name="risco" value="medio" class="nomeExtracao">
+            {{end}}
+            {{if .AltoRisco}}
+            <input type="text" name="risco" value="alto" class="nomeExtracao">
+            {{end}}
+            <button type="submit" class="botaoNovaVisita">Alterar</button>
+        </form>
+    {{end}}
     <script>
         let btn = document.getElementById('btnlogout');
         let modal = document.getElementById('modal');

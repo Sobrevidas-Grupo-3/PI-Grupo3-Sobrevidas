@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"html/template"
 	"log"
+	"math"
 	"net/http"
 	"os"
 	"strconv"
@@ -78,6 +79,7 @@ type PacienteFormularioPreenchido struct {
 	IsEtilista    bool
 	IsTabagista   bool
 	IsLesaoBucal  bool
+	MaisDeUmMes   bool
 }
 
 type validarlogin struct {
@@ -183,6 +185,7 @@ func main() {
 	http.HandleFunc("/pagina-alto-risco/filtrar-nome", executarPgAltoFiltroPorNome)
 	http.HandleFunc("/pagina-absenteista", executarPgAbsenteista)
 	http.HandleFunc("/formulario/preenchido", executarFormPreenchido)
+	http.HandleFunc("/formulario/preenchido/data-alterada", alterarDataCadastroFormPreenchido)
 	http.HandleFunc("/generate-pdf", generatePDF)
     
 
@@ -1714,6 +1717,94 @@ func executarFormPreenchido(w http.ResponseWriter, r *http.Request) {
 			if risco == "Baixo" {
 				armazenado.BaixoRisco = true
 			} else if risco == "Medio" {
+				armazenado.MedioRisco = true
+			} else {
+				armazenado.AltoRisco = true
+			}
+			if armazenado.Etilista == "Sim" {
+				armazenado.IsEtilista = true
+			}
+			if armazenado.Tabagista == "Sim" {
+				armazenado.IsTabagista = true
+			}
+			if armazenado.Homem == "Sim" {
+				armazenado.IsHomem = true
+			}
+			if armazenado.LesaoBucal == "Sim" {
+				armazenado.IsLesaoBucal = true
+			}
+			now := time.Now()
+			datacadastro := strings.Split(armazenado.DataCadastro, "-")
+			armazenado.DataCadastro = datacadastro[2] + "/" + datacadastro[1] + "/" + datacadastro[0]
+			mesCadastro, _ := strconv.Atoi(datacadastro[1])
+			if math.Abs(float64(mesCadastro) - float64(now.Month())) >= 1{
+				armazenado.MaisDeUmMes = true
+			}
+			datanascimento := strings.Split(armazenado.DataNasc, "/")
+			armazenado.DataNasc = datanascimento[0] + "/" + datanascimento[1] + "/" + datanascimento[2]
+			cnsq := strings.Split(Cns, "")
+			cboq := strings.Split(Cbo, "")
+			cnesq := strings.Split(Cnes, "")
+			ineq := strings.Split(Ine, "")
+			cbo1 := cboq[0]
+			cbo2 := cboq[1]
+			cbo3 := cboq[2]
+			cbo4 := cboq[3]
+			cbo5 := cboq[4]
+			cbo6 := cboq[5]
+			primeironome := strings.Split(nome, " ")
+			armazenado.PrimeiroNome = primeironome[0]
+			armazenado.CNS = cnsq
+			armazenado.CNES = cnesq
+			armazenado.CBO1 = cbo1
+			armazenado.CBO2 = cbo2
+			armazenado.CBO3 = cbo3
+			armazenado.CBO4 = cbo4
+			armazenado.CBO5 = cbo5
+			armazenado.CBO6 = cbo6
+			armazenado.INE = ineq
+			armazenado.Usuario = usuarioLogin
+			armazenado.PrimeiraLetra = primeiraletraLogin
+			err = templates.ExecuteTemplate(w, "formpreenchido.html", armazenado)
+			if err != nil {
+				return
+			}
+		}
+	}
+}
+
+func alterarDataCadastroFormPreenchido(w http.ResponseWriter, r * http.Request){
+	novaDataCadastro := r.FormValue("novaVisita")
+	nome := r.FormValue("nome")
+	risco := r.FormValue("risco")
+	cpf := r.FormValue("cpf")
+	_, err := db.Exec(`UPDATE pacientes SET data_cadastro=$1 WHERE cpf=$2`, novaDataCadastro, cpf)
+	if err != nil{
+		return
+	}
+	pesquisa, err := db.Query("SELECT * FROM pacientes WHERE cpf=$1", cpf)
+	if err != nil{
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+		log.Println(err)
+		return
+	}
+	defer pesquisa.Close()
+	var armazenamento []PacienteFormularioPreenchido
+	for pesquisa.Next() {
+		armazenar := PacienteFormularioPreenchido{}
+		err = pesquisa.Scan(&armazenar.ID, &armazenar.Nome, &armazenar.DataNasc, &armazenar.CPF, &armazenar.NomeMae, &armazenar.Sexo, &armazenar.CartaoSus, &armazenar.Telefone, &armazenar.Email, &armazenar.CEP, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal, &armazenar.DataCadastro)
+		if err != nil {
+			log.Println(err)
+			http.Error(w, http.StatusText(500), 500)
+			return
+		}
+		armazenamento = append(armazenamento, armazenar)
+	}
+	for _, armazenado := range armazenamento {
+		if armazenado.Nome == nome {
+			if risco == "baixo" {
+				armazenado.BaixoRisco = true
+			} else if risco == "medio" {
 				armazenado.MedioRisco = true
 			} else {
 				armazenado.AltoRisco = true
