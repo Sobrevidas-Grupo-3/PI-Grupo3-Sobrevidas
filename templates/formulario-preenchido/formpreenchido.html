@@ -472,14 +472,14 @@
             transform: translateX(-4%);
             margin-top: -63vh;
             left: 70vw;
-            top: 91vh;
+            top: 88.5vh;
         }
 
         .fatoresPrioridade {
             position: fixed;
             color: rgba(87, 4, 4, 0.685);
             font-size: 1.3vw;
-            top: 24vh;
+            top: 21vh;
             left: 70vw;
         }
 
@@ -832,6 +832,74 @@
             top: -0.5vh;
             left: 12.5vw;
         }
+        #modalVisita{
+        display: block;  
+    }
+    #logoutVisita{
+        position: absolute;
+        top: 25vh;
+        left: 35vw; 
+    }
+    .fixarVisita{
+        position: fixed;
+    }
+    div.relativaVisita{
+        background-color: white;
+        position: relative;
+        border-radius: 0.521vw;
+        width: 30vw;
+        height: 38vh;
+        font-family: "Inter";
+        border: 0.156vw solid #737B8B;
+    }
+    .alertaVisita{
+        background-color: #ff000081;
+        margin-top: 0px;
+        border-top-right-radius: 0.417vw;
+        border-top-left-radius: 0.417vw;
+        text-align: center;
+        font-family: "Poppins";
+        font-weight: bold;
+        color: #301515;
+        font-size: 1.4vw;
+    }
+    img.atencaoVisita{
+        position: absolute;
+        width: 7vw;
+        left: 11vw;
+        top: 5.5vh;
+    }
+    .ultimaVisita{
+        position: absolute;
+        top: 23vh;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.1vw;
+        left: 3vw;
+        color: #4B505A;
+        font-family: "Poppins";
+    }
+    #okVisita{
+        font-family: "Inter";
+        border-radius: 0.26vw;
+        position: absolute;
+        background-color: #cf0b0b;
+        color: white;
+        border: none;
+        top: 30vh;
+        width: 11.5vw;
+        height: 5.5vh;
+        cursor: pointer;
+        left: 8.5vw;
+        font-weight: bold;
+        font-size: 1.1vw;
+        background-repeat: no-repeat;
+        background-size: 0.6vw;
+        background-position: right 0.5vw center;
+    }
+    #okVisita:hover{
+        background-color: #8a1010;
+    }
     </style>
 </head>
 <body>
@@ -1107,7 +1175,27 @@
             </div>
         </div>
     </div>
+    {{if .MaisDeUmMes}}
+    <div id="modalVisita">
+        <div id="logoutVisita">
+            <div class="fixarVisita">
+                <div class="relativaVisita">
+                    <p class="alertaVisita">ATENÇÃO</p>
+                    <img src="/img/imagens/atencao.png" alt="Icone de Atenção" class="atencaoVisita">
+                    <p class="ultimaVisita">Última visita realizada há mais de um mês</p>
+                    <button id="okVisita">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{end}}
     <script>
+        let btn7 = document.getElementById('okVisita')
+        let modal7 = document.getElementById('modalVisita')
+
+        btn7.onclick = function(){
+            modal7.style.display = 'none';
+        }
         let btn2 = document.getElementById('lapisimg')
         let cancelbtn2 = document.getElementById('lapisimg2')
         let modal2 = document.getElementById('modalDisplay')
