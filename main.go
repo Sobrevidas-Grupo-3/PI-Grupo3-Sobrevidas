@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"html/template"
 	"log"
-	"math"
 	"net/http"
 	"os"
 	"strconv"
@@ -88,6 +87,7 @@ type validarlogin struct {
 	Cpf             string
 	Senha           string
 	PrimeiraLetra   string
+	QtdMaisDeUmMes  int
 	QtdTotal        int
 	QtdBaixo        int
 	QtdMedio        int
@@ -134,10 +134,11 @@ type DadosGoogleMaps struct {
 }
 
 type PegarDados struct {
-	Homem      string
-	Etilista   string
-	Tabagista  string
-	LesaoBucal string
+	Homem        string
+	Etilista     string
+	Tabagista    string
+	LesaoBucal   string
+	UltimaVisita string
 }
 
 type UsuarioNoDashboard struct {
@@ -189,12 +190,13 @@ var loginInvalido = false
 var esqueceuInvalido = false
 var confirmCadastro = false
 var erroCadastro bool
-var qtdBaixo, qtdMedio, qtdAlto, qtdTotal, qtdTotalCard int
+var qtdBaixo, qtdMedio, qtdAlto, qtdTotal, qtdTotalCard, qtdVisitadosMaisDeUmMes int
 var templates = template.Must(template.ParseFiles("./index.html", "./templates/cadastro/cadastro.html", "./templates/telalogin/login.html", "./templates/telaesqueceusenha/esqueceusenha.html", "./templates/dashboard/dashboard.html", "./templates/formulario/formulario.html", "./templates/central-usuario/centralusuario.html", "./templates/pacientesgerais/indexPacGerais.html", "./templates/pg-baixo/pg-baixo.html", "./templates/pg-medio/pg-medio.html", "./templates/pg-alto/pg-alto.html", "./templates/pg-absenteista/pg-absenteista.html", "./templates/pag-Faq/indexFaq.html", "./templates/formulario-preenchido/formpreenchido.html"))
 
 func main() {
 	fs := http.FileServer(http.Dir("./"))
 	http.Handle("/", fs)
+	colocarDados()
 	http.HandleFunc("/cadastro", executarCadastro)
 	http.HandleFunc("/login", autenticaCadastroELevaAoLogin)
 	http.HandleFunc("/dashboard", autenticaLoginELevaAoDashboard)
@@ -203,7 +205,6 @@ func main() {
 	http.HandleFunc("/telalogin", atualizarSenha)
 	http.HandleFunc("/cadastrar-paciente", executarFormulario)
 	http.HandleFunc("/paciente-cadastrado", cadastrarPaciente)
-	colocarDados()
 	http.HandleFunc("/central-usuario", executarCentralUsuario)
 	http.HandleFunc("/central-usuario/atualizarsenha", atualizarSenhaCentralUsuario)
 	http.HandleFunc("/pagina-faq", executarPagFaq)
@@ -251,7 +252,7 @@ func fazConexaoComBanco() *sql.DB {
 		log.Fatal(err)
 	}
 
-	_, err = database.Query("CREATE TABLE IF NOT EXISTS pacientes(id SERIAL PRIMARY KEY, nome_completo VARCHAR(255), data_nasc VARCHAR(30), cpf VARCHAR(15) UNIQUE NOT NULL, nome_mae VARCHAR(255), sexo VARCHAR(30), cartao_sus VARCHAR(55) UNIQUE NOT NULL, telefone VARCHAR(55) UNIQUE NOT NULL, email VARCHAR(255) UNIQUE NOT NULL, cep VARCHAR(15) UNIQUE NOT NULL, bairro VARCHAR(255), rua VARCHAR(255), numero VARCHAR(255), complemento VARCHAR(255), homem VARCHAR(15) NOT NULL, etilista VARCHAR(15) NOT NULL, tabagista VARCHAR(15) NOT NULL, lesao_bucal VARCHAR(15) NOT NULL, data_cadastro VARCHAR(20), ultima_visita VARCHAR(20))")
+	_, err = database.Query("CREATE TABLE IF NOT EXISTS pacientes(id SERIAL PRIMARY KEY, nome_completo VARCHAR(255), data_nasc VARCHAR(30), cpf VARCHAR(15) UNIQUE NOT NULL, nome_mae VARCHAR(255), sexo VARCHAR(30), cartao_sus VARCHAR(55) UNIQUE NOT NULL, telefone VARCHAR(55) UNIQUE NOT NULL, email VARCHAR(255) UNIQUE NOT NULL, cep VARCHAR(15), bairro VARCHAR(255), rua VARCHAR(255), numero VARCHAR(255), complemento VARCHAR(255), homem VARCHAR(15) NOT NULL, etilista VARCHAR(15) NOT NULL, tabagista VARCHAR(15) NOT NULL, lesao_bucal VARCHAR(15) NOT NULL, data_cadastro VARCHAR(20), ultima_visita VARCHAR(20))")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -302,7 +303,7 @@ func autenticaCadastroELevaAoLogin(w http.ResponseWriter, r *http.Request) {
 }
 
 func colocarDados() {
-	pegardados, err := db.Query("SELECT homem, etilista, tabagista, lesao_bucal FROM pacientes")
+	pegardados, err := db.Query("SELECT homem, etilista, tabagista, lesao_bucal, ultima_visita FROM pacientes")
 	if err != nil {
 		return
 	}
@@ -311,7 +312,7 @@ func colocarDados() {
 
 	for pegardados.Next() {
 		armazenar := PegarDados{}
-		err := pegardados.Scan(&armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal)
+		err := pegardados.Scan(&armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal, &armazenar.UltimaVisita)
 		if err != nil {
 			log.Println(err)
 			return
@@ -332,6 +333,14 @@ func colocarDados() {
 			*pgmedio++
 		} else if armazenado.LesaoBucal == "Sim" {
 			*pgalto++
+		}
+		quebrarUltimaVisita := strings.Split(armazenado.UltimaVisita, "-")
+		armazenarQtdUltimaVisita := &qtdVisitadosMaisDeUmMes
+		now := time.Now()
+		diaVisita, _ := strconv.Atoi(quebrarUltimaVisita[2])
+		mesVisita, _ := strconv.Atoi(quebrarUltimaVisita[1])
+		if diaVisita <= now.Day() && mesVisita < int(now.Month()){
+			*armazenarQtdUltimaVisita++
 		}
 	}
 	*pgtotal = *pgbaixo + *pgmedio + *pgalto
@@ -372,6 +381,7 @@ func autenticaLoginELevaAoDashboard(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, http.StatusText(500), 500)
 			return
 		}
+		armazenar.QtdMaisDeUmMes = qtdVisitadosMaisDeUmMes
 		armazenar.QtdBaixo = qtdBaixo
 		armazenar.QtdMedio = qtdMedio
 		armazenar.QtdAlto = qtdAlto
@@ -523,7 +533,7 @@ func dashboard(w http.ResponseWriter, r *http.Request) {
 		armazenado.PorcMedio = porcmedio
 		armazenado.PorcAlto = porcalto
 	}
-	armazenado = validarlogin{Usuario: usuarioLogin, PrimeiraLetra: primeiraletraLogin, QtdBaixo: qtdBaixo, QtdMedio: qtdMedio, QtdAlto: qtdAlto ,PorcBaixo: porcbaixo, PorcMedio: porcmedio, PorcAlto: porcalto}
+	armazenado = validarlogin{Usuario: usuarioLogin, PrimeiraLetra: primeiraletraLogin, QtdBaixo: qtdBaixo, QtdMedio: qtdMedio, QtdAlto: qtdAlto, QtdMaisDeUmMes: qtdVisitadosMaisDeUmMes, PorcBaixo: porcbaixo, PorcMedio: porcmedio, PorcAlto: porcalto}
 	ponteiroConfirmCadastro := &confirmCadastro
 	*ponteiroConfirmCadastro = false
 	ponteiroErroCampos := &erroCadastro
@@ -827,6 +837,14 @@ func cadastrarPaciente(w http.ResponseWriter, r *http.Request) {
 		}
 
 		ponteiroConfirmando := &confirmCadastro
+		quebrarDataCadastro := strings.Split(data_cadastro, "-")
+		now := time.Now()
+		armazenarQtdVisitadosMaisDeUmMes := &qtdVisitadosMaisDeUmMes
+		diaCadastro, _ := strconv.Atoi(quebrarDataCadastro[2])
+		mesCadastro, _ := strconv.Atoi(quebrarDataCadastro[1])
+		if mesCadastro < int(now.Month()) && diaCadastro <= now.Day(){
+			*armazenarQtdVisitadosMaisDeUmMes++
+		}
 		*ponteiroConfirmando = true
 		ponteiroErro := &erroCadastro
 		*ponteiroErro = false
@@ -1930,8 +1948,9 @@ func executarFormPreenchido(w http.ResponseWriter, r *http.Request) {
 			armazenado.UltimaVisita = ultimavisita[2] + "/" + ultimavisita[1] + "/" + ultimavisita[0]
 			datacadastro := strings.Split(armazenado.DataCadastro, "-")
 			armazenado.DataCadastro = datacadastro[2] + "/" + datacadastro[1] + "/" + datacadastro[0]
+			diaVisita, _ := strconv.Atoi(ultimavisita[2])
 			mesVisita, _ := strconv.Atoi(ultimavisita[1])
-			if math.Abs(float64(mesVisita)-float64(now.Month())) >= 1 {
+			if diaVisita <= now.Day() && mesVisita < int(now.Month()){
 				armazenado.MaisDeUmMes = true
 			}
 			datanascimento := strings.Split(armazenado.DataNasc, "/")
@@ -1967,14 +1986,14 @@ func executarFormPreenchido(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func executarFormPreenchidoVindoDoMaps(w http.ResponseWriter, r *http.Request){
+func executarFormPreenchidoVindoDoMaps(w http.ResponseWriter, r *http.Request) {
 	passarNome := &nomePaciente
 	cep := r.FormValue("cep")
 	risco := r.FormValue("risco")
 	nome := r.FormValue("nome")
 	*passarNome = nome
 	pesquisa, err := db.Query("SELECT * FROM pacientes WHERE cep=$1", cep)
-	if err != nil{
+	if err != nil {
 		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
 	}
 	defer pesquisa.Close()
@@ -2014,8 +2033,9 @@ func executarFormPreenchidoVindoDoMaps(w http.ResponseWriter, r *http.Request){
 		armazenado.UltimaVisita = ultimavisita[2] + "/" + ultimavisita[1] + "/" + ultimavisita[0]
 		datacadastro := strings.Split(armazenado.DataCadastro, "-")
 		armazenado.DataCadastro = datacadastro[2] + "/" + datacadastro[1] + "/" + datacadastro[0]
+		diaVisita, _ := strconv.Atoi(ultimavisita[2])
 		mesVisita, _ := strconv.Atoi(ultimavisita[1])
-		if math.Abs(float64(mesVisita)-float64(now.Month())) >= 1 {
+		if diaVisita <= now.Day() && mesVisita < int(now.Month()){
 			armazenado.MaisDeUmMes = true
 		}
 		datanascimento := strings.Split(armazenado.DataNasc, "/")
@@ -2098,8 +2118,17 @@ func alterarDataUltimaVisitaFormPreenchido(w http.ResponseWriter, r *http.Reques
 			if armazenado.LesaoBucal == "Sim" {
 				armazenado.IsLesaoBucal = true
 			}
+			now := time.Now()
+			armazenarQtdVisitadosMaisDeUmMes := &qtdVisitadosMaisDeUmMes
 			ultimavisita := strings.Split(armazenado.UltimaVisita, "-")
 			armazenado.UltimaVisita = ultimavisita[2] + "/" + ultimavisita[1] + "/" + ultimavisita[0]
+			diaVisita, _ := strconv.Atoi(ultimavisita[2])
+			mesVisita, _ := strconv.Atoi(ultimavisita[1])
+			if diaVisita <= now.Day() && mesVisita < int(now.Month()){
+				armazenado.MaisDeUmMes = true
+			} else{
+				*armazenarQtdVisitadosMaisDeUmMes--
+			}
 			datacadastro := strings.Split(armazenado.DataCadastro, "-")
 			armazenado.DataCadastro = datacadastro[2] + "/" + datacadastro[1] + "/" + datacadastro[0]
 			datanascimento := strings.Split(armazenado.DataNasc, "/")
