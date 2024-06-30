@@ -97,6 +97,38 @@ type validarlogin struct {
 	Cbo           string
 	Cnes          string
 	Ine           string
+	Nome		string
+	DataNascimento string
+	Etilista string
+	Homem string
+	Telefone string
+	Tabagista string
+	FeridasBucais string
+	Fatores string
+	Baixo bool
+	Medio bool
+	Alto bool
+	UltimaVisita string
+	Cep 		  string
+	Bairro		  string
+	Rua			  string
+	Numero        string
+	Complemento   string
+	Endereco 	  string
+	DadosGoogleMaps []DadosGoogleMaps
+}
+
+type DadosGoogleMaps struct{
+	Cep string
+	Nome string
+	DataNascimento string
+	Telefone string
+	Fatores string
+	Endereco string
+	UltimaVisita string
+	Alto bool
+	Medio bool
+	Baixo bool
 }
 
 type PegarDados struct {
@@ -313,6 +345,7 @@ func autenticaLoginELevaAoDashboard(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 		return
 	}
+	var endereco string
 	cpf := &cpfLogin
 	senha := &senhaLogin
 	*cpf = r.FormValue("cpf")
@@ -321,6 +354,11 @@ func autenticaLoginELevaAoDashboard(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
 	}
+	cepEndereco, err := db.Query("SELECT nome_completo, data_nasc, telefone, homem, etilista, tabagista, lesao_bucal, data_cadastro, cep, bairro, rua, numero, complemento FROM pacientes")
+	if err != nil{
+		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
+	}
+	defer cepEndereco.Close()
 	defer cpfsenha.Close()
 	armazenamento := make([]validarlogin, 0)
 
@@ -361,6 +399,78 @@ func autenticaLoginELevaAoDashboard(w http.ResponseWriter, r *http.Request) {
 	}
 	for _, armazenado := range armazenamento {
 		if armazenado.Cpf == cpfLogin && armazenado.Senha == senhaLogin {
+			for cepEndereco.Next(){
+				armazenar := validarlogin{}
+				armazenarDadosMaps := DadosGoogleMaps{}
+				err = cepEndereco.Scan(&armazenarDadosMaps.Nome, &armazenarDadosMaps.DataNascimento, &armazenarDadosMaps.Telefone,&armazenar.Homem,&armazenar.Etilista, &armazenar.Tabagista, &armazenar.FeridasBucais ,&armazenarDadosMaps.UltimaVisita,&armazenarDadosMaps.Cep, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento)
+				quebrar := strings.Split(armazenarDadosMaps.UltimaVisita, "-")
+				ultimaVisita := quebrar[2] + "/" + quebrar[1] + "/" + quebrar[0]
+				armazenarDadosMaps.UltimaVisita = ultimaVisita
+				if armazenar.Complemento != ""{
+					endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Complemento + "," + armazenar.Bairro
+				} else{
+					endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Bairro
+				}
+				armazenarDadosMaps.Endereco = endereco
+				if armazenar.Tabagista == "Não" && armazenar.FeridasBucais == "Não"{
+					armazenarDadosMaps.Baixo = true
+					armazenarDadosMaps.Medio = false
+					armazenarDadosMaps.Alto = false
+					if armazenar.Etilista == "Sim" && armazenar.Homem == "Sim"{
+						fatores := "Homem, Etilista"
+						armazenarDadosMaps.Fatores = fatores
+					} else if armazenar.Etilista == "Sim" && armazenar.Homem == "Não"{
+						fatores := "Etilista"
+						armazenarDadosMaps.Fatores = fatores
+					} else if armazenar.Etilista == "Não" && armazenar.Homem == "Sim"{
+						fatores := "Homem"
+						armazenarDadosMaps.Fatores = fatores
+					}
+				} else if armazenar.Tabagista == "Sim" && armazenar.FeridasBucais == "Não"{
+					armazenarDadosMaps.Baixo = false
+					armazenarDadosMaps.Medio = true
+					armazenarDadosMaps.Alto = false
+					if armazenar.Etilista == "Sim" && armazenar.Homem == "Sim"{
+						fatores := "Homem, Etilista, Tabagista"
+						armazenarDadosMaps.Fatores = fatores
+					} else if armazenar.Etilista == "Sim" && armazenar.Homem == "Não"{
+						fatores := "Etilista, Tabagista"
+						armazenarDadosMaps.Fatores = fatores
+					} else if armazenar.Etilista == "Não" && armazenar.Homem == "Sim"{
+						fatores := "Homem, Tabagista"
+						armazenarDadosMaps.Fatores = fatores
+					}
+				} else if armazenar.FeridasBucais == "Sim"{
+					armazenarDadosMaps.Baixo = false
+					armazenarDadosMaps.Medio = false
+					armazenarDadosMaps.Alto = true
+					if armazenar.Etilista == "Sim" && armazenar.Homem == "Sim" && armazenar.Tabagista == "Sim"{
+						fatores := "Homem, Etilista, Tabagista, Feridas Bucais"
+						armazenarDadosMaps.Fatores = fatores
+					} else if armazenar.Etilista == "Sim" && armazenar.Homem == "Não" && armazenar.Tabagista == "Sim"{
+						fatores := "Etilista, Tabagista, Feridas Bucais"
+						armazenarDadosMaps.Fatores = fatores
+					} else if armazenar.Etilista == "Não" && armazenar.Homem == "Sim" && armazenar.Tabagista == "Sim"{
+						fatores := "Homem, Tabagista, Feridas Bucais"
+						armazenarDadosMaps.Fatores = fatores
+					} else if armazenar.Etilista == "Sim" && armazenar.Homem == "Sim" && armazenar.Tabagista == "Não"{
+						fatores := "Homem, Etilista, Feridas Bucais"
+						armazenarDadosMaps.Fatores = fatores
+					} else if armazenar.Homem == "Não" && armazenar.Etilista == "Sim" && armazenar.Tabagista == "Não"{
+						fatores := "Etilista, Feridas Bucais"
+						armazenarDadosMaps.Fatores = fatores
+					} else if armazenar.Homem == "Não" && armazenar.Etilista == "Não" && armazenar.Tabagista == "Não"{
+						fatores := "Feridas Bucais"
+						armazenarDadosMaps.Fatores = fatores
+					}
+				}
+				armazenado.DadosGoogleMaps = append(armazenado.DadosGoogleMaps, armazenarDadosMaps)
+				if err != nil{
+					log.Println(err)
+					http.Error(w, http.StatusText(500), 500)
+					return
+				}
+			}
 			armazenador := &primeiraletraLogin
 			armazenador2 := &usuarioLogin
 			armazenado.PrimeiraLetra = string(armazenado.Usuario[0])
@@ -389,15 +499,16 @@ func autenticaLoginELevaAoDashboard(w http.ResponseWriter, r *http.Request) {
 }
 
 func dashboard(w http.ResponseWriter, r *http.Request) {
-	u := validarlogin{}
+	armazenado := validarlogin{}
+	var endereco string
 	var porcbaixo, porcmedio, porcalto float64
 	if qtdBaixo == 0 && qtdMedio == 0 && qtdAlto == 0 {
 		porcbaixo = 0
 		porcmedio = 0
 		porcalto = 0
-		u.PorcBaixo = porcbaixo
-		u.PorcMedio = porcmedio
-		u.PorcAlto = porcalto
+		armazenado.PorcBaixo = porcbaixo
+		armazenado.PorcMedio = porcmedio
+		armazenado.PorcAlto = porcalto
 	} else {
 		porcbaixo = (float64(qtdBaixo) / float64(qtdTotal)) * 100
 		porcmedio = (float64(qtdMedio) / float64(qtdTotal)) * 100
@@ -405,16 +516,93 @@ func dashboard(w http.ResponseWriter, r *http.Request) {
 		porcbaixo = float64(int(porcbaixo*100)) / 100
 		porcmedio = float64(int(porcmedio*100)) / 100
 		porcalto = float64(int(porcalto*100)) / 100
-		u.PorcBaixo = porcbaixo
-		u.PorcMedio = porcmedio
-		u.PorcAlto = porcalto
+		armazenado.PorcBaixo = porcbaixo
+		armazenado.PorcMedio = porcmedio
+		armazenado.PorcAlto = porcalto
 	}
-	u = validarlogin{Usuario: usuarioLogin, PrimeiraLetra: primeiraletraLogin, QtdBaixo: qtdBaixo, QtdMedio: qtdMedio, QtdAlto: qtdAlto, PorcBaixo: porcbaixo, PorcMedio: porcmedio, PorcAlto: porcalto}
+	armazenado = validarlogin{Usuario: usuarioLogin, PrimeiraLetra: primeiraletraLogin, QtdBaixo: qtdBaixo, QtdMedio: qtdMedio, QtdAlto: qtdAlto, PorcBaixo: porcbaixo, PorcMedio: porcmedio, PorcAlto: porcalto}
 	ponteiroConfirmCadastro := &confirmCadastro
 	*ponteiroConfirmCadastro = false
 	ponteiroErroCampos := &erroCadastro
 	*ponteiroErroCampos = false
-	err := templates.ExecuteTemplate(w, "dashboard.html", u)
+	cepEndereco, err := db.Query("SELECT nome_completo, data_nasc, telefone, homem, etilista, tabagista, lesao_bucal, data_cadastro, cep, bairro, rua, numero, complemento FROM pacientes")
+	if err != nil{
+		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
+	}
+	defer cepEndereco.Close()
+	for cepEndereco.Next(){
+		armazenar := validarlogin{}
+		armazenarDadosMaps := DadosGoogleMaps{}
+		err = cepEndereco.Scan(&armazenarDadosMaps.Nome, &armazenarDadosMaps.DataNascimento, &armazenarDadosMaps.Telefone,&armazenar.Homem,&armazenar.Etilista, &armazenar.Tabagista, &armazenar.FeridasBucais ,&armazenarDadosMaps.UltimaVisita,&armazenarDadosMaps.Cep, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento)
+		quebrar := strings.Split(armazenarDadosMaps.UltimaVisita, "-")
+		ultimaVisita := quebrar[2] + "/" + quebrar[1] + "/" + quebrar[0]
+		armazenarDadosMaps.UltimaVisita = ultimaVisita
+		if armazenar.Complemento != ""{
+			endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Complemento + "," + armazenar.Bairro
+		} else{
+			endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Bairro
+		}
+		armazenarDadosMaps.Endereco = endereco
+		if armazenar.Tabagista == "Não" && armazenar.FeridasBucais == "Não"{
+			armazenarDadosMaps.Baixo = true
+			armazenarDadosMaps.Medio = false
+			armazenarDadosMaps.Alto = false
+			if armazenar.Etilista == "Sim" && armazenar.Homem == "Sim"{
+				fatores := "Homem, Etilista"
+				armazenarDadosMaps.Fatores = fatores
+			} else if armazenar.Etilista == "Sim" && armazenar.Homem == "Não"{
+				fatores := "Etilista"
+				armazenarDadosMaps.Fatores = fatores
+			} else if armazenar.Etilista == "Não" && armazenar.Homem == "Sim"{
+				fatores := "Homem"
+				armazenarDadosMaps.Fatores = fatores
+			}
+		} else if armazenar.Tabagista == "Sim" && armazenar.FeridasBucais == "Não"{
+			armazenarDadosMaps.Baixo = false
+			armazenarDadosMaps.Medio = true
+			armazenarDadosMaps.Alto = false
+			if armazenar.Etilista == "Sim" && armazenar.Homem == "Sim"{
+				fatores := "Homem, Etilista, Tabagista"
+				armazenarDadosMaps.Fatores = fatores
+			} else if armazenar.Etilista == "Sim" && armazenar.Homem == "Não"{
+				fatores := "Etilista, Tabagista"
+				armazenarDadosMaps.Fatores = fatores
+			} else if armazenar.Etilista == "Não" && armazenar.Homem == "Sim"{
+				fatores := "Homem, Tabagista"
+				armazenarDadosMaps.Fatores = fatores
+			}
+		} else if armazenar.FeridasBucais == "Sim"{
+			armazenarDadosMaps.Baixo = false
+			armazenarDadosMaps.Medio = false
+			armazenarDadosMaps.Alto = true
+			if armazenar.Etilista == "Sim" && armazenar.Homem == "Sim" && armazenar.Tabagista == "Sim"{
+				fatores := "Homem, Etilista, Tabagista, Feridas Bucais"
+				armazenarDadosMaps.Fatores = fatores
+			} else if armazenar.Etilista == "Sim" && armazenar.Homem == "Não" && armazenar.Tabagista == "Sim"{
+				fatores := "Etilista, Tabagista, Feridas Bucais"
+				armazenarDadosMaps.Fatores = fatores
+			} else if armazenar.Etilista == "Não" && armazenar.Homem == "Sim" && armazenar.Tabagista == "Sim"{
+				fatores := "Homem, Tabagista, Feridas Bucais"
+				armazenarDadosMaps.Fatores = fatores
+			} else if armazenar.Etilista == "Sim" && armazenar.Homem == "Sim" && armazenar.Tabagista == "Não"{
+				fatores := "Homem, Etilista, Feridas Bucais"
+				armazenarDadosMaps.Fatores = fatores
+			} else if armazenar.Homem == "Não" && armazenar.Etilista == "Sim" && armazenar.Tabagista == "Não"{
+				fatores := "Etilista, Feridas Bucais"
+				armazenarDadosMaps.Fatores = fatores
+			} else if armazenar.Homem == "Não" && armazenar.Etilista == "Não" && armazenar.Tabagista == "Não"{
+				fatores := "Feridas Bucais"
+				armazenarDadosMaps.Fatores = fatores
+			}
+		}
+		if err != nil{
+			log.Println(err)
+			http.Error(w, http.StatusText(500), 500)
+			return
+		}
+		armazenado.DadosGoogleMaps = append(armazenado.DadosGoogleMaps, armazenarDadosMaps)
+	}
+	err = templates.ExecuteTemplate(w, "dashboard.html", armazenado)
 	if err != nil {
 		return
 	}

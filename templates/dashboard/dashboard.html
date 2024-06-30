@@ -832,19 +832,12 @@
     padding-left: 4vh;
     }
 
-    .mapa{
-    overflow:hidden;
-    padding-bottom: 0;
-    position:relative;
-    height:0;
-    }
-
-    .mapa iframe{
-    left:39vw;
-    top:63vh;
-    height:36%;
-    width:59%;
-    position:fixed;
+    #map{
+        left:39vw !important;
+        top:63vh !important;
+        height:36% !important;
+        width:59% !important;
+        position:fixed !important;
     }
     #modal{
         display: none;
@@ -1042,10 +1035,8 @@
         <p class="pmv">Pacientes de média prioridade visitados</p>
         <p class="pav">Pacientes de alta prioridade visitados</p>
         <p class="pa">Pacientes absenteístas</p>
-        <div class="mapa">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1135.7998451987369!2d-49.33081944809181!3d-16.758751980557424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935ef79b4e646c55%3A0x267e8dbc9ec30892!2sUBS%20Garavelo%20Park!5e0!3m2!1spt-BR!2sbr!4v1716577007130!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
     </div>
+    <h1></h1>
     <div id="modal">
         <div id="logout">
             <div class="fixar">
@@ -1058,6 +1049,60 @@
             </div>
         </div>
     </div>
+    <div id="map"></div>
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhqJhRVID_uTuUZMC-R38a8cLN4yM_0Yg&loading=async&callback=initMap">
+    </script>
+    <script>
+        const ceps = [];
+        function initMap(){
+            const map = new google.maps.Map(document.getElementById('map'),{
+                zoom: 18,
+                center:{lat: -16.758291, lng: -49.330597},
+            });
+            function geoCoder(coordenada, conteudo, imagem){
+                const geocoder = new google.maps.Geocoder();
+                geocoder
+                    .geocode({address: coordenada, region: 'BR'})
+                    .then((response) => {
+                        console.log(response);
+                        const position = response.results[0].geometry.location;
+
+                        var image = {
+                            url: imagem,
+                            scaledSize: new google.maps.Size(43, 43),
+                        };
+
+                        const marker = new google.maps.Marker({
+                            map,
+                            position,
+                            icon: image,
+                        })
+                        const infoWindow = new google.maps.InfoWindow({
+                            content: conteudo
+                        })
+                        marker.addListener('click', function(){
+                            infoWindow.open(map, marker)
+                        })
+
+                    })
+                    .catch((e) =>
+                        console.log("Geocode não teve sucesso pelas seguintes razões: "+ e)
+                    );
+            }
+            '{{range .DadosGoogleMaps}}'
+                '{{if .Baixo}}'
+                    geoCoder("{{.Cep}}", '<div style="background-color: #fa9be8; width: vw; height: 5vh; border-top-left-radius: 5px; border-top-right-radius: 5px;"></div><p style="font-size: 1.2vw">Nome: {{.Nome}}</p><br><p style="font-size: 1.2vw">Data de Nascimento: {{.DataNascimento}}</p><br><p style="font-size: 1.2vw">Contato: {{.Telefone}}</p><br><p style="font-size: 1.2vw">Fatores de Prioridade: {{.Fatores}}</p><br><p style="font-size: 1.2vw">Endereço Completo: {{.Endereco}} </p><br><p style="font-size: 1.2vw">Última visita realizada: {{.UltimaVisita}}</p><div style="background-color: #fa9be8; width: 100%; height: 5vh; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"></div>', "/imgdashboard/bandeirabaixo.png")
+                '{{end}}'
+                '{{if .Medio}}'
+                    geoCoder("{{.Cep}}", '<div style="background-color: #ffbe4d;; width: vw; height: 5vh; border-top-left-radius: 5px; border-top-right-radius: 5px;"></div><p style="font-size: 1.2vw">Nome: {{.Nome}}</p><br><p style="font-size: 1.2vw">Data de Nascimento: {{.DataNascimento}}</p><br><p style="font-size: 1.2vw">Contato: {{.Telefone}}</p><br><p style="font-size: 1.2vw">Fatores de Prioridade: {{.Fatores}}</p><br><p style="font-size: 1.2vw">Endereço Completo: {{.Endereco}} </p><br><p style="font-size: 1.2vw">Última visita realizada: {{.UltimaVisita}}</p><div style="background-color: #ffbe4d;; width: 100%; height: 5vh; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"></div>', "/imgdashboard/bandeiramedio.png")
+                '{{end}}'
+                '{{if .Alto}}'
+                    geoCoder("{{.Cep}}", '<div style="background-color: #ff6363; width: vw; height: 5vh; border-top-left-radius: 5px; border-top-right-radius: 5px;"></div><p style="font-size: 1.2vw">Nome: {{.Nome}}</p><br><p style="font-size: 1.2vw">Data de Nascimento: {{.DataNascimento}}</p><br><p style="font-size: 1.2vw">Contato: {{.Telefone}}</p><br><p style="font-size: 1.2vw">Fatores de Prioridade: {{.Fatores}}</p><br><p style="font-size: 1.2vw">Endereço Completo: {{.Endereco}} </p><br><p style="font-size: 1.2vw">Última visita realizada: {{.UltimaVisita}}</p><div style="background-color: #ff6363; width: 100%; height: 5vh; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"></div>', "/imgdashboard/bandeiraalto.png")
+                '{{end}}'
+            '{{end}}'
+        } 
+    </script>
     <script>
         let btn = document.getElementById('btnlogout');
         let modal = document.getElementById('modal');
