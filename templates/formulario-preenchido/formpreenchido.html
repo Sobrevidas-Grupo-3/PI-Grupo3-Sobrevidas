@@ -189,6 +189,15 @@
             font-family: "Noto Sans", sans-serif;
         }
 
+        .form-section-01 > .infoacs2 {
+            font-size: 0.9vw;
+            display: inline-block;
+            border: 1px solid black;
+            padding: 0.221vw 0.735vw 0.147vw 0.735vw;
+            margin-left: -0.368vw;
+            font-family: "Noto Sans", sans-serif;
+        }
+
         table {
             border-collapse: collapse;
         }
@@ -231,8 +240,13 @@
 
         .form-section-01 > #datacadastro {
             font-size: 0.9vw;
-            border-radius: 0vw 0.735vw 0.735vw 0vw;
             width: 16.912vw;
+        }
+
+        .form-section-01 > #ultimavisita{
+            font-size: 0.9vw;
+            border-radius: 0vw 0.735vw 0.735vw 0vw;
+            width: 14.7vw;
         }
 
         .form-section-voltar {
@@ -458,14 +472,14 @@
             transform: translateX(-4%);
             margin-top: -63vh;
             left: 70vw;
-            top: 87vh;
+            top: 91vh;
         }
 
         .fatoresPrioridade {
             position: fixed;
             color: rgba(87, 4, 4, 0.685);
             font-size: 1.3vw;
-            top: 20vh;
+            top: 24vh;
             left: 70vw;
         }
 
@@ -771,25 +785,17 @@
         }
         .novaVisita {
             position: absolute;
-            left: 83.5vw;
-            top: 12.2vh;
-            height: 4vh;
-        }
-        .novaVisitaTexto {
-            position: absolute;
-            font-family: "Poppins";
-            left: 83.4vw;
-            top: 8.4vh;
-            font-size: 1.1vw;
-            color: red;
+            left: 0vw;
+            top: 0.2vh;
+            height: 3vh;
         }
         .botaoNovaVisita {
             background-color: #0C91F0;
             color: white;
             font-family: "Poppins";
             position: absolute;
-            left: 93.2vw;
-            top: 12.6vh;
+            left: 9.4vw;
+            top: 0.2vh;
             height: 3vh;
             width: 4vw;
             cursor: pointer;
@@ -801,6 +807,30 @@
             display: none;
             color: white;
             background: none;
+        }
+        .maisDeUmMes{
+            font-size: 0.75vw;
+            color: red;
+        }
+        #modalDisplay{
+            position: fixed;
+            display: none;
+        }
+        #lapiscolar{
+            position: fixed;
+        }
+        #lapisimg {
+            position: absolute;
+            width: 2.8vw;
+            top: -0.5vh;
+            left: 12.5vw;
+        }
+        #lapisimg2 {
+            display: none;
+            position: absolute;
+            width: 2.8vw;
+            top: -0.5vh;
+            left: 12.5vw;
         }
     </style>
 </head>
@@ -825,191 +855,223 @@
             </div>
             <img src="/imagens2/imagens/logout.png" alt="Icone de sair" class="sair" id="btnlogout">
         </header>
-        <form>
-            <div class="form-section-01">
-                <table class="infoacs" id="cns">
+        <div class="form-section-01">
+            <table class="infoacs" id="cns">
+                <tr>
+                    <caption>CNS DO PROFISSIONAL</caption>
                     <tr>
-                        <caption>CNS DO PROFISSIONAL</caption>
-                        <tr>
-                            {{range .CNS}}
-                            <td>{{.}}</td>
-                            {{end}}
-                        </tr>
+                        {{range .CNS}}
+                        <td>{{.}}</td>
+                        {{end}}
                     </tr>
-                </table>
+                </tr>
+            </table>
 
-                <table class="infoacs" id="cbo">
+            <table class="infoacs" id="cbo">
+                <tr>
+                    <caption>CBO</caption>
+                    <td>{{.CBO1}}</td>
+                    <td>{{.CBO2}}</td>
+                    <td>{{.CBO3}}</td>
+                    <td>{{.CBO4}}</td>
+                    <td id="hifen">-</td>
+                    <td>{{.CBO5}}</td>
+                    <td>{{.CBO6}}</td>
+                </tr>
+            </table>
+
+            <table class="infoacs" id="cnes">
                     <tr>
-                        <caption>CBO</caption>
-                        <td>{{.CBO1}}</td>
-                        <td>{{.CBO2}}</td>
-                        <td>{{.CBO3}}</td>
-                        <td>{{.CBO4}}</td>
-                        <td id="hifen">-</td>
-                        <td>{{.CBO5}}</td>
-                        <td>{{.CBO6}}</td>
+                        <caption>CNES</caption>
+                        {{range .CNES}}
+                        <td>{{.}}</td>
+                        {{end}}
                     </tr>
-                </table>
-
-                <table class="infoacs" id="cnes">
-                        <tr>
-                            <caption>CNES</caption>
-                            {{range .CNES}}
-                            <td>{{.}}</td>
-                            {{end}}
-                        </tr>
-                </table>
-                        
-                <table class="infoacs" id="ine">
-                        <tr>
-                            <caption>INE</caption>
-                            {{range .INE}}
-                            <td>{{.}}</td>
-                            {{end}}
-                        </tr>
-                </table>
-                        
-                <table class="infoacs" id="microarea">
-                        <tr>
-                            <caption>MICROÁREA</caption>
-                            <td>0</td>
-                            <td>2</td>
-                        </tr>
-                </table>
-
-                <table class="infoacs" id="datacadastro">
+            </table>
+                    
+            <table class="infoacs" id="ine">
                     <tr>
-                        <caption>DATA DO CADASTRO <div class="asc">*</div></caption>
-                        <td style="border: none; font-size: 0.95vw;">{{.DataCadastro}}</td>
+                        <caption>INE</caption>
+                        {{range .INE}}
+                        <td>{{.}}</td>
+                        {{end}}
                     </tr>
-                </table>
-            </div>
+            </table>
+                    
+            <table class="infoacs" id="microarea">
+                    <tr>
+                        <caption>MICROÁREA</caption>
+                        <td>0</td>
+                        <td>2</td>
+                    </tr>
+            </table>
 
-            <hr>
-
-            <div class="form-section-one">
-                <label for="nome">NOME <div class="asc">*</div></label>
-                <input type="text" id="nome" required placeholder="Ex.: João da Silva" value="{{.Nome}}" disabled>
-
-                <label for="data-nascimento">DATA DE NASCIMENTO <div class="asc">*</div></label>
-                <input type="text" id="data-nascimento" required placeholder="Ex.:DD/MM/AAAA" value="{{.DataNasc}}" disabled>
-
-                <label for="cpf">CPF <div class="asc">*</div></label>
-                <input type="text" id="cpf" required placeholder="Ex.:123.456.789-09" value="{{.CPF}}" disabled>
-
-                <label for="mae">NOME DA MÃE <div class="asc">*</div></label>
-                <input type="text" id="mae" placeholder="Ex.: Maria da Silva" value="{{.NomeMae}}" disabled>
-
-                <label for="isexo" style="margin-bottom: -1.471vw;">SEXO</label>
-                <input type="text" name="sexo" id="isexo" value="{{.Sexo}}" disabled class="form-section-one-sexo">
-
-            </div>
-            <div class="form-section-two">
-                <label for="isus">CARTÃO DO SUS</label>
-                <input type="text" id="isus" placeholder="Ex.: 999 9999 9999 9999" value="{{.CartaoSus}}" disabled>
-
-
-                <label for="itel">TELEFONE <div class="asc">*</div></label>
-                <input type="tel" id="itel" pattern="^\(\d{2}\)\d{4,5}-\d{4}$" placeholder="Ex.: (99)99999-9999" value="{{.Telefone}}" disabled>
-
-                <label for="imail">E-MAIL</label>
-                <input type="text" id="imail" placeholder="Ex.: joaodasilva@gmail.com" value="{{.Email}}" disabled>
-
-                <p id="campo-endereco">ENDEREÇO</p>
-
-                <div class="form-section-three">
-                        <div id="cep">
-                            <label for="icep">CEP</label>
-                            <input type="text" id="cep" pattern="^\d{5}-\d{3}$" placeholder="Ex.: 12345-678" value="{{.CEP}}" disabled>
-                        </div>
-                        <div id="ibairro">
-                            <label for="ibairro">BAIRRO</label>
-                            <input type="text" id="ibairro" placeholder="Ex.: Bela Vista" value="{{.Bairro}}" disabled>
-                        </div>
-                        <div id="irua">
-                            <label for="irua">RUA</label>
-                            <input type="text" id="irua" placeholder="Ex.: Av. Brasil" value="{{.Rua}}" disabled>
-                        </div>
-                        <div id="inum">
-                            <label for="inum">NÚMERO</label>
-                            <input type="number" id="inum" placeholder="Ex.: 99" value="{{.Numero}}" disabled>
-                        </div>
-                        <div id="complemento">
-                            <label for="icomplemento">COMPLEMENTO</label>
-                            <input type="text" id="icomplemento" placeholder="Ex.: Apto,casa..." value="{{.Complemento}}" disabled>
-                        </div>
-                </div>
-            </div>
-            <div class="div-factors">
-                <h3 class="fatoresPrioridade">Fatores de Prioridade para Câncer de Boca</h3>
-                <div class="form-section risk-factors">
-                    <div>
-                        <label class="borda">Homem <div class="asc">*</div> &#40idade igual ou superior a 40 anos&#41</label>
-                        <div class="radio-group">
-                            <p>Marque sim ou não: </p>
-                            {{if .IsHomem}}
-                            <label class="label1"><input type="radio" name="tipo1" id="sim1" checked disabled><span>Sim</span></label>
-                            <label class="label2"><input type="radio" name="tipo1" id="nao1" disabled><span>Não</span></label>
-                            {{else}}
-                            <label class="label1"><input type="radio" name="tipo1" id="sim1" disabled><span>Sim</span></label>
-                            <label class="label2"><input type="radio" name="tipo1" id="nao1" checked disabled><span>Não</span></label>
-                            {{end}}
-                        </div>
+            <table class="infoacs2" id="datacadastro">
+                <tr>
+                    <caption>DATA DO CADASTRO <div class="asc">*</div></caption>
+                    <td style="border: none; font-size: 0.95vw;">{{.DataCadastro}}</td>
+                </tr>
+            </table>
+            
+            <table class="infoacs" id="ultimavisita">
+                <tr>
+                    {{if .MaisDeUmMes}}
+                    <caption>ÚLTIMA VISITA <span class="maisDeUmMes">(1 mês ou mais)</span><div id="lapiscolar">
+                        <a href="#"><p class="lapis"><img src="/img/img/lapis.png" alt="Lapis de edição" id="lapisimg"></p></a>
                     </div>
-                    <div>
-                        <label class="borda">Etilista <div class="asc">*</div> &#40consome álcool regularmente&#41</label>
-                        <div class="radio-group">
-                            <p>Marque sim ou não: </p>
-                            {{if .IsEtilista}}
-                            <label class="label1"><input type="radio" name="tipo2" id="sim2" checked disabled><span>Sim</span></label>
-                            <label class="label2"><input type="radio" name="tipo2" id="nao2" disabled><span>Não</span></label>
-                            {{else}}
-                            <label class="label1"><input type="radio" name="tipo2" id="sim1" disabled><span>Sim</span></label>
-                            <label class="label2"><input type="radio" name="tipo2" id="nao1" checked disabled><span>Não</span></label>
+                    <div id="modalDisplay">
+                        <form action="/formulario/preenchido/ultimavisita-alterada">
+                            <input type="date" name="novaVisita" class="novaVisita">
+                            <input type="text" name="nome" class="nomeExtracao" value="{{.Nome}}">
+                            <input type="text" name="cpf" value="{{.CPF}}" class="nomeExtracao">
+                            {{if .BaixoRisco}}
+                            <input type="text" name="risco" value="baixo" class="nomeExtracao">
                             {{end}}
-                        </div>
-                    </div>
-                    <div>
-                        <label class="borda">Tabagista <div class="asc">*</div> &#40consome cigarro regularmente&#41</label>
-                        <div class="radio-group">
-                            <p>Marque sim ou não: </p>
-                            {{if .IsTabagista}}
-                            <label class="label1"><input type="radio" name="tipo3" id="sim3" checked disabled><span>Sim</span></label>
-                            <label class="label2"><input type="radio" name="tipo3" id="nao3" disabled><span>Não</span></label>
-                            {{else}}
-                            <label class="label1"><input type="radio" name="tipo3" id="sim3" disabled><span>Sim</span></label>
-                            <label class="label2"><input type="radio" name="tipo3" id="nao3" checked disabled><span>Não</span></label>
+                            {{if .MedioRisco}}
+                            <input type="text" name="risco" value="medio" class="nomeExtracao">
                             {{end}}
-                        </div>
+                            {{if .AltoRisco}}
+                            <input type="text" name="risco" value="alto" class="nomeExtracao">
+                            {{end}}
+                            <button type="submit" class="botaoNovaVisita">Alterar</button>
+                        </form>
                     </div>
+                    <div id="lapiscolar">
+                        <a href="#"><p class="lapis"><img src="/img/img/lapis.png" alt="Lapis de edição" id="lapisimg2"></p></a>
+                    </div>
+                    </caption>
+                    {{else}}
+                    <caption>ÚLTIMA VISITA</caption>
+                    {{end}}
+                    <td style="border: none;font-size: 0.95vw;">{{.UltimaVisita}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <hr>
+
+        <div class="form-section-one">
+            <label for="nome">NOME <div class="asc">*</div></label>
+            <input type="text" id="nome" required placeholder="Ex.: João da Silva" value="{{.Nome}}" disabled>
+
+            <label for="data-nascimento">DATA DE NASCIMENTO <div class="asc">*</div></label>
+            <input type="text" id="data-nascimento" required placeholder="Ex.:DD/MM/AAAA" value="{{.DataNasc}}" disabled>
+
+            <label for="cpf">CPF <div class="asc">*</div></label>
+            <input type="text" id="cpf" required placeholder="Ex.:123.456.789-09" value="{{.CPF}}" disabled>
+
+            <label for="mae">NOME DA MÃE <div class="asc">*</div></label>
+            <input type="text" id="mae" placeholder="Ex.: Maria da Silva" value="{{.NomeMae}}" disabled>
+
+            <label for="isexo" style="margin-bottom: -1.471vw;">SEXO</label>
+            <input type="text" name="sexo" id="isexo" value="{{.Sexo}}" disabled class="form-section-one-sexo">
+
+        </div>
+        <div class="form-section-two">
+            <label for="isus">CARTÃO DO SUS</label>
+            <input type="text" id="isus" placeholder="Ex.: 999 9999 9999 9999" value="{{.CartaoSus}}" disabled>
+
+
+            <label for="itel">TELEFONE <div class="asc">*</div></label>
+            <input type="tel" id="itel" pattern="^\(\d{2}\)\d{4,5}-\d{4}$" placeholder="Ex.: (99)99999-9999" value="{{.Telefone}}" disabled>
+
+            <label for="imail">E-MAIL</label>
+            <input type="text" id="imail" placeholder="Ex.: joaodasilva@gmail.com" value="{{.Email}}" disabled>
+
+            <p id="campo-endereco">ENDEREÇO</p>
+
+            <div class="form-section-three">
+                    <div id="cep">
+                        <label for="icep">CEP</label>
+                        <input type="text" id="cep" pattern="^\d{5}-\d{3}$" placeholder="Ex.: 12345-678" value="{{.CEP}}" disabled>
+                    </div>
+                    <div id="ibairro">
+                        <label for="ibairro">BAIRRO</label>
+                        <input type="text" id="ibairro" placeholder="Ex.: Bela Vista" value="{{.Bairro}}" disabled>
+                    </div>
+                    <div id="irua">
+                        <label for="irua">RUA</label>
+                        <input type="text" id="irua" placeholder="Ex.: Av. Brasil" value="{{.Rua}}" disabled>
+                    </div>
+                    <div id="inum">
+                        <label for="inum">NÚMERO</label>
+                        <input type="number" id="inum" placeholder="Ex.: 99" value="{{.Numero}}" disabled>
+                    </div>
+                    <div id="complemento">
+                        <label for="icomplemento">COMPLEMENTO</label>
+                        <input type="text" id="icomplemento" placeholder="Ex.: Apto,casa..." value="{{.Complemento}}" disabled>
+                    </div>
+            </div>
+        </div>
+        <div class="div-factors">
+            <h3 class="fatoresPrioridade">Fatores de Prioridade para Câncer de Boca</h3>
+            <div class="form-section risk-factors">
                 <div>
-                    <label class="borda">Com lesão bucal suspeita <div class="asc">*</div></label>
+                    <label class="borda">Homem <div class="asc">*</div> &#40idade igual ou superior a 40 anos&#41</label>
                     <div class="radio-group">
                         <p>Marque sim ou não: </p>
-                        {{if .IsLesaoBucal}}
-                        <label class="label1"><input type="radio" name="tipo4" id="sim4" disabled checked><span>Sim</span></label>
-                        <label class="label2"><input type="radio" name="tipo4" id="nao4" disabled><span>Não</span></label>
+                        {{if .IsHomem}}
+                        <label class="label1"><input type="radio" name="tipo1" id="sim1" checked disabled><span>Sim</span></label>
+                        <label class="label2"><input type="radio" name="tipo1" id="nao1" disabled><span>Não</span></label>
                         {{else}}
-                        <label class="label1"><input type="radio" name="tipo4" id="sim4" disabled><span>Sim</span></label>
-                        <label class="label2"><input type="radio" name="tipo4" id="nao4" disabled checked><span>Não</span></label>
+                        <label class="label1"><input type="radio" name="tipo1" id="sim1" disabled><span>Sim</span></label>
+                        <label class="label2"><input type="radio" name="tipo1" id="nao1" checked disabled><span>Não</span></label>
                         {{end}}
                     </div>
                 </div>
-                <div class="risk-level">
-                    <label>Grau de Prioridade para Câncer de Boca</label>
-                    {{if .BaixoRisco}}
-                    <div class="risk-status" style="background-color:#FFB7F1">Baixa Prioridade</div>
-                    {{end}}
-                    {{if .MedioRisco}}
-                    <div class="risk-status" style="background-color:#FFCF7F">Média Prioridade</div>
-                    {{end}}
-                    {{if .AltoRisco}}
-                    <div class="risk-status" style="background-color:#FF877F">Alta Prioridade</div>
+                <div>
+                    <label class="borda">Etilista <div class="asc">*</div> &#40consome álcool regularmente&#41</label>
+                    <div class="radio-group">
+                        <p>Marque sim ou não: </p>
+                        {{if .IsEtilista}}
+                        <label class="label1"><input type="radio" name="tipo2" id="sim2" checked disabled><span>Sim</span></label>
+                        <label class="label2"><input type="radio" name="tipo2" id="nao2" disabled><span>Não</span></label>
+                        {{else}}
+                        <label class="label1"><input type="radio" name="tipo2" id="sim1" disabled><span>Sim</span></label>
+                        <label class="label2"><input type="radio" name="tipo2" id="nao1" checked disabled><span>Não</span></label>
+                        {{end}}
+                    </div>
+                </div>
+                <div>
+                    <label class="borda">Tabagista <div class="asc">*</div> &#40consome cigarro regularmente&#41</label>
+                    <div class="radio-group">
+                        <p>Marque sim ou não: </p>
+                        {{if .IsTabagista}}
+                        <label class="label1"><input type="radio" name="tipo3" id="sim3" checked disabled><span>Sim</span></label>
+                        <label class="label2"><input type="radio" name="tipo3" id="nao3" disabled><span>Não</span></label>
+                        {{else}}
+                        <label class="label1"><input type="radio" name="tipo3" id="sim3" disabled><span>Sim</span></label>
+                        <label class="label2"><input type="radio" name="tipo3" id="nao3" checked disabled><span>Não</span></label>
+                        {{end}}
+                    </div>
+                </div>
+            <div>
+                <label class="borda">Com lesão bucal suspeita <div class="asc">*</div></label>
+                <div class="radio-group">
+                    <p>Marque sim ou não: </p>
+                    {{if .IsLesaoBucal}}
+                    <label class="label1"><input type="radio" name="tipo4" id="sim4" disabled checked><span>Sim</span></label>
+                    <label class="label2"><input type="radio" name="tipo4" id="nao4" disabled><span>Não</span></label>
+                    {{else}}
+                    <label class="label1"><input type="radio" name="tipo4" id="sim4" disabled><span>Sim</span></label>
+                    <label class="label2"><input type="radio" name="tipo4" id="nao4" disabled checked><span>Não</span></label>
                     {{end}}
                 </div>
             </div>
+            <div class="risk-level">
+                <label>Grau de Prioridade para Câncer de Boca</label>
+                {{if .BaixoRisco}}
+                <div class="risk-status" style="background-color:#FFB7F1">Baixa Prioridade</div>
+                {{end}}
+                {{if .MedioRisco}}
+                <div class="risk-status" style="background-color:#FFCF7F">Média Prioridade</div>
+                {{end}}
+                {{if .AltoRisco}}
+                <div class="risk-status" style="background-color:#FF877F">Alta Prioridade</div>
+                {{end}}
             </div>
-        </form>
+        </div>
+        </div>
             <footer>
                 <div class="botoes">
                     <div class="form-section-voltar">
@@ -1045,28 +1107,25 @@
             </div>
         </div>
     </div>
-    {{if .MaisDeUmMes}}
-        <form action="/formulario/preenchido/data-alterada">
-            <label class="novaVisitaTexto">Data da última visita:</label>
-            <input type="date" name="novaVisita" class="novaVisita">
-            <input type="text" name="nome" class="nomeExtracao" value="{{.Nome}}">
-            <input type="text" name="cpf" value="{{.CPF}}" class="nomeExtracao">
-            {{if .BaixoRisco}}
-            <input type="text" name="risco" value="baixo" class="nomeExtracao">
-            {{end}}
-            {{if .MedioRisco}}
-            <input type="text" name="risco" value="medio" class="nomeExtracao">
-            {{end}}
-            {{if .AltoRisco}}
-            <input type="text" name="risco" value="alto" class="nomeExtracao">
-            {{end}}
-            <button type="submit" class="botaoNovaVisita">Alterar</button>
-        </form>
-    {{end}}
     <script>
+        let btn2 = document.getElementById('lapisimg')
+        let cancelbtn2 = document.getElementById('lapisimg2')
+        let modal2 = document.getElementById('modalDisplay')
         let btn = document.getElementById('btnlogout');
         let modal = document.getElementById('modal');
         let cancelbtn = document.querySelector('.nao');
+
+        btn2.onclick = function(){
+            modal2.style.display = 'block';
+            cancelbtn2.style.display = 'block';
+            btn2.style.display = 'none';
+        }
+
+        cancelbtn2.onclick = function(){
+            modal2.style.display = 'none';
+            cancelbtn2.style.display = 'none';
+            btn2.style.display = 'block';
+        }
 
         btn.onclick = function(){
             modal.style.display = 'block';

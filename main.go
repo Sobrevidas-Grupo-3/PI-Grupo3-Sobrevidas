@@ -63,6 +63,7 @@ type PacienteFormularioPreenchido struct {
 	Usuario       string
 	PrimeiraLetra string
 	DataCadastro  string
+	UltimaVisita  string
 	CNS           []string
 	CBO1          string
 	CBO2          string
@@ -219,7 +220,7 @@ func main() {
 	http.HandleFunc("/pagina-absenteista", executarPgAbsenteista)
 	http.HandleFunc("/formulario/preenchido", executarFormPreenchido)
 	http.HandleFunc("/formulario/preenchido/mapa", executarFormPreenchidoVindoDoMaps)
-	http.HandleFunc("/formulario/preenchido/data-alterada", alterarDataCadastroFormPreenchido)
+	http.HandleFunc("/formulario/preenchido/ultimavisita-alterada", alterarDataUltimaVisitaFormPreenchido)
 	http.HandleFunc("/generate-pdf", generatePDF)
 
 	log.Println("Server rodando na porta 8080")
@@ -250,7 +251,7 @@ func fazConexaoComBanco() *sql.DB {
 		log.Fatal(err)
 	}
 
-	_, err = database.Query("CREATE TABLE IF NOT EXISTS pacientes(id SERIAL PRIMARY KEY, nome_completo VARCHAR(255) UNIQUE NOT NULL, data_nasc VARCHAR(30), cpf VARCHAR(15) UNIQUE NOT NULL, nome_mae VARCHAR(255) UNIQUE NOT NULL, sexo VARCHAR(30), cartao_sus VARCHAR(55) UNIQUE NOT NULL, telefone VARCHAR(55) UNIQUE NOT NULL, email VARCHAR(255) UNIQUE NOT NULL, cep VARCHAR(15) UNIQUE NOT NULL, bairro VARCHAR(255), rua VARCHAR(255), numero VARCHAR(255), complemento VARCHAR(255), homem VARCHAR(15) NOT NULL, etilista VARCHAR(15) NOT NULL, tabagista VARCHAR(15) NOT NULL, lesao_bucal VARCHAR(15) NOT NULL, data_cadastro VARCHAR(20))")
+	_, err = database.Query("CREATE TABLE IF NOT EXISTS pacientes(id SERIAL PRIMARY KEY, nome_completo VARCHAR(255) UNIQUE NOT NULL, data_nasc VARCHAR(30), cpf VARCHAR(15) UNIQUE NOT NULL, nome_mae VARCHAR(255) UNIQUE NOT NULL, sexo VARCHAR(30), cartao_sus VARCHAR(55) UNIQUE NOT NULL, telefone VARCHAR(55) UNIQUE NOT NULL, email VARCHAR(255) UNIQUE NOT NULL, cep VARCHAR(15) UNIQUE NOT NULL, bairro VARCHAR(255), rua VARCHAR(255), numero VARCHAR(255), complemento VARCHAR(255), homem VARCHAR(15) NOT NULL, etilista VARCHAR(15) NOT NULL, tabagista VARCHAR(15) NOT NULL, lesao_bucal VARCHAR(15) NOT NULL, data_cadastro VARCHAR(20), ultima_visita VARCHAR(20))")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -819,7 +820,7 @@ func cadastrarPaciente(w http.ResponseWriter, r *http.Request) {
 	d := DadosForm{Usuario: usuarioLogin, PrimeiraLetra: primeiraletraLogin, Cns: cnsq, Cbo1: cbo1, Cbo2: cbo2, Cbo3: cbo3, Cbo4: cbo4, Cbo5: cbo5, Cbo6: cbo6, Cnes: cnesq, Ine: ineq}
 
 	if homem != "" && etilista != "" && tabagista != "" && lesao_bucal != "" && sexo != "" && (homem != "Não" || etilista != "Não" || tabagista != "Não" || lesao_bucal != "Não") {
-		_, err := db.Exec("INSERT INTO pacientes(nome_completo, data_nasc, cpf, nome_mae, sexo, cartao_sus, telefone, email, cep, bairro, rua, numero, complemento, homem, etilista, tabagista, lesao_bucal, data_cadastro) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)", nome, datanascimento, cpf, nomemae, sexo, cartaosus, telefone, email, cep, bairro, rua, numero, complemento, homem, etilista, tabagista, lesao_bucal, data_cadastro)
+		_, err := db.Exec("INSERT INTO pacientes(nome_completo, data_nasc, cpf, nome_mae, sexo, cartao_sus, telefone, email, cep, bairro, rua, numero, complemento, homem, etilista, tabagista, lesao_bucal, data_cadastro, ultima_visita) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19)", nome, datanascimento, cpf, nomemae, sexo, cartaosus, telefone, email, cep, bairro, rua, numero, complemento, homem, etilista, tabagista, lesao_bucal, data_cadastro, data_cadastro)
 		if err != nil {
 			log.Println(err.Error())
 			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
@@ -1895,7 +1896,7 @@ func executarFormPreenchido(w http.ResponseWriter, r *http.Request) {
 	var armazenamento []PacienteFormularioPreenchido
 	for pesquisa.Next() {
 		armazenar := PacienteFormularioPreenchido{}
-		err = pesquisa.Scan(&armazenar.ID, &armazenar.Nome, &armazenar.DataNasc, &armazenar.CPF, &armazenar.NomeMae, &armazenar.Sexo, &armazenar.CartaoSus, &armazenar.Telefone, &armazenar.Email, &armazenar.CEP, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal, &armazenar.DataCadastro)
+		err = pesquisa.Scan(&armazenar.ID, &armazenar.Nome, &armazenar.DataNasc, &armazenar.CPF, &armazenar.NomeMae, &armazenar.Sexo, &armazenar.CartaoSus, &armazenar.Telefone, &armazenar.Email, &armazenar.CEP, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal, &armazenar.DataCadastro, &armazenar.UltimaVisita)
 		if err != nil {
 			log.Println(err)
 			http.Error(w, http.StatusText(500), 500)
@@ -1925,10 +1926,12 @@ func executarFormPreenchido(w http.ResponseWriter, r *http.Request) {
 				armazenado.IsLesaoBucal = true
 			}
 			now := time.Now()
+			ultimavisita := strings.Split(armazenado.UltimaVisita, "-")
+			armazenado.UltimaVisita = ultimavisita[2] + "/" + ultimavisita[1] + "/" + ultimavisita[0]
 			datacadastro := strings.Split(armazenado.DataCadastro, "-")
 			armazenado.DataCadastro = datacadastro[2] + "/" + datacadastro[1] + "/" + datacadastro[0]
-			mesCadastro, _ := strconv.Atoi(datacadastro[1])
-			if math.Abs(float64(mesCadastro)-float64(now.Month())) >= 1 {
+			mesVisita, _ := strconv.Atoi(ultimavisita[1])
+			if math.Abs(float64(mesVisita)-float64(now.Month())) >= 1 {
 				armazenado.MaisDeUmMes = true
 			}
 			datanascimento := strings.Split(armazenado.DataNasc, "/")
@@ -1978,7 +1981,7 @@ func executarFormPreenchidoVindoDoMaps(w http.ResponseWriter, r *http.Request){
 	var armazenamento []PacienteFormularioPreenchido
 	for pesquisa.Next() {
 		armazenar := PacienteFormularioPreenchido{}
-		err = pesquisa.Scan(&armazenar.ID, &armazenar.Nome, &armazenar.DataNasc, &armazenar.CPF, &armazenar.NomeMae, &armazenar.Sexo, &armazenar.CartaoSus, &armazenar.Telefone, &armazenar.Email, &armazenar.CEP, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal, &armazenar.DataCadastro)
+		err = pesquisa.Scan(&armazenar.ID, &armazenar.Nome, &armazenar.DataNasc, &armazenar.CPF, &armazenar.NomeMae, &armazenar.Sexo, &armazenar.CartaoSus, &armazenar.Telefone, &armazenar.Email, &armazenar.CEP, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal, &armazenar.DataCadastro, &armazenar.UltimaVisita)
 		if err != nil {
 			log.Println(err)
 			http.Error(w, http.StatusText(500), 500)
@@ -2007,10 +2010,12 @@ func executarFormPreenchidoVindoDoMaps(w http.ResponseWriter, r *http.Request){
 			armazenado.IsLesaoBucal = true
 		}
 		now := time.Now()
+		ultimavisita := strings.Split(armazenado.UltimaVisita, "-")
+		armazenado.UltimaVisita = ultimavisita[2] + "/" + ultimavisita[1] + "/" + ultimavisita[0]
 		datacadastro := strings.Split(armazenado.DataCadastro, "-")
 		armazenado.DataCadastro = datacadastro[2] + "/" + datacadastro[1] + "/" + datacadastro[0]
-		mesCadastro, _ := strconv.Atoi(datacadastro[1])
-		if math.Abs(float64(mesCadastro)-float64(now.Month())) >= 1 {
+		mesVisita, _ := strconv.Atoi(ultimavisita[1])
+		if math.Abs(float64(mesVisita)-float64(now.Month())) >= 1 {
 			armazenado.MaisDeUmMes = true
 		}
 		datanascimento := strings.Split(armazenado.DataNasc, "/")
@@ -2045,12 +2050,12 @@ func executarFormPreenchidoVindoDoMaps(w http.ResponseWriter, r *http.Request){
 	}
 }
 
-func alterarDataCadastroFormPreenchido(w http.ResponseWriter, r *http.Request) {
+func alterarDataUltimaVisitaFormPreenchido(w http.ResponseWriter, r *http.Request) {
 	novaDataCadastro := r.FormValue("novaVisita")
 	nome := r.FormValue("nome")
 	risco := r.FormValue("risco")
 	cpf := r.FormValue("cpf")
-	_, err := db.Exec(`UPDATE pacientes SET data_cadastro=$1 WHERE cpf=$2`, novaDataCadastro, cpf)
+	_, err := db.Exec(`UPDATE pacientes SET ultima_visita=$1 WHERE cpf=$2`, novaDataCadastro, cpf)
 	if err != nil {
 		return
 	}
@@ -2064,7 +2069,7 @@ func alterarDataCadastroFormPreenchido(w http.ResponseWriter, r *http.Request) {
 	var armazenamento []PacienteFormularioPreenchido
 	for pesquisa.Next() {
 		armazenar := PacienteFormularioPreenchido{}
-		err = pesquisa.Scan(&armazenar.ID, &armazenar.Nome, &armazenar.DataNasc, &armazenar.CPF, &armazenar.NomeMae, &armazenar.Sexo, &armazenar.CartaoSus, &armazenar.Telefone, &armazenar.Email, &armazenar.CEP, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal, &armazenar.DataCadastro)
+		err = pesquisa.Scan(&armazenar.ID, &armazenar.Nome, &armazenar.DataNasc, &armazenar.CPF, &armazenar.NomeMae, &armazenar.Sexo, &armazenar.CartaoSus, &armazenar.Telefone, &armazenar.Email, &armazenar.CEP, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal, &armazenar.DataCadastro, &armazenar.UltimaVisita)
 		if err != nil {
 			log.Println(err)
 			http.Error(w, http.StatusText(500), 500)
@@ -2093,6 +2098,8 @@ func alterarDataCadastroFormPreenchido(w http.ResponseWriter, r *http.Request) {
 			if armazenado.LesaoBucal == "Sim" {
 				armazenado.IsLesaoBucal = true
 			}
+			ultimavisita := strings.Split(armazenado.UltimaVisita, "-")
+			armazenado.UltimaVisita = ultimavisita[2] + "/" + ultimavisita[1] + "/" + ultimavisita[0]
 			datacadastro := strings.Split(armazenado.DataCadastro, "-")
 			armazenado.DataCadastro = datacadastro[2] + "/" + datacadastro[1] + "/" + datacadastro[0]
 			datanascimento := strings.Split(armazenado.DataNasc, "/")
@@ -2144,7 +2151,7 @@ func generatePDF(w http.ResponseWriter, r *http.Request) {
 	for pesquisa.Next() {
 
 		var armazenar PacienteFormularioPreenchido
-		err := pesquisa.Scan(&armazenar.ID, &armazenar.Nome, &armazenar.DataNasc, &armazenar.CPF, &armazenar.NomeMae, &armazenar.Sexo, &armazenar.CartaoSus, &armazenar.Telefone, &armazenar.Email, &armazenar.CEP, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal, &armazenar.DataCadastro)
+		err := pesquisa.Scan(&armazenar.ID, &armazenar.Nome, &armazenar.DataNasc, &armazenar.CPF, &armazenar.NomeMae, &armazenar.Sexo, &armazenar.CartaoSus, &armazenar.Telefone, &armazenar.Email, &armazenar.CEP, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.LesaoBucal, &armazenar.DataCadastro, &armazenar.UltimaVisita)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			log.Println(err)
