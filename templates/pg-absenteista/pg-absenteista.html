@@ -35,7 +35,7 @@
             font-size: 4vh;
             color: white;
             margin-top: 0.8%;
-            left: 50%;
+            left: 40%;
             top: 0vh;
         }
 
@@ -139,13 +139,13 @@
         h3.posicaoContato {
             position: absolute;
             top: 1vh;
-            left: 45vw;
+            left: 41vw;
         }
 
         h3.posicaoIdade {
             position: absolute;
             top: 1vh;
-            right: 22vw;
+            right: 24vw;
         }
 
         h3.posicaoFatores {
@@ -196,22 +196,73 @@
             background-color: white;
             cursor: pointer;
         }
-    
-        
-        .fichasPacientes {
+
+        /* .fichasPacientes {
             font-weight: normal;
             color:#3a3b3c;
             height: 2.941vw;
-            width: 85vw;
+            width: 81.5vw;
             left:0 2%;
             align-items: center;
             display: flex;
             font-weight: bold;
             justify-content:space-between;
             position: relative;
+
+        } */
+    
+        
+        .fichasPacientesExemplo1 {
+            font-weight: normal;
+            color:#3a3b3c;
+            height: 2.5vh;
+            width: 80vw;
+            left: 9vw;
+            align-items: center;
+            display: flex;
+            font-weight: bold;
+            justify-content:space-between;
+            position: relative;
+            top: 28vh;
+            padding: 3vh;
+            border-radius: 10px;
+            border: 3px solid red;
         }
 
-        
+        .fichasPacientesExemplo2 {
+            font-weight: normal;
+            color:#3a3b3c;
+            height: 2.5vh;
+            width: 80vw;
+            left: 9vw;
+            align-items: center;
+            display: flex;
+            font-weight: bold;
+            justify-content:space-between;
+            position: relative;
+            top: 29vh;
+            padding: 3vh;
+            border-radius: 10px;
+            border: 3px solid yellow;
+        }
+
+        .fichasPacientesExemplo3 {
+            font-weight: normal;
+            color:#3a3b3c;
+            height: 2.5vh;
+            width: 80vw;
+            left: 9vw;
+            align-items: center;
+            display: flex;
+            font-weight: bold;
+            justify-content:space-between;
+            position: relative;
+            top: 30vh;
+            padding: 3vh;
+            border-radius: 10px;
+            border: 3px solid pink;
+
+        }
 
         .space1{
             width:17%;
@@ -999,10 +1050,8 @@
         <h1>SOBREVIDAS - ACS</h1>
         <h2>Pacientes Absenteístas</h2>
         <div id="caixausuario">
-            {{range .}}
             <p class="usuario">{{.Primeira}}</p>
             <p class="caixa">{{.Usuario}}</p>
-            {{end}}
             <a href="/pagina-absenteista"><img src="/imgdashboard/sino.png" alt="IconeNotificação" class="posicaoImgSino"></a>
         </div>
         <a href="/dashboard/voltar"><img src="/imgdashboard/LogoSOBREVIDAS-ACS-semtext.png" alt="Logo Sobrevidas" class="posicaoImgLogo"></a>        <a id="btnlogout"><img src="/imgdashboard/logout.png" alt="IconeSaida" class="posicaoImgSaida"></a>
@@ -1017,12 +1066,12 @@
     </div>
     <!--MECANISMO DE BUSCA COM DIGITAÇÃO-->
     <div class="posicaoPesquisaFiltro">
-        <form action="/pagina-baixo-risco/filtrar-nome" method="get">
+        <form action="/pagina-absenteistas-risco/filtrar-nome" method="get">
             <div class="espacoBusca color-light-purple"><input type="text" id="campo-texto" placeholder="Digite o nome do(a) paciente" name="nome"><button type="submit" class="submit"><img src="/imagenspg/🦆 icon _search_.png"></button></div>
         </form>
         <!--POP-UP-->
         <a href="#popup-1" class="botaoFiltro color-light-purple no-link">Filtrar<img src="/imagenspg/🦆 icon _filter_.png"></a>
-        <form action="/pagina-alto-risco/filtrar">
+        <form action="/pagina-absenteistas-risco/filtrar">
             <div id="popup-1" class="popup">
                 <div id="quadroPopUpAtencao">
                     <div class="box">
@@ -1075,97 +1124,39 @@
             </div>
         </form>
     </div>
-    <!--EXEMPLOS DE FICHAS DE PACIENTES
-    {{range .}}
-        {{if .TemDados}}
-        <form action="/formulario/preenchido">
-            <input type="text" name="Nome" value="{{.Nome}}" class="nomeExtracao">
-            <input type="text" name="Risco" value="Baixo" class="nomeExtracao">
-            <button type="submit" class="enviarInfo">
-                <div class="fichasPacientes color-light-purple ">
-                    <p class="space1">{{.Nome}}</p>
-                    <p class="space2">{{.Endereco}}</p>
-                    <p class="space3">{{.Telefone}}</p>
-                    <p class="space4">{{.Idade}}</p>
-                    <p class="space5">{{.Fatores}}</p>
-                </div>
-            </button>
-        </form>
-        {{end}}
-    {{end}}-->
-        <!--1-->
+    <!--EXEMPLOS DE FICHAS DE PACIENTES -->
+    
     <a href="#" class="no-link index">
-        <div class="fichasPacientes color-light-red ">
-            <div class="space11">Arnaldo Pacheco Nunes</div>
-            <div class="space21">Rua 35 E , 115, St. Garavelo Res. Park</div>
-            <div class="space31">(62) 9 4002-8922</div>
+        <div class="fichasPacientesExemplo1 color-light-red ">
+            <div class="space11">Thaciano Rodrigues Silva</div>
+            <div class="space21">Rua 40 E , 115, St. Garavelo Res. Park</div>
+            <div class="space31">(62) 99903-9833</div>
             <div class="space41">84</div>
             <div class="space51">Homem/Feridas
                 Bucais/Etilista/Tabagista</div>
         </div>
     </a>
-    <!--2-->
+   
     <a href="#" class="no-link">
-        <div class="fichasPacientes exemplos color-light-yellow ">
-            <div class="space11">Teodoro da Fonseca Neto</div>
-            <div class="space21">Rua 35 E , 115, St. Garavelo Res. Park</div>
-            <div class="space31">(62) 9 4002-8922</div>
+        <div class="fichasPacientesExemplo2 color-light-yellow ">
+            <div class="space11">João Tavares Costa</div>
+            <div class="space21">Rua 39 E , 115, St. Garavelo Res. Park</div>
+            <div class="space31">(62) 9982-67233</div>
             <div class="space41">63</div>
             <div class="space51">Homem/Etilista/Tabagista</div>
         </div>
     </a>
-    <!--3-->
+   
     <a href="#" class="no-link">
-        <div class="fichasPacientes color-light-red ">
-            <div class="space11">Antônio Giorgino Neves</div>
-            <div class="space21">Rua 35 E , 115, St. Garavelo Res. Park</div>
-            <div class="space31">(62) 9 4002-8922</div>
-            <div class="space41">48</div>
-            <div class="space51">Homem/Feridas
-                Bucais/Etilista/Tabagista</div>
-        </div>
-    </a>
-    <!--4-->
-    <a href="#" class="no-link">
-        <div class="fichasPacientes  color-light-pink ">
-            <div class="space11">Jean Von Bordeaux</div>
-            <div class="space21">Rua 35 E , 115, St. Garavelo Res. Park</div>
-            <div class="space31">(62) 9 4002-8922</div>
+        <div class="fichasPacientesExemplo3 color-light-pink ">
+            <div class="space11">Leonardo Martinez Ferreira</div>
+            <div class="space21">Rua 38 E , 115, St. Garavelo Res. Park</div>
+            <div class="space31">(62) 99902-8922</div>
             <div class="space41">42</div>
             <div class="space51">Homem/Etilista</div>
         </div>
     </a>
-    <!--5-->
-    <a href="#" class="no-link">
-        <div class="fichasPacientes color-light-yellow ">
-            <div class="space11">Thiago Medeiros</div>
-            <div class="space21">Rua 35 E , 115, St. Garavelo Res. Park</div>
-            <div class="space31">(62) 9 4002-8922</div>
-            <div class="space41">90</div>
-            <div class="space51">Homem/Tabagista/Etilista</div>
-        </div>
-    </a>
-    <!--6-->
-    <a href="#" class="no-link">
-        <div class="fichasPacientes color-light-pink ">
-            <div class="space11">João Carlos Mendonça</div>
-            <div class="space21">Rua 35 E , 115, St. Garavelo Res. Park</div>
-            <div class="space31">(62) 9 4002-8922</div>
-            <div class="space41">58</div>
-            <div class="space51">Homem/Etilista</div>
-        </div>
-    </a>
-    <!--7-->
-    <a href="#" class="no-link">
-        <div class="fichasPacientes color-light-red ">
-            <div class="space11">Marcus Vinícios Junior</div>
-            <div class="space21">Rua 35 E , 115, St. Garavelo Res. Park</div>
-            <div class="space31">(62) 9 4002-8922</div>
-            <div class="space41">55</div>
-            <div class="space51">Homem/Feridas
-                Bucais/Etilista/Tabagista</div>
-        </div>
-    </a>
+    
 
     <a href="/dashboard/voltar" class="Voltar">Voltar</a>
     <a href="/dashboard/voltar" class="posicaoImgSetaVoltar"><img src="/imagens/iconeSetaVoltar1.1.png" alt="iconeSetaVoltar" class="setaVoltarTamanho"></a>
