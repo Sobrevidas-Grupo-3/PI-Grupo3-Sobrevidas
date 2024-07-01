@@ -341,7 +341,9 @@ func colocarDados() {
 		mesVisita, _ := strconv.Atoi(quebrarUltimaVisita[1])
 		if diaVisita <= now.Day() && mesVisita < int(now.Month()){
 			*armazenarQtdUltimaVisita++
-		}
+		} else if (int(now.Month()) - mesVisita) >= 2{
+			*armazenarQtdUltimaVisita++
+		} 
 	}
 	*pgtotal = *pgbaixo + *pgmedio + *pgalto
 }
@@ -843,6 +845,8 @@ func cadastrarPaciente(w http.ResponseWriter, r *http.Request) {
 		diaCadastro, _ := strconv.Atoi(quebrarDataCadastro[2])
 		mesCadastro, _ := strconv.Atoi(quebrarDataCadastro[1])
 		if mesCadastro < int(now.Month()) && diaCadastro <= now.Day(){
+			*armazenarQtdVisitadosMaisDeUmMes++
+		} else if (int(now.Month()) - mesCadastro) >= 2{
 			*armazenarQtdVisitadosMaisDeUmMes++
 		}
 		*ponteiroConfirmando = true
@@ -1952,6 +1956,8 @@ func executarFormPreenchido(w http.ResponseWriter, r *http.Request) {
 			mesVisita, _ := strconv.Atoi(ultimavisita[1])
 			if diaVisita <= now.Day() && mesVisita < int(now.Month()){
 				armazenado.MaisDeUmMes = true
+			} else if (int(now.Month()) - mesVisita) >= 2{
+				armazenado.MaisDeUmMes = true
 			}
 			datanascimento := strings.Split(armazenado.DataNasc, "/")
 			armazenado.DataNasc = datanascimento[0] + "/" + datanascimento[1] + "/" + datanascimento[2]
@@ -2036,6 +2042,8 @@ func executarFormPreenchidoVindoDoMaps(w http.ResponseWriter, r *http.Request) {
 		diaVisita, _ := strconv.Atoi(ultimavisita[2])
 		mesVisita, _ := strconv.Atoi(ultimavisita[1])
 		if diaVisita <= now.Day() && mesVisita < int(now.Month()){
+			armazenado.MaisDeUmMes = true
+		} else if (int(now.Month()) - mesVisita) >= 2{
 			armazenado.MaisDeUmMes = true
 		}
 		datanascimento := strings.Split(armazenado.DataNasc, "/")
@@ -2125,6 +2133,8 @@ func alterarDataUltimaVisitaFormPreenchido(w http.ResponseWriter, r *http.Reques
 			diaVisita, _ := strconv.Atoi(ultimavisita[2])
 			mesVisita, _ := strconv.Atoi(ultimavisita[1])
 			if diaVisita <= now.Day() && mesVisita < int(now.Month()){
+				armazenado.MaisDeUmMes = true
+			} else if (int(now.Month()) - mesVisita) >= 2{
 				armazenado.MaisDeUmMes = true
 			} else{
 				*armazenarQtdVisitadosMaisDeUmMes--
