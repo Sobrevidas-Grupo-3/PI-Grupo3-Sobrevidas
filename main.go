@@ -628,6 +628,8 @@ func dashboard(w http.ResponseWriter, r *http.Request) {
 
 func executarEsqueceuSenha(w http.ResponseWriter, _ *http.Request) {
 	err := templates.ExecuteTemplate(w, "esqueceusenha.html", esqueceuInvalido)
+	ponteiroEsqueceuInvalido := &esqueceuInvalido
+	*ponteiroEsqueceuInvalido = false
 	if err != nil {
 		return
 	}
@@ -678,6 +680,8 @@ func atualizarSenha(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 			err = templates.ExecuteTemplate(w, "login.html", loginInvalido)
+			ponteiroLoginInvalido := &loginInvalido
+			*ponteiroLoginInvalido = false
 			if err != nil {
 				return
 			}
