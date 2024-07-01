@@ -357,15 +357,23 @@
     border-radius: 1.471vw;
     transform: translateX(-4%);
     margin-top: -63vh;
-    left: 70vw;
-    top: 87vh;
+    left: 68.5vw;
+    top: 87.5vh;
 }
 
 .fatoresPrioridade {
     position: fixed;
     color: rgba(87, 4, 4, 0.685);
-    font-size: 1.3vw;
-    top: 20vh;
+    font-size: 1.1vw;
+    top: 19vh;
+    left: 75.5vw;
+}
+
+.fatoresPrioridade2 {
+    position: fixed;
+    color: rgba(87, 4, 4, 0.685);
+    font-size: 1.1vw;
+    top: 21.5vh;
     left: 70vw;
 }
 
@@ -443,8 +451,8 @@ label.borda{
 
 .risk-level >  label {
     width: 23.162vw;
-            margin-left: 2.647vw;
-            margin-right: 2.647vw;
+    margin-left: 2.647vw;
+    margin-right: 2.647vw;
 }
 
 .risk-status {
@@ -620,13 +628,13 @@ label.borda{
         border: none;
         width: 15vw;
         height: 5vh;
-        font-weight: bold;
         background-size: 2vw;
         background-position: left 3% center;
         background-repeat: no-repeat;
         font-size: 2.8vh;
         text-align: center;
-        margin-right: 5.5vw;
+        margin-right: 5.8vw;
+        margin-left: 3.2vw;
     }
 
     .validar input[type=submit]:hover {
@@ -641,17 +649,16 @@ label.borda{
 
     .form-section-confirmar > [type="submit"] {
         text-align: center;
-        padding: 0.26vw 0.521vw 0.26vw 0.521vw;
+        padding: 0.26vw 1.1vw 0.26vw 1.1vw;
         background-color: #0C91F0;
         font-family: "Poppins";
         color: white;
         border: none;
-        font-weight: bold;
-        border-radius: 0.208vw;
+        border-radius: 0.26vw;
         font-size: 2.8vh;
-        margin-left: 2.604vw;
-        margin-right: 0.521vw;
-    }
+   
+     
+    }g
 
     .form-section-confirmar > [type="submit"]:hover {
         background-color: #0056b3;
@@ -1014,9 +1021,8 @@ label.borda{
         height: 5.5vh;
         cursor: pointer;
         left: 1.5vw;
-        font-weight: bold;
         font-family: "Inter";
-        font-size: 1.1vw;
+        font-size: 1.2vw;
         background-image: url(/img/imagens/setaesquerda.png);
         background-repeat: no-repeat;
         background-size: 0.6vw;
@@ -1039,8 +1045,8 @@ label.borda{
         height: 5.5vh;
         cursor: pointer;
         left: 17vw;
-        font-weight: bold;
-        font-size: 1.1vw;
+
+        font-size: 1.2vw;
         background-image: url(/img/imagens/setadireita.png);
         background-repeat: no-repeat;
         background-size: 0.6vw;
@@ -1214,7 +1220,8 @@ label.borda{
                 
             </div>
             <div class="div-factors">
-            <h3 class="fatoresPrioridade">Fatores de Prioridade para Câncer de Boca</h3>
+            <h3 class="fatoresPrioridade">FATORES DE PRIORIDADE</h3>
+            <h3 class="fatoresPrioridade2">PARA MONITORAMENTO DE CÂNCER DE BOCA</h3>
             <div class="form-section risk-factors">
                 <div>
                     <label class="borda">Homem <div class="asc">*</div> &#40idade igual ou superior a 40 anos&#41</label>
@@ -1249,7 +1256,7 @@ label.borda{
                     </div>
                 </div>
                 <div class="risk-level">
-                    <label>Grau de Prioridade para Câncer de Boca</label>
+                    <label>Grau de Prioridade para Monitoramento</label>
                     <div class="risk-status">____ Prioridade</div>
                 </div>
             </div>
@@ -1295,7 +1302,7 @@ label.borda{
                 <p>Os itens assinalados com <span class="asc">*</span> são de preenchimento obrigatório</p>
             </div>
             <a href="#" class="download"><input type="submit" value="PDF"></a>
-            <a href="#" class="validar"><input type="submit" value="Validar o Telefone" id="validador"></a>
+            <a href="#" class="validar"><input type="submit" value="Validar Telefone" id="validador"></a>
             <div class="form-section-confirmar">
                 <button type="submit" id="confirmador">Confirmar</button>
             </div>

@@ -459,29 +459,37 @@
             text-align: justify;
         }
 
-        .risk-factors {
-            width: 30vw;
-            padding: 0.735vw;
-            margin-top: 2vh;
-            border-top: 1px solid #ddd;
-            position: fixed;
-            display: inline-block;
-            float: right;
-            background-color: #49bbc691;
-            border-radius: 1.471vw;
-            transform: translateX(-4%);
-            margin-top: -63vh;
-            left: 70vw;
-            top: 88.5vh;
-        }
+.risk-factors {
+    width: 30vw;
+    padding: 0.735vw;
+    margin-top: 2vh;
+    border-top: 1px solid #ddd;
+    position: fixed;
+    display: inline-block;
+    float: right;
+    background-color: #49bbc691;
+    border-radius: 1.471vw;
+    transform: translateX(-4%);
+    margin-top: -63vh;
+    left: 68.5vw;
+    top: 87.5vh;
+}
 
-        .fatoresPrioridade {
-            position: fixed;
-            color: rgba(87, 4, 4, 0.685);
-            font-size: 1.3vw;
-            top: 21vh;
-            left: 70vw;
-        }
+.fatoresPrioridade {
+    position: fixed;
+    color: rgba(87, 4, 4, 0.685);
+    font-size: 1.1vw;
+    top: 19vh;
+    left: 75.5vw;
+}
+
+.fatoresPrioridade2 {
+    position: fixed;
+    color: rgba(87, 4, 4, 0.685);
+    font-size: 1.1vw;
+    top: 21.5vh;
+    left: 70vw;
+}
 
         .risk-factors > div {
             margin-bottom: 1.471vw;
@@ -612,7 +620,7 @@
             padding: 0.368vw;
             position: relative;
             left: 8vw;
-            top: 1vh;
+            top: 0.3vh;
             transform: translateX(120%);
         }
 
@@ -649,7 +657,7 @@
             padding: 0.368vw;
             position: relative;
             left: 10vw;
-            top: 1vh;
+            top: 0.3vh;
             transform: translateX(120%);
         }
 
@@ -1072,7 +1080,8 @@
             </div>
         </div>
         <div class="div-factors">
-            <h3 class="fatoresPrioridade">Fatores de Prioridade para Câncer de Boca</h3>
+            <h3 class="fatoresPrioridade">FATORES DE PRIORIDADE</h3>
+            <h3 class="fatoresPrioridade2">PARA MONITORAMENTO DE CÂNCER DE BOCA</h3>
             <div class="form-section risk-factors">
                 <div>
                     <label class="borda">Homem <div class="asc">*</div> &#40idade igual ou superior a 40 anos&#41</label>
@@ -1127,7 +1136,7 @@
                 </div>
             </div>
             <div class="risk-level">
-                <label>Grau de Prioridade para Câncer de Boca</label>
+                <label>Grau de Prioridade para Monitoramento</label>
                 {{if .BaixoRisco}}
                 <div class="risk-status" style="background-color:#FFB7F1">Baixa Prioridade</div>
                 {{end}}
