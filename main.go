@@ -365,7 +365,7 @@ func autenticaLoginELevaAoDashboard(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
 	}
-	cepEndereco, err := db.Query("SELECT nome_completo, data_nasc, telefone, homem, etilista, tabagista, lesao_bucal, data_cadastro, cep, bairro, rua, numero, complemento FROM pacientes")
+	cepEndereco, err := db.Query("SELECT nome_completo, data_nasc, telefone, homem, etilista, tabagista, lesao_bucal, ultima_visita, cep, bairro, rua, numero, complemento FROM pacientes")
 	if err != nil {
 		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
 	}
@@ -538,7 +538,7 @@ func dashboard(w http.ResponseWriter, r *http.Request) {
 	*ponteiroConfirmCadastro = false
 	ponteiroErroCampos := &erroCadastro
 	*ponteiroErroCampos = false
-	cepEndereco, err := db.Query("SELECT nome_completo, data_nasc, telefone, homem, etilista, tabagista, lesao_bucal, data_cadastro, cep, bairro, rua, numero, complemento FROM pacientes")
+	cepEndereco, err := db.Query("SELECT nome_completo, data_nasc, telefone, homem, etilista, tabagista, lesao_bucal, ultima_visita, cep, bairro, rua, numero, complemento FROM pacientes")
 	if err != nil {
 		http.Error(w, http.StatusText(500), http.StatusInternalServerError)
 	}
