@@ -349,6 +349,8 @@ func colocarDados() {
 }
 
 func autenticaLoginELevaAoDashboard(w http.ResponseWriter, r *http.Request) {
+	ponteiroLoginInvalido := &loginInvalido
+	*ponteiroLoginInvalido = false
 	if r.Method != http.MethodGet {
 		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
 		return
@@ -508,7 +510,7 @@ func autenticaLoginELevaAoDashboard(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	ponteiroLoginInvalido := &loginInvalido
+	ponteiroLoginInvalido = &loginInvalido
 	*ponteiroLoginInvalido = true
 	http.Redirect(w, r, "/telalogin", http.StatusSeeOther)
 }
@@ -632,6 +634,8 @@ func executarEsqueceuSenha(w http.ResponseWriter, _ *http.Request) {
 }
 
 func atualizarSenha(w http.ResponseWriter, r *http.Request) {
+	ponteiroEsqueceuInvalido := &esqueceuInvalido
+	*ponteiroEsqueceuInvalido = false
 	if r.Method != http.MethodGet {
 		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
 		return
@@ -680,7 +684,7 @@ func atualizarSenha(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	ponteiroEsqueceuInvalido := &esqueceuInvalido
+	ponteiroEsqueceuInvalido = &esqueceuInvalido
 	*ponteiroEsqueceuInvalido = true
 	http.Redirect(w, r, "/esqueceusenha", http.StatusSeeOther)
 }
