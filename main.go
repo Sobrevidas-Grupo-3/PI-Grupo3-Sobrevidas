@@ -191,7 +191,7 @@ var esqueceuInvalido = false
 var confirmCadastro = false
 var erroCadastro bool
 var qtdBaixo, qtdMedio, qtdAlto, qtdTotal, qtdTotalCard, qtdVisitadosMaisDeUmMes int
-var templates = template.Must(template.ParseFiles("./index.html", "./templates/cadastro/cadastro.html", "./templates/telalogin/login.html", "./templates/telaesqueceusenha/esqueceusenha.html", "./templates/dashboard/dashboard.html", "./templates/formulario/formulario.html", "./templates/central-usuario/centralusuario.html", "./templates/pacientesgerais/indexPacGerais.html", "./templates/pg-baixo/pg-baixo.html", "./templates/pg-medio/pg-medio.html", "./templates/pg-alto/pg-alto.html", "./templates/pg-absenteista/pg-absenteista.html", "./templates/pag-Faq/indexFaq.html", "./templates/formulario-preenchido/formpreenchido.html"))
+var templates = template.Must(template.ParseFiles("./index.html", "./templates/cadastro/cadastro.html", "./templates/telalogin/login.html", "./templates/telaesqueceusenha/esqueceusenha.html", "./templates/dashboard/dashboard.html", "./templates/formulario/formulario.html", "./templates/central-usuario/centralusuario.html", "./templates/pacientesgerais/pacGerais.html", "./templates/pg-baixo/pg-baixo.html", "./templates/pg-medio/pg-medio.html", "./templates/pg-alto/pg-alto.html", "./templates/pg-absenteista/pg-absenteista.html", "./templates/pag-Faq/faq.html", "./templates/formulario-preenchido/formpreenchido.html"))
 
 func main() {
 	fs := http.FileServer(http.Dir("./"))
@@ -889,7 +889,7 @@ func cadastrarPaciente(w http.ResponseWriter, r *http.Request) {
 
 func executarPagFaq(w http.ResponseWriter, _ *http.Request) {
 	u := UsuarioNoDashboard{Usuario: usuarioLogin, Primeira: primeiraletraLogin}
-	err := templates.ExecuteTemplate(w, "indexFaq.html", u)
+	err := templates.ExecuteTemplate(w, "faq.html", u)
 	if err != nil {
 		return
 	}
@@ -897,7 +897,7 @@ func executarPagFaq(w http.ResponseWriter, _ *http.Request) {
 
 func executarPacGerais(w http.ResponseWriter, _ *http.Request) {
 	u := UsuarioNoDashboard{Usuario: usuarioLogin, Primeira: primeiraletraLogin, QtdBaixo: qtdBaixo, QtdMedio: qtdMedio, QtdAlto: qtdAlto}
-	err := templates.ExecuteTemplate(w, "indexPacGerais.html", u)
+	err := templates.ExecuteTemplate(w, "pacGerais.html", u)
 	if err != nil {
 		return
 	}
