@@ -237,36 +237,28 @@
     <div class="formulario">
         <form action="/login" method="post">
             <p class="p1">
-                <label for="inome"></label>
                 <input type="text" name="nome_completo" id="inome" required placeholder="Nome Completo*" minlength="1">
             </p>
             <p class="p1">
-                <label for="icpf"></label>
                 <input type="text" name="cpf" id="icpf" required minlength="11" maxlength="11" placeholder="CPF*" pattern="\d*">
             </p>
             <p class="p1">
-                <label for="icns"></label>
                 <input type="text" name="cns" id="icns" placeholder="CNS do profissional* (Carteira Nacional de Saúde)" required minlength="15" maxlength="15" pattern="\d*">
             </p>
             <p class="p1">
-                <label for="icbo"></label>
                 <input type="text" name="cbo" id="icbo" placeholder="CBO* (Código da Classificação Brasileira de Ocupação)" required minlength="6" maxlength="6" pattern="\d*">
             </p>
             <p class="p1">
-                <label for="icnes"></label>
                 <input type="text" name="cnes" id="icnes" placeholder="CNES* (Código do Cadastro Nacional de Estabelecimento de Saúde)" required minlength="7" maxlength="7" pattern="\d*">
             </p>
             <p class="p1">
-                <label for="iine"></label>
                 <input type="text" name="ine" id="iine" placeholder="INE* (Código Identificador Nacional de Equipes)" required minlength="10" maxlength="10" pattern="\d*">
             </p>
             <p class="p7">
-                <label for="ipassword"></label>
                 <input type="password" name="senha" id="ipassword" required placeholder="Senha*" class="senha" onchange='confereSenha()' minlength="1">
                 <a id="icon" onclick="showHide()"></a>
             </p>
             <p class="p8">
-                <label for="iconfirmpassword"></label>
                 <input type="password" name="confirmsenha" id="iconfirmpassword" required placeholder="Confirmar senha*" onchange='confereSenha()' minlength="1">
             </p>
             <p class="enviar"><button type="submit">Confirmar</button></p>
