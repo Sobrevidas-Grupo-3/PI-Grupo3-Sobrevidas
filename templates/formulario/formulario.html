@@ -1115,13 +1115,13 @@ label.borda{
                 <table class="infoacs" id="cbo">
                     <tr>
                         <caption>CBO</caption>
-                        <td>{{.Cbo1}}</td>
-                        <td>{{.Cbo2}}</td>
-                        <td>{{.Cbo3}}</td>
-                        <td>{{.Cbo4}}</td>
-                        <td id="hifen">-</td>
-                        <td>{{.Cbo5}}</td>
-                        <td>{{.Cbo6}}</td>
+                        <td class="tdacs">{{.Cbo1}}</td>
+                        <td class="tdacs">{{.Cbo2}}</td>
+                        <td class="tdacs">{{.Cbo3}}</td>
+                        <td class="tdacs">{{.Cbo4}}</td>
+                        <td class="tdacs" id="hifen">-</td>
+                        <td class="tdacs">{{.Cbo5}}</td>
+                        <td class="tdacs">{{.Cbo6}}</td>
                     </tr>
                 </table>
 
@@ -1129,7 +1129,7 @@ label.borda{
                         <tr>
                             <caption>CNES</caption>
                             {{range .Cnes}}
-                            <td>{{.}}</td>
+                            <td class="tdacs">{{.}}</td>
                             {{end}}
                         </tr>
                 </table>
@@ -1138,7 +1138,7 @@ label.borda{
                         <tr>
                             <caption>INE</caption>
                             {{range .Ine}}
-                            <td>{{.}}</td>
+                            <td class="tdacs">{{.}}</td>
                             {{end}}
                         </tr>
                 </table>
@@ -1146,15 +1146,15 @@ label.borda{
                 <table class="infoacs" id="microarea">
                         <tr>
                             <caption>MICROÁREA</caption>
-                            <td>0</td>
-                            <td>2</td>
+                            <td class="tdacs">0</td>
+                            <td class="tdacs">2</td>
                         </tr>
                 </table>
 
                 <table class="infoacs" id="datacadastro">
                     <tr>
                         <caption>DATA DO CADASTRO <div class="asc">*</div></caption>
-                        <td style="border: none; font-size: 0.95vw;"><input type="date" name="DataCadastro" id="" style="height: 3vh;" required></td>
+                        <td class="tdacs" style="border: none; font-size: 0.95vw;"><input type="date" name="DataCadastro" id="" style="height: 3vh;" required></td>
                     </tr>
                 </table>
             </div>
