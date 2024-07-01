@@ -128,6 +128,7 @@ type DadosGoogleMaps struct {
 	Fatores        string
 	Endereco       string
 	UltimaVisita   string
+	MaisDeUmMes    bool
 	Alto           bool
 	Medio          bool
 	Baixo          bool
@@ -433,7 +434,17 @@ func autenticaLoginELevaAoDashboard(w http.ResponseWriter, r *http.Request) {
 				err = cepEndereco.Scan(&armazenarDadosMaps.Nome, &armazenarDadosMaps.DataNascimento, &armazenarDadosMaps.Telefone, &armazenar.Homem, &armazenar.Etilista, &armazenar.Tabagista, &armazenar.FeridasBucais, &armazenarDadosMaps.UltimaVisita, &armazenarDadosMaps.Cep, &armazenar.Bairro, &armazenar.Rua, &armazenar.Numero, &armazenar.Complemento)
 				quebrar := strings.Split(armazenarDadosMaps.UltimaVisita, "-")
 				ultimaVisita := quebrar[2] + "/" + quebrar[1] + "/" + quebrar[0]
+				diaUltimaVisita, _ := strconv.Atoi(quebrar[2])
+				mesUltimaVisita, _ := strconv.Atoi(quebrar[1])
 				armazenarDadosMaps.UltimaVisita = ultimaVisita
+				now := time.Now()
+				if mesUltimaVisita < int(now.Month()) && diaUltimaVisita <= now.Day(){
+					armazenarDadosMaps.MaisDeUmMes = true
+				} else if (int(now.Month()) - mesUltimaVisita) >= 2{
+					armazenarDadosMaps.MaisDeUmMes = true
+				} else{
+					armazenarDadosMaps.MaisDeUmMes = false
+				}
 				if armazenar.Complemento != "" {
 					endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Complemento + "," + armazenar.Bairro
 				} else {
@@ -565,6 +576,16 @@ func dashboard(w http.ResponseWriter, r *http.Request) {
 		quebrar := strings.Split(armazenarDadosMaps.UltimaVisita, "-")
 		ultimaVisita := quebrar[2] + "/" + quebrar[1] + "/" + quebrar[0]
 		armazenarDadosMaps.UltimaVisita = ultimaVisita
+		diaUltimaVisita, _ := strconv.Atoi(quebrar[2])
+		mesUltimaVisita, _ := strconv.Atoi(quebrar[1])
+		now := time.Now()
+		if mesUltimaVisita < int(now.Month()) && diaUltimaVisita <= now.Day(){
+			armazenarDadosMaps.MaisDeUmMes = true
+		} else if (int(now.Month()) - mesUltimaVisita) >= 2{
+			armazenarDadosMaps.MaisDeUmMes = true
+		} else{
+			armazenarDadosMaps.MaisDeUmMes = false
+		}
 		if armazenar.Complemento != "" {
 			endereco = armazenar.Rua + "," + armazenar.Numero + "," + armazenar.Complemento + "," + armazenar.Bairro
 		} else {
