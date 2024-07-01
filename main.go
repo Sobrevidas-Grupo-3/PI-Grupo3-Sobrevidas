@@ -199,9 +199,11 @@ func main() {
 	colocarDados()
 	http.HandleFunc("/cadastro", executarCadastro)
 	http.HandleFunc("/login", autenticaCadastroELevaAoLogin)
+	http.HandleFunc("/login/invalidado", loginInvalidado)
 	http.HandleFunc("/dashboard", autenticaLoginELevaAoDashboard)
 	http.HandleFunc("/dashboard/voltar", dashboard)
 	http.HandleFunc("/esqueceusenha", executarEsqueceuSenha)
+	http.HandleFunc("/esqueceusenha/invalido", esqueceuSenhaInvalidado)
 	http.HandleFunc("/telalogin", atualizarSenha)
 	http.HandleFunc("/cadastrar-paciente", executarFormulario)
 	http.HandleFunc("/paciente-cadastrado", cadastrarPaciente)
@@ -268,17 +270,26 @@ func executarCadastro(w http.ResponseWriter, _ *http.Request) {
 }
 
 func autenticaCadastroELevaAoLogin(w http.ResponseWriter, r *http.Request) {
-	nomecompleto := r.FormValue("nome_completo")
-	cpf := r.FormValue("cpf")
-	cns := r.FormValue("cns")
-	cbo := r.FormValue("cbo")
-	cnes := r.FormValue("cnes")
-	ine := r.FormValue("ine")
-	senha := r.FormValue("senha")
-	confirmsenha := r.FormValue("confirmsenha")
+	if r.Method != http.MethodPost {
+		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
+		return
+	}
+	err := r.ParseForm()
+	if err != nil {
+		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
+		return
+	}
+	nomecompleto := r.PostForm.Get("nome_completo")
+	cpf := r.PostForm.Get("cpf")
+	cns := r.PostForm.Get("cns")
+	cbo := r.PostForm.Get("cbo")
+	cnes := r.PostForm.Get("cnes")
+	ine := r.PostForm.Get("ine")
+	senha := r.PostForm.Get("senha")
+	confirmsenha := r.PostForm.Get("confirmsenha")
 
 	if confirmsenha == senha {
-		_, err := db.Exec("INSERT INTO cadastro(nome_completo, cpf, cns, cbo, cnes, ine, senha) VALUES($1, $2, $3, $4, $5, $6, $7)", nomecompleto, cpf, cns, cbo, cnes, ine, senha)
+		_, err = db.Exec("INSERT INTO cadastro(nome_completo, cpf, cns, cbo, cnes, ine, senha) VALUES($1, $2, $3, $4, $5, $6, $7)", nomecompleto, cpf, cns, cbo, cnes, ine, senha)
 		if err != nil {
 			log.Println(err.Error())
 			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
@@ -287,7 +298,7 @@ func autenticaCadastroELevaAoLogin(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/cadastro", http.StatusSeeOther)
 		return
 	}
-	err := templates.ExecuteTemplate(w, "login.html", loginInvalido)
+	err = templates.ExecuteTemplate(w, "login.html", loginInvalido)
 	if err != nil {
 		return
 	}
@@ -337,6 +348,15 @@ func colocarDados() {
 		} 
 	}
 	*pgtotal = *pgbaixo + *pgmedio + *pgalto
+}
+
+func loginInvalidado(w http.ResponseWriter, r *http.Request){
+	err := templates.ExecuteTemplate(w, "login.html", loginInvalido)
+	if err != nil{
+		return
+	}
+	ponteiroLoginInvalido := &loginInvalido
+	*ponteiroLoginInvalido = false
 }
 
 func autenticaLoginELevaAoDashboard(w http.ResponseWriter, r *http.Request) {
@@ -503,7 +523,7 @@ func autenticaLoginELevaAoDashboard(w http.ResponseWriter, r *http.Request) {
 	}
 	ponteiroLoginInvalido = &loginInvalido
 	*ponteiroLoginInvalido = true
-	http.Redirect(w, r, "/login", http.StatusSeeOther)
+	http.Redirect(w, r, "/login/invalidado", http.StatusSeeOther)
 }
 
 func dashboard(w http.ResponseWriter, r *http.Request) {
@@ -681,7 +701,16 @@ func atualizarSenha(w http.ResponseWriter, r *http.Request) {
 	}
 	ponteiroEsqueceuInvalido = &esqueceuInvalido
 	*ponteiroEsqueceuInvalido = true
-	http.Redirect(w, r, "/esqueceusenha", http.StatusSeeOther)
+	http.Redirect(w, r, "/esqueceusenha/invalido", http.StatusSeeOther)
+}
+
+func esqueceuSenhaInvalidado(w http.ResponseWriter, r *http.Request){
+	err := templates.ExecuteTemplate(w, "esqueceusenha.html", esqueceuInvalido)
+	if err != nil{
+		return
+	}
+	ponteiroEsqueceuInvalido := &esqueceuInvalido
+	*ponteiroEsqueceuInvalido = false
 }
 
 func executarCentralUsuario(w http.ResponseWriter, r *http.Request) {
