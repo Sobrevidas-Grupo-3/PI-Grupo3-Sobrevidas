@@ -153,7 +153,7 @@
         border-collapse: collapse;
     }
 
-    td {
+    .tdacs {
         border: 0.052vw solid black;
         padding: 0.104vw 0.156vw 0.104vw 0.156vw;
     }
@@ -629,6 +629,11 @@ label.borda{
         margin-right: 5.5vw;
     }
 
+    .validar input[type=submit]:hover {
+        background-color: #0056b3;
+        cursor: pointer;
+    }
+
     .form-section-validar-tel > [type="submit"]:hover {
         background-color: #0056b3;
         cursor: pointer;
@@ -971,6 +976,105 @@ label.borda{
     #btnlogout{
         cursor: pointer;
     }
+
+    /* POP-UP Telefone */
+
+    #modalTel {
+        display: none;
+    }
+
+    div.relativaTel{
+        background-color: white;
+        position: relative;
+        border-radius: 0.521vw;
+        width: 30vw;
+        height: 44vh;
+        font-family: "Inter";
+        border: 0.156vw solid #737B8B;
+    }
+
+    .ctzTel{
+        position: absolute;
+        top: 20vh;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.1vw;
+        color: #4B505A;
+        font-family: "Poppins";
+    }
+
+    .voltarTel{
+        border-radius: 0.26vw;
+        position: absolute;
+        background-color: #007FDA;
+        color: white;
+        border: none;
+        top: 35vh;
+        width: 11.5vw;
+        height: 5.5vh;
+        cursor: pointer;
+        left: 1.5vw;
+        font-weight: bold;
+        font-family: "Inter";
+        font-size: 1.1vw;
+        background-image: url(/img/imagens/setaesquerda.png);
+        background-repeat: no-repeat;
+        background-size: 0.6vw;
+        background-position: left 0.5vw center;
+    }
+
+    .voltarTel:hover{
+        background-color: #0662a3;
+    }
+
+    .simTel{
+        font-family: "Inter";
+        border-radius: 0.26vw;
+        position: absolute;
+        background-color: #007FDA;
+        color: white;
+        border: none;
+        top: 35vh;
+        width: 11.5vw;
+        height: 5.5vh;
+        cursor: pointer;
+        left: 17vw;
+        font-weight: bold;
+        font-size: 1.1vw;
+        background-image: url(/img/imagens/setadireita.png);
+        background-repeat: no-repeat;
+        background-size: 0.6vw;
+        background-position: right 0.5vw center;
+    }
+
+    .simTel:hover{
+        background-color: #0662a3;
+    }
+
+    #tabelaTel {
+        position: fixed;
+        left: 50vw;
+        top: 52vh;
+        transform: translateY(-50%);
+        transform: translateX(-50%);
+    }
+
+    #tdTel {
+        width: 2vw;
+        height: 3vh;
+    }
+
+    .codigo {
+        width: 3vw;
+        height: 5vh;
+        border-radius: 5px;
+        margin: 5px 0px 10px 0px;
+        border-color: black;
+        margin: 0.2vw;
+        font-size: 2vh;
+        text-align: center;
+        font-weight: 700;
+    }
     </style>
 </head>
 <body>
@@ -1163,6 +1267,27 @@ label.borda{
                     </div>
                 </div>
             </div>
+            <div id="modalTel">
+                <div id="logout">
+                    <div class="fixar">
+                        <div class="relativaTel">
+                            <p class="alerta">INSIRA O CÓDIGO</p>
+                            <img src="/img/imagens/atencao.png" alt="Icone de Atenção" class="atencao">
+                            <p class="ctzTel">Insira o código de 4 dígitos que foi enviado via SMS para o número +55 (62)9 4002-8922</p>
+                            <table id="tabelaTel">
+                                <tr id="trTel">
+                                    <td id="tdTel"><input type="text" class="codigo" maxlength="1"></td>
+                                    <td><input type="text" class="codigo" maxlength="1"></td>
+                                    <td><input type="text" class="codigo" maxlength="1"></td>
+                                    <td><input type="text" class="codigo" maxlength="1"></td>
+                                </tr>
+                            </table>
+                            <button class="simTel" type="submit">Sim</button>
+                            <button class="voltarTel">Voltar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
         <footer>
             <a href="/dashboard/voltar" class="form-section-voltar"><input type="submit" value="Voltar"></a>
@@ -1170,7 +1295,7 @@ label.borda{
                 <p>Os itens assinalados com <span class="asc">*</span> são de preenchimento obrigatório</p>
             </div>
             <a href="#" class="download"><input type="submit" value="PDF"></a>
-            <a href="#" class="validar"><input type="submit" value="Validar o Telefone"></a>
+            <a href="#" class="validar"><input type="submit" value="Validar o Telefone" id="validador"></a>
             <div class="form-section-confirmar">
                 <button type="submit" id="confirmador">Confirmar</button>
             </div>
@@ -1203,6 +1328,34 @@ label.borda{
         </div>
     </div>
     <script>
+        const smsInputs = document.querySelectorAll('.codigo');
+
+
+        smsInputs.forEach((input, index) => {
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    if (index < smsInputs.length - 1) {
+                        smsInputs[index + 1].focus();
+                    }
+                } else if (e.key === 'Backspace') {
+                    if (input.value === '' && index > 0) {
+                        smsInputs[index - 1].focus();
+                    }
+                }
+            });
+        });
+
+        smsInputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                if (index < smsInputs.length - 1 && e.target.value !== '') {
+                    smsInputs[index + 1].focus(); // Foca no próximo input se o campo atual não estiver vazio
+                }
+            });
+        });
+
+
+
         let btn3 = document.getElementById('btnlogout');
         let modalLogout = document.getElementById('modalLogout');
         let cancelbtn3 = document.querySelector('.naoLogout');
@@ -1214,6 +1367,13 @@ label.borda{
         cancelbtn3.onclick = function(){
             modalLogout.style.display = 'none';
         }
+
+       
+        let btnValidador = document.getElementById('validador');//Chamar o validador
+        let cancelbtn0 = document.querySelector('.voltarTel');//Botão de voltar do validador
+        let simbtn0 = document.querySelector('.simTel');//Botão de validar do validador
+
+        //Botões Omar
         let btn = document.getElementById('confirmador');
         let modal = document.getElementById('modal');
         let cancelbtn = document.querySelector('.voltar');
@@ -1224,13 +1384,27 @@ label.borda{
             modal.style.display = 'block';
         }
 
+        // Função validador de telefone
+        btnValidador.onclick = function(){
+            modalTel.style.display = 'block';
+        }
+
         cancelbtn.onclick = function(){
             modal.style.display = 'none';
+        }
+
+        // Função validador de telefone
+        cancelbtn0.onclick = function(){
+            modalTel.style.display = 'none';
         }
 
         simbtn.onclick = function(){
             modal.style.display = 'none';
             modal2.style.display = 'block';
+        }
+
+        simbtn0.onclick = function(){
+            modalTel.style.display = 'none';
         }
 
 
