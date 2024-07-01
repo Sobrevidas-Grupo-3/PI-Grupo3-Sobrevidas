@@ -247,7 +247,7 @@ func fazConexaoComBanco() *sql.DB {
 		fmt.Println(err)
 	}
 
-	_, err = database.Query("CREATE TABLE IF NOT EXISTS cadastro(id SERIAL PRIMARY KEY, nome_completo VARCHAR(255) UNIQUE NOT NULL, cpf VARCHAR(15) UNIQUE NOT NULL, cns VARCHAR(15), cbo VARCHAR(15), cnes VARCHAR(15), ine VARCHAR(15), senha VARCHAR(20))")
+	_, err = database.Query("CREATE TABLE IF NOT EXISTS cadastro(id SERIAL PRIMARY KEY, nome_completo VARCHAR(255) NOT NULL, cpf VARCHAR(15) UNIQUE NOT NULL, cns VARCHAR(15), cbo VARCHAR(15), cnes VARCHAR(15), ine VARCHAR(15), senha VARCHAR(20))")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -268,35 +268,26 @@ func executarCadastro(w http.ResponseWriter, _ *http.Request) {
 }
 
 func autenticaCadastroELevaAoLogin(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodPost {
-		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
-		return
-	}
-	err := r.ParseForm()
-	if err != nil {
-		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
-		return
-	}
-	nomecompleto := r.PostForm.Get("nome_completo")
-	cpf := r.PostForm.Get("cpf")
-	cns := r.PostForm.Get("cns")
-	cbo := r.PostForm.Get("cbo")
-	cnes := r.PostForm.Get("cnes")
-	ine := r.PostForm.Get("ine")
-	senha := r.PostForm.Get("senha")
-	confirmsenha := r.PostForm.Get("confirmsenha")
+	nomecompleto := r.FormValue("nome_completo")
+	cpf := r.FormValue("cpf")
+	cns := r.FormValue("cns")
+	cbo := r.FormValue("cbo")
+	cnes := r.FormValue("cnes")
+	ine := r.FormValue("ine")
+	senha := r.FormValue("senha")
+	confirmsenha := r.FormValue("confirmsenha")
 
 	if confirmsenha == senha {
-		_, err = db.Exec("INSERT INTO cadastro(nome_completo, cpf, cns, cbo, cnes, ine, senha) VALUES($1, $2, $3, $4, $5, $6, $7)", nomecompleto, cpf, cns, cbo, cnes, ine, senha)
+		_, err := db.Exec("INSERT INTO cadastro(nome_completo, cpf, cns, cbo, cnes, ine, senha) VALUES($1, $2, $3, $4, $5, $6, $7)", nomecompleto, cpf, cns, cbo, cnes, ine, senha)
 		if err != nil {
 			log.Println(err.Error())
 			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		}
 	} else {
-		http.Redirect(w, r, "/", http.StatusSeeOther)
+		http.Redirect(w, r, "/cadastro", http.StatusSeeOther)
 		return
 	}
-	err = templates.ExecuteTemplate(w, "login.html", loginInvalido)
+	err := templates.ExecuteTemplate(w, "login.html", loginInvalido)
 	if err != nil {
 		return
 	}
@@ -512,7 +503,7 @@ func autenticaLoginELevaAoDashboard(w http.ResponseWriter, r *http.Request) {
 	}
 	ponteiroLoginInvalido = &loginInvalido
 	*ponteiroLoginInvalido = true
-	http.Redirect(w, r, "/telalogin", http.StatusSeeOther)
+	http.Redirect(w, r, "/login", http.StatusSeeOther)
 }
 
 func dashboard(w http.ResponseWriter, r *http.Request) {
