@@ -154,6 +154,7 @@
     }
 
     .caixanotificacao p {
+	display: none;
         font-size: 0.729vw;
         position: relative;
         font-family: "Poppins";
@@ -1289,6 +1290,7 @@
             if (down) {
                 caixa.style.height  = '0px';
                 caixa.style.opacity = 0;
+		caixa.style.display = 'none;
                 down = false;
                 linkEnable = false;
                 linkButton1.style.cursor = 'default';
@@ -1298,6 +1300,7 @@
             }else {
                 caixa.style.height  = '22.396vw';
                 caixa.style.opacity = 1;
+		caixa.style.display = 'block';
                 down = true;
                 linkEnable = true;
                 linkButton1.style.cursor = 'pointer';
