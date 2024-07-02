@@ -2235,7 +2235,7 @@ func generatePDF(w http.ResponseWriter, r *http.Request) {
 
 	pdf := gofpdf.New("P", "mm", "A4", "")
 	pdf.AddPage()
-	pdf.SetFont("Arial", "B", 18)
+	pdf.SetFont("Arial", "B", 22)
 	pdf.SetMargins(10.0, 10.0, 10.0)
 
 	for pesquisa.Next() {
@@ -2251,66 +2251,51 @@ func generatePDF(w http.ResponseWriter, r *http.Request) {
 		pdf.Ln(30)
 		texto:="SOBREVIDAS ACS"
 		width := pdf.GetStringWidth(texto)
-		x:=width-195.0
+		x:=width-215.0
 		pdf.SetX(x)
-		pdf.SetTextColor(0,150,220)
+		pdf.SetTextColor(0,150,240)
 		pdf.Cell(40, 10, fmt.Sprintf("%s", texto))
 		pdf.Ln(30)
 		x=10.0
 		pdf.SetTextColor(0,0,0)
 		pdf.SetX(x)
-		pdf.SetFont("Arial", "B", 15)
-		pdf.CellFormat(60, 9.0, "Paciente", "1", 0, "C", false, 0, "")
-		pdf.SetFont("Arial", "", 15)
-		pdf.CellFormat(130, 9.0, armazenar.Nome, "1", 1, "L", false, 0, "")
-		pdf.SetFont("Arial", "B", 15)
-		pdf.CellFormat(30, 9.0, "Sexo", "1", 0, "C", false, 0, "")
-		pdf.SetFont("Arial", "", 15)
-		pdf.CellFormat(50, 9.0, armazenar.Sexo, "1", 0, "L", false, 0, "")
-		pdf.SetFont("Arial", "B", 15)
-		pdf.CellFormat(60, 9.0, "Data de Nascimento", "1", 0, "C", false, 0, "")
-		pdf.SetFont("Arial", "", 15)
-		pdf.CellFormat(50, 9.0, armazenar.DataNasc, "1", 1, "L", false, 0, "")
-		pdf.SetFont("Arial", "B", 15)
-		pdf.CellFormat(60, 9.0, "Nome da Mãe", "1", 0, "C", false, 0, "")
-		pdf.SetFont("Arial", "", 15)
-		pdf.CellFormat(130, 9.0, armazenar.NomeMae, "1", 1, "L", false, 0, "")
-		pdf.SetFont("Arial", "B", 15)
-		pdf.CellFormat(30, 9.0, "CPF", "1", 0, "C", false, 0, "")
-		pdf.SetFont("Arial", "", 15)
-		pdf.CellFormat(50, 9.0, armazenar.CPF, "1", 0, "L", false, 0, "")
-		pdf.SetFont("Arial", "B", 15)
-		pdf.CellFormat(40, 9.0, "Cartão SUS", "1", 0, "C", false, 0, "")
-		pdf.SetFont("Arial", "", 15)
-		pdf.CellFormat(70, 9.0, armazenar.CartaoSus, "1", 1, "L", false, 0, "")
-		pdf.SetFont("Arial", "B", 15)
-		pdf.CellFormat(40, 9.0, "Telefone", "1", 0, "C", false, 0, "")
-		pdf.SetFont("Arial", "", 15)
-		pdf.CellFormat(50, 9.0, armazenar.Telefone, "1", 0, "L", false, 0, "")
-		pdf.SetFont("Arial", "B", 15)
-		pdf.CellFormat(25, 9.0, "Email", "1", 0, "C", false, 0, "")
-		pdf.SetFont("Arial", "", 15)
-		pdf.CellFormat(75, 9.0, armazenar.Email, "1", 1, "L", false, 0, "")
-		pdf.SetFont("Arial", "B", 15)
-		pdf.CellFormat(30, 9.0, "CEP", "1", 0, "C", false, 0, "")
-		pdf.SetFont("Arial", "", 15)
-		pdf.CellFormat(60, 9.0, armazenar.CEP, "1", 0, "L", false, 0, "")
-		pdf.SetFont("Arial", "B", 15)
-		pdf.CellFormat(25, 9.0, "Bairro", "1", 0, "C", false, 0, "")
-		pdf.SetFont("Arial", "", 15)
-		pdf.CellFormat(75, 9.0, armazenar.Bairro, "1", 1, "L", false, 0, "")
-		pdf.SetFont("Arial", "B", 15)
-		pdf.CellFormat(20, 9.0, "Rua", "1", 0, "C", false, 0, "")
-		pdf.SetFont("Arial", "", 15)
-		pdf.CellFormat(40, 9.0, armazenar.Rua, "1", 0, "L", false, 0, "")
-		pdf.SetFont("Arial", "B", 15)
-		pdf.CellFormat(30, 9.0, "Número", "1", 0, "C", false, 0, "")
-		pdf.SetFont("Arial", "", 15)
-		pdf.CellFormat(30, 9.0, armazenar.Numero, "1", 0, "L", false, 0, "")
-		pdf.SetFont("Arial", "B", 15)
-		pdf.CellFormat(40, 9.0, "Complemento", "1", 0, "C", false, 0, "")
-		pdf.SetFont("Arial", "", 15)
-		pdf.CellFormat(30, 9.0, armazenar.Complemento, "1", 0, "L", false, 0, "")
+		azulcell(pdf,"Dados do Paciente")
+		comumcell(pdf, "Nome Completo", 60.0, 0, "B")
+		comumcell(pdf, armazenar.Nome, 130.0, 1, "")
+		comumcell(pdf, "Sexo", 30.0, 0, "B")
+		comumcell(pdf, armazenar.Sexo, 50.0, 0, "")
+		comumcell(pdf, "Data de Nascimento", 60.0, 0, "B")
+		comumcell(pdf, armazenar.DataNasc, 50.0, 1, "")
+		comumcell(pdf, "Nome da Mãe", 60.0, 0, "B")
+		comumcell(pdf, armazenar.NomeMae, 130.0, 1, "")
+		comumcell(pdf, "CPF", 30.0, 0, "B")
+		comumcell(pdf, armazenar.CPF, 50.0, 0, "")
+		comumcell(pdf, "Cartão SUS", 40, 0, "B")
+		comumcell(pdf, armazenar.CartaoSus, 70, 1, "")
+		pdf.Ln(6)
+		azulcell(pdf,"Dados de Contato")
+		comumcell(pdf, "Telefone", 40.0, 0, "B")
+		comumcell(pdf, armazenar.Telefone, 50.0, 0, "")
+		comumcell(pdf,"Email", 25.0, 0, "B")
+		comumcell(pdf, armazenar.Email, 75.0, 1, "")
+		pdf.Ln(6)
+		azulcell(pdf,"Dados Geográficos")
+		comumcell(pdf, "CEP",30.0, 0, "B")
+		comumcell(pdf, armazenar.CEP, 50.0, 0, "")
+		comumcell(pdf, "Bairro", 25.0, 0, "B")
+		comumcell(pdf, armazenar.Bairro, 85.0, 1, "")
+		comumcell(pdf, "Rua", 20.0, 0, "B")
+		comumcell(pdf, armazenar.Rua, 40.0, 0, "")
+		comumcell(pdf, "Número", 30.0, 0, "B")
+		comumcell(pdf, armazenar.Numero, 15.0, 0, "")
+		comumcell(pdf, "Complemento", 40.0, 0, "B")
+		comumcell(pdf, armazenar.Complemento, 45.0, 1, "")
+		pdf.Ln(6)
+		azulcell(pdf,"Fatores de Prioridade")
+		prioridade(pdf,"Paciente Homem 40+",armazenar.Homem)
+		prioridade(pdf,"Paciente Etilista",armazenar.Etilista)
+		prioridade(pdf,"Paciente Tabagista",armazenar.Tabagista)
+		prioridade(pdf,"Lesões Bucais",armazenar.LesaoBucal)
 	err = pesquisa.Err()
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -2329,3 +2314,44 @@ func generatePDF(w http.ResponseWriter, r *http.Request) {
 	}
 }
 }
+
+func azulcell(pdf *gofpdf.Fpdf, texto string,){
+
+	pdf.SetFont("Arial", "B", 16)
+		pdf.SetFillColor(0, 125, 230)
+		pdf.SetTextColor(255, 255, 255)
+		pdf.CellFormat(190, 9.0, texto, "", 1, "L", true, 0, "")
+		pdf.Ln(2)
+
+		//titulos
+}
+
+func comumcell(pdf *gofpdf.Fpdf, texto string, width float64, pula int, negrito string){
+	pdf.SetFont("Arial", negrito, 15)
+	pdf.SetFillColor(235, 240, 255)
+	pdf.SetTextColor(0, 0, 0)
+	pdf.CellFormat(width, 9.0, texto, "1", pula, "L", true, 0, "")
+
+	// celula padrao
+}
+
+func prioridade(pdf *gofpdf.Fpdf, texto string, condicao string) {
+	pdf.SetFillColor(255,255,255)
+	pdf.SetFont("Arial", "B", 15)
+	pdf.SetTextColor(0,0,0)
+		pdf.CellFormat(95, 9.0, texto, "1", 0, "C", true, 0, "")
+		pdf.SetFont("Arial", "", 15)
+
+	pdf.SetFillColor(200, 255, 200)
+	mensagem := "Negativo"
+	if condicao == "Sim" {
+		pdf.SetFillColor(255, 200, 200)
+		mensagem = "Positivo"
+	}
+	pdf.SetFont("Arial", "", 15)
+		pdf.CellFormat(95, 9.0, mensagem, "1", 1, "C", true, 0, "")
+	
+	
+	//mudando as corzinha
+}
+
