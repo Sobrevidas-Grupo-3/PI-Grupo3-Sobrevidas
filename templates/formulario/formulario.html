@@ -1081,6 +1081,128 @@ label.borda{
         text-align: center;
         font-weight: 700;
     }
+
+     /*tabela print*/
+
+    .tabelaprint {
+        display: none;
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 2vw;
+        margin: auto;
+        width: 100vw;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .captionprint {
+        font-size: 2vh;
+        text-indent: 6.5vw;
+    }
+
+    .tdprint {
+        border: 1px solid black;
+        padding: 0.9vh;
+        font-weight: bold;
+    }
+
+    .thprint {
+        border: 1px solid black;
+        padding: 1.5vh;
+        font-size: 2vh;
+        font-weight: bold;
+    }
+
+    #dataform {
+        padding-top: 1vh;
+        font-weight: bold;
+        font-size: 1.5vh;
+    }
+
+    @media print {
+
+        .tabelaprint {
+            display: block;
+        }
+
+        #caixausuario {
+            display: none;
+        }
+
+
+        .titulo {
+            font-size: 3.5vh;
+            left: 25%;
+            margin: auto;
+            color: #007FDA;
+        }
+
+        .subtitulo {
+            font-size: 3vh;
+            left: 30%;
+            top: 6vh;
+            color: #00538E;
+        }
+
+        .sair {
+            display: none;
+        }
+
+        .form-section-01 {
+            display: none;
+        }
+
+        .form-section-one {
+            display: none;
+        }
+
+        .form-section-two {
+            display: none;
+        }
+
+        .form-section-three {
+            display: none;
+        }
+
+        .risk-factors {
+            display: none;
+        }
+
+        .div-factors {
+            display: none;
+        }
+
+        .form-section-confirmar {
+            display: none;
+        }
+
+        .validar {
+            display: none;
+        }
+
+        .download {
+            display: none;
+        }
+
+        .obrigatorio {
+            display: none;
+        }
+
+        .form-section-voltar {
+            display: none;
+        }
+
+        .voltar {
+            display: none;
+        }
+
+        #modal2 {
+            display: none;
+        }
+
+        #error {
+            display: none;
+        }
+    }
     </style>
 </head>
 <body>
@@ -1099,6 +1221,86 @@ label.borda{
         </div>
         <a id="btnlogout"><img src="/imagens2/img/img/logout.png" alt="Icone de sair" class="sair"></a>
         </header>
+        <table class="tabelaprint">
+            <caption class="captionprint">
+              FORMULÁRIO DE CADASTRO DE DADOS DE PACIENTES
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col" colspan="4" style="text-align: center;font-size: 1.2vh;">Preenchimento de dados referente ao cadastro de pessoa física para o SOBREVIDAS-ACS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="thprint" scope="row" colspan="4">DADOS DO PACIENTE</th>
+              </tr>
+              <tr>
+                <td class="tdprint" colspan="4">Nome completo: <div class="asc">*</div></td>
+              </tr>
+              <tr>
+                <td class="tdprint" colspan="1"> Data de Nascimento:   __/__/_____</td>
+                <td class="tdprint" colspan="3">CPF:</td>
+              </tr>
+              <tr>
+                <td class="tdprint" colspan="4">Nome da Mãe:</td>
+              </tr>
+              <tr>
+                <td class="tdprint" colspan="2" scope="row">Cartão do Sus:</td>
+                <td class="tdprint" colspan="2" scope="row">Gênero:  Masculino ▢ Feminino ▢</td>
+              </tr>
+              <tr>
+                <th class="thprint" scope="row" colspan="4">CONTATO</th>
+              </tr>
+              <tr>
+                <td class="tdprint" colspan="2" scope="row">Celular: (ㅤ)</td>
+                <td class="tdprint" colspan="2" scope="row">Telefone:</td>
+              </tr>
+              <tr>
+                <td class="tdprint" colspan="2" scope="row" style="width: 50%;">Email 1:</td>
+                <td class="tdprint" colspan="2" scope="row">Email 2:</td>
+              </tr>
+              <tr>
+                <th class="thprint" colspan="4">ENDEREÇO</th>
+              </tr>
+              <tr>
+                <td class="tdprint" colspan="2" scope="row">Rua:</td>
+                <td class="tdprint" colspan="2" scope="row">Bairro:</td>
+              </tr>
+              <tr>
+                <td class="tdprint" colspan="2" scope="row">CEP:</td>
+                <td class="tdprint" colspan="1" scope="row">Número:</td>
+                <td class="tdprint" colspan="1" scope="row" >UF:</td>
+              </tr>
+              <tr>
+                <td class="tdprint" colspan="2" scope="row">Cidade:</td>
+                <td class="tdprint" colspan="2" scope="row">Complemento:</td>
+              </tr>
+              <tr>
+                <th class="thprint" colspan="4">Fatores de Risco</th>
+              </tr>
+              <tr>
+                <td class="tdprint" colspan="2" scope="row">Etilista &#40consome álcool &#41: Sim ▢ Não ▢</td>
+                <td class="tdprint" colspan="2" scope="row">Tabagista &#40consome cigarro&#41: Sim ▢ Não ▢</td>
+              </tr>
+              <tr>
+                <td class="tdprint" colspan="2" scope="row">Homem&#40idade superior a 40&#41: Sim ▢ Não ▢</td>
+                <td class="tdprint" colspan="2" scope="row">Com Lesão Suspeita: Sim ▢ Não ▢</td>
+              </tr>
+              <tr>
+                <td class="tdprint" colspan="2" scope="row">Em situação de rua: Sim ▢ Não ▢</td>
+                <td class="tdprint" colspan="2" scope="row">Alérgico? Sim ▢ Não ▢ Qual:</td>
+              </tr>
+              <tr>
+                <td class="tdprint" colspan="2" scope="row">Possui alguma enfermidade: Sim ▢ Não ▢ Qual:</td>
+                <td class="tdprint" colspan="2" scope="row">Tem Hipertenção: Sim ▢ Não ▢</td>
+              </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                <td id="dataform">Formulário impresso às <time datetime="" id="current-time"></time>.</td>
+                </tr>
+            </tfoot>
+            </table>
         <form method="post" action="/paciente-cadastrado">
             <div class="form-section-01">
                 <table class="infoacs" id="cns">
@@ -1489,6 +1691,15 @@ label.borda{
             var data = event.target.value;
             event.target.value = formatarData(data);
         });
+
+        //Data para Media Print
+
+        var now = new Date();
+        var dateTimeString = now.toISOString();
+        var formattedDateTimeString = now.toLocaleString();
+        var timeElement = document.getElementById("current-time");
+        timeElement.textContent = formattedDateTimeString;
+        timeElement.setAttribute("datetime", dateTimeString);
 
     </script>
 </body>
