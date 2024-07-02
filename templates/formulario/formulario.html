@@ -1537,6 +1537,8 @@ label.borda{
         </div>
     </div>
     <script>
+
+        //Script SMS
         const smsInputs = document.querySelectorAll('.codigo');
 
 
@@ -1558,7 +1560,7 @@ label.borda{
         smsInputs.forEach((input, index) => {
             input.addEventListener('input', (e) => {
                 if (index < smsInputs.length - 1 && e.target.value !== '') {
-                    smsInputs[index + 1].focus(); // Foca no próximo input se o campo atual não estiver vazio
+                    smsInputs[index + 1].focus();
                 }
             });
         });
