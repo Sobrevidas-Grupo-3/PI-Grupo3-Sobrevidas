@@ -94,7 +94,7 @@
             border-radius: 4px;
             font-size: 1.2vw;
             font-family: "Poppins";
-            background-image: url(img/icone2.png);
+            background-image: url(/imagens/img/icone2.png);
             background-position: left 10px center ;
             background-repeat: no-repeat;
             background-size: 2.3vw;
@@ -111,7 +111,7 @@
             height: 7.3vh;
             box-sizing: border-box;
             border: none;
-            background-image: url(img/olhosenha.png);
+            background-image: url(/imagens/img/olhosenha.png);
             background-size: 2vw;
             background-repeat: no-repeat;
             background-position: center center;
@@ -123,7 +123,7 @@
         }
 
         #icon.hide{
-            background-image: url(img/olhosenhafechado.png);
+            background-image: url(/imagens/img/olhosenhafechado.png);
             background-size: 2vw;
             background-repeat: no-repeat;
             background-position: center center;
@@ -137,7 +137,7 @@
             border: none;
             border-radius: 4px;
             font-size: 1.2vw;
-            background-image: url(img/icone2.png);
+            background-image: url(/imagens/img/icone2.png);
             background-position: left 10px center ;
             background-repeat: no-repeat;
             background-size: 2.3vw;
@@ -156,7 +156,7 @@
             border: none;
             border-radius: 4px;
             font-size: 1.2vw;
-            background-image: url(img/icone2.png);
+            background-image: url(/imagens/img/icone2.png);
             background-position: left 10px center ;
             background-repeat: no-repeat;
             background-size: 2.3vw;
@@ -176,7 +176,7 @@
             font-size: 1.2vw;
             font-family: "Poppins";
             background-color: #007DFA;
-            background-image: url(img/iconeproximo.png);
+            background-image: url(/imagens/img/iconeproximo.png);
             background-position: right 12px center;
             background-repeat: no-repeat;
             background-size: 1.2vw;
@@ -235,7 +235,7 @@
         <p class="classeobrigatoria">Os itens assinalados com <span>*</span> são de preenchimento obrigatório</p>
     </div>
     <div class="formulario">
-        <form action="/login">
+        <form action="/login" method="post">
             <p class="p1">
                 <input type="text" name="nome_completo" id="inome" required placeholder="Nome Completo*" minlength="1">
             </p>
@@ -263,12 +263,12 @@
             </p>
             <p class="enviar"><button type="submit">Confirmar</button></p>
             <div class="comconta">
-                <p>Já possui uma conta?<a href="/telalogin" class="entrarconta">Entre na sua conta</a></p>
+                <p>Já possui uma conta?<a href="/login/autenticar" class="entrarconta">Entre na sua conta</a></p>
             </div>
         </form>
     </div>
     <div class="view">
-        <img src="img/Logo Sobrevidas Sem Escrita.png" alt="Logo Sobrevidas" class="center">
+        <img src="/imagens/img/Logo Sobrevidas Sem Escrita.png" alt="Logo Sobrevidas" class="center">
         <h2>SOBREVIDAS - ACS</h2>
         <p class="cadastro">Rastreamento e Monitoramento do Câncer de Boca</p>
     </div>
