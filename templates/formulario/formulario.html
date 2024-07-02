@@ -1282,11 +1282,11 @@ label.borda{
                             <img src="/img/imagens/atencao.png" alt="Icone de Atenção" class="atencao">
                             <p class="ctzTel">Insira o código de 4 dígitos que foi enviado via SMS para o número +55 (62)9 4002-8922</p>
                             <table id="tabelaTel">
-                                <tr id="trTel">
-                                    <td id="tdTel"><input type="text" class="codigo" maxlength="1"></td>
-                                    <td><input type="text" class="codigo" maxlength="1"></td>
-                                    <td><input type="text" class="codigo" maxlength="1"></td>
-                                    <td><input type="text" class="codigo" maxlength="1"></td>
+                               <tr id="trTel">
+                                    <td><input type="text" id="codigo1" class="codigo" maxlength="1"></td>
+                                    <td><input type="text" id="codigo2" class="codigo" maxlength="1"></td>
+                                    <td><input type="text" id="codigo3" class="codigo" maxlength="1"></td>
+                                    <td><input type="text" id="codigo4" class="codigo" maxlength="1"></td>
                                 </tr>
                             </table>
                             <button class="simTel" type="submit">Validar</button>
@@ -1375,7 +1375,7 @@ label.borda{
             modalLogout.style.display = 'none';
         }
 
-       
+       //Botoes POP-UP TEL
         let btnValidador = document.getElementById('validador');//Chamar o validador
         let cancelbtn0 = document.querySelector('.voltarTel');//Botão de voltar do validador
         let simbtn0 = document.querySelector('.simTel');//Botão de validar do validador
@@ -1386,6 +1386,12 @@ label.borda{
         let cancelbtn = document.querySelector('.voltar');
         let simbtn = document.querySelector('.sim');
         let modal2 = document.getElementById('modal2');
+
+        // Chamar as varaiveis dos codigos do input sms
+        let codigo1 = document.getElementById('codigo1');
+        let codigo2 = document.getElementById('codigo2');
+        let codigo3 = document.getElementById('codigo3');
+        let codigo4 = document.getElementById('codigo4');
 
         btn.onclick = function(){
             modal.style.display = 'block';
@@ -1412,6 +1418,10 @@ label.borda{
 
         simbtn0.onclick = function(){
             modalTel.style.display = 'none';
+            codigo1.value = "";
+            codigo2.value = "";
+            codigo3.value = "";
+            codigo4.value = "";
         }
 
 
