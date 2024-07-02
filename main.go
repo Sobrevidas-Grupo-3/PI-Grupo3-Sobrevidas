@@ -200,7 +200,7 @@ func main() {
 	colocarDados()
 	http.HandleFunc("/cadastro", executarCadastro)
 	http.HandleFunc("/login", autenticaCadastroELevaAoLogin)
-	http.HandleFunc("/login/invalidado", loginInvalidado)
+	http.HandleFunc("/login/autenticar", loginInvalidado)
 	http.HandleFunc("/dashboard", autenticaLoginELevaAoDashboard)
 	http.HandleFunc("/dashboard/voltar", dashboard)
 	http.HandleFunc("/esqueceusenha", executarEsqueceuSenha)
@@ -534,7 +534,7 @@ func autenticaLoginELevaAoDashboard(w http.ResponseWriter, r *http.Request) {
 	}
 	ponteiroLoginInvalido = &loginInvalido
 	*ponteiroLoginInvalido = true
-	http.Redirect(w, r, "/login/invalidado", http.StatusSeeOther)
+	http.Redirect(w, r, "/login/autenticar", http.StatusSeeOther)
 }
 
 func dashboard(w http.ResponseWriter, r *http.Request) {
