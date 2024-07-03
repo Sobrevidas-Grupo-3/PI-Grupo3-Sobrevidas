@@ -2246,6 +2246,8 @@ func generatePDF(w http.ResponseWriter, r *http.Request) {
 			log.Println(err)
 			return
 		}
+		quebrar := strings.Split(armazenar.DataCadastro, "-")
+		armazenar.DataCadastro = quebrar[2] + "/" + quebrar[1] + "/" + quebrar[0]
 		imageFile:="imagenspg/logo projeto 2.png"
 		infoPtr:= pdf.RegisterImage(imageFile, "")
 		pageWidth, _ := pdf.GetPageSize()
