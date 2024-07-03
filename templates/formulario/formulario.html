@@ -1086,6 +1086,10 @@
 
      /*tabela print*/
 
+     .imgprint {
+        display: none;
+    }
+
     .tabelaprint {
         display: none;
         border: 1px solid black;
@@ -1121,6 +1125,13 @@
     }
 
     @media print {
+
+         .imgprint {
+            display: block;
+            width: 20vw;
+            margin: auto;
+            transform: translateY(-70%);
+        }
 
         .tabelaprint {
             display: block;
