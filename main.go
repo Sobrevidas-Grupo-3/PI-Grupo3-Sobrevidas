@@ -2224,7 +2224,6 @@ func alterarDataUltimaVisitaFormPreenchido(w http.ResponseWriter, r *http.Reques
 }
 
 func generatePDF(w http.ResponseWriter, r *http.Request) {
-
 	pesquisa, err := db.Query("SELECT * FROM pacientes WHERE nome_completo=$1", nomePaciente)
 	if err != nil {
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
@@ -2247,37 +2246,43 @@ func generatePDF(w http.ResponseWriter, r *http.Request) {
 			log.Println(err)
 			return
 		}
-		pdf.ImageOptions("imagenspg/logo projeto 2.png", 90, 10, 25, 0, false, gofpdf.ImageOptions{ImageType: "PNG", ReadDpi: true}, 0, "") 
-		pdf.Ln(30)
+		imageFile:="imagenspg/logo projeto 2.png"
+		infoPtr:= pdf.RegisterImage(imageFile, "")
+		pageWidth, _ := pdf.GetPageSize()
+		y:= (-infoPtr.Width()+ pageWidth)/2
+		pdf.ImageOptions("imagenspg/logo projeto 2.png", y, 10, 40, 0, false, gofpdf.ImageOptions{ImageType: "PNG", ReadDpi: true}, 0, "") 
+		pdf.Ln(40)
 		texto:="SOBREVIDAS ACS"
-		width := pdf.GetStringWidth(texto)
-		x:=width-215.0
+		width:= pdf.GetStringWidth(texto)
+		x:=width-pageWidth
 		pdf.SetX(x)
-		pdf.SetTextColor(0,150,240)
-		pdf.Cell(40, 10, fmt.Sprintf("%s", texto))
+		pdf.SetTextColor(0,140,255)
+		pdf.SetDrawColor(0, 50, 140)
+		pdf.CellFormat(width-15.0, 9.0, texto, "B", 1, "C", false, 0, "")
 		pdf.Ln(30)
 		x=10.0
 		pdf.SetTextColor(0,0,0)
 		pdf.SetX(x)
+		pdf.SetDrawColor(30, 30, 80)
 		azulcell(pdf,"Dados do Paciente")
-		comumcell(pdf, "Nome Completo", 60.0, 0, "B")
-		comumcell(pdf, armazenar.Nome, 130.0, 1, "")
+		comumcell(pdf, "Nome Completo", 50.0, 0, "B")
+		comumcell(pdf, armazenar.Nome, 140.0, 1, "")
 		comumcell(pdf, "Sexo", 30.0, 0, "B")
 		comumcell(pdf, armazenar.Sexo, 50.0, 0, "")
 		comumcell(pdf, "Data de Nascimento", 60.0, 0, "B")
 		comumcell(pdf, armazenar.DataNasc, 50.0, 1, "")
-		comumcell(pdf, "Nome da Mãe", 60.0, 0, "B")
-		comumcell(pdf, armazenar.NomeMae, 130.0, 1, "")
+		comumcell(pdf, "Nome da Mãe", 50.0, 0, "B")
+		comumcell(pdf, armazenar.NomeMae, 140.0, 1, "")
 		comumcell(pdf, "CPF", 30.0, 0, "B")
 		comumcell(pdf, armazenar.CPF, 50.0, 0, "")
 		comumcell(pdf, "Cartão SUS", 40, 0, "B")
 		comumcell(pdf, armazenar.CartaoSus, 70, 1, "")
 		pdf.Ln(6)
 		azulcell(pdf,"Dados de Contato")
-		comumcell(pdf, "Telefone", 40.0, 0, "B")
+		comumcell(pdf, "Telefone", 30.0, 0, "B")
 		comumcell(pdf, armazenar.Telefone, 50.0, 0, "")
-		comumcell(pdf,"Email", 25.0, 0, "B")
-		comumcell(pdf, armazenar.Email, 75.0, 1, "")
+		comumcell(pdf,"Email", 20.0, 0, "B")
+		comumcell(pdf, armazenar.Email, 90.0, 1, "")
 		pdf.Ln(6)
 		azulcell(pdf,"Dados Geográficos")
 		comumcell(pdf, "CEP",30.0, 0, "B")
@@ -2292,10 +2297,13 @@ func generatePDF(w http.ResponseWriter, r *http.Request) {
 		comumcell(pdf, armazenar.Complemento, 45.0, 1, "")
 		pdf.Ln(6)
 		azulcell(pdf,"Fatores de Prioridade")
-		prioridade(pdf,"Paciente Homem 40+",armazenar.Homem)
-		prioridade(pdf,"Paciente Etilista",armazenar.Etilista)
-		prioridade(pdf,"Paciente Tabagista",armazenar.Tabagista)
-		prioridade(pdf,"Lesões Bucais",armazenar.LesaoBucal)
+		prioridade(pdf,"Homem (idade igual ou superior a 40 anos)",armazenar.Homem)
+		prioridade(pdf,"Etilista (consome álcool regularmente)",armazenar.Etilista)
+		prioridade(pdf,"Tabagista (consome cigarro regularmente)",armazenar.Tabagista)
+		prioridade(pdf,"Com lesão bucal suspeita",armazenar.LesaoBucal)
+		pdf.Ln(4)
+		comumcell(pdf, "Data de Cadastro", 60.0,0, "B")
+		comumcell(pdf, armazenar.DataCadastro, 130.0,1, "")
 	err = pesquisa.Err()
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -2316,42 +2324,46 @@ func generatePDF(w http.ResponseWriter, r *http.Request) {
 }
 
 func azulcell(pdf *gofpdf.Fpdf, texto string,){
-
-	pdf.SetFont("Arial", "B", 16)
+	tr := pdf.UnicodeTranslatorFromDescriptor("")
+		pdf.SetFont("Arial", "B", 16)
 		pdf.SetFillColor(0, 125, 230)
 		pdf.SetTextColor(255, 255, 255)
-		pdf.CellFormat(190, 9.0, texto, "", 1, "L", true, 0, "")
+		pdf.CellFormat(190, 9.0, tr(texto), "", 1, "L", true, 0, "")
 		pdf.Ln(2)
 
 		//titulos
 }
 
 func comumcell(pdf *gofpdf.Fpdf, texto string, width float64, pula int, negrito string){
-	pdf.SetFont("Arial", negrito, 15)
-	pdf.SetFillColor(235, 240, 255)
-	pdf.SetTextColor(0, 0, 0)
-	pdf.CellFormat(width, 9.0, texto, "1", pula, "L", true, 0, "")
+	tr := pdf.UnicodeTranslatorFromDescriptor("")
+		pdf.SetFont("Arial", negrito, 15)
+		pdf.SetFillColor(235, 240, 255)
+		pdf.SetTextColor(0, 0, 0)
+		pdf.CellFormat(width, 9.0, tr(texto), "1", pula, "L", true, 0, "")
 
-	// celula padrao
+		// celula padrao
 }
 
 func prioridade(pdf *gofpdf.Fpdf, texto string, condicao string) {
-	pdf.SetFillColor(255,255,255)
-	pdf.SetFont("Arial", "B", 15)
-	pdf.SetTextColor(0,0,0)
-		pdf.CellFormat(95, 9.0, texto, "1", 0, "C", true, 0, "")
-		pdf.SetFont("Arial", "", 15)
+	tr := pdf.UnicodeTranslatorFromDescriptor("")
+		pdf.SetDrawColor(10, 10, 10)
+		pdf.SetFillColor(255,255,255)
+		pdf.SetFont("Arial", "B", 14)
+		pdf.SetTextColor(0,0,0)
+		pdf.CellFormat(130, 9.0, tr(texto), "1", 0, "C", true, 0, "")
+		pdf.SetFont("Arial", "", 14)
 
-	pdf.SetFillColor(200, 255, 200)
+	pdf.SetFillColor(170, 255, 170)
 	mensagem := "Negativo"
 	if condicao == "Sim" {
-		pdf.SetFillColor(255, 200, 200)
+		pdf.SetFillColor(255, 170, 170)
 		mensagem = "Positivo"
 	}
-	pdf.SetFont("Arial", "", 15)
-		pdf.CellFormat(95, 9.0, mensagem, "1", 1, "C", true, 0, "")
+	pdf.SetFont("Arial", "", 16)
+		pdf.CellFormat(60, 9.0, tr(mensagem), "1", 1, "C", true, 0, "")
 	
 	
 	//mudando as corzinha
 }
+
 
