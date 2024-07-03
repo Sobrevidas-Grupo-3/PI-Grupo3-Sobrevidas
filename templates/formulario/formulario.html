@@ -1121,7 +1121,7 @@
     #dataform {
         padding-top: 1vh;
         font-weight: bold;
-        font-size: 1.5vh;
+        font-size: 1.2vh;
     }
 
     @media print {
@@ -1252,11 +1252,11 @@
                 <td class="tdprint" colspan="4">Nome completo: <div class="asc">*</div></td>
               </tr>
               <tr>
-                <td class="tdprint" colspan="1"> Data de Nascimento:   __/__/_____</td>
-                <td class="tdprint" colspan="3">CPF:</td>
+                <td class="tdprint" colspan="1"> Data de Nascimento: <div class="asc">*</div>   __/__/_____</td>
+                <td class="tdprint" colspan="3">CPF: <div class="asc">*</div></td>
               </tr>
               <tr>
-                <td class="tdprint" colspan="4">Nome da Mãe:</td>
+                <td class="tdprint" colspan="4">Nome da Mãe: <div class="asc">*</div></td>
               </tr>
               <tr>
                 <td class="tdprint" colspan="2" scope="row">Cartão do Sus:</td>
@@ -1281,7 +1281,7 @@
                 <td class="tdprint" colspan="2" scope="row">Bairro:</td>
               </tr>
               <tr>
-                <td class="tdprint" colspan="2" scope="row">CEP:</td>
+                <td class="tdprint" colspan="2" scope="row">CEP: <div class="asc">*</div></td>
                 <td class="tdprint" colspan="1" scope="row">Número:</td>
                 <td class="tdprint" colspan="1" scope="row" >UF:</td>
               </tr>
@@ -1290,7 +1290,7 @@
                 <td class="tdprint" colspan="2" scope="row">Complemento:</td>
               </tr>
               <tr>
-                <th class="thprint" colspan="4">Fatores de Risco</th>
+                <th class="thprint" colspan="4">Fatores de Risco <div class="asc">*</div></th>
               </tr>
               <tr>
                 <td class="tdprint" colspan="2" scope="row">Etilista &#40consome álcool &#41: Sim ▢ Não ▢</td>
@@ -1311,7 +1311,8 @@
             </tbody>
             <tfoot>
                 <tr>
-                <td id="dataform">Formulário impresso às <time datetime="" id="current-time"></time>.</td>
+                <td colspan="2" id="dataform">Formulário impresso na data: <time datetime="" id="current-time"></time>.</td>
+                <td colspan="2" style="font-size: 1vh;">Campos com  <div class="asc">*</div> são de preenchimento obrigatório</td>
                 </tr>
             </tfoot>
             </table>
