@@ -1,3 +1,4 @@
+
 package main
 
 import (
@@ -2367,5 +2368,3 @@ func prioridade(pdf *gofpdf.Fpdf, texto string, condicao string) {
 	
 	//mudando as corzinha
 }
-
-
