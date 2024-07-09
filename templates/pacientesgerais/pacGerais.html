@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacientes Gerais</title>
+    <link rel="shortcut icon" href="imagens2/imagens/favicon.ico" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kaushan+Script&family=Passion+One:wght@400;700;900&family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&display=swap');
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0px;
+        }
+
+        header{
+            width: 100%;
+            height: 8vh;
+            background-color: #007FDA;
+            display: flex;
+        }
+
+        h1 {
+            font-size: 5vh;
+            position: absolute;
+            font-family: "Inter";
+            margin-top: 0.5%;
+            left: 14%;
+            color: white;
+        }
+
+        h2 {
+            font-size: 4vh;
+            position: absolute;
+            font-family: "Inter";
+            color: white;
+            margin-top: 0.8%;
+            left: 50%;
+            top: 0vh;
+            font-weight: bold;
+        }
+
+        #caixausuario{
+            position: absolute;
+            display: flex;
+            background-color: #0C91F0;
+            border-radius: 8px;
+            height: 6.5%;
+            width: 13%;
+            top: 1%;
+            left: 80%;
+            box-shadow: 1px 1px rgba(0, 0, 0, 0.226);
+        }
+
+        .caixa{
+            position: fixed;
+            color: white;
+            font-family: "Poppins";
+            font-weight: bold;
+            top: -0.15vh;
+            left: 83%;
+            font-size: 2.5vh;
+        }
+
+        p.usuario{
+            position: fixed;
+            background-color: #5A67BA;
+            border-radius: 50%;
+            color: white;
+            font-family: "Poppins";
+            font-weight: bold;
+            margin-top: 1.3vh;
+            margin-left: 0.5vw;
+            width: 2%;
+            height: 3.9%;
+            text-align: center;
+            font-size: 2.5vh;
+        }
+    
+        .sinoimg{
+            position: fixed;
+            top: 2.3vh;
+            left: 90%;
+            width: 2%;
+            height: 4%;
+        }
+
+        .posicaoImgSaida {
+            position: fixed;
+            display: block;
+            height: 4%;
+            width: 2%;
+            top: 2%;
+            right: 2%;
+        }
+
+        nav{
+            background-color: #F1F2F7;
+            width: 16vw;
+            font-family: "Poppins";
+            height: 92vh;
+        }
+
+        .posicaoLogo {
+            width: 6vw;
+            margin-left: 4vw;
+            position: absolute;
+            top: 8vh;
+        }
+
+        .Dashboard {
+            position: absolute;
+            background-color: #e0e3f1;
+            box-shadow: 1px 1px rgba(0, 0, 0, 0.226);
+            text-decoration: none;
+            color: #558FC0;
+            border-radius: 15px;
+            margin-left: 0.3vw;
+            background-image: url(/imgdashboard/iconeDashboard1.png);
+            background-repeat: no-repeat;
+            background-position: 0.5vw;
+            background-size: 2vw;
+            padding-top: 0.1vw;
+            padding-bottom: 0.3vw;
+            padding-left: 1vw;
+            padding-right: 4vw;
+            font-size: 1.2vw;
+            top: 22vh;
+            left: 1vw;
+        }
+
+        .novoCadastro {
+            position: absolute;
+            background-color: #e0e3f1;
+            box-shadow: 1px 1px hsla(0, 0%, 0%, 0.226);
+            text-decoration: none;
+            color: #2CA2AD;
+            border-radius: 15px;
+            margin-left: 0.3vw;
+            background-image: url(/imgdashboard/iconeNovoCadastro1.png);
+            background-repeat: no-repeat;
+            background-position: 0.5vw;
+            background-size: 2vw;
+            padding-top: 0.3vw;
+            padding-bottom: 0.3vw;
+            padding-left: 1vw;
+            padding-right: 1.8vw;
+            font-size: 1.2vw;
+            top: 30vh;
+            left: 1vw;
+        }
+
+        .posicionarNomes{
+            margin-left: 2vw;
+        }  
+
+        .monitoramento{
+            position: absolute;
+            color: #558FC0;
+            left: 3vw;
+            font-size: 1.5vw;
+            top: 34.9vh;
+        }
+
+        .space1{
+            margin-left: 1vw;
+        }
+
+        .PacientesGerais {
+            position: absolute;
+            background-color: #1892b140;
+            text-decoration: none;
+            color: #558FC0;
+            border-radius: 15px;
+            padding-top: 0.5vw;
+            padding-bottom: 0.5vw;
+            padding-right: 2.5vw;
+            border-color: #000000;
+            padding-left: 1vw;
+            font-size: 1.2vw;
+            top: 43vh;
+            left: 1vw;
+            border-style: groove;
+            border-width: 1px;
+            border-color: rgba(0, 0, 0, 0.267);
+        }
+
+        .TiposPacientes1 {
+            position: absolute;
+            text-decoration: none;
+            background-color: #ff71e5aa;
+            color: hsla(210, 100%, 1%, 0.68);
+            border-radius: 15px;
+            font-size: 1vw;
+            padding-right: 0.86vw;
+            padding-left: 0vw;
+            top: 52vh;
+            left: 3vw;
+            border-style: groove;
+            border-width: 1px;
+            border-color: rgba(0, 0, 0, 0.267);
+        }
+
+        .TiposPacientes2 {
+            background-color: #ffa2007a;
+            position: absolute;
+            text-decoration: none;
+            color: hsla(207, 64%, 9%, 0.87);
+            border-radius: 15px;
+            font-size: 1vw;
+            padding-right: 0.55vw;
+            padding-left: 0vw;
+            top: 57vh;
+            left: 3vw;
+            border-style: groove;
+            border-width: 1px;
+            border-color: rgba(0, 0, 0, 0.267);
+        }
+
+        .TiposPacientes3 {
+            background-color: #ff11006d;
+            position: absolute;
+            text-decoration: none;
+            color: #020D16;
+            border-radius: 15px;
+            font-size: 1vw;
+            padding-right: 1.7vw;
+            padding-left: 0vw;
+            top: 62vh;
+            left: 3vw;
+            border-style: groove;
+            border-width: 1px;
+            border-color: rgba(0, 0, 0, 0.267);
+        }
+
+        .TiposPacientes4 {
+            background-color: #a612e569;
+            position: absolute;
+            text-decoration: none;
+            color: #020D16;
+            border-radius: 15px;
+            font-size: 1vw;
+            padding-right: 2.6vw;
+            padding-left: 0vw;
+            top: 67vh;
+            left: 3vw;
+            border-style: groove;
+            border-width: 1px;
+            border-color: rgba(0, 0, 0, 0.267);
+        }
+
+        .Ajuda {
+            position: absolute;
+            color: #558FC0;
+            font-size: 1.5vw;
+            top: 69.9vh;
+            left: 5.5vw;
+        }
+
+        .PerguntasFreq {
+            position: absolute;
+            text-decoration: none;
+            background-color: #0f153328;
+            color: #000000b7;
+            font-size: 1.1vw;
+            border-radius: 7px;
+            padding-top: 0.3vw;
+            padding-bottom: 0.3vw;
+            padding-right: 0.5vw;
+            margin-left: 0.2vw;
+            top: 79vh;
+            left: 0.5vw;
+            border-style: groove;
+            border-width: 1px;
+            border-color: rgba(0, 0, 0, 0.267);
+        }
+
+        .space2{
+            margin-left: 0.2vw;
+        }
+
+        .CentralUsuario {
+            position: absolute;
+            background-color: #667ff146;
+            text-decoration: none;
+            color: #54565C;
+            border-radius: 7px;
+            padding-top: 0.3vw;
+            padding-bottom: 0.3vw;
+            padding-right: 2vw;
+            margin-left: 0.2vw;
+            font-size: 1.1vw;
+            top: 86vh;
+            left: 0.5vw;
+            border-style: groove;
+            border-width: 1px;
+            border-color: rgba(0, 0, 0, 0.267);
+        }
+
+        .space3{
+            margin-left: 2vw;
+        }
+
+        .Voltar {
+            background-color: #0C91F0;
+            border-radius: 10px;
+            color: #ffffff;
+            border-radius: 7px;
+            padding-top: 0.3vw;
+            padding-bottom: 0.3vw;
+            padding-right: 2.5vw;
+            padding-left: 4.5vw;
+            font-family: "Poppins";
+            text-decoration: none;
+            font-size: 1.1vw;
+            position: absolute;
+            top: 93vh;
+            left: 2.5vw;
+        }
+
+        .posicaoImgSetaVoltar {
+            position: absolute;
+            bottom: 0vh;
+            left: 3vw;
+        }
+
+        .setaVoltarTamanho{
+            position: fixed;
+            top: 92vh;
+            width: 2vw;
+        }
+
+
+        h3 {
+            color: #ffffff;
+            font-family: "Poppins";
+            font-size: 6vh;
+            position: absolute;
+            top: 5vh;
+            left: 35.8vw;
+            padding: 1.5vw;
+            background-color: #2CA2AD;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        h4 {
+            color: #2F3367;
+            font-size: 1.8vw;
+            font-family: "Poppins";
+            position: absolute;
+            top: -3.4vh;
+        }
+
+        .barrasPacientes1 {
+            width: 65vw;
+            height: 2.7vh;
+            padding: 4vh;
+            border: 3px #007FDA solid;
+            border-radius: 10px;
+            position: absolute;
+            top: 30vh;
+            left: 23vw;
+            text-align: left;
+        }
+
+        .posicaoIconePessoa1 {
+            width: 3vw;
+            position: absolute;
+            top: 32vh;
+            left: 57vw;
+        }
+
+        p.barrasPacientesQtd1 {
+            font-family: "Poppins";
+            font-size: 2.2vw;
+            position: fixed;
+            top: 27.5vh;
+            left: 63vw;
+        }
+
+        p.barrasPacientesQtd2 {
+            font-family: "Poppins";
+            font-size: 2.2vw;
+            position: fixed;
+            top: 44.5vh;
+            left: 63vw;
+        }
+
+        p.barrasPacientesQtd3 {
+            font-family: "Poppins";
+            font-size: 2.2vw;
+            position: fixed;
+            top: 61.5vh;
+            left: 63vw;
+        }
+
+        p.barrasPacientesQtd4 {
+            font-family: "Poppins";
+            font-size: 2.2vw;
+            position: fixed;
+            top: 78.5vh;
+            left: 63vw;
+        }
+
+        .acessarBaixo {
+            background-color: #ff71e5aa;
+            font-family: "Poppins";
+            text-decoration: none;
+            padding: 10px 40px 10px 40px;
+            border-radius: 20px;
+            color: #2F3367;
+            font-size: 3vh;
+            position: absolute;
+            top: 1.7vh;
+            right: 0.7vw;
+        }
+
+
+        h4.barrasPacientes2 {
+            color: #2F3367;
+            font-size: 4vh;
+            font-family: "Poppins";
+            position: absolute;
+            top: 0vh;
+        }
+
+        .barrasPacientes2 {
+            width: 65vw;
+            height: 2.7vh;
+            padding: 4vh;
+            border: 3px #007FDA solid;
+            border-radius: 10px;
+            position: absolute;
+            top: 47vh;
+            left: 23vw;
+            text-align: left;
+        }
+        .posicaoIconePessoa2 {
+            width: 3vw;
+            position: absolute;
+            top: 49vh;
+            left: 57vw;
+        }
+        .acessarMedio {
+            background-color: #ffa20096;
+            font-family: "Poppins";
+            text-decoration: none;
+            padding: 10px 40px 10px 40px;
+            border-radius: 20px;
+            color: #2F3367;
+            font-size: 3vh;
+            position: absolute;
+            top: 1.7vh;
+            right: 0.7vw;
+        }
+
+
+        h4.barrasPacientes3 {
+            color: #2F3367;
+            font-size: 4vh;
+            font-family: "Poppins";
+            position: absolute;
+            top: 0vh;
+        }
+        .barrasPacientes3 {
+            width: 65vw;
+            height: 2.7vh;
+            padding: 4vh;
+            border: 3px #007FDA solid;
+            border-radius: 10px;
+            position: absolute;
+            top: 64vh;
+            left: 23vw;
+            text-align: left;
+        }
+        .posicaoIconePessoa3 {
+            width: 3vw;
+            position: absolute;
+            top: 66vh;
+            left: 57vw;
+        }
+        .acessarAlto {
+            background-color: #ff110077;
+            font-family: "Poppins";
+            text-decoration: none;
+            padding: 10px 40px 10px 40px;
+            border-radius: 20px;
+            color: #2F3367;
+            font-size: 3vh;
+            position: absolute;
+            top: 1.7vh;
+            right: 0.7vw;
+        }
+
+
+        h4.barrasPacientes4 {
+            color: #2F3367;
+            font-size: 4vh;
+            font-family: "Poppins";
+            position: absolute;
+            top: 0vh;
+        }
+        .barrasPacientes4 {
+            width: 65vw;
+            height: 2.7vh;
+            padding: 4vh;
+            border: 3px #007FDA solid;
+            border-radius: 10px;
+            position: absolute;
+            top: 81vh;
+            left: 23vw;
+            text-align: left;
+        }
+        .posicaoIconePessoa4 {
+            width: 3vw;
+            position: absolute;
+            top: 83vh;
+            left: 57vw;
+        }
+        .acessarAbs {
+            background-color: #a612e570;
+            font-family: "Poppins";
+            text-decoration: none;
+            padding: 10px 40px 10px 40px;
+            border-radius: 20px;
+            color: #2F3367;
+            font-size: 3vh;
+            position: absolute;
+            top: 1.7vh;
+            right: 0.7vw;
+        }
+
+        #modal{
+            display: none;
+        }
+
+        #logout{
+            position: absolute;
+            top: 25vh;
+            left: 40vw; 
+        }
+
+        .fixar{
+            position: fixed;
+        }
+
+        div.relativa{
+            background-color: white;
+            position: relative;
+            border-radius: 10px;
+            width: 20vw;
+            height: 53vh;
+            font-family: "Inter";
+            border: 3px solid #00538E;
+        }
+
+        img.deslogar{
+            position: absolute;
+            width: 7vw;
+            left: 7vw;
+            top: 3vh;
+        }
+
+        .ctz{
+            position: absolute;
+            top: 21vh;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1vw;
+            left: 0vw;
+            width: 20vw;
+        }
+
+        .sim{
+            font-family: "Inter";
+            border-radius: 5px;
+            position: absolute;
+            background-color: #007FDA;
+            color: white;
+            border: none;
+            top: 32vh;
+            width: 16.5vw;
+            height: 5.5vh;
+            cursor: pointer;
+            left: 1.5vw;
+            font-weight: bold;
+            font-size: 0.95vw;
+        }
+
+        .sim:hover{
+            background-color: #0662a3;
+        }
+
+        .nao{
+            border-radius: 5px;
+            position: absolute;
+            background-color: #007FDA;
+            color: white;
+            border: none;
+            top: 41vh;
+            width: 16.5vw;
+            height: 5.5vh;
+            cursor: pointer;
+            left: 1.5vw;
+            font-weight: bold;
+            font-family: "Inter";
+            font-size: 0.95vw;
+        }
+
+        .nao:hover{
+            background-color: #0662a3;
+        }
+
+        #btnlogout{
+            cursor: pointer;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SOBREVIDAS - ACS</h1>
+        <h2>Pacientes Gerais</h2>
+        <div id="caixausuario">
+            <p class="usuario">{{.Primeira}}</p>
+            <p class="caixa">{{.Usuario}}</p>
+            <a href="/pagina-absenteista"><img src="/imgdashboard/sino.png" alt="Icone de Notificação" class="sinoimg"></a>
+        </div>
+        <a id="btnlogout"><img src="/imgdashboard/logout.png" alt="Icone de sair" class="posicaoImgSaida"></a>
+    </header>
+    <nav>
+        <a href="/dashboard/voltar" class="Dashboard"><span class="posicionarNomes">Dashboard</span></a>
+        <a href="/cadastrar-paciente" class="novoCadastro"><span class="posicionarNomes">Novo Cadastro</span></a>
+        <br>
+        <p class="monitoramento">Monitoramento</p>
+        <a href="/pacientesgerais" class="PacientesGerais"><span class="space1">Pacientes Gerais</span></a>
+        <br>
+        <a href="/pagina-baixo-risco" class="TiposPacientes1"><span class="space1">Baixa Prioridade</span></a>
+        <br>
+        <a href="/pagina-medio-risco" class="TiposPacientes2"><span class="space1">Média Prioridade</span></a>
+        <br>
+        <a href="/pagina-alto-risco" class="TiposPacientes3"><span class="space1">Alta Prioridade</span></a>
+        <br>
+        <a href="/pagina-absenteista" class="TiposPacientes4"><span class="space1">Absenteístas</span></a>
+        <br>
+        <p class="Ajuda">Ajuda</p>
+        <a href="/pagina-faq" class="PerguntasFreq"><span class="space2">[?] Perguntas Frequentes</span></a>
+        <a href="/central-usuario" class="CentralUsuario"><span class="space3">Central do Usuário</span></a>
+        <a href="/dashboard/voltar" class="Voltar">Voltar</a>
+        <a href="/dashboard/voltar"><img src="/imgdashboard/LogoSOBREVIDAS-ACS-semtext.png" alt="Logo Sobrevidas" class="posicaoLogo"></a>
+        <a href="/dashboard/voltar" class="posicaoImgSetaVoltar"><img src="/imagens/iconeSetaVoltar1.1.png" alt="iconeSetaVoltar" class="setaVoltarTamanho"></a>
+    </nav>
+
+    <h3>Monitoramento dos Pacientes</h3>
+    <div class="barrasPacientes1">
+        <h4>Pacientes de Baixa Prioridade</h4>
+        <p class="barrasPacientesQtd1"><b>{{.QtdBaixo}}</b></p>
+        <a href="/pagina-baixo-risco" class="acessarBaixo"><b>Acessar</b></a>
+    </div>
+    <div class="barrasPacientes2">
+        <h4>Pacientes de Média Prioridade</h4>
+        <p class="barrasPacientesQtd2"><b>{{.QtdMedio}}</b></p>
+        <a href="/pagina-medio-risco" class="acessarMedio"><b>Acessar</b></a>
+    </div>
+    <div class="barrasPacientes3">
+        <h4>Pacientes de Alta Prioridade</h4>
+        <p class="barrasPacientesQtd3"><b>{{.QtdAlto}}</b></p>
+        <a href="/pagina-alto-risco" class="acessarAlto"><b>Acessar</b></a>
+    </div>
+    <div class="barrasPacientes4">
+        <h4>Pacientes Absenteístas</h4>
+        <p class="barrasPacientesQtd4"><b>3</b></p>
+        <a href="/pagina-absenteista" class="acessarAbs"><b>Acessar</b></a>
+    </div>
+
+    <div>
+        <img src="/imagens/iconePessoa1.1.png"  alt="iconePessoa1" class="posicaoIconePessoa1">
+        <img src="/imagens/iconePessoa1.1.png"  alt="iconePessoa2" class="posicaoIconePessoa2">
+        <img src="/imagens/iconePessoa1.1.png"  alt="iconePessoa3" class="posicaoIconePessoa3">
+        <img src="/imagens/iconePessoa1.1.png"  alt="iconePessoa4" class="posicaoIconePessoa4">
+    </div>
+    
+    <div id="modal">
+        <div id="logout">
+            <div class="fixar">
+                <div class="relativa">
+                    <img src="/imgdashboard/logout icon.png" alt="Icone de Logout" class="deslogar">
+                    <p class="ctz">Tem certeza que deseja sair da <br> sua conta?</p>
+                    <a href="/"><button class="sim">Sim, deslogar.</button></a>
+                    <button class="nao">Não, continuar logado.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let btn = document.getElementById('btnlogout');
+        let modal = document.getElementById('modal');
+        let cancelbtn = document.querySelector('.nao');
+
+        btn.onclick = function(){
+            modal.style.display = 'block';
+        }
+
+        cancelbtn.onclick = function(){
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

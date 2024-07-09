@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="imagens2/imagens/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/imgdashboard/favicon.ico" type="image/x-icon">
 </head>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Passion+One:wght@400;700;900&family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&display=swap');
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kaushan+Script&family=Passion+One:wght@400;700;900&family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&display=swap');
 
@@ -100,13 +100,124 @@
     font-size: 2.5vh;
     }
 
+    /* POP-UP Notificação */
+
     .sinoimg{
-    position: fixed;
-    top: 2.3vh;
-    left: 90%;
-    width: 2%;
-    height: 4%;
+        position: fixed;
+        top: 2.3vh;
+        left: 90%;
+        width: 2%;
+        height: 4%;
+        transition: transform 0.3s ease;
     }
+
+    .sinoimg:hover {
+        transform: translateY(-0.521vw);
+        transform: translateY(0.26vw);
+    }
+
+    .icone {
+        cursor: pointer;
+        margin-right: 2.604vw;
+        line-height: 1.302vw;
+    }
+
+    #bolanotificacao {
+        background: #f00;
+        padding: 0px 0.313vw 0px 0.313vw;
+        border-radius: 50%;
+        color: #fff;
+        position: absolute;
+        vertical-align: top;
+        margin-left: 11vw;
+        font-size: 1.8vh;
+        font-family: "Poppins";
+        font-weight: bold;
+    }
+
+    .icone:hover {
+	    opacity: .7;
+    }
+
+    .caixanotificacao {
+        width: 15.625vw;
+        opacity: 0;
+        z-index: 2;
+        position: absolute;
+        border: 0.156vw solid #007FDA;
+        background-color: white;
+        border-radius: 0.521vw;
+        top: 3.281vw;
+        right: 1.823vw;
+        transition: 0.6s opacity, 250ms height;
+        box-shadow: 0 0.208vw 0.417vw 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .caixanotificacao p {
+	display: none;
+        font-size: 0.729vw;
+        position: relative;
+        font-family: "Poppins";
+        padding: 0.26vw;
+        font-weight: bold;
+        border-bottom: 0.052vw solid #eee;
+        color: #383838;
+        overflow-x: hidden;
+    }
+    .caixanotificacao #titulonotificacoes span {
+        color: #f00;
+        font-family: "Poppins";
+        margin-left: 5px;
+    }
+    .notificacao {
+        display: flex;
+        border-bottom: 0.052vw solid #eee;
+        padding: 0.521vw 0.26vw;
+        margin-bottom: 0.625vw;
+        cursor: default;
+        border-radius: 0.521vw;
+        box-shadow: 0px 0px 0.052vw rgba(0, 0, 0, 0.425);
+
+        transition: transform 0.3s ease;
+    }
+
+    .notificacao:hover {
+        background-color: #007fda1a;
+
+        transform: translateY(-0.208vw);
+        transform: translateY(0.156vw);
+    }
+
+    .notificacao img {
+        display: block;
+        width: 2.344vw;
+        height: 2.344vw;
+        margin-right: 0.521vw;
+        border-radius: 50%;
+    }
+
+    .notificacao .texto h4 {
+        color: #777;
+        font-size: 0.833vw;
+        margin-top: 0.521vw;
+        font-family: "Poppins";
+    }
+
+    .notificacao .texto h4::after {
+        content: '9 min';
+        font-size: 1.2vh;
+        font-weight: normal;
+        margin-left: 0.313vw;
+        font-family: "Poppins";
+    }
+
+    .notificacao .texto p {
+        color: #aaa;
+        font-size: 0.625vw;
+        font-family: "Poppins";
+    }
+
+    /* FIM POP-UP */
 
     .sair{
     position: fixed;
@@ -150,6 +261,10 @@
     left: 1vw;
     }
 
+    .dashboard:hover {
+        background-color: #9aa7e267;
+    }
+
     .novocadastro{
     position: absolute;
     background-color: #e0e3f1;
@@ -171,11 +286,16 @@
     left: 1vw;
     }
 
+    .novocadastro:hover {
+        background-color: #9aa7e267;
+    }
+
     .posicionar1{
     margin-left: 2vw;
     }
 
     .monitoramento{
+    font-family: "Poppins";
     position: absolute;
     color: #558FC0;
     left: 3vw;
@@ -202,79 +322,100 @@
     border-color: rgba(0, 0, 0, 0.267);
     }
 
+    .pacientesgerais:hover {
+        background-color: #0b455340;
+    }
+
     .pag{
     margin-left: 1vw;
     }
 
     .baixorisco{
-    position: absolute;
-    text-decoration: none;
-    background-color: #ff71e536;
-    color: hsla(210, 100%, 1%, 0.68);
-    border-radius: 15px;
-    font-size: 1vw;
-    padding-right: 0.9vw;
-    padding-left: 0.9vw;
-    top: 52vh;
-    left: 4vw;
-    border-style: groove;
-    border-width: 1px;
-    border-color: rgba(0, 0, 0, 0.267);
+        position: absolute;
+            text-decoration: none;
+            background-color: #ff71e5aa;
+            color: hsla(210, 100%, 1%, 0.68);
+            border-radius: 15px;
+            font-size: 1vw;
+            padding-right: 0.86vw;
+            padding-left: 0vw;
+            top: 52vh;
+            left: 3vw;
+            border-style: groove;
+            border-width: 1px;
+            border-color: rgba(0, 0, 0, 0.267);
+    }
+
+    .baixorisco:hover {
+        background-color: #f637d3ae;
     }
 
     .mediorisco{
-    position: absolute;
-    text-decoration: none;
-    background-color: #ffa2003f;
-    color: hsla(207, 64%, 9%, 0.87);
-    border-radius: 15px;
-    font-size: 1vw;
-    padding-right: 0.75vw;
-    padding-left: 0.75vw;
-    top: 57vh;
-    left: 4vw;
-    border-style: groove;
-    border-width: 1px;
-    border-color: rgba(0, 0, 0, 0.267);
+        background-color: #ffa2007a;
+            position: absolute;
+            text-decoration: none;
+            color: hsla(207, 64%, 9%, 0.87);
+            border-radius: 15px;
+            font-size: 1vw;
+            padding-right: 0.55vw;
+            padding-left: 0vw;
+            top: 57vh;
+            left: 3vw;
+            border-style: groove;
+            border-width: 1px;
+            border-color: rgba(0, 0, 0, 0.267);
+    }
+
+    .mediorisco:hover {
+        background-color: #ffa2009f;
     }
 
     .altorisco{
-    position: absolute;
-    text-decoration: none;
-    background-color: #ff110044;
-    color: #020D16;
-    border-radius: 15px;
-    font-size: 1vw;
-    padding-right: 1.3vw;
-    padding-left: 1.3vw;
-    top: 62vh;
-    left: 4vw;
-    border-style: groove;
-    border-width: 1px;
-    border-color: rgba(0, 0, 0, 0.267);
+        background-color: #ff11006d;
+            position: absolute;
+            text-decoration: none;
+            color: #020D16;
+            border-radius: 15px;
+            font-size: 1vw;
+            padding-right: 1.7vw;
+            padding-left: 0vw;
+            top: 62vh;
+            left: 3vw;
+            border-style: groove;
+            border-width: 1px;
+            border-color: rgba(0, 0, 0, 0.267);
+    }
+
+    .altorisco:hover {
+        background-color: #ff110096;
     }
 
     .absenteistas{
-    position: absolute;
-    text-decoration: none;
-    background-color: #a612e554;
-    color: #020D16;
-    border-radius: 15px;
-    font-size: 1vw;
-    padding-right: 0.5vw;
-    padding-left: 0.5vw;
-    top: 67vh;
-    left: 4vw;
-    border-style: groove;
-    border-width: 1px;
-    border-color: rgba(0, 0, 0, 0.267);
+        background-color: #a612e569;
+        position: absolute;
+        text-decoration: none;
+        color: #020D16;
+        border-radius: 15px;
+        font-size: 1vw;
+        padding-right: 2.6vw;
+        padding-left: 0vw;
+        top: 67vh;
+        left: 3vw;
+        border-style: groove;
+        border-width: 1px;
+        border-color: rgba(0, 0, 0, 0.267);
+    }
+
+    .absenteistas:hover {
+        background-color: #a612e593;
     }
 
     .ajuda{
+    font-family: "Poppins";
     position: absolute;
     color: #558FC0;
     font-size: 1.5vw;
-    top: 77vh;
+    top: 73vh;
     left: 5.5vw;
     }
 
@@ -289,11 +430,15 @@
     padding-bottom: 0.3vw;
     padding-right: 0.5vw;
     margin-left: 0.2vw;
-    top: 84vh;
+    top: 79vh;
     left: 0.5vw;
     border-style: groove;
     border-width: 1px;
     border-color: rgba(0, 0, 0, 0.267);
+    }
+
+    .perguntas:hover {
+        background-color: #0f15334f;
     }
 
     .pg{
@@ -311,11 +456,15 @@
     padding-right: 2vw;
     margin-left: 0.2vw;
     font-size: 1.1vw;
-    top: 92vh;
+    top: 86vh;
     left: 0.5vw;
     border-style: groove;
     border-width: 1px;
     border-color: rgba(0, 0, 0, 0.267);
+    }
+
+    .central:hover {
+        background-color: #667ff185;
     }
 
     .c{
@@ -367,8 +516,8 @@
     left: 21vw;
     padding-top: 1.4vh;
     padding-bottom: 1.4vh;
-    padding-left: 0.5vw;
-    padding-right: 0.5vw;
+    padding-left: 0.8vw;
+    padding-right: 0.8vw;
     border-radius: 7px;
     font-size: 1.1vw;
     font-family: "Marcellus SC";
@@ -733,7 +882,7 @@
     font-family: "Poppins";
     top: 71vh;
     left: 17vw;
-    font-size: 1vw;
+    font-size: 0.98vw;
     background-image: url(/imgdashboard/pinnaovisitado.png);
     background-repeat: no-repeat;
     background-size: 1.7vw;
@@ -744,9 +893,9 @@
     .pbv{
     position: absolute;
     font-family: "Poppins";
-    top: 77vh;
+    top: 71vh;
     left: 17vw;
-    font-size: 1vw;
+    font-size: 0.98vw;
     background-image: url(/imgdashboard/bandeirabaixo.png);
     background-repeat: no-repeat;
     background-size: 1.7vw;
@@ -757,9 +906,9 @@
     .pmv{
     position: absolute;
     font-family: "Poppins";
-    top: 83vh;
+    top: 77vh;
     left: 17vw;
-    font-size: 1vw;
+    font-size: 0.98vw;
     background-image: url(/imgdashboard/bandeiramedio.png);
     background-repeat: no-repeat;
     background-size: 1.7vw;
@@ -770,9 +919,9 @@
     .pav{
     position: absolute;
     font-family: "Poppins";
-    top: 89vh;
+    top: 83vh;
     left: 17vw;
-    font-size: 1vw;
+    font-size: 0.98vw;
     background-image: url(/imgdashboard/bandeiraalto.png);
     background-repeat: no-repeat;
     background-size: 1.7vw;
@@ -783,9 +932,9 @@
     .pa{
     position: absolute;
     font-family: "Poppins";
-    top: 95vh;
+    top: 89vh;
     left: 17vw;
-    font-size: 1vw;
+    font-size: 0.98vw;
     background-image: url(/imgdashboard/bandeiranaofoi.png);
     background-repeat: no-repeat;
     background-size: 1.7vw;
@@ -793,19 +942,25 @@
     padding-left: 4vh;
     }
 
-    .mapa{
-    overflow:hidden;
-    padding-bottom: 0;
-    position:relative;
-    height:0;
+    .pmd{
+        position: absolute;
+        font-family: "Poppins";
+        top: 95vh;
+        left: 17vw;
+        font-size: 0.98vw;
+        background-image: url(/imgdashboard/bandeirabaixoComAsc.png);
+        background-repeat: no-repeat;
+        background-size: 1.7vw;
+        background-position: 0vw;
+        padding-left: 4vh;
     }
 
-    .mapa iframe{
-    left:39vw;
-    top:63vh;
-    height:36%;
-    width:59%;
-    position:fixed;
+    #map{
+        left:39vw !important;
+        top:63vh !important;
+        height:36% !important;
+        width:59% !important;
+        position:fixed !important;
     }
     #modal{
         display: none;
@@ -898,8 +1053,34 @@
         <div id="caixausuario">
             <p class="usuario">{{.PrimeiraLetra}}</p>
             <p class="caixa">{{.Usuario}}</p>
-            <a href="/pagina-absenteista"><img src="/imgdashboard/sino.png" alt="Icone de Notificação" class="sinoimg"></a>
+           <div class="icone" onclick="toggleNotifi()"><img src="/imgdashboard/sino.png" alt="Icone de Notificação" class="sinoimg"><span id="bolanotificacao">3</span></div>
         </div>
+        <div class="caixanotificacao" id="caixa">
+			<p id="titulonotificacoes">Notificações<span style="color: #f00;">3</span></p>
+			<div id="not1" class="notificacao">
+				<img src="/imagens2/img/img/aviso.png" alt="img">
+				<div class="texto" onclick="abreLink()">
+				   <h4>Thaciano Rodrigues Silva</h4>
+				   <p>Não compareceu à consulta agendada no dia 22/04/2024</p>
+			    </div> 
+			</div>
+
+			<div id="not2" class="notificacao">
+				<img src="/imagens2/img/img/aviso.png" alt="img">
+				<div class="texto" onclick="abreLink()">
+				   <h4>João Tavares Costa</h4>
+				   <p>Não compareceu à consulta agendada no dia 25/01/2024</p>
+			    </div> 
+			</div>
+
+			<div id="not3" class="notificacao">
+				<img src="/imagens2/img/img/aviso.png" alt="img">
+				<div class="texto" onclick="abreLink()">
+				   <h4>Leonardo Martinez Ferreira</h4>
+				   <p>Não compareceu à consulta agendada no dia 03/06/2024</p>
+			    </div> 
+			</div>
+		</div>
         <a id="btnlogout"><img src="/imgdashboard/logout.png" alt="Icone de sair" class="sair"></a>
     </header>
     <nav>
@@ -910,13 +1091,13 @@
         <p class="monitoramento">Monitoramento</p>
         <a href="/pacientesgerais" class="pacientesgerais"><span class="pag">Pacientes Gerais</span></a>
         <br>
-        <a href="/pagina-baixo-risco" class="baixorisco">Baixo Risco</a>
+        <a href="/pagina-baixo-risco" class="baixorisco"><span class="pag"></span>Baixa Prioridade</a>
         <br>
-        <a href="/pagina-medio-risco" class="mediorisco">Médio Risco</a>
+        <a href="/pagina-medio-risco" class="mediorisco"><span class="pag"></span>Média Prioridade</a>
         <br>
-        <a href="/pagina-alto-risco" class="altorisco">Alto Risco</a>
+        <a href="/pagina-alto-risco" class="altorisco"><span class="pag"></span>Alta Prioridade</a>
         <br>
-        <a href="/pagina-absenteista" class="absenteistas">Absenteístas</a>
+        <a href="/pagina-absenteista" class="absenteistas"><span class="pag"></span>Absenteístas</a>
         <br>
         <p class="ajuda">Ajuda</p>
         <br>
@@ -927,16 +1108,16 @@
     <div class="Dados1">
         <p class="monitoramento2">Monitoramento de Pacientes com Risco de Câncer de Boca</p>
         <a href="/pacientesgerais"><p class="p1">Total de Pacientes Monitorados para Câncer de Boca</p></a>
-        <a href="/pacientesgerais"><p class="dp1">106</p></a>
-        <a href="#"><p class="p2">Total de Pacientes a serem visitados na microárea</p></a>
-        <a href="#"><p class="dp2">54</p></a>
+        <a href="/pacientesgerais"><p class="dp1">{{.QtdTotal}}</p></a>
+        <a href="#"><p class="p2">Total de Pacientes visitados por último há mais de um mês</p></a>
+        <a href="#"><p class="dp2">{{.QtdMaisDeUmMes}}</p></a>
         <a href="/pagina-absenteista"><p class="p3">Pacientes que cancelaram idas a UBS (absenteístas)</p></a>
-        <a href="/pagina-absenteista"><p class="dp3">7</p></a>
-        <a href="/pagina-baixo-risco"><p class="p4">Pacientes com <br><u>BAIXO</u><br> risco de câncer de <br>boca</p></a>
+        <a href="/pagina-absenteista"><p class="dp3">3</p></a>
+        <a href="/pagina-baixo-risco"><p class="p4">Pacientes com <br><u>BAIXA</u><br> Prioridade de <br>atendimento</p></a>
         <a href="/pagina-baixo-risco"><p class="dp4">{{.QtdBaixo}}</p></a>
-        <a href="/pagina-medio-risco"><p class="p5">Pacientes com <br><u>MÉDIO</u><br> risco de câncer de <br>boca</p></a>
+        <a href="/pagina-medio-risco"><p class="p5">Pacientes com <br><u>MÉDIA</u><br> Prioridade de <br>atendimento</p></a>
         <a href="/pagina-medio-risco"><p class="dp5">{{.QtdMedio}}</p></a>
-        <a href="/pagina-alto-risco"><p class="p6">Pacientes com <br> <u>ALTO</u> <br> risco de câncer de <br> boca</p></a>
+        <a href="/pagina-alto-risco"><p class="p6">Pacientes com <br> <u>ALTA</u> <br> Prioridade de <br>atendimento</p></a>
         <a href="/pagina-alto-risco"><p class="dp6">{{.QtdAlto}}</p></a>
         <img src="/imgdashboard/linhavertical.png" alt="Separação vertical" class="vertical">
         <img src="/imgdashboard/linhahorizontal.png" alt="Separação horizontal" class="horizontal">
@@ -945,7 +1126,7 @@
         <style>
             #myChart{
                 position: absolute;
-                left: 68vw;
+                left: 69vw;
                 top: 24vh;
             }
         </style>
@@ -955,7 +1136,7 @@
         <canvas id="myChart" style="width:100%;max-width:30%"></canvas>
         
         <script>
-        var xValues = ["Baixo Risco", "Médio Risco", "Alto Risco"];
+        var xValues = ["Baixa Prioridade", "Média Prioridade", "Alta Prioridade"];
         var porcBaixo = "{{.PorcBaixo}}";
         var porcMedio = "{{.PorcMedio}}";
         var porcAlto = "{{.PorcAlto}}";
@@ -982,31 +1163,30 @@
           }
         });
         </script>
-        <p class="analise">Análise da distribuição de pacientes em relação a risco</p>
+        <p class="analise">Análise da divisão de pacientes em relação a prioridade</p>
         <p class="d1">Data de análise: De 01 - 31 Jul, 2024</p>
         <div class="info">
             <p class="bola1"></p>
-            <p class="d2">Baixo Risco </p>
+            <p class="d2">Baixa Prioridade </p>
             <p class="d22" id="porcbaixo">{{.PorcBaixo}}%</p>
             <p class="bola2"></p>
-            <p class="d3">Médio Risco</p>
+            <p class="d3">Média Prioridade</p>
             <p class="d33" id="porcmedio">{{.PorcMedio}}%</p>
             <p class="bola3"></p>
-            <p class="d4">Alto Risco</p>
+            <p class="d4">Alta Prioridade</p>
             <p class="d44" id="porcalto">{{.PorcAlto}}%</p>
         </div>
     </div>
     <div class="MapaMonitoramento">
         <h2>Mapa de Monitoramento:</h2>
-        <p class="pnv">Pacientes ainda não visitados</p>
-        <p class="pbv">Pacientes de baixo risco visitados</p>
-        <p class="pmv">Pacientes de médio risco visitados</p>
-        <p class="pav">Pacientes de alto risco visitados</p>
+        <p class="pbv">Pacientes de baixa prioridade visitados</p>
+        <p class="pmv">Pacientes de média prioridade visitados</p>
+        <p class="pav">Pacientes de alta prioridade visitados</p>
         <p class="pa">Pacientes absenteístas</p>
-        <div class="mapa">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1135.7998451987369!2d-49.33081944809181!3d-16.758751980557424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935ef79b4e646c55%3A0x267e8dbc9ec30892!2sUBS%20Garavelo%20Park!5e0!3m2!1spt-BR!2sbr!4v1716577007130!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+        <p class="pmd">Pacientes visitados há mais de um mês</p>
     </div>
+    <h1></h1>
+    <div id="map"></div>
     <div id="modal">
         <div id="logout">
             <div class="fixar">
@@ -1019,6 +1199,71 @@
             </div>
         </div>
     </div>
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhqJhRVID_uTuUZMC-R38a8cLN4yM_0Yg&loading=async&callback=initMap">
+    </script>
+    <script>
+        const ceps = [];
+        function initMap(){
+            const map = new google.maps.Map(document.getElementById('map'),{
+                zoom: 18,
+                center:{lat: -16.758291, lng: -49.330597},
+            });
+            function geoCoder(coordenada, conteudo, imagem){
+                const geocoder = new google.maps.Geocoder();
+                geocoder
+                    .geocode({address: coordenada, region: 'BR'})
+                    .then((response) => {
+                        console.log(response);
+                        const position = response.results[0].geometry.location;
+
+                        var image = {
+                            url: imagem,
+                            scaledSize: new google.maps.Size(43, 43),
+                        };
+
+                        const marker = new google.maps.Marker({
+                            map,
+                            position,
+                            icon: image,
+                        })
+                        const infoWindow = new google.maps.InfoWindow({
+                            content: conteudo
+                        })
+                        marker.addListener('click', function(){
+                            infoWindow.open(map, marker)
+                        })
+
+                    })
+                    .catch((e) =>
+                        console.log("Geocode não teve sucesso pelas seguintes razões: "+ e)
+                    );
+            }
+            '{{range .DadosGoogleMaps}}'
+                '{{if .Baixo}}'
+                    '{{if .MaisDeUmMes}}'
+                        geoCoder("{{.Cep}}", '<div style="background-color: #fa9be8; width: 100%; height: 5vh; border-top-left-radius: 5px; border-top-right-radius: 5px;"></div><p style="font-size: 1.2vw"><strong>Nome:</strong> {{.Nome}}</p><br><p style="font-size: 1.2vw"><strong>Data de Nascimento:</strong> {{.DataNascimento}}</p><br><p style="font-size: 1.2vw"><strong>Contato:</strong> {{.Telefone}}</p><br><p style="font-size: 1.2vw"><strong>Fatores de Prioridade:</strong> {{.Fatores}}</p><br><p style="font-size: 1.2vw"><strong>Endereço Completo:</strong> {{.Endereco}} </p><br><p style="font-size: 1.2vw"><strong>Última visita realizada:</strong> {{.UltimaVisita}}<span style="color: red; font-size: 1.2vw">*</span></p><form action="/formulario/preenchido/mapa"><input type="text" value="{{.Cep}}" name="cep" style="display: none;"></input><input type="text" value="Baixo" name="risco" style="display: none;"></input><input type="text" value="{{.Nome}}" name="nome" style="display: none;"></input><button type="submit" style="width: 35%; height: 5vh; border: 1px solid #fa9be8; font-size: 0.9vw; font-weight: bold; border-radius: 7px; cursor: pointer; margin-bottom: 0.5vw; margin-left: 30%; margin-top: 0.5vw">Acessar dados gerais</button></form><div style="background-color: #fa9be8; width: 100%; height: 5vh; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"></div>', "/imgdashboard/bandeirabaixoComAsc.png")
+                    '{{else}}'
+                        geoCoder("{{.Cep}}", '<div style="background-color: #fa9be8; width: 100%; height: 5vh; border-top-left-radius: 5px; border-top-right-radius: 5px;"></div><p style="font-size: 1.2vw"><strong>Nome:</strong> {{.Nome}}</p><br><p style="font-size: 1.2vw"><strong>Data de Nascimento:</strong> {{.DataNascimento}}</p><br><p style="font-size: 1.2vw"><strong>Contato:</strong> {{.Telefone}}</p><br><p style="font-size: 1.2vw"><strong>Fatores de Prioridade:</strong> {{.Fatores}}</p><br><p style="font-size: 1.2vw"><strong>Endereço Completo:</strong> {{.Endereco}} </p><br><p style="font-size: 1.2vw"><strong>Última visita realizada:</strong> {{.UltimaVisita}}</p><form action="/formulario/preenchido/mapa"><input type="text" value="{{.Cep}}" name="cep" style="display: none;"></input><input type="text" value="Baixo" name="risco" style="display: none;"></input><input type="text" value="{{.Nome}}" name="nome" style="display: none;"></input><button type="submit" style="width: 35%; height: 5vh; border: 1px solid #fa9be8; font-size: 0.9vw; font-weight: bold; border-radius: 7px; cursor: pointer; margin-bottom: 0.5vw; margin-left: 30%; margin-top: 0.5vw">Acessar dados gerais</button></form><div style="background-color: #fa9be8; width: 100%; height: 5vh; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"></div>', "/imgdashboard/bandeirabaixo.png")
+                    '{{end}}'
+                '{{end}}'
+                '{{if .Medio}}'
+                    '{{if .MaisDeUmMes}}'
+                        geoCoder("{{.Cep}}", '<div style="background-color: #ffbe4d; width: 100%; height: 5vh; border-top-left-radius: 5px; border-top-right-radius: 5px;"></div><p style="font-size: 1.2vw"><strong>Nome:</strong> {{.Nome}}</p><br><p style="font-size: 1.2vw"><strong>Data de Nascimento:</strong> {{.DataNascimento}}</p><br><p style="font-size: 1.2vw"><strong>Contato:</strong> {{.Telefone}}</p><br><p style="font-size: 1.2vw"><strong>Fatores de Prioridade:</strong> {{.Fatores}}</p><br><p style="font-size: 1.2vw"><strong>Endereço Completo:</strong> {{.Endereco}} </p><br><p style="font-size: 1.2vw"><strong>Última visita realizada:</strong> {{.UltimaVisita}}<span style="color: red; font-size: 1.2vw">*</span></p><form action="/formulario/preenchido/mapa"><input type="text" value="{{.Cep}}" name="cep" style="display: none;"></input><input type="text" value="Medio" name="risco" style="display: none;"></input><input type="text" value="{{.Nome}}" name="nome" style="display: none;"></input><button type="submit" style="width: 35%; height: 5vh; border: 1px solid #ffbe4d; font-size: 0.9vw; font-weight: bold; border-radius: 7px; cursor: pointer; margin-bottom: 0.5vw; margin-left: 30%; margin-top: 0.5vw">Acessar dados gerais</button></form><div style="background-color: #ffbe4d; width: 100%; height: 5vh; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"></div>', "/imgdashboard/bandeiramedioComAsc.png")
+                    '{{else}}'
+                        geoCoder("{{.Cep}}", '<div style="background-color: #ffbe4d; width: 100%; height: 5vh; border-top-left-radius: 5px; border-top-right-radius: 5px;"></div><p style="font-size: 1.2vw"><strong>Nome:</strong> {{.Nome}}</p><br><p style="font-size: 1.2vw"><strong>Data de Nascimento:</strong> {{.DataNascimento}}</p><br><p style="font-size: 1.2vw"><strong>Contato:</strong> {{.Telefone}}</p><br><p style="font-size: 1.2vw"><strong>Fatores de Prioridade:</strong> {{.Fatores}}</p><br><p style="font-size: 1.2vw"><strong>Endereço Completo:</strong> {{.Endereco}} </p><br><p style="font-size: 1.2vw"><strong>Última visita realizada:</strong> {{.UltimaVisita}}</p><form action="/formulario/preenchido/mapa"><input type="text" value="{{.Cep}}" name="cep" style="display: none;"></input><input type="text" value="Medio" name="risco" style="display: none;"></input><input type="text" value="{{.Nome}}" name="nome" style="display: none;"></input><button type="submit" style="width: 35%; height: 5vh; border: 1px solid #ffbe4d; font-size: 0.9vw; font-weight: bold; border-radius: 7px; cursor: pointer; margin-bottom: 0.5vw; margin-left: 30%; margin-top: 0.5vw">Acessar dados gerais</button></form><div style="background-color: #ffbe4d; width: 100%; height: 5vh; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"></div>', "/imgdashboard/bandeiramedio.png")
+                    '{{end}}'
+                '{{end}}'
+                '{{if .Alto}}'
+                    '{{if .MaisDeUmMes}}'
+                        geoCoder("{{.Cep}}", '<div style="background-color: #ff6363; width: 100%; height: 5vh; border-top-left-radius: 5px; border-top-right-radius: 5px;"></div><p style="font-size: 1.2vw"><strong>Nome:</strong> {{.Nome}}</p><br><p style="font-size: 1.2vw"><strong>Data de Nascimento:</strong> {{.DataNascimento}}</p><br><p style="font-size: 1.2vw"><strong>Contato:</strong> {{.Telefone}}</p><br><p style="font-size: 1.2vw"><strong>Fatores de Prioridade:</strong> {{.Fatores}}</p><br><p style="font-size: 1.2vw"><strong>Endereço Completo:</strong> {{.Endereco}} </p><br><p style="font-size: 1.2vw"><strong>Última visita realizada:</strong> {{.UltimaVisita}}<span style="color: red; font-size: 1.2vw">*</span></p><form action="/formulario/preenchido/mapa"><input type="text" value="{{.Cep}}" name="cep" style="display: none;"></input><input type="text" value="Alto" name="risco" style="display: none;"></input><input type="text" value="{{.Nome}}" name="nome" style="display: none;"></input><button type="submit" style="width: 35%; height: 5vh; border: 1px solid #ff6363; font-size: 0.9vw; font-weight: bold; border-radius: 7px; cursor: pointer; margin-bottom: 0.5vw; margin-left: 30%; margin-top: 0.5vw">Acessar dados gerais</button></form><div style="background-color: #ff6363; width: 100%; height: 5vh; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"></div>', "/imgdashboard/bandeiraaltoComAsc.png")
+                    '{{else}}'
+                        geoCoder("{{.Cep}}", '<div style="background-color: #ff6363; width: 100%; height: 5vh; border-top-left-radius: 5px; border-top-right-radius: 5px;"></div><p style="font-size: 1.2vw"><strong>Nome:</strong> {{.Nome}}</p><br><p style="font-size: 1.2vw"><strong>Data de Nascimento:</strong> {{.DataNascimento}}</p><br><p style="font-size: 1.2vw"><strong>Contato:</strong> {{.Telefone}}</p><br><p style="font-size: 1.2vw"><strong>Fatores de Prioridade:</strong> {{.Fatores}}</p><br><p style="font-size: 1.2vw"><strong>Endereço Completo:</strong> {{.Endereco}} </p><br><p style="font-size: 1.2vw"><strong>Última visita realizada:</strong> {{.UltimaVisita}}</p><form action="/formulario/preenchido/mapa"><input type="text" value="{{.Cep}}" name="cep" style="display: none;"></input><input type="text" value="Alto" name="risco" style="display: none;"></input><input type="text" value="{{.Nome}}" name="nome" style="display: none;"></input><button type="submit" style="width: 35%; height: 5vh; border: 1px solid #ff6363; font-size: 0.9vw; font-weight: bold; border-radius: 7px; cursor: pointer; margin-bottom: 0.5vw; margin-left: 30%; margin-top: 0.5vw">Acessar dados gerais</button></form><div style="background-color: #ff6363; width: 100%; height: 5vh; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"></div>', "/imgdashboard/bandeiraalto.png")
+                    '{{end}}'
+                '{{end}}'
+            '{{end}}'
+        } 
+    </script>
     <script>
         let btn = document.getElementById('btnlogout');
         let modal = document.getElementById('modal');
@@ -1031,6 +1276,45 @@
         cancelbtn.onclick = function(){
             modal.style.display = 'none';
         }
+
+        /* Script POP-UP NOTIFICAÇÂO */
+
+        var caixa  = document.getElementById('caixa');
+        var down = false;
+        var linkEnable = false;
+        var linkButton1 = document.getElementById('not1');
+        var linkButton2 = document.getElementById('not2');
+        var linkButton3 = document.getElementById('not3');
+
+        function toggleNotifi(){
+            if (down) {
+                caixa.style.height  = '0px';
+                caixa.style.opacity = 0;
+		caixa.style.display = 'none';
+                down = false;
+                linkEnable = false;
+                linkButton1.style.cursor = 'default';
+                linkButton2.style.cursor = 'default';
+                linkButton3.style.cursor = 'default';
+                
+            }else {
+                caixa.style.height  = '22.396vw';
+                caixa.style.opacity = 1;
+		caixa.style.display = 'block';
+                down = true;
+                linkEnable = true;
+                linkButton1.style.cursor = 'pointer';
+                linkButton2.style.cursor = 'pointer';
+                linkButton3.style.cursor = 'pointer';
+                
+            }
+        }
+
+        function abreLink(){
+        if (linkEnable){
+            window.open('/pagina-absenteista');
+        }
+    }
     </script>
 </body>
 </html>

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Central do Usuário</title>
     <link rel="shortcut icon" href="imagens2/imagens/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Passion+One:wght@400;700;900&family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&display=swap');
 
@@ -111,7 +110,7 @@
             position: fixed;
             top: 20;
             width: 100%;
-            height: 150px;
+            height: 11.029vw;
         }
 
         .imagem{
@@ -166,11 +165,11 @@
             margin-left: 61%;
         }
 
-        .lapiscolar{
+        #lapiscolar{
             position: fixed;
         }
 
-        .lapisimg{
+        #lapisimg{
             position: absolute;
             width: 3.5vw;
             top: 2.5vh;
@@ -222,16 +221,15 @@
             background-color: #0C91F0;
             color: #F5F5F7;
             font-family: "Poppins";
-            border-radius: 3px;
+            border-radius: 7px;
             border: none;
             width: 10vw;
             height: 5vh;
-            font-weight: bold;
-            background-image: url(/img/img/flecha\ esquerda.png);
+            background-image: url(/imagens/iconeSetaVoltar1.1.png);
             background-size: 2vw;
-            background-position: left 3% center;
+            background-position: left 0.8vw center;
             background-repeat: no-repeat;
-            font-size: 2.8vh;
+            font-size: 1.1vw;
             text-align: center;
             padding-left: 15px;
         }
@@ -322,23 +320,58 @@
         #btnlogout{
             cursor: pointer;
         }
+
+        .escreverSenha{
+            position: relative;
+            background-color: #E0E0E3;
+            border-radius: 7px;
+            width: 37vw;
+            height: 7vh;
+            font-weight: bold;
+            margin-bottom: 0.7vw;
+            border: none;
+        }
+        #lapisimg2{
+            position: absolute;
+            width: 3.5vw;
+            top: 2.5vh;
+            margin-left: 35vw;
+            left: 0px;
+        }
+        .enviarAttSenha{
+            position: absolute;
+            width: 6.5vw;
+            height: 4vh;
+            top: 7.5vh;
+            border-radius: 7px;
+            border: none;
+            cursor: pointer;
+            left: 0px;
+            font-family: "Poppins";
+            color: white;
+            background-color: #007FDA;
+        }
+        #formAttSenha{
+            display: none;
+            position: fixed;
+        }
     </style>
 </head>
 <body>
     <header>
-        <img src="/img/img/LogoSobrevidas.png" alt="Logo Sobrevidas" class="posicionar">
+        <img src="/imagens2/img/img/LogoSobrevidas.png" alt="Logo Sobrevidas" class="posicionar">
         <h1 class="titulo">SOBREVIDAS - ACS</h1>
         <h2 class="subtitulo">Central do Usuário</h2>
         <div id="caixausuario">
             <p class="usuario">{{.PrimeiraLetra}}</p>
             <p class="caixa">{{.User}}</p>
-            <a href="/pagina-absenteista"><img src="/img/img/sino.png" alt="Icone de Notificação" class="sinoimg"></a>
+            <a href="/pagina-absenteista"><img src="/imagens2/img/img/sino.png" alt="Icone de Notificação" class="sinoimg"></a>
         </div>
-        <a id="btnlogout"><img src="/img/img/logout.png" alt="Icone de sair" class="sair"></a>
+        <a id="btnlogout"><img src="/imagens2/img/img/logout.png" alt="Icone de sair" class="sair"></a>
     </header>
     <div class="view">
-        <img src="/img/img/telafundo.png" alt="Modificar foto do usuário" class="imagem">
-        <a href="#" class="camera"><img src="/img/img/camera.png" alt="Icone de camera para trocar foto" class="camera"></a>
+        <img src="/imagens2/img/img/telafundo.png" alt="Modificar foto do usuário" class="imagem">
+        <a href="#" class="camera"><img src="/imagens2/img/img/camera.png" alt="Icone de camera para trocar foto" class="camera"></a>
     </div>
     <div class="camposesquerda">
         <p class="cima">NOME COMPLETO</p>
@@ -358,9 +391,16 @@
         <p class="cima">MICROÁREA</p>
         <p class="exemplo"><span>02</span></p>
         <p class="cima">SENHA</p>
-        <div class="lapiscolar">
+        <div id="lapiscolar">
             <p class="exemplo"><span>{{.SenhaACS}}</span></p>
-            <a href="#"><p class="lapis"><img src="/img/img/lapis.png" alt="Lapis de edição" class="lapisimg"></p></a>
+            <a href="#"><p class="lapis"><img src="/imagens2/img/img/lapis.png" alt="Lapis de edição" id="lapisimg"></p></a>
+        </div>
+        <div id="formAttSenha">
+            <form action="/central-usuario/atualizarsenha">
+                <input type="password" name="senha" class="escreverSenha" required>
+                <button type="submit" class="enviarAttSenha">Atualizar</button>
+                <a href="#"><p class="lapis"><img src="/imagens2/img/img/lapis.png" alt="Lapis de edição" id="lapisimg2"></p></a>
+            </form>
         </div>
         <p class="status">STATUS DE USUÁRIO: </p>
         <p class="bola"></p>
@@ -371,7 +411,7 @@
         <div id="logout">
             <div class="fixar">
                 <div class="relativa">
-                    <img src="/img/img/logout icon.png" alt="Icone de Logout" class="deslogar">
+                    <img src="/imagens2/img/img/logout icon.png" alt="Icone de Logout" class="deslogar">
                     <p class="ctz">Tem certeza que deseja sair da <br> sua conta?</p>
                     <a href="/"><button class="sim">Sim, deslogar.</button></a>
                     <button class="nao">Não, continuar logado.</button>
@@ -393,6 +433,22 @@
 
         cancelbtn.onclick = function(){
             modal.style.display = 'none';
+        }
+    </script>
+    <script>
+        let btn2 = document.getElementById('lapisimg')
+        let modal2 = document.getElementById('lapiscolar')
+        let cancelbtn2 = document.getElementById('lapisimg2')
+        let modal3 = document.getElementById('formAttSenha')
+
+        btn2.onclick = function(){
+            modal2.style.display = 'none';
+            modal3.style.display = 'block';
+        }
+
+        cancelbtn2.onclick = function(){
+            modal2.style.display = 'block';
+            modal3.style.display = 'none';
         }
     </script>
 </body>

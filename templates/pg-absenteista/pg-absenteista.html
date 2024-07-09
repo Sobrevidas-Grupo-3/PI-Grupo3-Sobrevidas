@@ -1,189 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> <!--CABEÇALHO-->
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abstenteistas</title>
+    <title>Pacientes Abstenteistas</title>
     <link rel="shortcut icon" href="imagens2/imagens/favicon.ico" type="image/x-icon">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kaushan+Script&family=Passion+One:wght@400;700;900&family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&display=swap');
 
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family:"Poppins",sans-serif;
-            font-size:72%;
-            background-color:white;
-            margin: auto;
-            padding:10px;
-            min-width: 920px;
-            max-width: 1100px;
-        }
-        Header{
-            font-family:"Inter",sans-serif !important;
-            font-weight: 500;
-        }
-        /* BARRA DO TOPO */
-        .top-bar {
-            font-size: 200%;
-            position: fixed;
-            top: 0;
-            left: 0;
+         /* COMEÇO DO CÓDIGO DA BARRA CABEÇALHO*/
+
+         header{
             width: 100%;
-            min-width: 920px;
-            height: 50px;
-            background-color:#007fda;
-            color: #fff;
+            height: 8vh;
+            background-color: #007FDA;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            z-index: 1000;
-            white-space: nowrap;
         }
-        /* TABELA DE INFORMAÇÕES */
-        .cabeca{
+
+        h1 {
+            font-size: 5vh;
+            position: absolute;
+            font-family: "Inter";
+            margin-top: 0.5%;
+            left: 14%;
+            color: white;
+        }
+
+        h2 {
+            position: absolute;
+            font-family: "Inter";
+            font-size: 4vh;
+            color: white;
+            margin-top: 0.8%;
+            left: 40%;
+            top: 0vh;
+        }
+
+        #caixausuario{
+            position: absolute;
+            display: flex;
+            background-color: #0C91F0;
+            border-radius: 8px;
+            height: 6.5%;
+            width: 13%;
+            top: 1%;
+            left: 80%;
+            box-shadow: 1px 1px rgba(0, 0, 0, 0.226);
+        }
+
+        .caixa{
+            position: absolute;
+            color: white;
+            font-family: "Poppins";
+            font-weight: bold;
+            top: -1.2vh;
+            left: 23%;
+            font-size: 2.5vh;
+        }
+
+        p.usuario{
+            position: absolute;
+            background-color: #5A67BA;
+            border-radius: 50%;
+            color: white;
+            font-family: "Poppins";
+            font-weight: bold;
+            margin-top: 1.3vh;
+            margin-left: 0.5vw;
+            width: 2vw;
+            height: 3.9vh;
+            text-align: center;
+            font-size: 2.5vh;
+        }
+    
+        .posicaoImgSino{
+            position: absolute;
+            top: 1.2vh;
+            left: 77%;
+            width: 2vw;
+            height: 4vh;
+        }
+
+        .posicaoImgSaida {
+            position: absolute;
+            display: block;
+            height: 4%;
+            width: 2%;
+            top: 2%;
+            right: 2%;
+        }
+
+        .posicaoImgLogo {
+            width: 3.5vw;
+            margin-left: 4vw;
+            position: absolute;
+            top: 0vh;
+            left: -8vh;
+        }
+
+       
+
+        /* FIM DO CÓDIGO DA BARRA CABEÇALHO*/
+
+        
+        /* COMEÇO DO CÓDIGO DA BARRA SUPERIOR ROSA COM INFOS PARA BAIXO */
+        .barraComInfos{
             color:black;
-            margin-top: 8%;
-            margin-bottom: 1%;
-            padding: 10px;
+            background-color: #A712E5;
+            padding: 2vh;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-            height: 50px;
-            max-width: 1100px;
-            min-width: 920px;
-            left:0 2%;
+            height: 8vh;
+            width: 80vw;
+            position: absolute;
+            top: 11.5vh;
+            left: 9vw;
             align-items: center;
-            display: flex;
             font-weight: bold;
-            justify-content:space-between;
-            position: relative;
+            font-size: 2.6vh;
+    
         }
-        /*EXEMPLOS DE PACIENTES*/
-        .exemplos{
+
+        h3.posicaoNome {
+            position: absolute;
+            top: 1vh;
+            left: 5vw;
+        }
+
+        h3.posicaoEndereco {
+            position: absolute;
+            top: 1vh;
+            left: 25vw;
+        }
+
+        h3.posicaoContato {
+            position: absolute;
+            top: 1vh;
+            left: 41vw;
+        }
+
+        h3.posicaoIdade {
+            position: absolute;
+            top: 1vh;
+            right: 24vw;
+        }
+
+        h3.posicaoFatores {
+            position: absolute;
+            top: 1vh;
+            right: 4vw;
+        }
+
+
+        .enviarInfo {
+            font-family: "Poppins";
+            background-color: #b649e4;
+            border: none;
+            width: 81.5vw;
+            cursor: pointer;
+            font-size: 1.1vw;
             font-weight: normal;
-            font-size: 140%;
-            color:#3a3b3c;
+            color: #3a3b3c;
             margin-top: 7px;
             padding: 10px;
             border-radius: 10px;
-            border:solid 3px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-            height: 40px;
-            max-width: 1100px;
-            min-width: 920px;
+            height: 4.412vw;
+            /* max-width: 1100px; */
+            /* min-width: 920px; */
+            left: 9%;
+            align-items: center;
+            display: flex;
+            font-weight: normal;
+            justify-content: space-between;
+            position: relative;
+            border-radius: 10px;
+            border: solid 3px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-color: #A712E5;
+            top: 27vh;
+        } 
+
+        .enviarInfo:hover{
+            color:#171717;
+            font-size: 1.2vw;
+        }
+        .submit{
+            padding: 0;
+            margin: 0;
+            width: 2vw;
+            height: 4vh;
+            border: none;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        /* .fichasPacientes {
+            font-weight: normal;
+            color:#3a3b3c;
+            height: 2.941vw;
+            width: 81.5vw;
             left:0 2%;
             align-items: center;
             display: flex;
             font-weight: bold;
             justify-content:space-between;
             position: relative;
-        }
-        .exemplos:hover {
-            color:#171717;
-            font-size: 145%;
-        }
-        /*MECANISMO DE BUSCA COM INTERAÇÃO*/
-        .busca{
-            color:gray;
-            padding: 10px;
-            background-color: #ffffff !important;
-            border-radius: 25px;
-            border:solid 3px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-            height: 15px;
-            width: 22%;
+
+        } */
+    
+        
+        .fichasPacientesExemplo1 {
+            font-size: 1.2vw;
+            font-weight: normal;
+            color:#3a3b3c;
+            height: 2.5vh;
+            width: 80vw;
+            left: 9vw;
             align-items: center;
             display: flex;
-            justify-content:center;
+            font-weight: bold;
+            justify-content:space-between;
+            position: relative;
+            top: 28vh;
+            padding: 3vh;
+            border-radius: 10px;
+            border: 3px solid red;
+        }
+
+        .fichasPacientesExemplo2 {
+            font-size: 1.2vw;
             font-weight: normal;
-            position:relative;
-            left: 0%;
-            white-space: nowrap;
+            color:#3a3b3c;
+            height: 2.5vh;
+            width: 80vw;
+            left: 9vw;
+            align-items: center;
+            display: flex;
+            font-weight: bold;
+            justify-content:space-between;
+            position: relative;
+            top: 29vh;
+            padding: 3vh;
+            border-radius: 10px;
+            border: 3px solid yellow;
         }
-        .busca img{
-            width:10%;
-            margin-left:5%;
+
+        .fichasPacientesExemplo3 {
+            font-size: 1.2vw;
+            font-weight: normal;
+            color:#3a3b3c;
+            height: 2.5vh;
+            width: 80vw;
+            left: 9vw;
+            align-items: center;
+            display: flex;
+            font-weight: bold;
+            justify-content:space-between;
+            position: relative;
+            top: 30vh;
+            padding: 3vh;
+            border-radius: 10px;
+            border: 3px solid pink;
+
         }
-        /*MECANISMO DE FILTRAGEM POR ATRIBUTOS*/
-        .filtro{
-            color:rgb(0, 0, 0);
-            padding: 10px;
-            border-radius: 25px;
-            border:none;
-            height: 15px;
-            width: 10%;
+
+        .space1{
+            width:17%;
+            height: auto;
             text-align: center;
-            align-items: center !important;
-            display: flex;
-            justify-content: center !important;
-            font-weight: normal;
-            position:relative;
-            margin-left:4%;
-            font-size:150%;
-            font-weight: bold;
-            cursor:pointer;
-            }
-        .filtro img{
-            margin-left:10%;
-            width:20%;
+            border-bottom: 0;
         }
-        .filtro:hover{
-            width: 10.9%;
-            height:20px
+
+        .space2{
+            width:23%;
+            height: auto;
+            text-align: center;
+            border-bottom: 0;
         }
-        /*ORGANIZADOR DA BARRA DE BUSCA E FILTRAGEM*/
-        .org{
-            max-width: 1100px;
-            min-width: 920px;
-            left:0 2%;
-            align-items: center;
-            display: flex;
-            font-weight: bold;
-            justify-content:center;
-            position: relative;
+
+        .space3{
+            width:23%;
+            height: auto;
+            text-align: center;
+            border-bottom: 0;
         }
-        /*SEQUÊNCIA DE REDIMENSIONAMENTO DE IMAGENS*/
-        .imagem1 img{
-            display: flex;
-            position: relative;
-            width:55%;
+
+        .space4{
+            width:8%;
+            height: auto;
+            text-align: center;
+            border-bottom: 0;
         }
-        .imagem2 img{
-            display: flex;
-            position: relative;
-            width:50%;
-            left:62%;
+
+        .space5{
+            width:25%;
+            height: auto;
+            text-align: center;
+            border-bottom: 0;
         }
-        .imagem3 img{
-            display: flex;
-            position: relative;
-            width:55%;
-        }
-        .imagem4 img{
-            display: flex;
-            position: relative;
-            width:55%;
-        }
-        .imagem2 img:hover{
-            width:52%;
-            left: 60%;
-        }
-        .imagem3 img:hover{
-            width: 65%;
-        }
-        .imagem4 img:hover{
-            width:60%;
-        }
-        .groupimage{
-            align-items: center;
-            display: flex;
-            justify-content:center;
-            position: relative;
-        }
+
         /*ESPAÇAMENTO DOS CORPOS DE TEXTO*/
         .space11{
             width:17%;
@@ -210,10 +328,332 @@
             height: auto;
             text-align: center;
         }
-        .titulo1{
-        margin-left:0%;
-        font-weight: 700;
+
+       
+        /*MECANISMO DE BUSCA COM DIGITAÇÃO*/
+        .espacoBusca{
+            color:gray;
+            padding: 1.6vh;
+            background-color: #ffffff !important;
+            border-radius: 25px;
+            border: solid 3px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+            height: 1.6vh;
+            width: 25vw;
+            align-items: center;
+            display: flex;
+            justify-content:center;
+            font-weight: normal;
+            position: absolute;
+            left: 0vw;
+            top: 2vh;
+            white-space: nowrap;
         }
+        .espacoBusca img {
+            position: absolute;
+            width: 1.5vw;
+            left: 23vw;
+            top: 0.8vh;
+        }
+
+        .posicaoPesquisaFiltro{
+            max-width: 57vw;
+            min-width: 48vw;
+            align-items: center;
+            display: flex;
+            font-weight: bold;
+            justify-content:center;
+            position: absolute;
+            top: 25vh;
+            left: 25vw;
+        }
+
+        /*FILTRO*/
+        .botaoFiltro{
+            color:rgb(0, 0, 0);
+            padding: 2vh;
+            border-radius: 25px;
+            height: 1.6vh;
+            width: 5vw;
+            text-align: center;
+            align-items: center !important;
+            display: flex;
+            justify-content: center !important;
+            font-weight: normal;
+            margin-left: 6.5%;
+            font-size: 2.5vh;
+            font-weight: bold;
+            cursor:pointer;
+            position: absolute;
+            top: 2vh;
+            left: 27vw;
+            }
+        .botaoFiltro img{
+            margin-left:10%;
+            width:20%;
+        }
+        .botaoFiltro:hover{
+            width: 10.9%;
+            height:20px
+        }
+
+        /* COMEÇO DO CÓDIGO QUADRO POP-UP FILTRO */
+
+        #quadroPopUpAtencao {
+            display: flex;
+            background: #6c7a8929;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #filtrarPopup{
+            cursor: pointer;
+        }
+
+        #modal2{
+            display: none;
+        }
+
+        .box {
+            background: #fff;
+            border: 3px solid #000000;
+            border-radius: 10px;
+
+        }
+
+        .tituloFiltro {
+            font-family: "Poppins";
+            text-align: center;
+            font-size: 1.838vw;
+            color: #000000;
+            background-color: #b649e4;
+            border-top-left-radius: 0.588vw;
+            border-top-right-radius: 0.588vw;
+            padding: 0.735vw;
+            border-bottom: 2px solid #000000;
+            margin: 0px;
+            position: relative;
+            top: 0vh;
+            left: 0vh;
+        }
+
+        #paragrafo {
+            font-family: "Poppins";
+            text-align: left;
+            font-size: 1.32vw;
+            color: #737B8B;
+            position: relative;
+            left: 1.103vw;
+
+        }
+
+        .container1 {
+            position: relative;
+            top: -3.824vw;
+            left: 8.824vw;
+            padding-left: 2.574vw;
+            margin-bottom: 0.882vw;
+            cursor: pointer;
+            font-family: "Poppins";
+            font-size: 1.324vw;
+            color: #737B8B;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .container2 {
+            position: relative;
+            top: -3.824vw;
+            left: 16.176vw;
+            padding-left: 2.574vw;
+            margin-bottom: 0.882vw;
+            cursor: pointer;
+            font-family: "Poppins";
+            font-size: 1.324vw;
+            color: #737B8B;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Hide the browser's default radio button */
+        .container1 input, .container2 input, .container3 input, .container4 input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+
+        /* Create a custom radio button */
+        .checkmark1, .checkmark2, .checkmark3 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 1.838vw;
+            width: 1.838vw;
+            background-color: #eee;
+            border-radius: 50%;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .container1:hover input ~ .checkmark1, .container2:hover input ~ .checkmark1 {
+            background-color: #ccc;
+        }
+
+        .container3:hover input ~ .checkmark2, .container4:hover input ~ .checkmark3 {
+            background-color: #ccc;
+        }
+
+        /* When the radio button is checked, add a color background */
+        .container1 input:checked ~ .checkmark1, .container2 input:checked ~ .checkmark1 {
+            background-color: #b649e4;
+        }
+
+        .container3 input:checked ~ .checkmark2, .container4 input:checked ~ .checkmark3 {
+            background-color: #b649e4;
+        }
+
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        .checkmark1:after, .checkmark2:after,  .checkmark3:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+
+        /* Show the indicator (dot/circle) when checked */
+        .container1 input:checked ~ .checkmark1:after, .container2 input:checked ~ .checkmark1:after {
+            display: block;
+        }
+        .container3 input:checked ~ .checkmark2:after, .container4 input:checked ~ .checkmark3:after {
+            display: block;
+        }
+
+        .line1 {
+            width: 43.971vw;
+            height: 0px;
+            border: 1px solid #ccc;
+            position: relative;
+            top: -2.353vw;
+        }
+
+        p.FaixaEtaria {
+            position: relative;
+            top: -2.206vw;
+        }
+
+        .container3 {
+            position: relative;
+            top: -6.029vw;
+            left: 12.5vw;
+            padding-left: 2.574vw;
+            padding-right: 0.735vw;
+            margin-bottom: 1.103vw;
+            cursor: pointer;
+            font-family: "Poppins";
+            font-size: 1.324vw;
+            color: #737B8B;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .line2 {
+            width: 43.971vw;
+            height: 0px;
+            border: 1px solid #ccc;
+            position: relative;
+            top: -3.824vw;
+        }
+
+
+        p.FatoresRisco {
+            position: relative;
+            top: -3.676vw;
+            font-size: 5vw;
+        }
+
+        .container4 {
+            position: relative;
+            top: -7.132vw;
+            left: 16.706vw;
+            padding-left: 2.574vw;
+            margin-bottom: 0.882vw;
+            padding-right: 0.535vw;
+            cursor: pointer;
+            font-family: "Poppins";
+            font-size: 1.1vw;
+            color: #737B8B;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .barraInferior {
+            width: 44.118vw;
+            height: 2.206vw;
+            background-color: #b649e4;
+            position: relative;
+            border-top: 2px solid #000000;
+        }
+
+        .barraInferior2 {
+            width: 44.118vw;
+            height: 2.206vw;
+            background-color: #b649e4;
+            border-bottom-left-radius: 0.4vw;
+            border-bottom-right-radius: 0.4vw;
+            position: relative;
+        }
+
+        .Filtrar {
+            font-family: "Poppins";
+            font-size: 1.691vw;
+            font-weight: bold;
+            color: #5e646e;
+            border-radius: 0.735vw;
+            position: relative;
+            top: -3.309vw;
+            left: 35vw;
+        }
+
+        .VoltarFiltro {
+            font-family: "Poppins";
+            font-size: 1.6vw;
+            font-weight: bold;
+            text-decoration: none;
+            color: #5e646e;
+            padding: 0.5vh;
+            background-color: #e5eaf2;
+            border-radius: 0.735vw;
+            position: relative;
+            top: -11vh;
+            left: 3vw;
+            border: solid 2px #171717;
+        }
+
+        body {
+            font-family:"Poppins",sans-serif;
+            background-color:white;
+            margin: auto;
+        }
+
+        /* FIM DO CÓDIGO QUADRO POP-UP FILTRO */
+        
+        
+        /*SEQUÊNCIA DE REDIMENSIONAMENTO DE IMAGENS*/
+        .imagem1 img{
+            display: flex;
+            position: absolute;
+            width:55%;
+        }
+        
+        
         /*RETIRADA DA ESTILIZAÇÃO DOS LINKS*/
         .no-link{
             text-decoration: none !important;
@@ -248,30 +688,38 @@
             border-color: #A712E5;
         }
         /*BOTÃO DE VOLTA À PAGINA ANTERIOR*/
-        .return{
-            display:flex;
-            background-color: #007fda;
-            width: 17%;
-            height: 45px;
-            border-radius: 15px;
-            margin-top: 10px;
-            color: #fff;
-            font-size: 20px;
-            font-weight: bold;
-            justify-content:space-around;
-            align-items: center;
+       
+        .Voltar {
+            background-color: #0C91F0;
+            border-radius: 10px;
+            color: #ffffff;
+            border-radius: 7px;
+            padding-top: 0.3vw;
+            padding-bottom: 0.3vw;
+            padding-right: 2.5vw;
+            padding-left: 4.5vw;
+            font-family: "Poppins";
+            text-decoration: none;
+            font-size: 1.1vw;
+            position: absolute;
+            top: 93vh;
+            left: 2.5vw;
         }
-        .return img{
-            width:15%;
-            margin-left:5%;
+        .posicaoImgSetaVoltar {
+            position: absolute;
+           top: 0vh;
+            left: 3vw;
         }
-        .return:hover{
-            width:17.7%;
-            height: 50px;
-            margin-top: 5px;
+
+        .setaVoltarTamanho{
+            position: absolute;
+            top: 92.05vh;
+            width: 2vw;
         }
+
         /*INPUT DE TEXTO*/
         input[type="text"]{
+            font-size: 0.95vw;
             border: none !important;
             width: 80%;
         }
@@ -300,8 +748,8 @@
 
         .popup-conteudo {
             background-color: #ffffff;
-            width: 450px;
-            height:220px ;
+            width: 500px;
+            height:300px ;
             padding-right: 4px;
             border-radius: 13px;
             border: solid 2px ;
@@ -312,17 +760,18 @@
             display: inline-flex;
             color: #ffffff;
             border-radius: 4px;
-            width: 65px;
-            height:25px ;
+            width: 8vw;
+            height:5vh ;
             justify-content: center;
             align-items: center;
-            margin-top: 50px;
+            margin-top: 15vh;
+            margin-left: 20vw;
         }
 
         .popup-link:hover {
-            width: 65px;
-            height:30px ; 
-            margin-top:48px;   
+            width: 8.5vw;
+            height:5.5vh ; 
+            margin-top:16vh;   
         }
 
         .popup-link:active {
@@ -333,25 +782,15 @@
             opacity: 1;
             visibility: visible;
         }
-        .barra{
-            width:450px;
-            height: 35px;
-            border: solid 3px;
-            border-top-left-radius:10px;
-            border-top-right-radius:10px;
-            font-size: 20px;
-        }
+       
         .space-between{
-            justify-content: space-around;
             position: relative;
             display: flex;
             width: 101%;
             border-bottom:solid 2px;
             color:#3a3b3c
         }
-        h2{
-            margin: 0;
-        }
+        
         .popup-box{
             width:15px;
             height: 15px;
@@ -446,188 +885,283 @@
         #btnlogout{
             cursor: pointer;
         }
-        #caixausuario{
-            position: absolute;
-            display: flex;
+       
+
+        input[type=radio]{
+            margin-top: 3vh;
+            box-sizing: border-box;
+            appearance: none;
+            background: white;
+            outline: 2px solid #333;
+            width: 1.2vw;
+            height: 1.2vw;
+            margin-left: 15px;
+        }
+        input[type=radio]:checked{
             background-color: #0C91F0;
-            border-radius: 15px;
-            height: 78%;
-            width: 12.5%;
-            top: 10%;
-            left: 80%;
-            box-shadow: 1px 1px rgba(0, 0, 0, 0.226);
         }
-
-        .usuario{
+        input[type=radio].idade{
+            margin-top: 1vh;
+            box-sizing: border-box;
+            appearance: none;
+            background: white;
+            outline: 2px solid #333;
+            width: 0.8vw;
+            height: 0.8vw;
+            margin-left: 15px;
+        }
+        input[type=radio].idade:checked{
+            background-color: #0C91F0;
+        }
+        .quarenta{
+            margin-top: 0;
+            font-size: 1.2vw;
+            margin-left: 2.5vw;
+        }
+        input[type=radio].idade2{
             position: absolute;
-            background-color: #5A67BA;
-            border-radius: 50%;
+            top: 2.8vh;
+            left: 14.35vw;
+            box-sizing: border-box;
+            appearance: none;
+            background: white;
+            outline: 2px solid #333;
+            width: 0.8vw;
+            height: 0.8vw;
+        }
+        input[type=radio].idade2:checked{
+            background-color: #0C91F0;
+        }
+        .cinquenta{
+            position: absolute;
+            font-size: 1.2vw;
+            top:2vh;
+            left: 10.7vw;
+        }
+        input[type=radio].idade3{
+            position: absolute;
+            top: -2vh;
+            left: 21vw;
+            box-sizing: border-box;
+            appearance: none;
+            background: white;
+            outline: 2px solid #333;
+            width: 0.8vw;
+            height: 0.8vw;
+        }
+        input[type=radio].idade3:checked{
+            background-color: #0C91F0;
+        }
+        .sessenta{
+            position: absolute;
+            font-size: 1.2vw;
+            top: -2.8vh;
+            left: 18vw;
+        }
+        input[type=radio].idade4{
+            position: absolute;
+            top: 2.8vh;
+            left: 21vw;
+            box-sizing: border-box;
+            appearance: none;
+            background: white;
+            outline: 2px solid #333;
+            width: 0.8vw;
+            height: 0.8vw;
+        }
+        input[type=radio].idade4:checked{
+            background-color: #0C91F0;
+        } 
+        .setenta{
+            position: absolute;
+            font-size:1.2vw;
+            top: 2vh;
+            left: 18vw;
+        }
+        input[type=checkbox].input1{
+            top: 2.8vh;
+            left: 10.5vw;
+            position: absolute;
+            box-sizing: border-box;
+            appearance: none;
+            background: white;
+            outline: 2px solid #333;
+            width: 0.8vw;
+            height: 0.8vw;
+        }
+        input[type=checkbox].input1:checked{
+            background-color: #0C91F0;
+        }
+        .etilista{
+            font-size: 1.1vw;
+            position: absolute;
+            top: 0vh;
+            left: 13vw;
+        }
+        input[type=checkbox].input2{
+            position: absolute;
+            top: 7.8vh;
+            box-sizing: border-box;
+            appearance: none;
+            background: white;
+            outline: 2px solid #333;
+            width: 0.8vw;
+            height: 0.8vw;
+            left: 10.55vw;
+        }
+        input[type=checkbox]:checked.input2{
+            background-color: #0C91F0;
+        }
+        .tabagista{
+            font-size: 1vw;
+            position: absolute;
+            top: 5.5vh;
+            left: 13vw;
+        }
+        input[type=checkbox].input3{
+            position: absolute;
+            top: 13.3vh;
+            box-sizing: border-box;
+            appearance: none;
+            background: white;
+            outline: 2px solid #333;
+            width: 0.8vw;
+            height: 0.8vw;
+            left: 10.55vw;
+        }
+        input[type=checkbox]:checked.input3{
+            background-color: #0C91F0;
+        }
+        .feridasbucais{
+            font-size: 1vw;
+            position: absolute;
+            left: 13vw;
+            top: 11vh;
+        }
+        .nomeExtracao{
+            display: none;
             color: white;
-            font-family: "Poppins";
-            font-weight: bold;
-            margin-top: 2.0vh;
-            margin-left: 0.5vw;
-            width: 20%;
-            height: 55%;
-            text-align: center;
-            font-size: 3vh;
+            background: none;
         }
-
-        .caixa{
-            position: fixed;
-            color: white;
-            font-family: "Poppins";
-            font-weight: bold;
-            top: 1.2vh;
-            left: 86%;
-            font-size: 2.5vh;
-        }
-
-        .sinoimg{
-            position: absolute;
-            left: 10vw;
-            top: 1.2vh;
-            width: 2vw;
-            height: 3vw;
-        }
-
-        .sobrevidas{
-            position: absolute;
-            left: 16.5vw;
-        }
+       
     </style>
 </head>
-<!--CORPO DA PÁGINA-->
 <body>
-    <!--BARRA NO TOPO-->
-    <header class="top-bar">
-        <div class="imagem1"><img src="/imagenspg/logo projeto 2.png"></div>
-        <div class="sobrevidas">SOBREVIDAS-ACS</div>
-        <div class="titulo1">PACIENTES-Baixo risco</div>
+    <!--BARRA CABEÇALHO-->
+    <header>
+        <h1>SOBREVIDAS - ACS</h1>
+        <h2>Pacientes Absenteístas</h2>
         <div id="caixausuario">
             <p class="usuario">{{.Primeira}}</p>
             <p class="caixa">{{.Usuario}}</p>
-            <a href="/pagina-absenteista"><img src="/imagenspg/Component 24.png" class="sinoimg"></a>
+            <a href="/pagina-absenteista"><img src="/imgdashboard/sino.png" alt="IconeNotificação" class="posicaoImgSino"></a>
         </div>
-        <div class="imagem4"><a id="btnlogout"><img src="/imagenspg/logout 1.png"></a></div>
-        </div>
+        <a href="/dashboard/voltar"><img src="/imgdashboard/LogoSOBREVIDAS-ACS-semtext.png" alt="Logo Sobrevidas" class="posicaoImgLogo"></a>        <a id="btnlogout"><img src="/imgdashboard/logout.png" alt="IconeSaida" class="posicaoImgSaida"></a>
     </header>
-    <!--TABELA DE INFORMAÇÕES-->
-    <div class="cabeca color-purple">
-        <h1 class="space11">Nome</h1>
-        <h1 class="space21">Endereço</h1>
-        <h1 class="space31">Contato</h1>
-        <h1 class="space41">Idade</h1>
-        <h1 class="space51">Fatores de risco</h1>
+    <!--BARRA SUPERIOR COM INFOS-->
+    <div class="barraComInfos">
+        <h3 class="posicaoNome">Nome</h3>
+        <h3 class="posicaoEndereco">Endereço</h3>
+        <h3 class="posicaoContato">Contato</h3>
+        <h3 class="posicaoIdade">Idade</h3>
+        <h3 class="posicaoFatores">Fatores de Prioridade</h3>
     </div>
-    <!--FILTRO DE BUSCA-->
-    <div class="org">
-        <div class="busca color-light-purple"><input type="text" id="campo-texto" placeholder="Digite o nome do(a) paciente"><img src="/imagenspg/🦆 icon _search_.png"></div>
+    <!--MECANISMO DE BUSCA COM DIGITAÇÃO-->
+    <div class="posicaoPesquisaFiltro">
+        <form action="/pagina-absenteista-risco/filtrar-nome" method="get">
+            <div class="espacoBusca color-light-purple"><input type="text" id="campo-texto" placeholder="Digite o nome do(a) paciente" name="nome"><button type="submit" class="submit"><img src="/imagenspg/🦆 icon _search_.png"></button></div>
+        </form>
         <!--POP-UP-->
-        <a href="#popup-1" class="filtro color-light-purple no-link">Filtrar<img src="/imagenspg/🦆 icon _filter_.png"></a>
+        <a href="#popup-1" class="botaoFiltro color-light-purple no-link">Filtrar<img src="/imagenspg/🦆 icon _filter_.png"></a>
+        <form action="/pagina-absenteista-risco/filtrar">
             <div id="popup-1" class="popup">
-                
-                <div class=" popup-conteudo">
-                    <div class="barra color-light-purple">FILTRAR</div>
-                    <div class="space-between">
-                        <h2>Sexo:</h2>
-                        <h2>Feminino</h2>
-                        <h2>Masculino</h2>
-                    </div>
-                    <div class="space-between">
-                        <h2>Idade:</h2>
-                    <h2>51-60
-                            <h1 class="popup-box"></h1></h2>
-                        <h2>40-50
-                            <h1 class="popup-box"></h1></h2>
-                    <h2>70+
-                            <h1 class="popup-box"></h1></h2>
-                        <h2>61-70
-                            <h1 class="popup-box"></h1></h2>
-                    </div>
-                    <div class="space-between">
-                        <h2>Fatores de risco</h2>
-                        <h2>Etilista<br>Tabagista<br>Feridas Bucais</h2>
-                    <a href="#" class="popup-link no-link color-light-purple">Filtrar</a>
+                <div id="quadroPopUpAtencao">
+                    <div class="box">
+                        <h1 class="tituloFiltro">Filtrar Pacientes Absenteístas</h1>
+                        <p id="paragrafo"><b>Sexo:</b></p>
+                        <label class="container1"><b>Masculino</b>
+                            <input type="checkbox" name="radio1" value="Masculino">
+                            <span class="checkmark1"></span>
+                        </label>
+                        <label class="container2"><b>Feminino</b>
+                            <input type="checkbox" name="radio2" value="Feminino">
+                            <span class="checkmark1"></span>
+                        </label>
+                        <div class="line1"></div>
+                        <p class="FaixaEtaria" id="paragrafo"><b>Faixa Etária:</b></p>
+                        <label class="container3"><b>40-50</b>
+                            <input type="checkbox" name="radio3" value="40-50">
+                            <span class="checkmark2"></span>
+                        </label>
+                        <label class="container3"><b>51-60</b>
+                            <input type="checkbox" name="radio4" value="51-60">
+                            <span class="checkmark2"></span>
+                        </label>
+                        <label class="container3"><b>61-70</b>
+                            <input type="checkbox" name="radio5" value="61-70">
+                            <span class="checkmark2"></span>
+                        </label>
+                        <label class="container3"><b>70+</b>
+                            <input type="checkbox" name="radio6" value="70+">
+                            <span class="checkmark2"></span>
+                        </label>
+                        <div class="line2"></div>
+                        <p class="FatoresRisco" id="paragrafo"><b>Fatores de Prioridade:</b></p>
+                        <label class="container4"><b>Etilista</b>
+                            <input type="checkbox" name="radio7" value="Etilista">
+                            <span class="checkmark3"></span>
+                        </label>
+                        <label class="container4"><b>Tabagista</b>
+                            <input type="checkbox" name="radio8" value="Tabagista">
+                            <span class="checkmark3"></span>
+                        </label>
+                        <label class="container4"><b>Feridas Bucais</b>
+                            <input type="checkbox" name="radio9" value="FeridasBucais">
+                            <span class="checkmark3"></span>
+                        </label>
+                        <div class="barraInferior"><input class="Filtrar" type="submit" value="Filtrar"></div>
+                        <div class="barraInferior2"><a href="/pagina-absenteista" class="VoltarFiltro">Voltar</a></div>
                     </div>
                 </div>
             </div>
+        </form>
     </div>
-    <!--EXEMPLOS DE PACIENTES-->
-    <!--1-->
+    <!--EXEMPLOS DE FICHAS DE PACIENTES -->
+    
     <a href="#" class="no-link index">
-        <div class="exemplos color-light-red ">
-            <div class="space11">Arnaldo Pacheco Nunes</div>
-            <div class="space21">Rua 35 E , 115, St. Garavelo Res. Park</div>
-            <div class="space31">(62) 9 4002-8922</div>
+        <div class="fichasPacientesExemplo1 color-light-red ">
+            <div class="space11">Thaciano Rodrigues Silva</div>
+            <div class="space21">Rua 40 E , 115, St. Garavelo Res. Park</div>
+            <div class="space31">(62) 99903-9833</div>
             <div class="space41">84</div>
             <div class="space51">Homem/Feridas
                 Bucais/Etilista/Tabagista</div>
         </div>
     </a>
-    <!--2-->
+   
     <a href="#" class="no-link">
-        <div class="exemplos color-light-yellow ">
-            <div class="space11">Teodoro da Fonseca Neto</div>
-            <div class="space21">Rua 35 E , 115, St. Garavelo Res. Park</div>
-            <div class="space31">(62) 9 4002-8922</div>
+        <div class="fichasPacientesExemplo2 color-light-yellow ">
+            <div class="space11">João Tavares Costa</div>
+            <div class="space21">Rua 39 E , 115, St. Garavelo Res. Park</div>
+            <div class="space31">(62) 9982-67233</div>
             <div class="space41">63</div>
             <div class="space51">Homem/Etilista/Tabagista</div>
         </div>
     </a>
-    <!--3-->
+   
     <a href="#" class="no-link">
-        <div class="exemplos color-light-red ">
-            <div class="space11">Antônio Giorgino Neves</div>
-            <div class="space21">Rua 35 E , 115, St. Garavelo Res. Park</div>
-            <div class="space31">(62) 9 4002-8922</div>
-            <div class="space41">48</div>
-            <div class="space51">Homem/Feridas
-                Bucais/Etilista/Tabagista</div>
-        </div>
-    </a>
-    <!--4-->
-    <a href="#" class="no-link">
-        <div class="exemplos color-light-pink ">
-            <div class="space11">Jean Von Bordeaux</div>
-            <div class="space21">Rua 35 E , 115, St. Garavelo Res. Park</div>
-            <div class="space31">(62) 9 4002-8922</div>
+        <div class="fichasPacientesExemplo3 color-light-pink ">
+            <div class="space11">Leonardo Martinez Ferreira</div>
+            <div class="space21">Rua 38 E , 115, St. Garavelo Res. Park</div>
+            <div class="space31">(62) 99902-8922</div>
             <div class="space41">42</div>
             <div class="space51">Homem/Etilista</div>
         </div>
     </a>
-    <!--5-->
-    <a href="#" class="no-link">
-        <div class="exemplos color-light-yellow ">
-            <div class="space11">Thiago Medeiros</div>
-            <div class="space21">Rua 35 E , 115, St. Garavelo Res. Park</div>
-            <div class="space31">(62) 9 4002-8922</div>
-            <div class="space41">90</div>
-            <div class="space51">Homem/Tabagista/Etilista</div>
-        </div>
-    </a>
-    <!--6-->
-    <a href="#" class="no-link">
-        <div class="exemplos color-light-pink ">
-            <div class="space11">João Carlos Mendonça</div>
-            <div class="space21">Rua 35 E , 115, St. Garavelo Res. Park</div>
-            <div class="space31">(62) 9 4002-8922</div>
-            <div class="space41">58</div>
-            <div class="space51">Homem/Etilista</div>
-        </div>
-    </a>
-    <!--7-->
-    <a href="#" class="no-link">
-        <div class="exemplos color-light-red ">
-            <div class="space11">Marcus Vinícios Junior</div>
-            <div class="space21">Rua 35 E , 115, St. Garavelo Res. Park</div>
-            <div class="space31">(62) 9 4002-8922</div>
-            <div class="space41">55</div>
-            <div class="space51">Homem/Feridas
-                Bucais/Etilista/Tabagista</div>
-        </div>
-    </a>
-    <div><a href="/pacientesgerais" class="return no-link"><img src="/imagenspg/Seta.png">Voltar</a></div>
+    
+
+    <a href="/dashboard/voltar" class="Voltar">Voltar</a>
+    <a href="/dashboard/voltar" class="posicaoImgSetaVoltar"><img src="/imagens/iconeSetaVoltar1.1.png" alt="iconeSetaVoltar" class="setaVoltarTamanho"></a>
     <div id="modal">
         <div id="logout">
             <div class="fixar">
