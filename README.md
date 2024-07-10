@@ -1,4 +1,5 @@
-<p align="center"><img src="https://github.com/Sobrevidas-Grupo-3/PI-Grupo3-Sobrevidas-ACS/assets/166178053/3f375f02-c011-479c-b312-04df39303f0f"/></p>
+<p align="center"><img src="https://github.com/Sobrevidas-Grupo-3/PI-Grupo3-Sobrevidas-ACS/assets/166178053/d3f2d1d2-9218-4ec6-9aec-3506d7ea8a16"/></p>
+
 # SOBREVIDAS ACS - Rastreamento e Monitoramento do Câncer de Boca
 O objetivo desse repositório é armazenar a aplicação web da nossa versão do projeto Sobrevidas ACS
 
