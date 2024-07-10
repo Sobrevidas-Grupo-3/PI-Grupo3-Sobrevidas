@@ -355,15 +355,6 @@ func loginInvalidado(w http.ResponseWriter, r *http.Request){
 func autenticaLoginELevaAoDashboard(w http.ResponseWriter, r *http.Request) {
 	ponteiroLoginInvalido := &loginInvalido
 	*ponteiroLoginInvalido = false
-	if r.Method != http.MethodGet {
-		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
-		return
-	}
-	err := r.ParseForm()
-	if err != nil {
-		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
-		return
-	}
 	var endereco string
 	cpf := &cpfLogin
 	senha := &senhaLogin
@@ -662,15 +653,6 @@ func executarEsqueceuSenha(w http.ResponseWriter, _ *http.Request) {
 func atualizarSenha(w http.ResponseWriter, r *http.Request) {
 	ponteiroEsqueceuInvalido := &esqueceuInvalido
 	*ponteiroEsqueceuInvalido = false
-	if r.Method != http.MethodGet {
-		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
-		return
-	}
-	err := r.ParseForm()
-	if err != nil {
-		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
-		return
-	}
 	cpf := r.FormValue("cpf")
 	senha := r.FormValue("senha")
 	confirmarsenha := r.FormValue("confirmpassword")
@@ -838,10 +820,6 @@ func executarFormulario(w http.ResponseWriter, _ *http.Request) {
 }
 
 func cadastrarPaciente(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodPost {
-		http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
-		return
-	}
 	nome := r.FormValue("nome")
 	datanascimento := r.FormValue("datanascimento")
 	cpf := r.FormValue("cpfpaciente")
