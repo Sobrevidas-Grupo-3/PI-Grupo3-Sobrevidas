@@ -4,11 +4,13 @@
 O objetivo desse repositório é armazenar a aplicação web da nossa versão do projeto Sobrevidas ACS
 
 ## ✨ Características
-• 🌈 Plataforma intuitiva e de fácil uso para os ACS's.
-• ⚙️ Escrito em Golang,JS permitindo uma interação harmônica com o usuário.
-• 📦 Permite a coleta de dados de uma forma mais eficiente.
-• 📌 Conta com sistema de georreferenciamento que facilita o trabalho de campo dos ACS's.
-• 📈 Gráfico que permite visualizar a incidência de prioridade.
+<ul>
+<li> 🌈 Plataforma intuitiva e de fácil uso para os ACS's.</p>
+<li> ⚙️ Escrito em Golang,JS permitindo uma interação harmônica com o usuário.</p>
+<li> 📦 Permite a coleta de dados de uma forma mais eficiente.</p>
+<li> 📌 Conta com sistema de georreferenciamento que facilita o trabalho de campo dos ACS's.</p>
+<li> 📈 Gráfico que permite visualizar a incidência de prioridade.</p>
+</ul>
 
 ## 📋 Requisitos mínimos
     Versão 1.18 da linguagem Go
