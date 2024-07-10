@@ -602,27 +602,6 @@
         margin: 0vw 1vw 0vw 1vw;
     }
 
-    .download input[type=submit]{
-        background-color: #0C91F0;
-        color: #F5F5F7;
-        font-family: "Poppins";
-        border-radius: 0.156vw;
-        border: none;
-        width: 7vw;
-        height: 5vh;
-        font-weight: bold;
-        background-image: url(imagens/download.png);
-        background-size: 2vw;
-        background-position: left 3% center;
-        background-repeat: no-repeat;
-        font-size: 2.8vh;
-        text-align: center;
-        padding-left: 0.781vw;
-        margin-left: 2.5vw;
-        margin-right: 7vw;
-    }
-
-
     .validar input[type=submit]{
         background-color: #0C91F0;
         color: #F5F5F7;
@@ -637,7 +616,7 @@
         font-size: 2.8vh;
         text-align: center;
         margin-right: 5.8vw;
-        margin-left: 3.2vw;
+        margin-left: 18vw;
     }
 
     .validar input[type=submit]:hover {
@@ -997,57 +976,80 @@
         background-color: white;
         position: relative;
         border-radius: 0.521vw;
-        width: 30vw;
-        height: 44vh;
+        width: 25vw;
+        height: 60vh;
         font-family: "Inter";
         border: 0.156vw solid #737B8B;
     }
 
-    .ctzTel{
+    .msgtoken {
         position: absolute;
-        top: 20vh;
+        max-width: 17vw;
+        top: 8vh;
+        left: 18%;
         text-align: center;
         font-weight: bold;
-        font-size: 1.1vw;
+        font-size: 1.5vw;
+        color: #491D1D;
+        font-family: "Poppins";
+    }
+
+    .msgsmsenviado {
+        position: absolute;
+        max-width: 13vw;
+        top: 18vh;
+        left: 25%;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.3vw;
         color: #4B505A;
         font-family: "Poppins";
     }
 
-    .voltarTel{
-        border-radius: 0.26vw;
+    .enviarnovamente {
         position: absolute;
-        background-color: #007FDA;
-        color: white;
-        border: none;
-        top: 35vh;
-        width: 11.5vw;
-        height: 5.5vh;
+        top: 29vh;
+        left: 35%;
+        text-align: center;
+        font-weight: bold;
+        font-size: 0.8vw;
+        background-color: lightgrey;
+        border-radius: 5vw;
+        padding: 0px 5px 0px 5px;
+        color: #4B505A;
+        font-family: "Poppins";
+    }
+
+    .enviarnovamente:hover {
+        background-color: rgba(150, 148, 148, 0.753);
         cursor: pointer;
-        left: 1.5vw;
-        font-family: "Inter";
+    }
+
+
+    .ctzTel{
+        position: absolute;
+        max-width: 19vw;
+        top: 34vh;
+        left: 12%;
+        text-align: center;
+        font-weight: bold;
         font-size: 1.2vw;
-        background-image: url(/imagens2/img/imagens/setaesquerda.png);
-        background-repeat: no-repeat;
-        background-size: 0.6vw;
-        background-position: left 0.5vw center;
+        color: #4B505A;
+        font-family: "Poppins";
     }
 
-    .voltarTel:hover{
-        background-color: #0662a3;
-    }
-
-    .simTel{
+    .confirmTel{
         font-family: "Inter";
         border-radius: 0.26vw;
         position: absolute;
         background-color: #007FDA;
         color: white;
         border: none;
-        top: 35vh;
+        top: 50vh;
         width: 11.5vw;
         height: 5.5vh;
         cursor: pointer;
-        left: 17vw;
+        left: 7vw;
 
         font-size: 1.2vw;
         background-image: url(/imagens2/img/imagens/setadireita.png);
@@ -1056,14 +1058,14 @@
         background-position: right 0.5vw center;
     }
 
-    .simTel:hover{
+    .confirmTel:hover{
         background-color: #0662a3;
     }
 
     #tabelaTel {
         position: fixed;
-        left: 50vw;
-        top: 52vh;
+        left: 48vw;
+        top: 68vh;
         transform: translateY(-50%);
         transform: translateX(-50%);
     }
@@ -1074,12 +1076,13 @@
     }
 
     .codigo {
-        width: 3vw;
-        height: 5vh;
-        border-radius: 5px;
+        width: 2.2vw;
+        height: 4vh;
+        border-radius: 0.6vw;
         margin: 5px 0px 10px 0px;
         border-color: black;
-        margin: 0.2vw;
+        background-color: rgba(233, 231, 231, 0.781);
+        margin: 0.4vw;
         font-size: 2vh;
         text-align: center;
         font-weight: 700;
@@ -1190,10 +1193,6 @@
         }
 
         .validar {
-            display: none;
-        }
-
-        .download {
             display: none;
         }
 
@@ -1496,19 +1495,21 @@
                 <div id="logout">
                     <div class="fixar">
                         <div class="relativaTel">
-                            <p class="alerta">INSIRA O CÓDIGO</p>
-                            <img src="/imagens2/atencao.png" alt="Icone de Atenção" class="atencao">
-                            <p class="ctzTel">Insira o código de 4 dígitos que foi enviado via SMS para o número +55 (62)9 4002-8922</p>
+                            <p class="alerta">ATENÇÃO</p>
+                            <p class="msgtoken">Token de Validação de Telefone</p>
+                            <p class="msgsmsenviado">SMS enviado para: (DDD) 99999-9999</p>
+                            <p class="enviarnovamente">Enviar novamente</p>
+                            <p class="ctzTel">Preencha o campo abaixo com os 5 dígitos do token:</p>
                             <table id="tabelaTel">
                                <tr id="trTel">
                                     <td><input type="text" id="codigo1" class="codigo" maxlength="1"></td>
                                     <td><input type="text" id="codigo2" class="codigo" maxlength="1"></td>
                                     <td><input type="text" id="codigo3" class="codigo" maxlength="1"></td>
                                     <td><input type="text" id="codigo4" class="codigo" maxlength="1"></td>
+                                    <td><input type="text" id="codigo5" class="codigo" maxlength="1"></td>
                                 </tr>
                             </table>
-                            <button class="simTel" type="submit">Validar</button>
-                            <button class="voltarTel">Voltar</button>
+                            <button class="confirmTel" type="submit">Confirmar</button>
                         </div>
                     </div>
                 </div>
@@ -1519,7 +1520,6 @@
             <div class="obrigatorio">
                 <p>Os itens assinalados com <span class="asc">*</span> são de preenchimento obrigatório</p>
             </div>
-            <a href="#" class="download"><input type="submit" value="PDF"></a>
             <a href="#" class="validar"><input type="submit" value="Validar Telefone" id="validador"></a>
             <div class="form-section-confirmar">
                 <button type="submit" id="confirmador">Confirmar</button>
@@ -1597,8 +1597,7 @@
 
        //Botoes POP-UP TEL
         let btnValidador = document.getElementById('validador');//Chamar o validador
-        let cancelbtn0 = document.querySelector('.voltarTel');//Botão de voltar do validador
-        let simbtn0 = document.querySelector('.simTel');//Botão de validar do validador
+        let simbtn0 = document.querySelector('.confirmTel');//Botão de validar do validador
 
         //Botões Omar
         let btn = document.getElementById('confirmador');
@@ -1612,6 +1611,7 @@
         let codigo2 = document.getElementById('codigo2');
         let codigo3 = document.getElementById('codigo3');
         let codigo4 = document.getElementById('codigo4');
+        let codigo5 = document.getElementById('codigo5');
 
         btn.onclick = function(){
             modal.style.display = 'block';
@@ -1626,11 +1626,6 @@
             modal.style.display = 'none';
         }
 
-        // Função validador de telefone
-        cancelbtn0.onclick = function(){
-            modalTel.style.display = 'none';
-        }
-
         simbtn.onclick = function(){
             modal.style.display = 'none';
             modal2.style.display = 'block';
@@ -1643,6 +1638,7 @@
             codigo2.value = "";
             codigo3.value = "";
             codigo4.value = "";
+            codigo5.value = "";
         }
 
 

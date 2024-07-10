@@ -3,6 +3,15 @@
 ## SOBREVIDAS ACS - Rastreamento e Monitoramento do Câncer de Boca
 O objetivo desse repositório é armazenar a aplicação web da nossa versão do projeto Sobrevidas ACS
 
+## ✨ Características
+<ul>
+<li> 🌈 Plataforma intuitiva e de fácil uso para os ACS's.</p>
+<li> ⚙️ Escrito em Golang,JS permitindo uma interação harmônica com o usuário.</p>
+<li> 📦 Permite a coleta de dados de uma forma mais eficiente.</p>
+<li> 📌 Conta com sistema de georreferenciamento que facilita o trabalho de campo dos ACS's.</p>
+<li> 📈 Gráfico que permite visualizar a incidência de prioridade.</p>
+</ul>
+
 ## 📋 Requisitos mínimos
     Versão 1.18 da linguagem Go
 
