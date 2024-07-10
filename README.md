@@ -1,1 +1,1 @@
-![LogoSobrevidas150pxEditada](https://github.com/Sobrevidas-Grupo-3/PI-Grupo3-Sobrevidas-ACS/assets/166178053/afa180ac-745a-4d6a-b14b-5f54557b2e7a)
+![LogoSOBREVIDAS-ACS200px](https://github.com/Sobrevidas-Grupo-3/PI-Grupo3-Sobrevidas-ACS/assets/166178053/91a067b9-d389-4f0e-8aa2-3fa93f43a492)
