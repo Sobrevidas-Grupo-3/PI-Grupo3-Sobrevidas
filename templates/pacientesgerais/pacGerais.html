@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pacientes Gerais</title>
-    <link rel="shortcut icon" href="imagens2/imagens/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kaushan+Script&family=Passion+One:wght@400;700;900&family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&display=swap');
@@ -656,6 +656,118 @@
             cursor: pointer;
         }
         
+         /* POP-UP Notificação */
+
+        .sinoimg{
+            position: fixed;
+            top: 2.3vh;
+            left: 90%;
+            width: 2%;
+            height: 4%;
+            transition: transform 0.3s ease;
+        }
+
+        .sinoimg:hover {
+            transform: translateY(-0.521vw);
+            transform: translateY(0.26vw);
+        }
+
+        .icone {
+            cursor: pointer;
+            margin-right: 2.604vw;
+            line-height: 1.302vw;
+        }
+
+        #bolanotificacao {
+            background: #f00;
+            padding: 0px 0.313vw 0px 0.313vw;
+            border-radius: 50%;
+            color: #fff;
+            position: absolute;
+            vertical-align: top;
+            margin-left: 11vw;
+            font-size: 1.8vh;
+            font-family: "Poppins";
+            font-weight: bold;
+        }
+
+        .icone:hover {
+            opacity: .7;
+        }
+
+        .caixanotificacao {
+            display: none;
+            width: 15.625vw;
+            opacity: 0;
+            z-index: 2;
+            position: absolute;
+            border: 0.156vw solid #007FDA;
+            background-color: white;
+            border-radius: 0.521vw;
+            top: 3.281vw;
+            right: 1.823vw;
+            transition: 0.6s opacity, 250ms height;
+            box-shadow: 0 0.208vw 0.417vw 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .caixanotificacao p {
+            font-size: 0.729vw;
+            position: relative;
+            font-family: "Poppins";
+            padding: 0.26vw;
+            font-weight: bold;
+            border-bottom: 0.052vw solid #eee;
+            color: #383838;
+            overflow-x: hidden;
+        }
+        .caixanotificacao #titulonotificacoes span {
+            color: #f00;
+            font-family: "Poppins";
+            margin-left: 5px;
+        }
+        .notificacao {
+            display: flex;
+            border-bottom: 0.052vw solid #eee;
+            padding: 0.521vw 0.26vw;
+            margin-bottom: 0.525vw;
+            cursor: default;
+            border-radius: 0.521vw;
+            box-shadow: 0px 0px 0.052vw rgba(0, 0, 0, 0.425);
+
+            transition: transform 0.3s ease;
+        }
+
+        .notificacao:hover {
+            background-color: #007fda1a;
+
+            transform: translateY(-0.208vw);
+            transform: translateY(0.156vw);
+        }
+
+        .notificacao img {
+            display: block;
+            width: 2.344vw;
+            height: 2.344vw;
+            margin-right: 0.521vw;
+            border-radius: 50%;
+        }
+
+        .notificacao .texto span {
+            color: #777;
+            font-size: 0.833vw;
+            font-weight: bold;
+            margin-top: 0.521vw;
+            margin-bottom: -1.5vw;
+            font-family: "Poppins";
+        }
+
+        .notificacao .texto p {
+            color: #aaa;
+            font-size: 0.625vw;
+            font-family: "Poppins";
+        }
+
+        /* FIM POP-UP */
 
     </style>
 </head>
@@ -666,8 +778,34 @@
         <div id="caixausuario">
             <p class="usuario">{{.Primeira}}</p>
             <p class="caixa">{{.Usuario}}</p>
-            <a href="/pagina-absenteista"><img src="/imgdashboard/sino.png" alt="Icone de Notificação" class="sinoimg"></a>
+            <div class="icone" onclick="toggleNotifi()"><img src="/imgdashboard/sino.png" alt="Icone de Notificação" class="sinoimg"><span id="bolanotificacao">3</span></div>
         </div>
+        <div class="caixanotificacao" id="caixa">
+			<p id="titulonotificacoes">Notificações<span style="color: #f00;">3</span></p>
+			<div id="not1" class="notificacao">
+				<img src="imagens/aviso.png" alt="img">
+				<div class="texto" onclick="abreLink()">
+				   <span>Thaciano Rodrigues Silva</span>
+				   <p>Não compareceu à consulta agendada no dia 22/04/2024</p>
+			    </div> 
+			</div>
+
+			<div id="not2" class="notificacao">
+				<img src="imagens/aviso.png" alt="img">
+				<div class="texto" onclick="abreLink()">
+				   <span>João Tavares Costa</span>
+				   <p>Não compareceu à consulta agendada no dia 25/01/2024</p>
+			    </div> 
+			</div>
+
+			<div id="not3" class="notificacao">
+				<img src="imagens/aviso.png" alt="img">
+				<div class="texto" onclick="abreLink()">
+				   <span>Leonardo Martinez Ferreira</span>
+				   <p>Não compareceu à consulta agendada no dia 03/06/2024</p>
+			    </div> 
+			</div>
+		</div>
         <a id="btnlogout"><img src="/imgdashboard/logout.png" alt="Icone de sair" class="posicaoImgSaida"></a>
     </header>
     <nav>
@@ -690,7 +828,7 @@
         <a href="/central-usuario" class="CentralUsuario"><span class="space3">Central do Usuário</span></a>
         <a href="/dashboard/voltar" class="Voltar">Voltar</a>
         <a href="/dashboard/voltar"><img src="/imgdashboard/LogoSOBREVIDAS-ACS-semtext.png" alt="Logo Sobrevidas" class="posicaoLogo"></a>
-        <a href="/dashboard/voltar" class="posicaoImgSetaVoltar"><img src="/imagens/iconeSetaVoltar1.1.png" alt="iconeSetaVoltar" class="setaVoltarTamanho"></a>
+        <a href="/dashboard/voltar" class="posicaoImgSetaVoltar"><img src="imagens/iconeSetaVoltar1.1.png" alt="iconeSetaVoltar" class="setaVoltarTamanho"></a>
     </nav>
 
     <h3>Monitoramento dos Pacientes</h3>
@@ -746,6 +884,45 @@
         cancelbtn.onclick = function(){
             modal.style.display = 'none';
         }
+
+               /* Script POP-UP NOTIFICAÇÂO */
+
+               var caixa  = document.getElementById('caixa');
+        var down = false;
+        var linkEnable = false;
+        var linkButton1 = document.getElementById('not1');
+        var linkButton2 = document.getElementById('not2');
+        var linkButton3 = document.getElementById('not3');
+
+        function toggleNotifi(){
+            if (down) {
+                caixa.style.height  = '0px';
+                caixa.style.opacity = 0;
+		caixa.style.display = 'none';
+                down = false;
+                linkEnable = false;
+                linkButton1.style.cursor = 'default';
+                linkButton2.style.cursor = 'default';
+                linkButton3.style.cursor = 'default';
+                
+            }else {
+                caixa.style.height  = '22.396vw';
+                caixa.style.opacity = 1;
+		caixa.style.display = 'block';
+                down = true;
+                linkEnable = true;
+                linkButton1.style.cursor = 'pointer';
+                linkButton2.style.cursor = 'pointer';
+                linkButton3.style.cursor = 'pointer';
+                
+            }
+        }
+
+        function abreLink(){
+        if (linkEnable){
+            window.open('/pagina-absenteista');
+        }
+    }
     </script>
 </body>
 </html>

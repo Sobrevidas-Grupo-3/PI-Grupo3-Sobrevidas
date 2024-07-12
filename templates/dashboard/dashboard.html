@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="shortcut icon" href="/imgdashboard/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="imgdashboard/favicon.ico" type="image/x-icon">
 </head>
 <style>
 
@@ -140,6 +140,7 @@
     }
 
     .caixanotificacao {
+        display: none;
         width: 15.625vw;
         opacity: 0;
         z-index: 2;
@@ -154,7 +155,6 @@
     }
 
     .caixanotificacao p {
-	display: none;
         font-size: 0.729vw;
         position: relative;
         font-family: "Poppins";
@@ -200,14 +200,6 @@
         color: #777;
         font-size: 0.833vw;
         margin-top: 0.521vw;
-        font-family: "Poppins";
-    }
-
-    .notificacao .texto h4::after {
-        content: '9 min';
-        font-size: 1.2vh;
-        font-weight: normal;
-        margin-left: 0.313vw;
         font-family: "Poppins";
     }
 
@@ -1058,7 +1050,7 @@
         <div class="caixanotificacao" id="caixa">
 			<p id="titulonotificacoes">Notificações<span style="color: #f00;">3</span></p>
 			<div id="not1" class="notificacao">
-				<img src="/imagens2/img/img/aviso.png" alt="img">
+				<img src="imagens/aviso.png" alt="img">
 				<div class="texto" onclick="abreLink()">
 				   <h4>Thaciano Rodrigues Silva</h4>
 				   <p>Não compareceu à consulta agendada no dia 22/04/2024</p>
@@ -1066,7 +1058,7 @@
 			</div>
 
 			<div id="not2" class="notificacao">
-				<img src="/imagens2/img/img/aviso.png" alt="img">
+				<img src="imagens/aviso.png" alt="img">
 				<div class="texto" onclick="abreLink()">
 				   <h4>João Tavares Costa</h4>
 				   <p>Não compareceu à consulta agendada no dia 25/01/2024</p>
@@ -1074,7 +1066,7 @@
 			</div>
 
 			<div id="not3" class="notificacao">
-				<img src="/imagens2/img/img/aviso.png" alt="img">
+				<img src="imagens/aviso.png" alt="img">
 				<div class="texto" onclick="abreLink()">
 				   <h4>Leonardo Martinez Ferreira</h4>
 				   <p>Não compareceu à consulta agendada no dia 03/06/2024</p>
