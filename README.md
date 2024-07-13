@@ -10,7 +10,7 @@ O objetivo desse repositório é armazenar a aplicação web da nossa versão do
 ## ✨ Características
 <ul>
 <li> 🌈 Plataforma intuitiva e de fácil uso para os ACS's.</p>
-<li> ⚙️ Escrito em Golang,JS permitindo uma interação harmônica com o usuário.</p>
+<li> ⚙️ Escrito em Golang e JavaScript permitindo uma interação harmônica com o usuário.</p>
 <li> 📦 Permite a coleta de dados de uma forma mais eficiente.</p>
 <li> 📌 Conta com sistema de georreferenciamento que facilita o trabalho de campo dos ACS's.</p>
 <li> 📈 Gráfico que permite visualizar a incidência de prioridade.</p>
@@ -42,7 +42,7 @@ O objetivo desse repositório é armazenar a aplicação web da nossa versão do
 ![Visual Studio Code](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
 ![Jira](https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white)
 
-## Licença
+## 📃 Licença
 
 Este projeto é licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
