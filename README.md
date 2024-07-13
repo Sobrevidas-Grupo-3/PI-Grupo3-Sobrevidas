@@ -3,6 +3,8 @@
 ## SOBREVIDAS ACS - Rastreamento e Monitoramento do Câncer de Boca
 O objetivo desse repositório é armazenar a aplicação web da nossa versão do projeto Sobrevidas ACS
 
+<a href="https://drive.google.com/file/d/1kVPIAD2Sgw_NboqgKndJmhOUlEahYv-4/view?usp=sharing">💡Link do vídeo de Pitch</a>
+
 ## ✨ Características
 <ul>
 <li> 🌈 Plataforma intuitiva e de fácil uso para os ACS's.</p>
