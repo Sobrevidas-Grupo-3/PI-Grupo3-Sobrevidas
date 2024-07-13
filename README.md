@@ -5,6 +5,8 @@ O objetivo desse repositório é armazenar a aplicação web da nossa versão do
 
 <a href="https://drive.google.com/file/d/1kVPIAD2Sgw_NboqgKndJmhOUlEahYv-4/view?usp=sharing">💡Link do vídeo de Pitch</a>
 
+<a href="https://drive.google.com/file/d/12igryiNaNEGur08B4uYjM0gaBMUaFbX-/view?usp=sharing">🎥Link do vídeo explicando as funcionalidades</a>
+
 ## ✨ Características
 <ul>
 <li> 🌈 Plataforma intuitiva e de fácil uso para os ACS's.</p>
