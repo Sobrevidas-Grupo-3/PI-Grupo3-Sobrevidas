@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pacientes de Média Prioridade</title>
-    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="imagens2/imagens/favicon.ico" type="image/x-icon">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kaushan+Script&family=Passion+One:wght@400;700;900&family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&display=swap');
 
@@ -985,119 +985,6 @@
             color: white;
             background: none;
         }
-
-
-        /* POP-UP Notificação */
-
-        .sinoimg{
-            position: fixed;
-            top: 2.3vh;
-            left: 90%;
-            width: 2%;
-            height: 4%;
-            transition: transform 0.3s ease;
-        }
-
-        .sinoimg:hover {
-            transform: translateY(-0.521vw);
-            transform: translateY(0.26vw);
-        }
-
-        .icone {
-            cursor: pointer;
-            margin-right: 2.604vw;
-            line-height: 1.302vw;
-        }
-
-        #bolanotificacao {
-            background: #f00;
-            padding: 0px 0.313vw 0px 0.313vw;
-            border-radius: 50%;
-            color: #fff;
-            position: absolute;
-            vertical-align: top;
-            margin-left: 11vw;
-            font-size: 1.8vh;
-            font-family: "Poppins";
-            font-weight: bold;
-        }
-
-        .icone:hover {
-            opacity: .7;
-        }
-
-        .caixanotificacao {
-            display: none;
-            width: 15.625vw;
-            opacity: 0;
-            z-index: 2;
-            position: absolute;
-            border: 0.156vw solid #007FDA;
-            background-color: white;
-            border-radius: 0.521vw;
-            top: 3.281vw;
-            right: 1.823vw;
-            transition: 0.6s opacity, 250ms height;
-            box-shadow: 0 0.208vw 0.417vw 0 rgba(0, 0, 0, 0.2);
-        }
-
-        .caixanotificacao p {
-            font-size: 0.729vw;
-            position: relative;
-            font-family: "Poppins";
-            padding: 0.26vw;
-            font-weight: bold;
-            border-bottom: 0.052vw solid #eee;
-            color: #383838;
-            overflow-x: hidden;
-        }
-        .caixanotificacao #titulonotificacoes span {
-            color: #f00;
-            font-family: "Poppins";
-            margin-left: 5px;
-        }
-        .notificacao {
-            display: flex;
-            border-bottom: 0.052vw solid #eee;
-            padding: 0.521vw 0.26vw;
-            margin-bottom: 0.625vw;
-            cursor: default;
-            border-radius: 0.521vw;
-            box-shadow: 0px 0px 0.052vw rgba(0, 0, 0, 0.425);
-
-            transition: transform 0.3s ease;
-        }
-
-        .notificacao:hover {
-            background-color: #007fda1a;
-
-            transform: translateY(-0.208vw);
-            transform: translateY(0.156vw);
-        }
-
-        .notificacao img {
-            display: block;
-            width: 2.344vw;
-            height: 2.344vw;
-            margin-right: 0.521vw;
-            border-radius: 50%;
-        }
-
-        .notificacao .texto h4 {
-            color: #777;
-            font-size: 0.833vw;
-            margin-top: 0.521vw;
-            margin-bottom: -1vw;
-            font-family: "Poppins";
-        }
-
-        .notificacao .texto p {
-            color: #aaa;
-            font-size: 0.625vw;
-            font-family: "Poppins";
-        }
-
-        /* FIM POP-UP */
        
     </style>
 </head>
@@ -1111,34 +998,8 @@
             <p class="usuario">{{.Primeira}}</p>
             <p class="caixa">{{.Usuario}}</p>
             {{end}}
-            <div class="icone" onclick="toggleNotifi()"><img src="/imgdashboard/sino.png" alt="Icone de Notificação" class="sinoimg"><span id="bolanotificacao">3</span></div>
+            <a href="/pagina-absenteista"><img src="/imgdashboard/sino.png" alt="IconeNotificação" class="posicaoImgSino"></a>
         </div>
-        <div class="caixanotificacao" id="caixa">
-			<p id="titulonotificacoes">Notificações<span style="color: #f00;">3</span></p>
-			<div id="not1" class="notificacao">
-				<img src="imagens/aviso.png" alt="img">
-				<div class="texto" onclick="abreLink()">
-				   <h4>Thaciano Rodrigues Silva</h4>
-				   <p>Não compareceu à consulta agendada no dia 22/04/2024</p>
-			    </div> 
-			</div>
-
-			<div id="not2" class="notificacao">
-				<img src="imagens/aviso.png" alt="img">
-				<div class="texto" onclick="abreLink()">
-				   <h4>João Tavares Costa</h4>
-				   <p>Não compareceu à consulta agendada no dia 25/01/2024</p>
-			    </div> 
-			</div>
-
-			<div id="not3" class="notificacao">
-				<img src="imagens/aviso.png" alt="img">
-				<div class="texto" onclick="abreLink()">
-				   <h4>Leonardo Martinez Ferreira</h4>
-				   <p>Não compareceu à consulta agendada no dia 03/06/2024</p>
-			    </div> 
-			</div>
-		</div>
         <a href="/dashboard/voltar"><img src="/imgdashboard/LogoSOBREVIDAS-ACS-semtext.png" alt="Logo Sobrevidas" class="posicaoImgLogo"></a>        <a id="btnlogout"><img src="/imgdashboard/logout.png" alt="IconeSaida" class="posicaoImgSaida"></a>
     </header>
     <!--BARRA SUPERIOR COM INFOS-->
@@ -1152,10 +1013,10 @@
     <!--MECANISMO DE BUSCA COM DIGITAÇÃO-->
     <div class="posicaoPesquisaFiltro">
         <form action="/pagina-medio-risco/filtrar-nome" method="get">
-            <div class="espacoBusca color-light-yellow"><input type="text" id="campo-texto" placeholder="Digite o nome do(a) paciente" name="nome"><button type="submit" class="submit"><img src="imagens/🦆 icon _search_.png"></button></div>
+            <div class="espacoBusca color-light-yellow"><input type="text" id="campo-texto" placeholder="Digite o nome do(a) paciente" name="nome"><button type="submit" class="submit"><img src="/imagenspg/🦆 icon _search_.png"></button></div>
         </form>
         <!--POP-UP-->
-        <a href="#popup-1" class="botaoFiltro color-yellow no-link">Filtrar<img src="imagens/🦆 icon _filter_.png"></a>
+        <a href="#popup-1" class="botaoFiltro color-yellow no-link">Filtrar<img src="/imagenspg/🦆 icon _filter_.png"></a>
         <a href="/pagina-medio-risco" class="botaoFiltro2 color-yellow no-link">Limpar Filtro</a>
         <form action="/pagina-medio-risco/filtrar">
             <div id="popup-1" class="popup">
@@ -1250,45 +1111,6 @@
         cancelbtn.onclick = function(){
             modal.style.display = 'none';
         }
-
-           /* Script POP-UP NOTIFICAÇÂO */
-
-           var caixa  = document.getElementById('caixa');
-        var down = false;
-        var linkEnable = false;
-        var linkButton1 = document.getElementById('not1');
-        var linkButton2 = document.getElementById('not2');
-        var linkButton3 = document.getElementById('not3');
-
-        function toggleNotifi(){
-            if (down) {
-                caixa.style.height  = '0px';
-                caixa.style.opacity = 0;
-		caixa.style.display = 'none';
-                down = false;
-                linkEnable = false;
-                linkButton1.style.cursor = 'default';
-                linkButton2.style.cursor = 'default';
-                linkButton3.style.cursor = 'default';
-                
-            }else {
-                caixa.style.height  = '22.396vw';
-                caixa.style.opacity = 1;
-		caixa.style.display = 'block';
-                down = true;
-                linkEnable = true;
-                linkButton1.style.cursor = 'pointer';
-                linkButton2.style.cursor = 'pointer';
-                linkButton3.style.cursor = 'pointer';
-                
-            }
-        }
-
-        function abreLink(){
-        if (linkEnable){
-            window.open('/pagina-absenteista');
-        }
-    }
     </script>
     </body>
 </html>
